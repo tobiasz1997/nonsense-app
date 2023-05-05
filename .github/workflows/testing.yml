@@ -26,4 +26,4 @@ jobs:
       - name: Run prettier
         run: npm run format
       - name: Run tests
-        run: npm run jest
+        run: npm run test
