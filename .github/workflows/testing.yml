@@ -24,6 +24,6 @@ jobs:
       - name: Run npm Install
         run: npm ci
       - name: Run prettier
-        run: npm format
+        run: npm run format
       - name: Run tests
-        run: npm jest
+        run: npm run jest
