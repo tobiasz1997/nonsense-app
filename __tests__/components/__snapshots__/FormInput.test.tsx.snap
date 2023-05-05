@@ -1,23 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form Error Message should render without crashing 1`] = `
-<div>
-  <div>
-    <label
-      class="flex cursor-pointer items-center overflow-hidden rounded border focus-within:ring-4 border-green-dark text-green-dark focus-within:ring-yellow"
-    >
-      <span
-        class="relative w-full"
-      >
-        <input
-          class="h-12 w-full border-none focus:outline-none focus:ring-0 disabled:opacity-50 p-2"
-        />
-      </span>
-    </label>
-  </div>
-</div>
-`;
-
 exports[`Form Input should render without crashing 1`] = `
 <div>
   <div>
