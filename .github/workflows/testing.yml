@@ -24,6 +24,6 @@ jobs:
       - name: Run npm Install
         run: npm ci
       - name: Run prettier
-        run: prettier --check --ignore-path .gitignore .
+        run: npm format
       - name: Run tests
         run: npm jest
