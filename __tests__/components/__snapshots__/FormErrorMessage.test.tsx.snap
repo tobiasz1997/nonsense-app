@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Form Error Message render without crashing 1`] = `
-<div>
-  <div
-    class="my-2 text-xs text-red"
-  >
-    @#$%^&*()qwerty
-  </div>
-</div>
-`;
-
 exports[`Form Error Message should render without crashing 1`] = `
 <div>
   <div

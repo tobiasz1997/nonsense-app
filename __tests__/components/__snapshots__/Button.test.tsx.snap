@@ -1,21 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button render without crashing 1`] = `
-<div>
-  <button
-    class="relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50 h-12 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold px-3"
-  >
-    <span
-      class="flex h-full w-full items-center justify-center"
-    >
-      <span>
-        @#$%^&*()qwerty
-      </span>
-    </span>
-  </button>
-</div>
-`;
-
 exports[`Button should render without crashing 1`] = `
 <div>
   <button
