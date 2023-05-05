@@ -2,7 +2,7 @@
 
 My private playground where I have fun writing code.
 
-------
+---
 
 ### Installation
 
@@ -14,12 +14,10 @@ npm run dev
 
 ### Stack
 
-* React
-* Next.js
-* Redux
-* SWR
-* Tailwind
-* Framer Motion
-* Jest / React Testing Library
-
-
+- React
+- Next.js
+- Redux
+- SWR
+- Tailwind
+- Framer Motion
+- Jest / React Testing Library

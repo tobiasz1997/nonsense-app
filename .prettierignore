@@ -1,0 +1,9 @@
+.github
+.next
+node_modules
+.gitignore
+.swc
+public
+package.json
+package-lock.json
+tsconfig.json
