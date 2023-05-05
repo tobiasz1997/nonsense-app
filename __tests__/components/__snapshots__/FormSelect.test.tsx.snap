@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Select should render without crashing 1`] = `
+<div>
+  <div>
+    <label
+      class="flex cursor-pointer items-center overflow-hidden rounded border focus-within:ring-4 border-green-dark text-green-dark focus-within:ring-yellow"
+    >
+      <span
+        class="relative w-full"
+      >
+        <select
+          class="h-12 w-full border-none pr-10 focus:outline-none focus:ring-0 disabled:opacity-50 p-2"
+          options="[object Object],[object Object]"
+        >
+          <option
+            value="1"
+          >
+            First
+          </option>
+          <option
+            value="2"
+          >
+            Second
+          </option>
+        </select>
+      </span>
+    </label>
+  </div>
+</div>
+`;

@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination should render without crashing 1`] = `
+<div>
+  <div
+    class="mt-10 flex w-full w-full items-center justify-center space-x-2"
+  >
+    <div>
+      <button
+        class="relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50 h-12 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold px-3"
+        data-testid="left"
+        disabled=""
+      >
+        <span
+          class="flex h-full w-full items-center justify-center"
+        >
+          <span>
+            <svg
+              aria-hidden="true"
+              class="h-5 w-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+    <div
+      class="w-20"
+    >
+      <div>
+        <label
+          class="flex cursor-pointer items-center overflow-hidden rounded border focus-within:ring-4 border-green-dark text-green-dark focus-within:ring-yellow"
+        >
+          <span
+            class="relative w-full"
+          >
+            <select
+              class="h-12 w-full border-none pr-10 focus:outline-none focus:ring-0 disabled:opacity-50 p-2"
+              options="[object Object],[object Object]"
+            >
+              <option
+                value="1"
+              >
+                1
+              </option>
+              <option
+                value="2"
+              >
+                2
+              </option>
+            </select>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div>
+      <button
+        class="relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50 h-12 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold px-3"
+        data-testid="right"
+      >
+        <span
+          class="flex h-full w-full items-center justify-center"
+        >
+          <span>
+            <svg
+              aria-hidden="true"
+              class="h-5 w-5"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;

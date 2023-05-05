@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Label should render without crashing 1`] = `
+<div>
+  <span
+    class="flex space-x-1 text-xs"
+  >
+    <span
+      class="block font-bold"
+    >
+      @#$%^&*()qwerty
+    </span>
+  </span>
+</div>
+`;
