@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import useStringHelpers from '@hooks/useStringHelpers';
-import AlgorithmBox from '@components/features/Algorithms/Utils/AlgorithmBox';
 import Button from '@components/ui/Button';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import { calculateSelectionSort } from '@utils/algorithmsFunctions';
+import CustomBox from '@components/ui/CustomBox';
 
 type Props = {};
 
@@ -15,7 +15,7 @@ const SelectionSort: FC<Props> = () => {
 	const { convertArrayToString } = useStringHelpers();
 
 	return (
-		<AlgorithmBox title="Selection sort">
+		<CustomBox title="Selection sort">
 			<div className="grid gap-5 sm:grid-cols-2">
 				<code className="na-code">
 					<div className="na-comment">// Input</div>
@@ -61,7 +61,7 @@ const SelectionSort: FC<Props> = () => {
 					/>
 				</div>
 			</div>
-		</AlgorithmBox>
+		</CustomBox>
 	);
 };
 

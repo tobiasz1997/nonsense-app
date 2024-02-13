@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import {
 	CalculatorIcon,
 	ClipboardDocumentListIcon,
+	CpuChipIcon,
 	FaceSmileIcon,
 	HomeIcon,
 	UserIcon
@@ -87,6 +88,10 @@ const navLinks: NavLinksType = [
 	{
 		...appRoutes.users,
 		icon: <UserIcon />
+	},
+	{
+		...appRoutes.generators,
+		icon: <CpuChipIcon />
 	}
 ];
 

@@ -28,7 +28,7 @@ const UsersPage: AppPage = () => {
 			<h1 className="na-title">Users</h1>
 
 			<section className="space-y-5 overflow-x-scroll rounded-xl bg-pistachio p-5 shadow-xl dark:bg-zinc-500">
-				<table className="w-full rounded-xl border-2 border border-orange">
+				<table className="w-full rounded-xl border-2 border-orange">
 					<thead className="hidden md:table-header-group">
 						<tr className="w-full border-b border-orange text-left font-bold text-green-dark dark:text-pistachio">
 							<th className="w-[1fr] p-3">Name</th>

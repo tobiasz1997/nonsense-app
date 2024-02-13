@@ -1,3 +1,5 @@
+export {};
+
 jest.mock('next/router', () => ({
 	push: jest.fn(),
 	back: jest.fn(),
