@@ -1,4 +1,4 @@
-import { generatePesel } from '@utils/generators/peselGenerator';
+import generatePesel from '@utils/generators/peselGenerator';
 
 describe('Pesel Generator', () => {
 	test('Should create correct pesel number', () => {

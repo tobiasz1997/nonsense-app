@@ -1,6 +1,7 @@
 import { AppPage } from '@interfaces/appPage';
 import PeselGenerator from '@components/features/Generators/PeselGenerator';
 import NipGenerator from '@components/features/Generators/NipGenerator';
+import RegonGenerator from '@components/features/Generators/RegonGenerator';
 
 const GeneratorsPage: AppPage = () => {
 	return (
@@ -9,6 +10,7 @@ const GeneratorsPage: AppPage = () => {
 
 			<PeselGenerator />
 			<NipGenerator />
+			<RegonGenerator />
 		</div>
 	);
 };

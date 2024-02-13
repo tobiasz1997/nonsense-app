@@ -1,4 +1,4 @@
-import { generateNip } from '@utils/generators/nipGenerator';
+import generateNip from '@utils/generators/nipGenerator';
 
 describe('NIP Generator', () => {
 	test('Should create correct NIP number', () => {

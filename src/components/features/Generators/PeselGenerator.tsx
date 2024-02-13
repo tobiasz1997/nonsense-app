@@ -1,8 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import CustomBox from '@components/ui/CustomBox';
 import Button from '@components/ui/Button';
-import { generatePesel } from '@utils/generators/peselGenerator';
 import copy from 'copy-to-clipboard';
+import generatePesel from '@utils/generators/peselGenerator';
 
 const PeselGenerator: FC = () => {
 	const [value, setValue] = useState<string>('');

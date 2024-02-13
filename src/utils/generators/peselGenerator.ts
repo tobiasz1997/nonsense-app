@@ -1,7 +1,7 @@
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import { generateRandomIntNumber } from '@utils/generators/sharedGenerators';
 
-export const generatePesel = (
+const generatePesel = (
 	minYear: number = 1900,
 	maxYear: number = 2023,
 	gender?: genderType
@@ -95,11 +95,13 @@ const generateControlNumber = (
 	ordinal: number
 ): number => {
 	let sumOfWeight = 0;
-	const wages = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
+	const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
 	const partOfPesel = `${partOfYear}${partOfMonth}${partOfDay}${ordinal}`;
 
-	for (let i = 0; i < wages.length; i++) {
-		const multiplicationResult = (wages[i] * Number(partOfPesel[i])).toString();
+	for (let i = 0; i < weights.length; i++) {
+		const multiplicationResult = (
+			weights[i] * Number(partOfPesel[i])
+		).toString();
 		sumOfWeight +=
 			multiplicationResult.length === 1
 				? Number(multiplicationResult)
@@ -123,5 +125,7 @@ const addZeroIfNumberLengthIsTooShort = (value: number): string => {
 	const formattedNumber = value.toString();
 	return formattedNumber.length === 1 ? `0${formattedNumber}` : formattedNumber;
 };
+
+export default generatePesel;
 
 type genderType = 'male' | 'female';

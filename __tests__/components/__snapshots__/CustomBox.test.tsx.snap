@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Custom Box should render without crashing 1`] = `
+<div>
+  <section
+    class="space-y-5 rounded-xl bg-pistachio p-5 shadow-xl dark:bg-zinc-500"
+  >
+    <h2
+      class="text-xl font-bold text-orange sm:text-3xl"
+    >
+      Test Title
+    </h2>
+  </section>
+</div>
+`;
