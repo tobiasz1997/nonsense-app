@@ -1,11 +1,12 @@
 import { CalculationResultType } from '@interfaces/calculationResultType';
+import { generateRandomIntNumber } from '@utils/generators/sharedGenerators';
 
 export const generatePesel = (
 	minYear: number = 1900,
 	maxYear: number = 2023,
 	gender?: genderType
 ): CalculationResultType<string> => {
-	const year = generateIntNumber(minYear, maxYear);
+	const year = generateRandomIntNumber(minYear, maxYear);
 	const month = generateMonth(year);
 	const day = generateDay(month, year);
 	const ordinalNumbers = generateOrdinalNumber(gender);
@@ -26,10 +27,6 @@ export const generatePesel = (
 	};
 };
 
-const generateIntNumber = (min: number, max: number): number => {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-};
-
 const generateMonth = (year: number): number => {
 	let valueToAdd = 0;
 	if (isBetween(year, 1800, 1899)) {
@@ -44,7 +41,7 @@ const generateMonth = (year: number): number => {
 		valueToAdd += 60;
 	}
 
-	return generateIntNumber(1, 12) + valueToAdd;
+	return generateRandomIntNumber(1, 12) + valueToAdd;
 };
 
 const isBetween = (
@@ -57,7 +54,7 @@ const isBetween = (
 
 const generateDay = (month: number, year: number): number => {
 	const maxDay = getMaxDay(month, year);
-	return generateIntNumber(1, maxDay);
+	return generateRandomIntNumber(1, maxDay);
 };
 
 const getMaxDay = (month: number, year: number): number => {
@@ -71,7 +68,7 @@ const getMaxDay = (month: number, year: number): number => {
 };
 
 const generateOrdinalNumber = (gender?: genderType): number => {
-	const firstThreeNumbers = generateIntNumber(100, 999);
+	const firstThreeNumbers = generateRandomIntNumber(100, 999);
 	const lastNumber = generateLastNumberForGender(gender);
 
 	return Number(`${firstThreeNumbers}${lastNumber}`);
@@ -82,9 +79,9 @@ const generateLastNumberForGender = (gender?: genderType): number => {
 	if (gender) {
 		genderNumber += gender === 'male' ? 1 : 0;
 	} else {
-		genderNumber += generateIntNumber(0, 1);
+		genderNumber += generateRandomIntNumber(0, 1);
 	}
-	const value = generateIntNumber(0, 9);
+	const value = generateRandomIntNumber(0, 9);
 
 	return value % 2 === genderNumber
 		? value
