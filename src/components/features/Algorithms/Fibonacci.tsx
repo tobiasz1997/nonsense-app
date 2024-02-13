@@ -3,13 +3,13 @@ import InputNumberForm from '@components/features/Algorithms/Utils/InputNumberFo
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import { calculateFibonacci } from '@utils/algorithmsFunctions';
-import AlgorithmBox from '@components/features/Algorithms/Utils/AlgorithmBox';
+import CustomBox from '@components/ui/CustomBox';
 
 const Fibonacci: FC = () => {
 	const [value, setValue] = useState<CalculationResultType<number>>();
 
 	return (
-		<AlgorithmBox title="Fibonacci">
+		<CustomBox title="Fibonacci">
 			<div className="grid gap-5 sm:grid-cols-2">
 				<code className="na-code">
 					<div className="na-comment">// Input</div>
@@ -27,7 +27,7 @@ const Fibonacci: FC = () => {
 					/>
 				</div>
 			</div>
-		</AlgorithmBox>
+		</CustomBox>
 	);
 };
 

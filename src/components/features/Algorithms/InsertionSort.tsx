@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import useStringHelpers from '@hooks/useStringHelpers';
-import AlgorithmBox from '@components/features/Algorithms/Utils/AlgorithmBox';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import Button from '@components/ui/Button';
 import { calculateInsertionSort } from '@utils/algorithmsFunctions';
+import CustomBox from '@components/ui/CustomBox';
 
 const InsertionSort: FC = () => {
 	const [array] = useState([4, 22, 8, 77, 3, 15, 1, 8, 2, 13, 7, 6, 5]);
@@ -13,7 +13,7 @@ const InsertionSort: FC = () => {
 	const { convertArrayToString } = useStringHelpers();
 
 	return (
-		<AlgorithmBox title="Insertion sort">
+		<CustomBox title="Insertion sort">
 			<div className="grid gap-5 sm:grid-cols-2">
 				<code className="na-code">
 					<div className="na-comment">// Input</div>
@@ -54,7 +54,7 @@ const InsertionSort: FC = () => {
 					/>
 				</div>
 			</div>
-		</AlgorithmBox>
+		</CustomBox>
 	);
 };
 

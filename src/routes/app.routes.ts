@@ -16,5 +16,9 @@ export const appRoutes = {
 	users: {
 		title: 'Users',
 		path: '/users'
+	} as RouteType,
+	generators: {
+		title: 'Generators',
+		path: '/generators'
 	} as RouteType
 };

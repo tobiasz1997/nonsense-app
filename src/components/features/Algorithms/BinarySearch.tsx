@@ -2,9 +2,9 @@ import React, { FC, useState } from 'react';
 import InputNumberForm from '@components/features/Algorithms/Utils/InputNumberForm';
 import { calculateBinarySearch } from '@utils/algorithmsFunctions';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
-import AlgorithmBox from '@components/features/Algorithms/Utils/AlgorithmBox';
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import useStringHelpers from '@hooks/useStringHelpers';
+import CustomBox from '@components/ui/CustomBox';
 
 const BinarySearch: FC = () => {
 	const [array] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
@@ -13,7 +13,7 @@ const BinarySearch: FC = () => {
 	const { convertArrayToString } = useStringHelpers();
 
 	return (
-		<AlgorithmBox title="Binary search">
+		<CustomBox title="Binary search">
 			<div className="grid gap-5 sm:grid-cols-2">
 				<code className="na-code">
 					<div className="na-comment">// Input</div>
@@ -51,7 +51,7 @@ const BinarySearch: FC = () => {
 					<OutputValue result={value?.result} error={value?.error} />
 				</div>
 			</div>
-		</AlgorithmBox>
+		</CustomBox>
 	);
 };
 
