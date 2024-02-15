@@ -3,6 +3,7 @@ import CustomBox from '@components/ui/CustomBox';
 import Button from '@components/ui/Button';
 import copy from 'copy-to-clipboard';
 import generateRegon from '@utils/generators/regonGenerator';
+import ExpansionPanel from '@components/ui/ExpansionPanel';
 
 const RegonGenerator: FC = () => {
 	const [value, setValue] = useState<string>('');
@@ -37,6 +38,7 @@ const RegonGenerator: FC = () => {
 					</div>
 				</div>
 			</div>
+			<ExpansionPanel label="Filters">wwww</ExpansionPanel>
 		</CustomBox>
 	);
 };
