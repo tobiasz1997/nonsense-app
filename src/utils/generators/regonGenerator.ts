@@ -29,7 +29,7 @@ const generateControlNumber = (
 
 export default generateRegon;
 
-type regonType = 'short' | 'long';
+export type regonType = 'short' | 'long';
 
 const regonRangeMap: Record<regonType, number[]> = {
 	['short']: [100_000, 999_999],
