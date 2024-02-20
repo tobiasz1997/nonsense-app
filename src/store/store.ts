@@ -4,12 +4,14 @@ import tasksSlice from '@store/slices/tasks.slice';
 import { loggerMiddleware } from '@store/middlewares';
 import usersSlice from '@store/slices/users.slice';
 import regonSlice from '@store/generators/regon.slice';
+import peselSlice from '@store/generators/pesel.slice';
 
 const store = configureStore({
 	reducer: {
 		tasksSlice,
 		usersSlice,
-		regonSlice
+		regonSlice,
+		peselSlice
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({ serializableCheck: false }).concat(loggerMiddleware)

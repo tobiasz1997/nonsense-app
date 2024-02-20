@@ -29,12 +29,14 @@ const FormCheckbox: ForwardRefRenderFunction<
 						ref={ref}
 						type={props.type ?? 'checkbox'}
 						className={cx(
-							'peer h-full w-full cursor-pointer rounded border border-green-dark checked:border-green-dark checked:bg-none checked:text-white checked:hover:border-green-dark focus:ring-4 focus:ring-yellow checked:focus:border-green-dark'
+							'peer h-full w-full cursor-pointer border border-green-dark checked:border-green-dark checked:bg-none checked:text-white checked:hover:border-green-dark focus:ring-4 focus:ring-yellow checked:focus:border-green-dark disabled:opacity-70',
+							props.type === 'radio' ? 'rounded-full' : 'rounded'
 						)}
 					/>
 					<span
 						className={cx(
-							'absolute left-[4px] h-4 w-4 rounded-sm bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100'
+							'absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100',
+							props.type === 'radio' ? 'rounded-full' : 'rounded-sm'
 						)}
 					/>
 				</span>

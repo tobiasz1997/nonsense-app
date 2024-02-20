@@ -3,7 +3,7 @@
 exports[`Pagination should render without crashing 1`] = `
 <div>
   <div
-    class="mt-10 flex w-full w-full items-center justify-center space-x-2"
+    class="mt-10 flex w-full items-center justify-center space-x-2"
   >
     <div>
       <button

@@ -10,14 +10,14 @@ const initialState: regonStateType = {
 };
 
 const regonSlice = createSlice({
-	name: 'regonGenerator',
+	name: 'regon',
 	initialState: initialState,
 	reducers: {
-		changeType(state, action: PayloadAction<regonType>) {
+		changeRegonType(state, action: PayloadAction<regonType>) {
 			state.type = action.payload;
 		}
 	}
 });
 
-export const { changeType } = regonSlice.actions;
+export const { changeRegonType } = regonSlice.actions;
 export default regonSlice.reducer;
