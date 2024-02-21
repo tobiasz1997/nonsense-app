@@ -1,5 +1,5 @@
-import { SWRConfig, SWRConfiguration } from 'swr/_internal';
 import { FC, PropsWithChildren } from 'react';
+import { SWRConfig, SWRConfiguration } from 'swr/_internal';
 
 const SWRProvider: FC<PropsWithChildren> = (props) => {
 	const SWRCfg: SWRConfiguration = {

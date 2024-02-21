@@ -1,5 +1,5 @@
-import React, { FC, HTMLAttributes } from 'react';
 import cx from 'classnames';
+import React, { FC, HTMLAttributes } from 'react';
 
 const Divider: FC<HTMLAttributes<HTMLDivElement>> = (props) => {
 	return (

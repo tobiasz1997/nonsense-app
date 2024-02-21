@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
 import classNames from 'classnames';
-import Link from 'next/link';
 import { LinkProps } from 'next/dist/client/link';
+import Link from 'next/link';
+import React, { FC } from 'react';
 
 type Props = {
 	title: string;

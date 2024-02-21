@@ -1,11 +1,11 @@
 import type { AppProps } from 'next/app';
-import { AppPage } from '@interfaces/appPage';
 import { Provider } from 'react-redux';
-import SWRProvider from '@providers/SWRProvider';
 import Layout from '@components/layouts/Layout';
+import { AppPage } from '@interfaces/appPage';
+import SWRProvider from '@providers/SWRProvider';
+import ThemeProvider from '@providers/ThemeProvider';
 import store from '@store/store';
 import '@styles/globals.css';
-import ThemeProvider from '@providers/ThemeProvider';
 
 export default function App({
 	Component,

@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import {
 	cloneElement,
 	forwardRef,
@@ -5,7 +6,6 @@ import {
 	InputHTMLAttributes,
 	ReactElement
 } from 'react';
-import cx from 'classnames';
 
 type Props = {
 	icon: ReactElement;

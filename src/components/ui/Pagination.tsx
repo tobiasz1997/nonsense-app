@@ -1,8 +1,7 @@
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 import { FC, useMemo } from 'react';
-
 import Button from '@components/ui/Button';
 import FormSelect from '@components/ui/FormSelect';
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/20/solid';
 
 type PaginationProps = {
 	itemCount: number;

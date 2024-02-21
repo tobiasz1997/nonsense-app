@@ -1,14 +1,14 @@
 import { ChangeEvent, FC } from 'react';
+import OptionTitle from '@components/features/Generators/Filters/OptionTitle';
 import FormCheckbox from '@components/ui/FormCheckbox';
-import { useAppDispatch, useAppSelector } from '@store/store';
 import {
 	changePeselGender,
 	changePeselMaxYear,
 	changePeselMinYear,
 	setPeselDivider
 } from '@store/generators/pesel.slice';
+import { useAppDispatch, useAppSelector } from '@store/store';
 import { genderType } from '@utils/generators/peselGenerator';
-import OptionTitle from '@components/features/Generators/Filters/OptionTitle';
 
 const PeselOptions: FC = () => {
 	const minYear = useAppSelector((state) => state.peselSlice.minYear);

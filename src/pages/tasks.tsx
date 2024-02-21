@@ -1,6 +1,6 @@
-import { AppPage } from '@interfaces/appPage';
 import TasksIdea from '@components/features/Todo/TasksIdea';
 import TodoList from '@components/features/Todo/TodoList';
+import { AppPage } from '@interfaces/appPage';
 
 const TasksPage: AppPage = () => {
 	return (

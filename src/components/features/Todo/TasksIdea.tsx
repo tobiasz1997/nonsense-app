@@ -1,4 +1,3 @@
-import React, { FC } from 'react';
 import {
 	AcademicCapIcon,
 	BriefcaseIcon,
@@ -11,6 +10,7 @@ import {
 	ShoppingCartIcon,
 	WrenchIcon
 } from '@heroicons/react/24/outline';
+import React, { FC } from 'react';
 import { useGetActivity } from '@api/activity.api';
 
 type Props = {};

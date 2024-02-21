@@ -1,11 +1,11 @@
+import cx from 'classnames';
 import {
 	forwardRef,
 	ForwardRefRenderFunction,
 	InputHTMLAttributes
 } from 'react';
-import cx from 'classnames';
-import FormLabel from '@components/ui/FormLabel';
 import FormErrorMessage from '@components/ui/FormErrorMessage';
+import FormLabel from '@components/ui/FormLabel';
 
 export type InputProps = {
 	label?: string;

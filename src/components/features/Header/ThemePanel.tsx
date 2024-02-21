@@ -1,7 +1,7 @@
-import { FC } from 'react';
-import { useThemeContext } from '@providers/ThemeProvider';
-import ThemeTileCheckbox from '@components/features/Header/ThemeTileCheckbox';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
+import { FC } from 'react';
+import ThemeTileCheckbox from '@components/features/Header/ThemeTileCheckbox';
+import { useThemeContext } from '@providers/ThemeProvider';
 
 const ThemePanel: FC = () => {
 	const { theme, setNewTheme } = useThemeContext();

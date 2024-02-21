@@ -18,11 +18,12 @@
 		"import/order": [
 			"warn",
 			{
-				"newlines-between": "always",
+				"newlines-between": "never",
 				"alphabetize": {
 					"order": "asc"
 				}
 			}
-		]
+		],
+		"react/jsx-no-comment-textnodes": "off"
 	}
 }

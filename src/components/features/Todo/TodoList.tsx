@@ -1,10 +1,15 @@
-import React, { FC, useState } from 'react';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { Reorder } from 'framer-motion';
-
+import React, { FC, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useAppDispatch, useAppSelector } from '@store/store';
+import AddTaskForm from '@components/features/Todo/AddTaskForm';
+import TaskItem from '@components/features/Todo/TaskItem';
+import FormSelect from '@components/ui/FormSelect';
+import Modal from '@components/ui/Modal';
+import { SelectOption } from '@interfaces/selectOption';
 import { TaskFormType } from '@interfaces/taskFormType';
+import { todoListSortByOptions } from '@interfaces/todoListSortByOptions';
 import {
 	addTask,
 	deleteTask,
@@ -12,13 +17,7 @@ import {
 	setTaskStatus,
 	sortTasks
 } from '@store/slices/tasks.slice';
-import { SelectOption } from '@interfaces/selectOption';
-import { todoListSortByOptions } from '@interfaces/todoListSortByOptions';
-import FormSelect from '@components/ui/FormSelect';
-import TaskItem from '@components/features/Todo/TaskItem';
-import Modal from '@components/ui/Modal';
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import AddTaskForm from '@components/features/Todo/AddTaskForm';
+import { useAppDispatch, useAppSelector } from '@store/store';
 
 const TodoList: FC = () => {
 	const [isAddTaskModalVisible, setIsAddTaskModalVisible] = useState(false);
