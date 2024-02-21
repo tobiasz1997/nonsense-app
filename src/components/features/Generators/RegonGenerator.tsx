@@ -4,7 +4,7 @@ import Button from '@components/ui/Button';
 import copy from 'copy-to-clipboard';
 import generateRegon from '@utils/generators/regonGenerator';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
-import RegonOptions from '@components/features/Generators/RegonOptions';
+import RegonOptions from '@components/features/Generators/Filters/RegonOptions';
 import { useAppSelector } from '@store/store';
 
 const RegonGenerator: FC = () => {

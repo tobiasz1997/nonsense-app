@@ -8,7 +8,7 @@ import {
 	setPeselDivider
 } from '@store/generators/pesel.slice';
 import { genderType } from '@utils/generators/peselGenerator';
-import OptionTitle from '@components/features/Generators/OptionTitle';
+import OptionTitle from '@components/features/Generators/Filters/OptionTitle';
 
 const PeselOptions: FC = () => {
 	const minYear = useAppSelector((state) => state.peselSlice.minYear);

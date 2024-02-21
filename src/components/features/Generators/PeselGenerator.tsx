@@ -4,7 +4,7 @@ import Button from '@components/ui/Button';
 import copy from 'copy-to-clipboard';
 import generatePesel from '@utils/generators/peselGenerator';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
-import PeselOptions from '@components/features/Generators/PeselOptions';
+import PeselOptions from '@components/features/Generators/Filters/PeselOptions';
 import { useAppSelector } from '@store/store';
 
 const PeselGenerator: FC = () => {

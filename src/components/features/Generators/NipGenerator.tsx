@@ -3,16 +3,20 @@ import CustomBox from '@components/ui/CustomBox';
 import Button from '@components/ui/Button';
 import copy from 'copy-to-clipboard';
 import generateNip from '@utils/generators/nipGenerator';
+import ExpansionPanel from '@components/ui/ExpansionPanel';
+import NipOptions from '@components/features/Generators/Filters/NipOptions';
+import { useAppSelector } from '@store/store';
 
 const NipGenerator: FC = () => {
 	const [value, setValue] = useState<string>('');
+	const peselOptions = useAppSelector((state) => state.nipSlice);
 
 	useEffect(() => {
 		handleGenerateNip();
 	}, []);
 
 	const handleGenerateNip = () => {
-		const result = generateNip();
+		const result = generateNip(peselOptions.divider);
 		setValue(result?.result ?? '');
 	};
 
@@ -37,6 +41,9 @@ const NipGenerator: FC = () => {
 					</div>
 				</div>
 			</div>
+			<ExpansionPanel label="Filters">
+				<NipOptions />
+			</ExpansionPanel>
 		</CustomBox>
 	);
 };

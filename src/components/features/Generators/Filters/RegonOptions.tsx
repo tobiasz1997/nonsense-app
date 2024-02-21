@@ -3,7 +3,7 @@ import FormCheckbox from '@components/ui/FormCheckbox';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { changeRegonType } from '@store/generators/regon.slice';
 import { regonType } from '@utils/generators/regonGenerator';
-import OptionTitle from '@components/features/Generators/OptionTitle';
+import OptionTitle from '@components/features/Generators/Filters/OptionTitle';
 
 const RegonOptions: FC = () => {
 	const regonType = useAppSelector((state) => state.regonSlice.type);
