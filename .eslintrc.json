@@ -1,28 +1,32 @@
 {
-	"extends": "next/core-web-vitals",
-	"parserOptions": {
-		"ecmaFeatures": {
-			"jsx": true
-		}
-	},
-	"rules": {
-		"no-console": [
-			"warn",
-			{
-				"allow": ["warn", "error"]
-			}
-		],
-		"@next/next/no-img-element": "off",
-		"react-hooks/rules-of-hooks": "error",
-		"react-hooks/exhaustive-deps": "warn",
-		"import/order": [
-			"warn",
-			{
-				"newlines-between": "always",
-				"alphabetize": {
-					"order": "asc"
-				}
-			}
-		]
-	}
+  "extends": "next/core-web-vitals",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "no-console": [
+      "warn",
+      {
+        "allow": [
+          "warn",
+          "error"
+        ]
+      }
+    ],
+    "@next/next/no-img-element": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "import/order": [
+      "warn",
+      {
+        "newlines-between": "never",
+        "alphabetize": {
+          "order": "asc"
+        }
+      }
+    ],
+    "react/jsx-no-comment-textnodes": "off"
+  }
 }

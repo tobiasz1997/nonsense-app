@@ -1,7 +1,7 @@
-import { AppPage } from '@interfaces/appPage';
-import PeselGenerator from '@components/features/Generators/PeselGenerator';
 import NipGenerator from '@components/features/Generators/NipGenerator';
+import PeselGenerator from '@components/features/Generators/PeselGenerator';
 import RegonGenerator from '@components/features/Generators/RegonGenerator';
+import { AppPage } from '@interfaces/appPage';
 
 const GeneratorsPage: AppPage = () => {
 	return (

@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
-import { LayoutType } from '@interfaces/layoutType';
 import LayoutFull from '@components/layouts/LayoutFull';
 import LayoutMinimal from '@components/layouts/LayoutMinimal';
+import { LayoutType } from '@interfaces/layoutType';
 
 type Props = {
 	layoutType?: LayoutType;

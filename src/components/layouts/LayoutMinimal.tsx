@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from 'react';
-import HeaderMinimal from '@components/features/Header/HeaderMinimal';
 import Footer from '@components/features/Footer/Footer';
+import HeaderMinimal from '@components/features/Header/HeaderMinimal';
 
 const LayoutMinimal: FC<PropsWithChildren> = (props) => {
 	return (

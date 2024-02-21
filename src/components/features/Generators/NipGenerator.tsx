@@ -1,11 +1,11 @@
-import React, { FC, useEffect, useState } from 'react';
-import CustomBox from '@components/ui/CustomBox';
-import Button from '@components/ui/Button';
 import copy from 'copy-to-clipboard';
-import generateNip from '@utils/generators/nipGenerator';
-import ExpansionPanel from '@components/ui/ExpansionPanel';
+import React, { FC, useEffect, useState } from 'react';
 import NipOptions from '@components/features/Generators/Filters/NipOptions';
+import Button from '@components/ui/Button';
+import CustomBox from '@components/ui/CustomBox';
+import ExpansionPanel from '@components/ui/ExpansionPanel';
 import { useAppSelector } from '@store/store';
+import generateNip from '@utils/generators/nipGenerator';
 
 const NipGenerator: FC = () => {
 	const [value, setValue] = useState<string>('');
@@ -13,6 +13,7 @@ const NipGenerator: FC = () => {
 
 	useEffect(() => {
 		handleGenerateNip();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleGenerateNip = () => {

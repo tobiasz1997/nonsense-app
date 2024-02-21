@@ -1,5 +1,5 @@
-import { ButtonHTMLAttributes, cloneElement, FC, ReactElement } from 'react';
 import cx from 'classnames';
+import { ButtonHTMLAttributes, cloneElement, FC, ReactElement } from 'react';
 
 type Props = {
 	size?: 'default' | 'small';

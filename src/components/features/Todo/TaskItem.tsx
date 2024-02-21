@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import { Reorder } from 'framer-motion';
-import cx from 'classnames';
 import { ArrowsUpDownIcon, TrashIcon } from '@heroicons/react/24/outline';
+import cx from 'classnames';
+import { Reorder } from 'framer-motion';
+import React, { FC } from 'react';
 import { TaskType } from '@interfaces/taskType';
 
 type Props = {

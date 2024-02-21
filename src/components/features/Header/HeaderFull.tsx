@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { Bars3BottomRightIcon } from '@heroicons/react/20/solid';
 import {
 	CalculatorIcon,
 	ClipboardDocumentListIcon,
@@ -7,14 +7,14 @@ import {
 	HomeIcon,
 	UserIcon
 } from '@heroicons/react/24/outline';
-import { Bars3BottomRightIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/router';
-import useActivePage from '@hooks/useActivePage';
+import { FC, useEffect, useState } from 'react';
 import HeaderMobileNav from '@components/features/Header/HeaderMobileNav';
 import HeaderNavLink from '@components/features/Header/HeaderNavLink';
+import ThemePanel from '@components/features/Header/ThemePanel';
+import useActivePage from '@hooks/useActivePage';
 import { NavLinksType } from '@interfaces/navLinksType';
 import { appRoutes } from '@routes/app.routes';
-import ThemePanel from '@components/features/Header/ThemePanel';
 
 const HeaderFull: FC = () => {
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);

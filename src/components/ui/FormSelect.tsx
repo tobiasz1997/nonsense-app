@@ -4,9 +4,9 @@ import {
 	ForwardRefRenderFunction,
 	SelectHTMLAttributes
 } from 'react';
-import { SelectOption } from '@interfaces/selectOption';
-import FormLabel from '@components/ui/FormLabel';
 import FormErrorMessage from '@components/ui/FormErrorMessage';
+import FormLabel from '@components/ui/FormLabel';
+import { SelectOption } from '@interfaces/selectOption';
 
 type Props = {
 	label?: string;

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import FormInput from '@components/ui/FormInput';
 import Button from '@components/ui/Button';
+import FormInput from '@components/ui/FormInput';
 import { validateInputWithNumbers } from '@utils/validators';
 
 type Props = {

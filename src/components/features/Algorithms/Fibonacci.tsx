@@ -1,9 +1,9 @@
 import React, { FC, useState } from 'react';
 import InputNumberForm from '@components/features/Algorithms/Utils/InputNumberForm';
-import { CalculationResultType } from '@interfaces/calculationResultType';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
-import { calculateFibonacci } from '@utils/algorithmsFunctions';
 import CustomBox from '@components/ui/CustomBox';
+import { CalculationResultType } from '@interfaces/calculationResultType';
+import { calculateFibonacci } from '@utils/algorithmsFunctions';
 
 const Fibonacci: FC = () => {
 	const [value, setValue] = useState<CalculationResultType<number>>();

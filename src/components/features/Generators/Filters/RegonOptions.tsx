@@ -1,9 +1,9 @@
 import { ChangeEvent, FC } from 'react';
-import FormCheckbox from '@components/ui/FormCheckbox';
-import { useAppDispatch, useAppSelector } from '@store/store';
-import { changeRegonType } from '@store/generators/regon.slice';
-import { regonType } from '@utils/generators/regonGenerator';
 import OptionTitle from '@components/features/Generators/Filters/OptionTitle';
+import FormCheckbox from '@components/ui/FormCheckbox';
+import { changeRegonType } from '@store/generators/regon.slice';
+import { useAppDispatch, useAppSelector } from '@store/store';
+import { regonType } from '@utils/generators/regonGenerator';
 
 const RegonOptions: FC = () => {
 	const regonType = useAppSelector((state) => state.regonSlice.type);

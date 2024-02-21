@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { TaskFormType } from '@interfaces/taskFormType';
-import FormInput from '@components/ui/FormInput';
-import { validateRequired } from '@utils/validators';
 import Button from '@components/ui/Button';
+import FormInput from '@components/ui/FormInput';
+import { TaskFormType } from '@interfaces/taskFormType';
+import { validateRequired } from '@utils/validators';
 
 type Props = {
 	onSubmit: (payload: TaskFormType) => void;

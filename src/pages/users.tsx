@@ -1,11 +1,11 @@
-import { AppPage } from '@interfaces/appPage';
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { getUsers } from '@api/users.api';
-import { useAppDispatch, useAppSelector } from '@store/store';
-import { filteredData, setPage } from '@store/slices/users.slice';
-import { IUser } from '@interfaces/IUser';
-import Link from 'next/link';
 import Pagination from '@components/ui/Pagination';
+import { IUser } from '@interfaces/IUser';
+import { AppPage } from '@interfaces/appPage';
+import { filteredData, setPage } from '@store/slices/users.slice';
+import { useAppDispatch, useAppSelector } from '@store/store';
 
 const UsersPage: AppPage = () => {
 	const users = useAppSelector(
@@ -17,6 +17,7 @@ const UsersPage: AppPage = () => {
 
 	useEffect(() => {
 		status === 'idle' && dispatch(getUsers());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const handleSetPage = (page: number) => {

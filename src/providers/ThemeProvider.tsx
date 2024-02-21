@@ -2,6 +2,7 @@ import {
 	createContext,
 	FC,
 	ReactNode,
+	useCallback,
 	useContext,
 	useEffect,
 	useState
@@ -22,7 +23,22 @@ type Props = {
 
 const ThemeProvider: FC<Props> = (props) => {
 	const [theme, setTheme] = useState<ThemeType>('light');
-	const { set, get, remove } = useLocalStorage();
+	const { set, get } = useLocalStorage();
+
+	const setNewTheme = useCallback(
+		(type: ThemeType) => {
+			if (type === 'dark') {
+				document.documentElement.classList.add('dark');
+				setTheme('dark');
+				set('theme', 'dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+				setTheme('light');
+				set('theme', 'light');
+			}
+		},
+		[set]
+	);
 
 	useEffect(() => {
 		const theme = get('theme');
@@ -34,19 +50,7 @@ const ThemeProvider: FC<Props> = (props) => {
 		} else {
 			setNewTheme('light');
 		}
-	}, []);
-
-	const setNewTheme = (type: ThemeType) => {
-		if (type === 'dark') {
-			document.documentElement.classList.add('dark');
-			setTheme('dark');
-			set('theme', 'dark');
-		} else {
-			document.documentElement.classList.remove('dark');
-			setTheme('light');
-			set('theme', 'light');
-		}
-	};
+	}, [get, setNewTheme]);
 
 	return (
 		<ThemeContext.Provider value={{ theme, setNewTheme }}>

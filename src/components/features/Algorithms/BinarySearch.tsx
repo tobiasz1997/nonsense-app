@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
 import InputNumberForm from '@components/features/Algorithms/Utils/InputNumberForm';
-import { calculateBinarySearch } from '@utils/algorithmsFunctions';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
-import { CalculationResultType } from '@interfaces/calculationResultType';
-import useStringHelpers from '@hooks/useStringHelpers';
 import CustomBox from '@components/ui/CustomBox';
+import useStringHelpers from '@hooks/useStringHelpers';
+import { CalculationResultType } from '@interfaces/calculationResultType';
+import { calculateBinarySearch } from '@utils/algorithmsFunctions';
 
 const BinarySearch: FC = () => {
 	const [array] = useState([1, 2, 3, 4, 5, 6, 7, 8]);

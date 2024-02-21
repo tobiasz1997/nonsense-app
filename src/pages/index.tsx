@@ -1,7 +1,7 @@
 import { RocketLaunchIcon } from '@heroicons/react/20/solid';
 import { useGetJoke } from '@api/jokes.api';
-import { AppPage } from '@interfaces/appPage';
 import Loader from '@components/ui/Loader';
+import { AppPage } from '@interfaces/appPage';
 
 const HomePage: AppPage = () => {
 	const { data, error, isValidating } = useGetJoke();

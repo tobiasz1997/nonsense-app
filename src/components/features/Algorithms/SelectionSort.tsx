@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
-import { CalculationResultType } from '@interfaces/calculationResultType';
-import useStringHelpers from '@hooks/useStringHelpers';
-import Button from '@components/ui/Button';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
-import { calculateSelectionSort } from '@utils/algorithmsFunctions';
+import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
+import useStringHelpers from '@hooks/useStringHelpers';
+import { CalculationResultType } from '@interfaces/calculationResultType';
+import { calculateSelectionSort } from '@utils/algorithmsFunctions';
 
 type Props = {};
 
