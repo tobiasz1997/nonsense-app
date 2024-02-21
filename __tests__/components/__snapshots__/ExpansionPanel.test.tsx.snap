@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Expansion Panel should render without crashing 1`] = `
+<div>
+  <div>
+    <div
+      class="flex items-center"
+    >
+      <div
+        class="h-0.5 rounded-sm bg-orange w-full"
+      />
+      <button
+        class="flex items-center gap-x-1 rounded p-2 font-bold text-orange focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange"
+      >
+        Test
+        <svg
+          aria-hidden="true"
+          class="h-5 w-5 transition-all"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            clip-rule="evenodd"
+            d="M12.53 16.28a.75.75 0 01-1.06 0l-7.5-7.5a.75.75 0 011.06-1.06L12 14.69l6.97-6.97a.75.75 0 111.06 1.06l-7.5 7.5z"
+            fill-rule="evenodd"
+          />
+        </svg>
+      </button>
+      <div
+        class="h-0.5 rounded-sm bg-orange w-10"
+      />
+    </div>
+  </div>
+</div>
+`;

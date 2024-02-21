@@ -20,9 +20,7 @@ import Modal from '@components/ui/Modal';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import AddTaskForm from '@components/features/Todo/AddTaskForm';
 
-type Props = {};
-
-const TodoList: FC<Props> = () => {
+const TodoList: FC = () => {
 	const [isAddTaskModalVisible, setIsAddTaskModalVisible] = useState(false);
 
 	const tasks = useAppSelector((state) => state.tasksSlice.items);

@@ -4,12 +4,13 @@ import { generateRandomIntNumber } from '@utils/generators/sharedGenerators';
 const generatePesel = (
 	minYear: number = 1900,
 	maxYear: number = 2023,
-	gender?: genderType
+	gender: genderType = null,
+	divider = false
 ): CalculationResultType<string> => {
 	const year = generateRandomIntNumber(minYear, maxYear);
 	const month = generateMonth(year);
 	const day = generateDay(month, year);
-	const ordinalNumbers = generateOrdinalNumber(gender);
+	const ordinalNumbers = generateOrdinalNumber(gender).toString();
 
 	const formattedYear = takeLastTwoNumbersFromYear(year);
 	const formattedMonth = addZeroIfNumberLengthIsTooShort(month);
@@ -20,10 +21,17 @@ const generatePesel = (
 		formattedMonth,
 		formattedDay,
 		ordinalNumbers
-	);
+	).toString();
 
 	return {
-		result: `${formattedYear}${formattedMonth}${formattedDay}${ordinalNumbers}${controlNumber}`
+		result: createFinalPesel(
+			formattedYear,
+			formattedMonth,
+			formattedDay,
+			ordinalNumbers,
+			controlNumber,
+			divider
+		)
 	};
 };
 
@@ -67,14 +75,14 @@ const getMaxDay = (month: number, year: number): number => {
 	}
 };
 
-const generateOrdinalNumber = (gender?: genderType): number => {
+const generateOrdinalNumber = (gender: genderType): number => {
 	const firstThreeNumbers = generateRandomIntNumber(100, 999);
 	const lastNumber = generateLastNumberForGender(gender);
 
 	return Number(`${firstThreeNumbers}${lastNumber}`);
 };
 
-const generateLastNumberForGender = (gender?: genderType): number => {
+const generateLastNumberForGender = (gender: genderType): number => {
 	let genderNumber = 0;
 	if (gender) {
 		genderNumber += gender === 'male' ? 1 : 0;
@@ -92,7 +100,7 @@ const generateControlNumber = (
 	partOfYear: string,
 	partOfMonth: string,
 	partOfDay: string,
-	ordinal: number
+	ordinal: string
 ): number => {
 	let sumOfWeight = 0;
 	const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
@@ -108,13 +116,9 @@ const generateControlNumber = (
 				: Number(multiplicationResult.slice(-1));
 	}
 
-	const sumOfWeightToString = sumOfWeight.toString();
+	const sumOfWeightModulo = sumOfWeight % 10;
 
-	return sumOfWeightToString.length === 1
-		? sumOfWeightToString === '0'
-			? 0
-			: 10 - Number(sumOfWeightToString)
-		: 10 - Number(sumOfWeightToString.slice(-1));
+	return sumOfWeightModulo === 0 ? 0 : 10 - sumOfWeightModulo;
 };
 
 const takeLastTwoNumbersFromYear = (year: number): string => {
@@ -126,6 +130,22 @@ const addZeroIfNumberLengthIsTooShort = (value: number): string => {
 	return formattedNumber.length === 1 ? `0${formattedNumber}` : formattedNumber;
 };
 
+const createFinalPesel = (
+	formattedYear: string,
+	formattedMonth: string,
+	formattedDay: string,
+	ordinalNumbers: string,
+	controlNumber: string,
+	divider: boolean
+): string => {
+	return divider
+		? `${formattedYear}-${formattedMonth}-${formattedDay}-${ordinalNumbers.slice(
+				0,
+				2
+		  )}-${ordinalNumbers.slice(-2)}${controlNumber}`
+		: `${formattedYear}${formattedMonth}${formattedDay}${ordinalNumbers}${controlNumber}`;
+};
+
 export default generatePesel;
 
-type genderType = 'male' | 'female';
+export type genderType = 'male' | 'female' | null;

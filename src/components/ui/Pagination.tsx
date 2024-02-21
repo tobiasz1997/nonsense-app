@@ -35,7 +35,7 @@ const Pagination: FC<PaginationProps> = ({
 	return (
 		<>
 			{itemCount > 0 && itemCount > pageSize && (
-				<div className="mt-10 flex w-full w-full items-center justify-center space-x-2">
+				<div className="mt-10 flex w-full items-center justify-center space-x-2">
 					<div>
 						<Button
 							onClick={() => handlePageChange(page - 1)}
