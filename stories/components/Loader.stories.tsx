@@ -1,13 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import Spinner from '@components/ui/Spinner';
+import Loader from '@components/ui/Loader';
 
 const meta = {
-	title: 'Components/UI/Spinner',
-	component: Spinner,
+	title: 'Components/UI/Loader',
+	component: Loader,
+	tags: ['autodocs'],
 	parameters: {
 		layout: 'centered'
+	},
+	argTypes: {
+		error: { control: false }
 	}
-} satisfies Meta<typeof Spinner>;
+} satisfies Meta<typeof Loader>;
 
 export default meta;
 export type Story = StoryObj<typeof meta>;

@@ -3,10 +3,10 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Button from '@components/ui/Button';
 
 const meta = {
-	title: 'Components/Button',
+	title: 'Components/UI/Button',
 	component: Button,
 	parameters: {
-		layout: 'centered'
+		layout: 'padded'
 	},
 	tags: ['autodocs'],
 	argTypes: {
@@ -28,29 +28,9 @@ const meta = {
 export default meta;
 export type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Default: Story = {
 	args: {
 		children: 'Primary'
-	}
-};
-
-export const Secondary: Story = {
-	args: {
-		children: 'Secondary',
-		variant: 'secondary'
-	}
-};
-
-export const PrimaryWithIcon: Story = {
-	args: {
-		icon: <CheckIcon />
-	}
-};
-
-export const SecondaryWithIcon: Story = {
-	args: {
-		variant: 'secondary',
-		icon: <CheckIcon />
 	}
 };
 
