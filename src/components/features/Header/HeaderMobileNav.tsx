@@ -49,7 +49,7 @@ const HeaderMobileNav: FC<Props> = (props) => {
 					</div>
 				</div>,
 				portal
-		  )
+			)
 		: null;
 };
 
