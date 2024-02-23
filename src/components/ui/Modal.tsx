@@ -10,7 +10,7 @@ const Modal: FC<PropsWithChildren> = ({ children }) => {
 					{children}
 				</div>,
 				portal
-		  )
+			)
 		: null;
 };
 

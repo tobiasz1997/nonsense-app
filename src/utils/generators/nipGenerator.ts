@@ -32,7 +32,7 @@ const createFinalNip = (
 		? `${result.slice(0, 3)}-${result.slice(3, 6)}-${result.slice(
 				6,
 				8
-		  )}-${result.slice(8, 10)}`
+			)}-${result.slice(8, 10)}`
 		: result;
 };
 

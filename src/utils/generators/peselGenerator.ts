@@ -142,7 +142,7 @@ const createFinalPesel = (
 		? `${formattedYear}-${formattedMonth}-${formattedDay}-${ordinalNumbers.slice(
 				0,
 				2
-		  )}-${ordinalNumbers.slice(-2)}${controlNumber}`
+			)}-${ordinalNumbers.slice(-2)}${controlNumber}`
 		: `${formattedYear}${formattedMonth}${formattedDay}${ordinalNumbers}${controlNumber}`;
 };
 
