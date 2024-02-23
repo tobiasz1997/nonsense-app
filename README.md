@@ -21,3 +21,4 @@ npm run dev
 - Tailwind
 - Framer Motion
 - Jest / React Testing Library
+- Storybook

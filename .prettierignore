@@ -3,6 +3,7 @@
 node_modules
 .gitignore
 .swc
+.storybook
 public
 package.json
 package-lock.json
