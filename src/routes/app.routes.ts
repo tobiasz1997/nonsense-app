@@ -20,5 +20,9 @@ export const appRoutes = {
 	generators: {
 		title: 'Generators',
 		path: '/generators'
+	} as RouteType,
+	blackjack: {
+		title: 'Blackjack',
+		path: '/blackjack'
 	} as RouteType
 };

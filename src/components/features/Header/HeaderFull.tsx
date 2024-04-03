@@ -5,6 +5,7 @@ import {
 	CpuChipIcon,
 	FaceSmileIcon,
 	HomeIcon,
+	PuzzlePieceIcon,
 	UserIcon
 } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
@@ -92,6 +93,10 @@ const navLinks: NavLinksType = [
 	{
 		...appRoutes.generators,
 		icon: <CpuChipIcon />
+	},
+	{
+		...appRoutes.blackjack,
+		icon: <PuzzlePieceIcon />
 	}
 ];
 
