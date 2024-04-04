@@ -38,7 +38,14 @@ module.exports = {
 				DEFAULT: '#F6C453'
 			}
 		},
-		extend: {}
+		extend: {
+			height: {
+				39: '8.75rem'
+			},
+			width: {
+				25: '6.25rem'
+			}
+		}
 	},
 	plugins: [
 		require('@tailwindcss/typography'),

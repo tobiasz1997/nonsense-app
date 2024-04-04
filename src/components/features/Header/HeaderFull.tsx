@@ -57,7 +57,7 @@ const HeaderFull: FC = () => {
 				)}
 			</header>
 			<header className="sticky top-0 z-50 hidden md:block">
-				<nav className="flex h-full w-full max-w-screen-2xl justify-center bg-green-dark">
+				<nav className="flex h-full w-full justify-center bg-green-dark">
 					{navLinks.map((link, index) => (
 						<HeaderNavLink
 							key={index}

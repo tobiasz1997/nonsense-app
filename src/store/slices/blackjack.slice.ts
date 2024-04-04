@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { drawCards, shuffleCards } from '@api/deck-of-cards.api';
 import { IGameData, IGamesStats } from '@interfaces/blackjackType';
+import { createSelector } from 'reselect';
 
 type blackjackStateType = {
 	userData: IGameData;
@@ -93,3 +94,10 @@ export const { setDeckInfo, setCroupierData, setUserData, setGameStats } =
 	blackjackSlice.actions;
 
 export default blackjackSlice.reducer;
+
+export const initLoader = createSelector(
+	[(state) => state.drawCardsStatus, (state) => state.remainingCards],
+	(drawCardsStatus, remainingCards) =>
+		drawCardsStatus === 'loading' &&
+		(remainingCards === 52 || remainingCards === 0)
+);
