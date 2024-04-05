@@ -1,27 +1,56 @@
 import cx from 'classnames';
-import { ButtonHTMLAttributes, cloneElement, FC, ReactElement } from 'react';
+import {
+	ButtonHTMLAttributes,
+	cloneElement,
+	FC,
+	MouseEventHandler,
+	ReactElement,
+	useState
+} from 'react';
+import delay from 'delay';
+import Spinner from '@components/ui/Spinner';
 
 type Props = {
-	size?: 'default' | 'small';
-	variant?: 'primary' | 'secondary';
+	size?: sizeType;
+	variant?: variantType;
 	icon?: ReactElement;
 };
 const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
-	const sizes: Record<string, string> = {
+	const [isPending, setIsPending] = useState(false);
+
+	const sizes: Record<sizeType, string> = {
 		small: 'h-9 text-sm rounded',
 		default: 'h-12 rounded'
 	};
 
-	const variants: Record<string, string> = {
+	const variants: Record<variantType, string> = {
 		primary:
 			'text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold px-3',
 		secondary:
-			'text-green-dark bg-pistachio hover:bg-pistachio/[0.7] hover:shadow-xl focus:ring-yellow font-bold px-3'
+			'text-green-dark bg-pistachio hover:bg-pistachio/[0.7] hover:shadow-xl focus:ring-yellow font-bold px-3',
+		tertiary:
+			'text-black bg-orange hover:bg-orange/[0.7] hover:shadow-xl focus:ring-green font-bold px-3'
+	};
+
+	const getIsPromise = (res: any) => res && typeof res.then === 'function';
+
+	const _onClick: MouseEventHandler<HTMLButtonElement> = (evt) => {
+		const res = props.onClick && props.onClick(evt);
+
+		if (getIsPromise(res)) {
+			setIsPending(true);
+			Promise.allSettled([delay(250), res]).finally(() => {
+				setIsPending(false);
+				return res;
+			});
+			return res;
+		}
 	};
 
 	return (
 		<button
 			{...props}
+			onClick={_onClick}
 			className={cx(
 				'relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50',
 				props.className,
@@ -29,11 +58,21 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 				variants[props.variant ?? 'primary']
 			)}
 			type={props.type}
-			disabled={props.disabled}
+			disabled={props.disabled || isPending}
 		>
 			{
 				<>
-					<span className={'flex h-full w-full items-center justify-center'}>
+					<Spinner
+						className={cx(
+							'absolute h-2 w-6 fill-current',
+							isPending ? 'visible' : 'invisible'
+						)}
+					/>
+					<span
+						className={cx('flex h-full w-full items-center justify-center', {
+							invisible: isPending
+						})}
+					>
 						{props.icon ? (
 							<>
 								<span className="flex h-12 w-12 shrink-0 items-center justify-center fill-current px-3">
@@ -58,5 +97,8 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 		</button>
 	);
 };
+
+type sizeType = 'default' | 'small';
+type variantType = 'primary' | 'secondary' | 'tertiary';
 
 export default Button;

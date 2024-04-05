@@ -1,4 +1,3 @@
-import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useRef, useState } from 'react';
 import { drawCards, shuffleCards } from '@api/deck-of-cards.api';
 import BetPanel, {
@@ -10,7 +9,6 @@ import GameStatsPanel from '@components/features/Blackjack/GameStatsPanel';
 import PlayerBoard from '@components/features/Blackjack/PlayerBoard';
 import Button from '@components/ui/Button';
 import Loader from '@components/ui/Loader';
-import Modal from '@components/ui/Modal';
 import { AppPage } from '@interfaces/appPage';
 import {
 	IDrawCardsResponse,
@@ -18,24 +16,29 @@ import {
 	winnerType
 } from '@interfaces/blackjackType';
 import {
-	initLoader,
+	initDrawCardsLoading,
 	setCroupierData,
 	setGameStats,
 	setUserData
 } from '@store/slices/blackjack.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
+import GameErrorModal from '@components/features/Blackjack/GameErrorModal';
+import PlayerStatsPanel from '@components/features/Blackjack/PlayerStatsPanel';
 
 const BlackJackPage: AppPage = () => {
-	const [winner, setWinner] = useState<winnerType | null>(null);
 	const betPanelRef = useRef<BetPanelPropsRef>(null);
+	const [winner, setWinner] = useState<winnerType | null>(null);
 	const [errorModalVisible, setErrorModalVisible] = useState(false);
 	const userCards = useAppSelector((state) => state.blackjackSlice.userData);
+	const shuffleCardsStatus = useAppSelector(
+		(state) => state.blackjackSlice.shuffleCardsStatus
+	);
 	const croupierCards = useAppSelector(
 		(state) => state.blackjackSlice.croupierData
 	);
 	const deckId = useAppSelector((state) => state.blackjackSlice.deckId);
-	const isInitLoader = useAppSelector((state) =>
-		initLoader(state.blackjackSlice)
+	const isInitDrawCardsLoading = useAppSelector((state) =>
+		initDrawCardsLoading(state.blackjackSlice)
 	);
 	const dispatch = useAppDispatch();
 
@@ -230,68 +233,60 @@ const BlackJackPage: AppPage = () => {
 				<h1 className="na-title">Black jack</h1>
 				<section className="flex gap-3">
 					<div className="w-1/4 gap-3 flex-col flex">
-						<GameResultPanel
-							winner={winner}
-							onRestartGame={() => {
-								setErrorModalVisible(false);
-								void startGame();
-							}}
-						/>
+						{winner && <GameResultPanel />}
+						<PlayerStatsPanel />
 						<GameStatsPanel />
-
-						<Button
-							className="max-w-max"
-							onClick={startGame}
-							disabled={winner === null}
-						>
-							Start Game
-						</Button>
-						<Button
-							className="max-w-max"
-							onClick={() => setErrorModalVisible(true)}
-						>
-							Add
-						</Button>
 					</div>
 					<div className="w-full gap-5 flex flex-col items-center">
-						<PlayerBoard playerName="Croupier" points={croupierCards.points}>
-							{isInitLoader && (
-								<div className="h-39 w-25">
-									<Loader />
-								</div>
-							)}
-							{!isInitLoader &&
-								croupierCards.cards.map((card, index) => (
-									<Card key={index} src={card?.image} value={card?.value} />
-								))}
-						</PlayerBoard>
-						<PlayerBoard playerName="Player" points={userCards.points}>
-							{isInitLoader && (
-								<div className="h-39 w-25">
-									<Loader />
-								</div>
-							)}
-							{!isInitLoader &&
-								userCards.cards.map((card, index) => (
-									<Card key={index} src={card?.image} value={card?.value} />
-								))}
-						</PlayerBoard>
+						{shuffleCardsStatus !== 'idle' && (
+							<>
+								<PlayerBoard
+									playerName="Croupier"
+									points={croupierCards.points}
+								>
+									{isInitDrawCardsLoading && (
+										<div className="h-39 w-25">
+											<Loader />
+										</div>
+									)}
+									{!isInitDrawCardsLoading &&
+										croupierCards.cards.map((card, index) => (
+											<Card key={index} src={card?.image} value={card?.value} />
+										))}
+								</PlayerBoard>
+								<PlayerBoard playerName="Player" points={userCards.points}>
+									{isInitDrawCardsLoading && (
+										<div className="h-39 w-25">
+											<Loader />
+										</div>
+									)}
+									{!isInitDrawCardsLoading &&
+										userCards.cards.map((card, index) => (
+											<Card key={index} src={card?.image} value={card?.value} />
+										))}
+								</PlayerBoard>
+							</>
+						)}
 
-						<BetPanel
-							ref={betPanelRef}
-							userPoints={userCards.coins}
-							onStartGame={startGame}
-						/>
+						<BetPanel ref={betPanelRef} onStartGame={startGame} />
 
-						<div className="flex gap-3 justify-center">
-							<Button onClick={standGame} disabled={winner !== null}>
-								Stand
+						<div className="flex gap-3 w-full">
+							<Button
+								variant="tertiary"
+								onClick={doubleCard}
+								disabled={winner !== null}
+							>
+								Double
 							</Button>
-							<Button onClick={hitCard} disabled={winner !== null}>
+							<Button
+								variant="tertiary"
+								onClick={hitCard}
+								disabled={winner !== null}
+							>
 								Hit
 							</Button>
-							<Button onClick={doubleCard} disabled={winner !== null}>
-								Double
+							<Button onClick={standGame} disabled={winner !== null}>
+								Stand
 							</Button>
 						</div>
 					</div>
@@ -299,37 +294,15 @@ const BlackJackPage: AppPage = () => {
 			</div>
 
 			{errorModalVisible && (
-				<Modal>
-					<div className="m-3 w-full max-w-screen-sm">
-						<div className="relative rounded-xl bg-pistachio p-5">
-							<div className="absolute top-3 right-3">
-								<button
-									onClick={() => setErrorModalVisible(false)}
-									className="flex items-center justify-center p-1"
-								>
-									<XMarkIcon className="h-5 w-5 text-orange" />
-								</button>
-							</div>
-							<h2 className="text-xl font-bold text-orange md:text-3xl">
-								Error
-							</h2>
-							<p className="text-green-dark mt-3 mb-5">
-								Something went wrong! Try again.
-							</p>
-							<div className="flex justify-center">
-								<Button
-									className="max-w-max"
-									onClick={() => {
-										setErrorModalVisible(false);
-										betPanelRef.current?.clearBetValue();
-									}}
-								>
-									Restart game
-								</Button>
-							</div>
-						</div>
-					</div>
-				</Modal>
+				<GameErrorModal
+					onClose={() => {
+						setErrorModalVisible(false);
+					}}
+					onRestart={() => {
+						setErrorModalVisible(false);
+						betPanelRef.current?.clearBetValue();
+					}}
+				/>
 			)}
 		</>
 	);

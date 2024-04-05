@@ -35,13 +35,6 @@ const blackjackSlice = createSlice({
 	name: 'blackjack',
 	initialState: initialState,
 	reducers: {
-		setDeckInfo: (
-			state,
-			action: PayloadAction<{ deckId: string; remainingCards: number }>
-		) => {
-			state.deckId = action.payload.deckId;
-			state.remainingCards = action.payload.remainingCards;
-		},
 		setCroupierData: (
 			state,
 			action: PayloadAction<Omit<IGameData, 'coins'>>
@@ -62,6 +55,9 @@ const blackjackSlice = createSlice({
 		setGameStats: (state, action: PayloadAction<IGamesStats>) => {
 			state.userData.coins = state.userData.coins + action.payload.coinsBalance;
 			state.gameStats.push(action.payload);
+		},
+		setPlayerCoins: (state, action: PayloadAction<number>) => {
+			state.userData.coins = state.userData.coins + action.payload;
 		}
 	},
 	extraReducers: (builder) => {
@@ -90,14 +86,19 @@ const blackjackSlice = createSlice({
 	}
 });
 
-export const { setDeckInfo, setCroupierData, setUserData, setGameStats } =
+export const { setCroupierData, setUserData, setGameStats, setPlayerCoins } =
 	blackjackSlice.actions;
 
 export default blackjackSlice.reducer;
 
-export const initLoader = createSelector(
+export const initDrawCardsLoading = createSelector(
 	[(state) => state.drawCardsStatus, (state) => state.remainingCards],
 	(drawCardsStatus, remainingCards) =>
 		drawCardsStatus === 'loading' &&
 		(remainingCards === 52 || remainingCards === 0)
+);
+
+export const lastGameWinner = createSelector(
+	(state: blackjackStateType) => state.gameStats,
+	(gameStats) => gameStats[gameStats.length - 1]
 );
