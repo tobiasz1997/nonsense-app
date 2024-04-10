@@ -1,4 +1,3 @@
-import { XMarkIcon } from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import { Reorder } from 'framer-motion';
 import React, { FC, useState } from 'react';
@@ -18,6 +17,7 @@ import {
 	sortTasks
 } from '@store/slices/tasks.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
+import ModalBox from '@components/ui/ModalBox';
 
 const TodoList: FC = () => {
 	const [isAddTaskModalVisible, setIsAddTaskModalVisible] = useState(false);
@@ -85,22 +85,10 @@ const TodoList: FC = () => {
 
 			{isAddTaskModalVisible && (
 				<Modal>
-					<div className="m-3 w-full max-w-screen-sm">
-						<div className="relative rounded-xl bg-pistachio p-5">
-							<div className="absolute top-3 right-3">
-								<button
-									onClick={() => setIsAddTaskModalVisible(false)}
-									className="flex items-center justify-center p-1"
-								>
-									<XMarkIcon className="h-5 w-5 text-orange" />
-								</button>
-							</div>
-							<h2 className="text-xl font-bold text-orange md:text-3xl">
-								Add task
-							</h2>
-							<AddTaskForm onSubmit={handleAddTask} />
-						</div>
-					</div>
+					<ModalBox onClose={() => setIsAddTaskModalVisible(false)}>
+						<h2 className="na-modal-title">Add task</h2>
+						<AddTaskForm onSubmit={handleAddTask} />
+					</ModalBox>
 				</Modal>
 			)}
 		</>

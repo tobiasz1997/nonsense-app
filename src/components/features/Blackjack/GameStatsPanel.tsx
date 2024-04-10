@@ -1,13 +1,11 @@
 import { FC } from 'react';
 import { useAppSelector } from '@store/store';
 
-type Props = {};
-
-const GameStatsPanel: FC<Props> = (props) => {
+const GameStatsPanel: FC = () => {
 	const gamesStats = useAppSelector((state) => state.blackjackSlice.gameStats);
 
-	return (
-		<div className="bg-pistachio shadow-xl text-center font-bold text-green-dark rounded p-3 space-y-3">
+	return gamesStats.length > 0 ? (
+		<div className="bg-pistachio dark:bg-zinc-500 dark:text-pistachio shadow-xl text-center font-bold text-green-dark rounded p-3 space-y-3">
 			<h5 className="text-xl">Game stats</h5>
 			{gamesStats.map((data, index) => (
 				<div className="flex gap-1" key={index}>
@@ -22,6 +20,8 @@ const GameStatsPanel: FC<Props> = (props) => {
 				</div>
 			))}
 		</div>
+	) : (
+		<></>
 	);
 };
 

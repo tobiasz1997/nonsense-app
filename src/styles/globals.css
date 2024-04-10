@@ -3,27 +3,31 @@
 @tailwind utilities;
 
 @layer components {
-	.na-p-page {
-		@apply p-4 md:p-6;
-	}
+    .na-p-page {
+        @apply p-4 md:p-6;
+    }
 
-	.na-title {
-		@apply text-2xl font-bold text-orange sm:text-4xl;
-	}
+    .na-title {
+        @apply text-2xl font-bold text-orange sm:text-4xl;
+    }
 
-	.na-code {
-		@apply rounded-xl bg-zinc-800 px-4 pb-4;
-	}
+    .na-modal-title {
+        @apply text-xl font-bold text-orange md:text-3xl;
+    }
 
-	.na-comment {
-		@apply my-4 text-green;
-	}
+    .na-code {
+        @apply rounded-xl bg-zinc-800 px-4 pb-4;
+    }
 
-	.na-variable {
-		@apply block text-cyan-500;
-	}
+    .na-comment {
+        @apply my-4 text-green;
+    }
 
-	.na-sample {
-		@apply text-yellow;
-	}
+    .na-variable {
+        @apply block text-cyan-500;
+    }
+
+    .na-sample {
+        @apply text-yellow;
+    }
 }

@@ -4,9 +4,11 @@ import BetPanel, {
 	BetPanelPropsRef
 } from '@components/features/Blackjack/BetPanel';
 import Card from '@components/features/Blackjack/Card';
+import GameErrorModal from '@components/features/Blackjack/GameErrorModal';
 import GameResultPanel from '@components/features/Blackjack/GameResultPanel';
 import GameStatsPanel from '@components/features/Blackjack/GameStatsPanel';
 import PlayerBoard from '@components/features/Blackjack/PlayerBoard';
+import PlayerStatsPanel from '@components/features/Blackjack/PlayerStatsPanel';
 import Button from '@components/ui/Button';
 import Loader from '@components/ui/Loader';
 import { AppPage } from '@interfaces/appPage';
@@ -22,13 +24,11 @@ import {
 	setUserData
 } from '@store/slices/blackjack.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
-import GameErrorModal from '@components/features/Blackjack/GameErrorModal';
-import PlayerStatsPanel from '@components/features/Blackjack/PlayerStatsPanel';
 
 const BlackJackPage: AppPage = () => {
 	const betPanelRef = useRef<BetPanelPropsRef>(null);
 	const [winner, setWinner] = useState<winnerType | null>(null);
-	const [errorModalVisible, setErrorModalVisible] = useState(false);
+	const [errorModalVisible, setErrorModalVisible] = useState(true);
 	const userCards = useAppSelector((state) => state.blackjackSlice.userData);
 	const shuffleCardsStatus = useAppSelector(
 		(state) => state.blackjackSlice.shuffleCardsStatus
@@ -274,7 +274,7 @@ const BlackJackPage: AppPage = () => {
 							<Button
 								variant="tertiary"
 								onClick={doubleCard}
-								disabled={winner !== null}
+								disabled={winner !== null || userCards.cards.length > 2}
 							>
 								Double
 							</Button>

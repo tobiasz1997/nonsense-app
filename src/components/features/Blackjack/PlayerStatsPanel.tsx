@@ -20,7 +20,7 @@ const PlayerStatsPanel: FC = () => {
 	}, [gameStats]);
 
 	return (
-		<div className="bg-pistachio shadow-xl text-center font-bold text-green-dark rounded p-3 space-y-3">
+		<div className="bg-pistachio dark:bg-zinc-500 dark:text-pistachio shadow-xl text-center font-bold text-green-dark rounded p-3 space-y-3">
 			<h5 className="text-xl">Player stats</h5>
 			<div className="flex justify-between">
 				<p>Coins</p>

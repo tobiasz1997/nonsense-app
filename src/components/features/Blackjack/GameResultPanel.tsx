@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { winnerType } from '@interfaces/blackjackType';
-import { useAppSelector } from '@store/store';
 import { lastGameWinner } from '@store/slices/blackjack.slice';
+import { useAppSelector } from '@store/store';
 
 const GameResultPanel: FC = () => {
 	const lastWinner = useAppSelector((state) =>
@@ -23,7 +23,7 @@ const GameResultPanel: FC = () => {
 
 	return (
 		lastWinner && (
-			<div className="bg-pistachio shadow-xl text-center font-bold text-green-dark rounded p-3 space-y-3">
+			<div className="bg-pistachio dark:bg-zinc-500 dark:text-pistachio shadow-xl text-center font-bold text-green-dark rounded p-3 space-y-3">
 				<h5 className="text-xl">{winnerTypeTitle[lastWinner.winner]}</h5>
 				<p>
 					{winnerTypeDescription[lastWinner.winner](lastWinner.coinsBalance)}
