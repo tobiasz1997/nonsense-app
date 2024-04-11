@@ -25,7 +25,7 @@ const GameResultPanel: FC = () => {
 		lastWinner && (
 			<div className="bg-pistachio dark:bg-zinc-500 dark:text-pistachio shadow-xl text-center font-bold text-green-dark rounded p-3 space-y-3">
 				<h5 className="text-xl">{winnerTypeTitle[lastWinner.winner]}</h5>
-				<p>
+				<p className="text-sm lg:text-base">
 					{winnerTypeDescription[lastWinner.winner](lastWinner.coinsBalance)}
 				</p>
 			</div>

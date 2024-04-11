@@ -6,11 +6,13 @@ import BetPanel, {
 import Card from '@components/features/Blackjack/Card';
 import GameErrorModal from '@components/features/Blackjack/GameErrorModal';
 import GameResultPanel from '@components/features/Blackjack/GameResultPanel';
+import GameStatsMobileView from '@components/features/Blackjack/GameStatsMobileView';
 import GameStatsPanel from '@components/features/Blackjack/GameStatsPanel';
 import PlayerBoard from '@components/features/Blackjack/PlayerBoard';
 import PlayerStatsPanel from '@components/features/Blackjack/PlayerStatsPanel';
 import Button from '@components/ui/Button';
 import Loader from '@components/ui/Loader';
+import useIsMobile from '@hooks/useIsMobile';
 import { AppPage } from '@interfaces/appPage';
 import {
 	IDrawCardsResponse,
@@ -28,7 +30,9 @@ import { useAppDispatch, useAppSelector } from '@store/store';
 const BlackJackPage: AppPage = () => {
 	const betPanelRef = useRef<BetPanelPropsRef>(null);
 	const [winner, setWinner] = useState<winnerType | null>(null);
-	const [errorModalVisible, setErrorModalVisible] = useState(true);
+	const [errorModalVisible, setErrorModalVisible] = useState(false);
+	const isMobile = useIsMobile(768);
+
 	const userCards = useAppSelector((state) => state.blackjackSlice.userData);
 	const shuffleCardsStatus = useAppSelector(
 		(state) => state.blackjackSlice.shuffleCardsStatus
@@ -231,12 +235,15 @@ const BlackJackPage: AppPage = () => {
 		<>
 			<div className="na-p-page space-y-5">
 				<h1 className="na-title">Black jack</h1>
+				{isMobile && <GameStatsMobileView />}
 				<section className="flex gap-3">
-					<div className="w-1/4 gap-3 flex-col flex">
-						{winner && <GameResultPanel />}
-						<PlayerStatsPanel />
-						<GameStatsPanel />
-					</div>
+					{!isMobile && (
+						<div className="w-1/4 gap-3 flex-col flex">
+							{winner && <GameResultPanel />}
+							<PlayerStatsPanel />
+							<GameStatsPanel />
+						</div>
+					)}
 					<div className="w-full gap-5 flex flex-col items-center">
 						{shuffleCardsStatus !== 'idle' && (
 							<>
@@ -245,7 +252,7 @@ const BlackJackPage: AppPage = () => {
 									points={croupierCards.points}
 								>
 									{isInitDrawCardsLoading && (
-										<div className="h-39 w-25">
+										<div className="w-13 h-18 md:h-39 md:w-25">
 											<Loader />
 										</div>
 									)}
@@ -256,7 +263,7 @@ const BlackJackPage: AppPage = () => {
 								</PlayerBoard>
 								<PlayerBoard playerName="Player" points={userCards.points}>
 									{isInitDrawCardsLoading && (
-										<div className="h-39 w-25">
+										<div className="w-13 h-18 md:h-39 md:w-25">
 											<Loader />
 										</div>
 									)}
@@ -270,10 +277,11 @@ const BlackJackPage: AppPage = () => {
 
 						<BetPanel ref={betPanelRef} onStartGame={startGame} />
 
-						<div className="flex gap-3 w-full">
+						<div className="flex sm:flex-row flex-col gap-3 w-full">
 							<Button
 								variant="tertiary"
 								onClick={doubleCard}
+								size={isMobile ? 'small' : 'default'}
 								disabled={winner !== null || userCards.cards.length > 2}
 							>
 								Double
@@ -281,11 +289,16 @@ const BlackJackPage: AppPage = () => {
 							<Button
 								variant="tertiary"
 								onClick={hitCard}
+								size={isMobile ? 'small' : 'default'}
 								disabled={winner !== null}
 							>
 								Hit
 							</Button>
-							<Button onClick={standGame} disabled={winner !== null}>
+							<Button
+								onClick={standGame}
+								disabled={winner !== null}
+								size={isMobile ? 'small' : 'default'}
+							>
 								Stand
 							</Button>
 						</div>
