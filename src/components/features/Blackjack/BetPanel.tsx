@@ -1,4 +1,5 @@
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
+import cx from 'classnames';
 import {
 	forwardRef,
 	ForwardRefRenderFunction,
@@ -32,6 +33,11 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 		(state) => state.blackjackSlice.userData.coins
 	);
 	const dispatch = useAppDispatch();
+
+	const changeBetValueButtonStyles =
+		'bg-orange w-full p-1 flex justify-center disabled:opacity-50 hover:bg-orange/[0.7]';
+	const actionButtonStyles =
+		'bg-orange w-full p-1 flex justify-center items-center font-bold disabled:opacity-50 hover:bg-orange/[0.7]';
 
 	useImperativeHandle(
 		ref,
@@ -80,14 +86,17 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 								<div className="">{value}</div>
 								<div className="flex">
 									<button
-										className="bg-orange w-full border-r border-green-dark p-1 flex justify-center disabled:opacity-50 hover:bg-orange/[0.7]"
+										className={cx(
+											'border-r border-green-dark',
+											changeBetValueButtonStyles
+										)}
 										onClick={() => addCoins(value)}
 										disabled={playerCoins - betValue < value || gameStarted}
 									>
 										<PlusIcon className="h-4 w-4" />
 									</button>
 									<button
-										className="bg-orange w-full p-1 flex justify-center disabled:opacity-50 hover:bg-orange/[0.7]"
+										className={changeBetValueButtonStyles}
 										onClick={() => removeCoins(value)}
 										disabled={betValue < value || gameStarted}
 									>
@@ -99,7 +108,7 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 					</div>
 					<div className="flex flex-1 divide-green-dark divide-x border-t md:border-0 border-green-dark">
 						<button
-							className="bg-orange w-full p-1 flex justify-center items-center font-bold disabled:opacity-50 hover:bg-orange/[0.7]"
+							className={actionButtonStyles}
 							onClick={betAll}
 							disabled={
 								playerCoins <= 0 || playerCoins === betValue || gameStarted
@@ -108,7 +117,7 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 							All in
 						</button>
 						<button
-							className="bg-orange w-full p-1 flex justify-center items-center font-bold disabled:opacity-50 hover:bg-orange/[0.7]"
+							className={actionButtonStyles}
 							onClick={startGame}
 							disabled={betValue === 0 || gameStarted}
 						>
@@ -116,7 +125,7 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 						</button>
 						{playerCoins <= 0 && (
 							<button
-								className="bg-orange w-full p-1 flex justify-center items-center font-bold disabled:opacity-50 hover:bg-orange/[0.7]"
+								className={actionButtonStyles}
 								onClick={() => setIsDrawCoinsVisible(true)}
 							>
 								Draw Coins

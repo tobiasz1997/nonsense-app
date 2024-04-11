@@ -4,13 +4,13 @@ import BetPanel, {
 	BetPanelPropsRef
 } from '@components/features/Blackjack/BetPanel';
 import Card from '@components/features/Blackjack/Card';
-import GameErrorModal from '@components/features/Blackjack/GameErrorModal';
 import GameResultPanel from '@components/features/Blackjack/GameResultPanel';
 import GameStatsMobileView from '@components/features/Blackjack/GameStatsMobileView';
 import GameStatsPanel from '@components/features/Blackjack/GameStatsPanel';
 import PlayerBoard from '@components/features/Blackjack/PlayerBoard';
 import PlayerStatsPanel from '@components/features/Blackjack/PlayerStatsPanel';
 import Button from '@components/ui/Button';
+import ErrorModal from '@components/ui/ErrorModal';
 import Loader from '@components/ui/Loader';
 import useIsMobile from '@hooks/useIsMobile';
 import { AppPage } from '@interfaces/appPage';
@@ -307,14 +307,15 @@ const BlackJackPage: AppPage = () => {
 			</div>
 
 			{errorModalVisible && (
-				<GameErrorModal
+				<ErrorModal
 					onClose={() => {
 						setErrorModalVisible(false);
 					}}
-					onRestart={() => {
+					onAction={() => {
 						setErrorModalVisible(false);
 						betPanelRef.current?.clearBetValue();
 					}}
+					label="Reset game"
 				/>
 			)}
 		</>

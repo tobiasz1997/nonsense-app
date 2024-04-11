@@ -5,10 +5,11 @@ import ModalBox from '@components/ui/ModalBox';
 
 type Props = {
 	onClose: () => void;
-	onRestart: () => void;
+	onAction: () => void;
+	label?: string;
 };
 
-const GameErrorModal: FC<Props> = (props) => {
+const ErrorModal: FC<Props> = (props) => {
 	return (
 		<Modal>
 			<ModalBox onClose={props.onClose}>
@@ -17,8 +18,8 @@ const GameErrorModal: FC<Props> = (props) => {
 					Something went wrong! Try again.
 				</p>
 				<div className="flex justify-center">
-					<Button className="max-w-max" onClick={props.onRestart}>
-						Restart game
+					<Button className="max-w-max" onClick={props.onAction}>
+						{props.label ?? 'OK'}
 					</Button>
 				</div>
 			</ModalBox>
@@ -26,4 +27,4 @@ const GameErrorModal: FC<Props> = (props) => {
 	);
 };
 
-export default GameErrorModal;
+export default ErrorModal;
