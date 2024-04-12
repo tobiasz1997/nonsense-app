@@ -17,9 +17,7 @@ const PlayerBoard: FC<PropsWithChildren & Props> = (props) => {
 				)}
 			</div>
 			{props.points > 0 && (
-				<div className="flex gap-3 justify-center overflow-x-scroll">
-					{props.children}
-				</div>
+				<div className="flex gap-3 justify-center">{props.children}</div>
 			)}
 		</div>
 	);

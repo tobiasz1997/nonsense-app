@@ -6,6 +6,7 @@ import AddTaskForm from '@components/features/Todo/AddTaskForm';
 import TaskItem from '@components/features/Todo/TaskItem';
 import FormSelect from '@components/ui/FormSelect';
 import Modal from '@components/ui/Modal';
+import ModalBox from '@components/ui/ModalBox';
 import { SelectOption } from '@interfaces/selectOption';
 import { TaskFormType } from '@interfaces/taskFormType';
 import { todoListSortByOptions } from '@interfaces/todoListSortByOptions';
@@ -17,7 +18,6 @@ import {
 	sortTasks
 } from '@store/slices/tasks.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
-import ModalBox from '@components/ui/ModalBox';
 
 const TodoList: FC = () => {
 	const [isAddTaskModalVisible, setIsAddTaskModalVisible] = useState(false);

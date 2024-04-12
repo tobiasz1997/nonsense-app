@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Checkbox should render checkbox without crashing 1`] = `
+<div>
+  <div>
+    <label
+      class="flex w-full cursor-pointer text-green-dark"
+    >
+      <span
+        class="relative flex h-6 w-6 shrink-0 items-center justify-center"
+      >
+        <input
+          class="peer h-full w-full cursor-pointer border border-green-dark checked:border-green-dark checked:bg-none checked:text-white checked:hover:border-green-dark focus:ring-4 focus:ring-yellow checked:focus:border-green-dark disabled:opacity-70 rounded"
+          label="@#$%^&*()qwerty"
+          type="checkbox"
+        />
+        <span
+          class="absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100 rounded-sm"
+        />
+      </span>
+      <span
+        class="ml-3 flex items-center text-xs md:text-base md:leading-5"
+      >
+        @#$%^&*()qwerty
+      </span>
+    </label>
+  </div>
+</div>
+`;
+
+exports[`Form Checkbox should render radio without crashing 1`] = `
+<div>
+  <div>
+    <label
+      class="flex w-full cursor-pointer text-green-dark"
+    >
+      <span
+        class="relative flex h-6 w-6 shrink-0 items-center justify-center"
+      >
+        <input
+          class="peer h-full w-full cursor-pointer border border-green-dark checked:border-green-dark checked:bg-none checked:text-white checked:hover:border-green-dark focus:ring-4 focus:ring-yellow checked:focus:border-green-dark disabled:opacity-70 rounded-full"
+          label="@#$%^&*()qwerty"
+          type="radio"
+        />
+        <span
+          class="absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100 rounded-full"
+        />
+      </span>
+      <span
+        class="ml-3 flex items-center text-xs md:text-base md:leading-5"
+      >
+        @#$%^&*()qwerty
+      </span>
+    </label>
+  </div>
+</div>
+`;

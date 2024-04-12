@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
 import { drawCards, shuffleCards } from '@api/deck-of-cards.api';
 import { IGameData, IGamesStats } from '@interfaces/blackjackType';
-import { createSelector } from 'reselect';
 
 type blackjackStateType = {
 	userData: IGameData;
