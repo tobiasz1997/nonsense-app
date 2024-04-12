@@ -29,7 +29,7 @@ const meta = {
 export default meta;
 export type Story = StoryObj<typeof meta>;
 export const Default: Story = {
-	render: (args) => (
+	render: () => (
 		<ModalBox onClose={() => null}>
 			<div className="flex items-center justify-center">Test value</div>
 		</ModalBox>
