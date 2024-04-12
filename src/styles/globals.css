@@ -11,6 +11,10 @@
 		@apply text-2xl font-bold text-orange sm:text-4xl;
 	}
 
+	.na-modal-title {
+		@apply text-xl font-bold text-orange md:text-3xl;
+	}
+
 	.na-code {
 		@apply rounded-xl bg-zinc-800 px-4 pb-4;
 	}

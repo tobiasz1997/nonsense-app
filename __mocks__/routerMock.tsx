@@ -12,3 +12,7 @@ jest.mock('next/router', () => ({
 		push: jest.fn()
 	})
 }));
+
+jest.mock('delay', () => ({
+	delay: jest.fn()
+}));

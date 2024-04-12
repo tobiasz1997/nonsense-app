@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal Box should render without crashing 1`] = `
+<div>
+  <div
+    class="m-3 w-full max-w-screen-sm"
+  >
+    <div
+      class="relative rounded-xl bg-pistachio dark:bg-gray-500 p-5 dark:border dark:border-gray-700"
+    >
+      <div
+        class="absolute top-3 right-3"
+      >
+        <button
+          class="flex items-center justify-center p-1 rounded focus:outline-none focus:ring-2 focus:ring-orange"
+        >
+          <svg
+            aria-hidden="true"
+            class="h-5 w-5 text-orange"
+            data-slot="icon"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6 18 18 6M6 6l12 12"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

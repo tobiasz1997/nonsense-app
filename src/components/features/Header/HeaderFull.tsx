@@ -5,6 +5,7 @@ import {
 	CpuChipIcon,
 	FaceSmileIcon,
 	HomeIcon,
+	PuzzlePieceIcon,
 	UserIcon
 } from '@heroicons/react/24/outline';
 import { useRouter } from 'next/router';
@@ -56,7 +57,7 @@ const HeaderFull: FC = () => {
 				)}
 			</header>
 			<header className="sticky top-0 z-50 hidden md:block">
-				<nav className="flex h-full w-full max-w-screen-2xl justify-center bg-green-dark">
+				<nav className="flex h-full w-full justify-center bg-green-dark">
 					{navLinks.map((link, index) => (
 						<HeaderNavLink
 							key={index}
@@ -92,6 +93,10 @@ const navLinks: NavLinksType = [
 	{
 		...appRoutes.generators,
 		icon: <CpuChipIcon />
+	},
+	{
+		...appRoutes.blackjack,
+		icon: <PuzzlePieceIcon />
 	}
 ];
 

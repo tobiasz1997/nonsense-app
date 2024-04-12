@@ -6,4 +6,9 @@ describe('Divider', () => {
 		const { container } = render(<Divider />);
 		expect(container).toMatchSnapshot();
 	});
+
+	it('should render without crashing', () => {
+		const { container } = render(<Divider />);
+		expect(container).toMatchSnapshot();
+	});
 });

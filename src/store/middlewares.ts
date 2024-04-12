@@ -2,6 +2,7 @@
 import { Middleware } from 'redux';
 
 export const loggerMiddleware: Middleware = (store) => (next) => (action) => {
+	// @ts-ignore
 	console.group(action.type);
 	console.info('dispatching', action);
 	let result = next(action);
