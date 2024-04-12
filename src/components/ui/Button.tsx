@@ -1,4 +1,5 @@
 import cx from 'classnames';
+import delay from 'delay';
 import {
 	ButtonHTMLAttributes,
 	cloneElement,
@@ -7,13 +8,13 @@ import {
 	ReactElement,
 	useState
 } from 'react';
-import delay from 'delay';
 import Spinner from '@components/ui/Spinner';
 
 type Props = {
 	size?: sizeType;
 	variant?: variantType;
 	icon?: ReactElement;
+	isSubmitting?: boolean;
 };
 const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 	const [isPending, setIsPending] = useState(false);
@@ -58,19 +59,19 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 				variants[props.variant ?? 'primary']
 			)}
 			type={props.type}
-			disabled={props.disabled || isPending}
+			disabled={props.disabled || isPending || props.isSubmitting}
 		>
 			{
 				<>
 					<Spinner
 						className={cx(
 							'absolute h-2 w-6 fill-current',
-							isPending ? 'visible' : 'invisible'
+							isPending || props.isSubmitting ? 'visible' : 'invisible'
 						)}
 					/>
 					<span
 						className={cx('flex h-full w-full items-center justify-center', {
-							invisible: isPending
+							invisible: isPending || props.isSubmitting
 						})}
 					>
 						{props.icon ? (
