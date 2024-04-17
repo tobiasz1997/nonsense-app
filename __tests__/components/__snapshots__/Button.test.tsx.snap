@@ -3,7 +3,7 @@
 exports[`Button should render without crashing 1`] = `
 <div>
   <button
-    class="relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50 h-12 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold px-3"
+    class="relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50 h-12 px-3 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold"
   >
     <svg
       class="absolute h-2 w-6 fill-current invisible"

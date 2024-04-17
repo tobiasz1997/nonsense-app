@@ -4,6 +4,7 @@ import React, { FC, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import AddTaskForm from '@components/features/Todo/AddTaskForm';
 import TaskItem from '@components/features/Todo/TaskItem';
+import Button from '@components/ui/Button';
 import FormSelect from '@components/ui/FormSelect';
 import Modal from '@components/ui/Modal';
 import ModalBox from '@components/ui/ModalBox';
@@ -59,12 +60,12 @@ const TodoList: FC = () => {
 							dispatch(sortTasks(e.target.value as todoListSortByOptions))
 						}
 					/>
-					<button
+					<Button
+						className="max-w-max"
+						variant="quaternary"
+						icon={<PlusIcon />}
 						onClick={() => setIsAddTaskModalVisible(true)}
-						className="flex h-12 w-12 cursor-pointer items-center justify-between rounded bg-yellow p-3 text-green-dark shadow hover:bg-yellow/[.7] hover:shadow focus:outline-none focus:ring-2 focus:ring-green-dark"
-					>
-						<PlusIcon className="h-full w-full stroke-2" />
-					</button>
+					/>
 				</div>
 				<Reorder.Group
 					className="space-y-5"

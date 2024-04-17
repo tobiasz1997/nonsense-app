@@ -14,23 +14,32 @@ type Props = {
 	size?: sizeType;
 	variant?: variantType;
 	icon?: ReactElement;
-	isSubmitting?: boolean;
+	submitting?: boolean;
 };
 const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 	const [isPending, setIsPending] = useState(false);
 
 	const sizes: Record<sizeType, string> = {
-		small: 'h-9 text-sm rounded',
-		default: 'h-12 rounded'
+		small: 'h-9 text-sm px-3 rounded',
+		default: 'h-12 px-3 rounded',
+		fit: 'rounded'
+	};
+
+	const iconSizes: Record<sizeType, string> = {
+		small: 'w-4 h-4',
+		default: 'w-6 h-6',
+		fit: 'h-5 w-5'
 	};
 
 	const variants: Record<variantType, string> = {
 		primary:
-			'text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold px-3',
+			'text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold',
 		secondary:
-			'text-green-dark bg-pistachio hover:bg-pistachio/[0.7] hover:shadow-xl focus:ring-yellow font-bold px-3',
+			'text-green-dark bg-pistachio hover:bg-pistachio/[0.7] hover:shadow-xl focus:ring-green font-bold',
 		tertiary:
-			'text-black bg-orange hover:bg-orange/[0.7] hover:shadow-xl focus:ring-green font-bold px-3'
+			'text-black bg-orange hover:bg-orange/[0.7] hover:shadow-xl focus:ring-yellow-light font-bold',
+		quaternary:
+			'text-green-dark bg-yellow hover:bg-yellow/[.7] hover:shadow-xl focus:ring-orange font-bold'
 	};
 
 	const getIsPromise = (res: any) => res && typeof res.then === 'function';
@@ -59,33 +68,38 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 				variants[props.variant ?? 'primary']
 			)}
 			type={props.type}
-			disabled={props.disabled || isPending || props.isSubmitting}
+			disabled={props.disabled || isPending || props.submitting}
 		>
 			{
 				<>
 					<Spinner
 						className={cx(
 							'absolute h-2 w-6 fill-current',
-							isPending || props.isSubmitting ? 'visible' : 'invisible'
+							isPending || props.submitting ? 'visible' : 'invisible'
 						)}
 					/>
 					<span
 						className={cx('flex h-full w-full items-center justify-center', {
-							invisible: isPending || props.isSubmitting
+							invisible: isPending || props.submitting
 						})}
 					>
 						{props.icon ? (
 							<>
-								<span className="flex h-12 w-12 shrink-0 items-center justify-center fill-current px-3">
+								<span className="flex shrink-0 items-center justify-center fill-current">
 									{cloneElement(
 										props.icon,
 										{
-											className: 'w-6 h-6'
+											className: cx(iconSizes[props.size ?? 'default'])
 										},
 										null
 									)}
 								</span>
-								<span className="-ml-12 flex w-full justify-center px-3">
+								<span
+									className={cx(
+										'flex w-full justify-center',
+										props.icon && props.children && 'pl-3'
+									)}
+								>
 									{props.children}
 								</span>
 							</>
@@ -99,7 +113,7 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 	);
 };
 
-type sizeType = 'default' | 'small';
-type variantType = 'primary' | 'secondary' | 'tertiary';
+type sizeType = 'default' | 'small' | 'fit';
+type variantType = 'primary' | 'secondary' | 'tertiary' | 'quaternary';
 
 export default Button;

@@ -2,6 +2,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 import { FC, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import HeaderNavLink from '@components/features/Header/HeaderNavLink';
+import Button from '@components/ui/Button';
 import useActivePage from '@hooks/useActivePage';
 import usePortal from '@hooks/usePortal';
 import { NavLinksType } from '@interfaces/navLinksType';
@@ -27,12 +28,12 @@ const HeaderMobileNav: FC<Props> = (props) => {
 		? createPortal(
 				<div className="fixed top-0 left-0 z-50 h-full w-full overflow-hidden bg-green-dark p-4">
 					<div className="flex w-full justify-end">
-						<button
+						<Button
+							className="max-w-max md:hidden p-2"
+							size="fit"
+							icon={<XMarkIcon />}
 							onClick={props.onClose}
-							className="cursor-pointer rounded p-2 text-yellow hover:shadow focus:outline-none focus:ring-2 focus:ring-yellow"
-						>
-							<XMarkIcon className="h-6 w-6" />
-						</button>
+						/>
 					</div>
 					<div>
 						<nav className="py-3">
