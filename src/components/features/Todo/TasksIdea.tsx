@@ -10,7 +10,7 @@ import {
 	ShoppingCartIcon,
 	WrenchIcon
 } from '@heroicons/react/24/outline';
-import React, { FC } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { useGetActivity } from '@api/activity.api';
 
 type Props = {};
@@ -18,7 +18,7 @@ type Props = {};
 const TasksIdea: FC<Props> = () => {
 	const { data, isLoading } = useGetActivity();
 
-	const getIcon = (type: string): JSX.Element => {
+	const getIcon = (type: string): ReactElement => {
 		switch (type) {
 			case 'education':
 				return <AcademicCapIcon />;

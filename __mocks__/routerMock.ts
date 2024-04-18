@@ -1,5 +1,3 @@
-export {};
-
 jest.mock('next/router', () => ({
 	push: jest.fn(),
 	back: jest.fn(),
@@ -11,8 +9,4 @@ jest.mock('next/router', () => ({
 	useRouter: () => ({
 		push: jest.fn()
 	})
-}));
-
-jest.mock('delay', () => ({
-	delay: jest.fn()
 }));

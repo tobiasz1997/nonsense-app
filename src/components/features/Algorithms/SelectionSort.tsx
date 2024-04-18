@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import InstanceValue from '@components/features/Algorithms/Utils/InstanceValue';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
@@ -6,9 +7,7 @@ import useStringHelpers from '@hooks/useStringHelpers';
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import { calculateSelectionSort } from '@utils/algorithmsFunctions';
 
-type Props = {};
-
-const SelectionSort: FC<Props> = () => {
+const SelectionSort: FC = () => {
 	const [array] = useState([7, 2, 12, 3, 44, 1, 27]);
 	const [value, setValue] = useState<CalculationResultType<Array<number>>>();
 
@@ -46,12 +45,7 @@ const SelectionSort: FC<Props> = () => {
 					<samp className="na-sample">[1,2,3,4]</samp>
 				</code>
 				<div className="flex flex-col justify-center space-y-5">
-					<div className="text-green-dark">
-						Current array: &nbsp;
-						<span className="pl-2 font-bold">
-							{convertArrayToString(array)}
-						</span>
-					</div>
+					<InstanceValue value={convertArrayToString(array)} />
 					<Button onClick={() => setValue(calculateSelectionSort(array))}>
 						Calculate
 					</Button>

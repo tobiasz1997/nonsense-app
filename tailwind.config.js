@@ -35,6 +35,7 @@ module.exports = {
 				DEFAULT: '#FEFBE9'
 			},
 			yellow: {
+				light: '#fde047',
 				DEFAULT: '#F6C453'
 			}
 		},
@@ -49,9 +50,5 @@ module.exports = {
 			}
 		}
 	},
-	plugins: [
-		require('@tailwindcss/typography'),
-		require('@tailwindcss/forms'),
-		require('@tailwindcss/line-clamp')
-	]
+	plugins: [require('@tailwindcss/typography'), require('@tailwindcss/forms')]
 };

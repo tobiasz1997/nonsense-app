@@ -4,7 +4,7 @@ exports[`Form Checkbox should render checkbox without crashing 1`] = `
 <div>
   <div>
     <label
-      class="flex w-full cursor-pointer text-green-dark"
+      class="flex w-full cursor-pointer text-green-dark dark:text-pistachio"
     >
       <span
         class="relative flex h-6 w-6 shrink-0 items-center justify-center"
@@ -32,7 +32,7 @@ exports[`Form Checkbox should render radio without crashing 1`] = `
 <div>
   <div>
     <label
-      class="flex w-full cursor-pointer text-green-dark"
+      class="flex w-full cursor-pointer text-green-dark dark:text-pistachio"
     >
       <span
         class="relative flex h-6 w-6 shrink-0 items-center justify-center"

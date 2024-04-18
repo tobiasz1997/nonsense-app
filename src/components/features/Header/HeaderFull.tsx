@@ -13,6 +13,7 @@ import { FC, useEffect, useState } from 'react';
 import HeaderMobileNav from '@components/features/Header/HeaderMobileNav';
 import HeaderNavLink from '@components/features/Header/HeaderNavLink';
 import ThemePanel from '@components/features/Header/ThemePanel';
+import Button from '@components/ui/Button';
 import useActivePage from '@hooks/useActivePage';
 import { NavLinksType } from '@interfaces/navLinksType';
 import { appRoutes } from '@routes/app.routes';
@@ -42,12 +43,13 @@ const HeaderFull: FC = () => {
 							<ThemePanel />
 						</div>
 					</div>
-					<button
+					<Button
+						className="max-w-max md:hidden p-2"
+						variant="secondary"
+						size="fit"
+						icon={<Bars3BottomRightIcon />}
 						onClick={() => setIsMobileNavOpen((prevState) => !prevState)}
-						className="cursor-pointer rounded p-2 hover:shadow focus:outline-none focus:ring-2 focus:ring-green-dark dark:text-pistachio dark:focus:ring-pistachio md:hidden"
-					>
-						<Bars3BottomRightIcon className="h-6 w-6" />
-					</button>
+					/>
 				</div>
 				{isMobileNavOpen && (
 					<HeaderMobileNav
