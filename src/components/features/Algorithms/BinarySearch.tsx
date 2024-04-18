@@ -1,5 +1,6 @@
 import React, { FC, useState } from 'react';
 import InputNumberForm from '@components/features/Algorithms/Utils/InputNumberForm';
+import InstanceValue from '@components/features/Algorithms/Utils/InstanceValue';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import CustomBox from '@components/ui/CustomBox';
 import useStringHelpers from '@hooks/useStringHelpers';
@@ -37,12 +38,7 @@ const BinarySearch: FC = () => {
 					<samp className="na-sample">Number 3 is exist in array</samp>
 				</code>
 				<div className="flex flex-col justify-center space-y-5">
-					<div className="text-green-dark">
-						Current array: &nbsp;
-						<span className="pl-2 font-bold">
-							{convertArrayToString(array)}
-						</span>
-					</div>
+					<InstanceValue value={convertArrayToString(array)} />
 					<InputNumberForm
 						onSubmit={(number) =>
 							setValue(calculateBinarySearch(array, Number(number)))

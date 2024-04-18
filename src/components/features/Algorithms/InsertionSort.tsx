@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import InstanceValue from '@components/features/Algorithms/Utils/InstanceValue';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
@@ -39,12 +40,7 @@ const InsertionSort: FC = () => {
 					<samp className="na-sample">[1,2,3,4]</samp>
 				</code>
 				<div className="flex flex-col justify-center space-y-5">
-					<div className="text-green-dark">
-						Current array: &nbsp;
-						<span className="pl-2 font-bold">
-							{convertArrayToString(array)}
-						</span>
-					</div>
+					<InstanceValue value={convertArrayToString(array)} />
 					<Button onClick={() => setValue(calculateInsertionSort(array))}>
 						Calculate
 					</Button>

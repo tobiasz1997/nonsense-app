@@ -54,7 +54,6 @@ const TodoList: FC = () => {
 				<h2 className="text-xl font-bold text-orange sm:text-3xl">TODO</h2>
 				<div className="flex items-center justify-between">
 					<FormSelect
-						placeholder={'Sort by'}
 						options={sortByOptionsList}
 						onChange={(e) =>
 							dispatch(sortTasks(e.target.value as todoListSortByOptions))

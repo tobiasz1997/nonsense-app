@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import React, {
+import {
 	forwardRef,
 	ForwardRefRenderFunction,
 	InputHTMLAttributes
@@ -18,7 +18,11 @@ const FormCheckbox: ForwardRefRenderFunction<
 > = (props, ref) => {
 	return (
 		<div>
-			<label className={cx('flex w-full cursor-pointer text-green-dark')}>
+			<label
+				className={
+					'flex w-full cursor-pointer text-green-dark dark:text-pistachio'
+				}
+			>
 				<span
 					className={cx(
 						'relative flex h-6 w-6 shrink-0 items-center justify-center'

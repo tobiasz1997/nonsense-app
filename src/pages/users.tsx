@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { getUsers } from '@api/users.api';
 import Pagination from '@components/ui/Pagination';
+import useNumberHelper from '@hooks/useNumberHelper';
 import { IUser } from '@interfaces/IUser';
 import { AppPage } from '@interfaces/appPage';
 import { filteredData, setPage } from '@store/slices/users.slice';
@@ -14,6 +15,8 @@ const UsersPage: AppPage = () => {
 	const status = useAppSelector((state) => state.usersSlice.status);
 	const usersData = useAppSelector((state) => state.usersSlice);
 	const dispatch = useAppDispatch();
+
+	const { convertNumberToArrayOfNumbers } = useNumberHelper();
 
 	useEffect(() => {
 		status === 'idle' && dispatch(getUsers());
@@ -39,21 +42,50 @@ const UsersPage: AppPage = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{users.map((user) => (
-							<tr
-								key={user.id}
-								className="grid border-b border-orange text-sm dark:text-pistachio sm:grid-cols-2 md:table-row"
-							>
-								<td className="col-span-1 p-1 font-bold md:p-3">{user.name}</td>
-								<td className="p-1 md:p-3">{user.email}</td>
-								<td className="p-1 md:p-3">{user.phone}</td>
-								<td className="p-1 md:p-3">
-									<Link href={user.website} className="hover:text-green">
-										{user.website}
-									</Link>
-								</td>
-							</tr>
-						))}
+						{status === 'loading' &&
+							convertNumberToArrayOfNumbers(5).map((x) => (
+								<tr
+									key={x}
+									className="grid border-b border-orange sm:grid-cols-2 md:table-row"
+								>
+									<td>
+										<div className="h-5 m-1 md:m-3 animate-pulse rounded bg-yellow" />
+									</td>
+									<td>
+										<div className="h-5 m-1 md:m-3 animate-pulse rounded bg-yellow" />
+									</td>
+									<td>
+										<div className="h-5 m-1 md:m-3 animate-pulse rounded bg-yellow" />
+									</td>
+									<td>
+										<div className="h-5 m-1 md:m-3 animate-pulse rounded bg-yellow" />
+									</td>
+								</tr>
+							))}
+						{status === 'succeeded' &&
+							(users.length > 0 ? (
+								users.map((user) => (
+									<tr
+										key={user.id}
+										className="grid border-b border-orange text-sm dark:text-pistachio sm:grid-cols-2 md:table-row"
+									>
+										<td className="col-span-1 p-1 font-bold md:p-3">
+											{user.name}
+										</td>
+										<td className="p-1 md:p-3">{user.email}</td>
+										<td className="p-1 md:p-3">{user.phone}</td>
+										<td className="p-1 md:p-3">
+											<Link href={user.website} className="hover:text-green">
+												{user.website}
+											</Link>
+										</td>
+									</tr>
+								))
+							) : (
+								<tr className="text-sm dark:text-pistachio flex justify-center md:block">
+									<td className="p-1 md:p-3">No data</td>
+								</tr>
+							))}
 					</tbody>
 				</table>
 

@@ -22,3 +22,18 @@ npm run dev
 - Framer Motion
 - Jest / React Testing Library
 - Storybook
+
+### Features
+
+- TODO List
+- Algorithms
+  - Fibonacci
+  - Binary search
+  - Insertion sort
+  - Selection sort
+- Users table
+- Generators
+  - Pesel
+  - Nip
+  - Regon
+- Blackjack game
