@@ -24,5 +24,9 @@ export const appRoutes = {
 	blackjack: {
 		title: 'Blackjack',
 		path: '/blackjack'
+	} as RouteType,
+	schedule: {
+		title: 'Schedule',
+		path: '/schedule'
 	} as RouteType
 };
