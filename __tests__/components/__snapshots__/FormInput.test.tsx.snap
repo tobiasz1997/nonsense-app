@@ -10,7 +10,7 @@ exports[`Form Input should render without crashing 1`] = `
         class="relative w-full"
       >
         <input
-          class="h-12 w-full border-none focus:outline-none focus:ring-0 disabled:opacity-50 p-2"
+          class="w-full border-none focus:outline-none focus:ring-0 disabled:opacity-50 p-2 h-12"
         />
       </span>
     </label>

@@ -4,11 +4,11 @@ import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import FormInput from '@components/ui/FormInput';
 import FormSelect from '@components/ui/FormSelect';
+import useLocalStorage from '@hooks/useLocalStorage';
 import { IScheduleForm } from '@interfaces/scheduleType';
 import { monthsList } from '@utils/lists/months-list';
 import { yearsLists } from '@utils/lists/years-lists';
 import { validateRequired } from '@utils/validators';
-import useLocalStorage from '@hooks/useLocalStorage';
 
 type Props = {
 	onSubmit: (payload: IScheduleForm) => void;
