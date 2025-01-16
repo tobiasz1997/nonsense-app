@@ -39,7 +39,9 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 		tertiary:
 			'text-black bg-orange hover:bg-orange/[0.7] hover:shadow-xl focus:ring-yellow-light font-bold',
 		quaternary:
-			'text-green-dark bg-yellow hover:bg-yellow/[.7] hover:shadow-xl focus:ring-orange font-bold'
+			'text-green-dark bg-yellow hover:bg-yellow/[.7] hover:shadow-xl focus:ring-orange font-bold',
+		delete:
+			'text-white bg-red hover:bg-red/[.7] hover:shadow-xl focus:ring-orange font-bold'
 	};
 
 	const getIsPromise = (res: any) => res && typeof res.then === 'function';
@@ -95,10 +97,9 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 									)}
 								</span>
 								<span
-									className={cx(
-										'flex w-full justify-center',
-										props.icon && props.children && 'pl-3'
-									)}
+									className={cx('flex w-full justify-center', {
+										'pl-3': props.icon && props.children
+									})}
 								>
 									{props.children}
 								</span>
@@ -114,6 +115,11 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 };
 
 type sizeType = 'default' | 'small' | 'fit';
-type variantType = 'primary' | 'secondary' | 'tertiary' | 'quaternary';
+type variantType =
+	| 'primary'
+	| 'secondary'
+	| 'tertiary'
+	| 'quaternary'
+	| 'delete';
 
 export default Button;

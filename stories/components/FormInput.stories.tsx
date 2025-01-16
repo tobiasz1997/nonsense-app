@@ -27,6 +27,11 @@ const meta = {
 			defaultValue: '',
 			type: 'string'
 		},
+		dimension: {
+			control: 'radio',
+			defaultValue: 'default',
+			options: ['default', 'small']
+		},
 		disabled: {
 			control: 'boolean',
 			defaultValue: false,

@@ -3,6 +3,7 @@ import {
 	CalculatorIcon,
 	ClipboardDocumentListIcon,
 	CpuChipIcon,
+	DocumentTextIcon,
 	FaceSmileIcon,
 	HomeIcon,
 	PuzzlePieceIcon,
@@ -99,6 +100,10 @@ const navLinks: NavLinksType = [
 	{
 		...appRoutes.blackjack,
 		icon: <PuzzlePieceIcon />
+	},
+	{
+		...appRoutes.schedule,
+		icon: <DocumentTextIcon />
 	}
 ];
 
