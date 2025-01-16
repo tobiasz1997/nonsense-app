@@ -1,27 +1,17 @@
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { ChangeEvent, FC, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import FormCheckbox from '@components/ui/FormCheckbox';
 import FormInput from '@components/ui/FormInput';
+import { IScheduleDatesForm, IScheduleDay } from '@interfaces/scheduleType';
 import { validateInputWithNumbers, validateRequired } from '@utils/validators';
 
 type Props = {
 	dates: Date[];
 	onSubmit: (payload: IScheduleDatesForm) => void;
 };
-
-interface IScheduleDay {
-	day: number;
-	project: string;
-	hours: string;
-	comment: string;
-}
-
-interface IScheduleDatesForm {
-	days: IScheduleDay[];
-}
 
 const ScheduleDatesForm: FC<Props> = (props) => {
 	const {
@@ -34,7 +24,7 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 	} = useForm<IScheduleDatesForm>({
 		reValidateMode: 'onChange',
 		defaultValues: {
-			days: props.dates.map(
+			plans: props.dates.map(
 				(x) =>
 					({
 						day: x.getDate(),
@@ -45,13 +35,26 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 			)
 		}
 	});
-	const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
-		{
-			control,
-			name: 'days'
-		}
-	);
+	const { fields, remove } = useFieldArray({
+		control,
+		name: 'plans'
+	});
 	const [isReplicate, setIsReplicate] = useState(false);
+
+	useEffect(() => {
+		setValue(
+			'plans',
+			props.dates.map(
+				(x) =>
+					({
+						day: x.getDate(),
+						project: '',
+						hours: '',
+						comment: ''
+					}) as IScheduleDay
+			)
+		);
+	}, [props.dates, setValue]);
 
 	const handleProjectChange = (
 		event: ChangeEvent<HTMLInputElement>,
@@ -59,11 +62,11 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 		prop: 'project' | 'hours' | 'comment'
 	) => {
 		if (isReplicate) {
-			getValues().days.forEach((_, i) => {
+			getValues().plans.forEach((_, i) => {
 				if (i === idx) {
 					return;
 				}
-				setValue(`days.${i}.${prop}`, event.target.value);
+				setValue(`plans.${i}.${prop}`, event.target.value);
 			});
 		}
 	};
@@ -95,37 +98,39 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 								key={item.id}
 								className="grid border-b border-orange sm:grid-cols-2 md:table-row"
 							>
-								<td className="p-1 md:p-3 text-lg text-zinc-800">{idx + 1}</td>
+								<td className="p-1 md:p-3 text-lg text-zinc-800 dark:text-pistachio">
+									{idx + 1}
+								</td>
 								<td className="p-1 md:p-3">
-									<div className="text-xl font-bold text-zinc-800">
+									<div className="text-xl font-bold text-zinc-800 dark:text-pistachio">
 										{item.day}
 									</div>
 								</td>
 								<td className="p-1 md:p-3">
 									<FormInput
-										{...register(`days.${idx}.project`, {
+										{...register(`plans.${idx}.project`, {
 											...validateRequired(),
 											onChange: (x) => handleProjectChange(x, idx, 'project')
 										})}
-										error={errors.days?.[idx]?.project?.message}
+										error={errors.plans?.[idx]?.project?.message}
 										dimension="small"
 										placeholder="Project"
 									/>
 								</td>
 								<td className="p-1 md:p-3">
 									<FormInput
-										{...register(`days.${idx}.hours`, {
+										{...register(`plans.${idx}.hours`, {
 											...validateInputWithNumbers(),
 											onChange: (x) => handleProjectChange(x, idx, 'hours')
 										})}
-										error={errors.days?.[idx]?.hours?.message}
+										error={errors.plans?.[idx]?.hours?.message}
 										dimension="small"
 										placeholder="Hours"
 									/>
 								</td>
 								<td className="p-1 md:p-3">
 									<FormInput
-										{...register(`days.${idx}.comment`, {
+										{...register(`plans.${idx}.comment`, {
 											onChange: (x) => handleProjectChange(x, idx, 'comment')
 										})}
 										dimension="small"
@@ -134,6 +139,7 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 								</td>
 								<td className="p-1 md:p-3">
 									<Button
+										onClick={() => remove(idx)}
 										className="max-w-max"
 										size="small"
 										variant="delete"
@@ -146,7 +152,7 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 				</table>
 
 				<div className="mt-5">
-					<Button type="submit">Show generated dates</Button>
+					<Button type="submit">Generate report</Button>
 				</div>
 			</form>
 		</CustomBox>

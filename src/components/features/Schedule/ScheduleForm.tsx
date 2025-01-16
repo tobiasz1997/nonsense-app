@@ -4,22 +4,21 @@ import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import FormInput from '@components/ui/FormInput';
 import FormSelect from '@components/ui/FormSelect';
+import { IScheduleForm } from '@interfaces/scheduleType';
 import { monthsList } from '@utils/lists/months-list';
 import { yearsLists } from '@utils/lists/years-lists';
 import { validateRequired } from '@utils/validators';
-
-export interface IScheduleForm {
-	title: string;
-	author: string;
-	month: string;
-	year: string;
-}
+import useLocalStorage from '@hooks/useLocalStorage';
 
 type Props = {
 	onSubmit: (payload: IScheduleForm) => void;
 };
 
 const ScheduleForm: FC<Props> = (props) => {
+	const { set, get } = useLocalStorage();
+	const SCHEDULE_AUTHOR = 'schedule_author';
+	const SCHEDULE_TITLE = 'schedule_title';
+
 	const {
 		register,
 		handleSubmit,
@@ -27,18 +26,24 @@ const ScheduleForm: FC<Props> = (props) => {
 	} = useForm<IScheduleForm>({
 		reValidateMode: 'onSubmit',
 		defaultValues: {
-			author: 'Jan Kolwalski',
-			title: 'Amazing title',
+			author: get(SCHEDULE_AUTHOR) ?? '',
+			title: get(SCHEDULE_TITLE) ?? '',
 			month: new Date().getMonth().toString(),
 			year: new Date().getFullYear().toString()
 		}
 	});
 
+	const submit = (payload: IScheduleForm) => {
+		set(SCHEDULE_AUTHOR, payload.author);
+		set(SCHEDULE_TITLE, payload.title);
+		props.onSubmit(payload);
+	};
+
 	return (
 		<CustomBox title="Schedule Form">
 			<form
 				noValidate
-				onSubmit={handleSubmit(props.onSubmit)}
+				onSubmit={handleSubmit((data) => submit(data))}
 				className="grid gap-5 sm:grid-cols-2"
 			>
 				<FormInput
