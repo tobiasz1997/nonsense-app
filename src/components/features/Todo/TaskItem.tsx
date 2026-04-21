@@ -15,7 +15,7 @@ const TaskItem: FC<Props> = (props) => {
 		<Reorder.Item
 			className={cx(
 				'flex justify-between space-x-5 rounded-xl p-4 shadow',
-				props.item.done ? 'bg-yellow/[.7]' : 'bg-yellow'
+				props.item.done ? 'bg-yellow/70' : 'bg-yellow'
 			)}
 			value={props.item}
 		>
@@ -44,7 +44,7 @@ const TaskItem: FC<Props> = (props) => {
 				{props.item.done && (
 					<button
 						onClick={() => props.onDelete(props.item.id)}
-						className="cursor-pointer rounded text-red hover:text-red/[.5] focus:outline-none focus:ring-0"
+						className="cursor-pointer rounded text-red hover:text-red/50 focus:outline-none focus:ring-0"
 					>
 						<TrashIcon className="h-6 w-6 stroke-2" />
 					</button>

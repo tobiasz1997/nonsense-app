@@ -31,7 +31,7 @@ const FormInput: ForwardRefRenderFunction<
 		<div>
 			<label
 				className={cx(
-					'flex cursor-pointer items-center overflow-hidden rounded border focus-within:ring-4',
+					'flex cursor-pointer bg-beige items-center overflow-hidden rounded border focus-within:ring-4',
 					props.error
 						? 'border-red text-red focus-within:ring-red/10'
 						: 'border-green-dark text-green-dark focus-within:ring-yellow'

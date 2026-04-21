@@ -54,7 +54,7 @@ const blackjackSlice = createSlice({
 		},
 		setGameStats: (state, action: PayloadAction<IGamesStats>) => {
 			state.userData.coins = state.userData.coins + action.payload.coinsBalance;
-			state.gameStats.push(action.payload);
+			state.gameStats.unshift(action.payload);
 		},
 		setPlayerCoins: (state, action: PayloadAction<number>) => {
 			state.userData.coins = state.userData.coins + action.payload;

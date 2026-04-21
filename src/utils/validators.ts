@@ -1,6 +1,4 @@
-import { RegisterOptions } from 'react-hook-form';
-import { Message } from 'react-hook-form/dist/types/errors';
-import { ValidationRule } from 'react-hook-form/dist/types/validator';
+import { Message, RegisterOptions, ValidationRule } from 'react-hook-form';
 
 export const numberRegex = /^\d+$/;
 

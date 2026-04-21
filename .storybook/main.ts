@@ -5,20 +5,18 @@ const config: StorybookConfig = {
         '../stories/**/*.mdx',
         '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)'
     ],
+
     addons: [
         '@storybook/addon-links',
-        '@storybook/addon-essentials',
         '@storybook/addon-onboarding',
-        '@storybook/addon-interactions',
         '@storybook/addon-themes',
-        'storybook-tailwind-dark-mode'
+        'storybook-tailwind-dark-mode',
+        '@storybook/addon-docs'
     ],
+
     framework: {
         name: '@storybook/nextjs',
         options: {}
-    },
-    docs: {
-        autodocs: 'tag'
     }
 };
 export default config;

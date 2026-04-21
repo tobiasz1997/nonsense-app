@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import LayoutMinimal from '@components/layouts/LayoutMinimal';
 
 const meta = {

@@ -19,9 +19,7 @@ const AddTaskForm: FC<Props> = (props) => {
 	return (
 		<form className="mt-5" noValidate onSubmit={handleSubmit(props.onSubmit)}>
 			<FormInput
-				{...register('task', {
-					...validateRequired()
-				})}
+				{...register('task', {...validateRequired()})}
 				placeholder={'Go to shop'}
 				error={errors.task?.message}
 			/>
