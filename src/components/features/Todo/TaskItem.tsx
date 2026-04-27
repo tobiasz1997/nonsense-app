@@ -3,6 +3,7 @@ import cx from 'classnames';
 import { Reorder } from 'framer-motion';
 import React, { FC } from 'react';
 import { TaskType } from '@interfaces/taskType';
+import FormCheckbox from '@components/ui/FormCheckbox';
 
 type Props = {
 	item: TaskType;
@@ -27,7 +28,7 @@ const TaskItem: FC<Props> = (props) => {
 					type="checkbox"
 					checked={props.item.done}
 					onChange={() => props.onStatusChange(props.item.id)}
-					className="h-6 w-6 rounded border border-green-dark checked:text-green-dark focus:outline-none focus:ring-1 focus:ring-offset-1 focus:ring-offset-green"
+					className="h-6 w-6 rounded border border-green-dark accent-green-dark focus:outline-none focus:ring-4 focus:ring-green checked:focus:border-green-dark"
 				/>
 				<span
 					className={cx(
