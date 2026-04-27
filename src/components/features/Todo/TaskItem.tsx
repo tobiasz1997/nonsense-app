@@ -24,12 +24,7 @@ const TaskItem: FC<Props> = (props) => {
 				className="flex flex-1 cursor-pointer items-center pl-3"
 				title={props.item.task}
 			>
-				<input
-					type="checkbox"
-					checked={props.item.done}
-					onChange={() => props.onStatusChange(props.item.id)}
-					className="h-6 w-6 rounded border border-green-dark accent-green-dark focus:outline-none focus:ring-4 focus:ring-green checked:focus:border-green-dark"
-				/>
+				<FormCheckbox checked={props.item.done} onChange={() => props.onStatusChange(props.item.id)} />
 				<span
 					className={cx(
 						'font-lg ml-3 w-full capitalize line-clamp-3',

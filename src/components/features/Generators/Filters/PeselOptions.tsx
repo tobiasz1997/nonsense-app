@@ -37,9 +37,7 @@ const PeselOptions: FC = () => {
 	};
 
 	const handleGenderChange = (event: ChangeEvent<HTMLInputElement>) => {
-		event.target.checked
-			? dispatch(changePeselGender(event.target.value as genderType))
-			: dispatch(changePeselGender(null));
+		dispatch(changePeselGender(event.target.value as genderType))
 	};
 
 	const handleDividerChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -79,13 +77,13 @@ const PeselOptions: FC = () => {
 			<div className="flex flex-col space-y-4">
 				<OptionTitle title="Gender" />
 				<FormCheckbox
-					checked={gender === 'male'}
+					checked={gender.includes('male')}
 					value="male"
 					label="Male"
 					onChange={handleGenderChange}
 				/>
 				<FormCheckbox
-					checked={gender === 'female'}
+					checked={gender.includes('female')}
 					value="female"
 					label="Female"
 					onChange={handleGenderChange}

@@ -4,7 +4,7 @@ import { generateRandomIntNumber } from '@utils/generators/sharedGenerators';
 const generatePesel = (
 	minYear: number = 1900,
 	maxYear: number = 2023,
-	gender: genderType = null,
+	gender: genderType[] = ['male', 'female'],
 	divider = false
 ): CalculationResultType<string> => {
 	const year = generateRandomIntNumber(minYear, maxYear);
@@ -75,17 +75,17 @@ const getMaxDay = (month: number, year: number): number => {
 	}
 };
 
-const generateOrdinalNumber = (gender: genderType): number => {
+const generateOrdinalNumber = (gender: genderType[]): number => {
 	const firstThreeNumbers = generateRandomIntNumber(100, 999);
 	const lastNumber = generateLastNumberForGender(gender);
 
 	return Number(`${firstThreeNumbers}${lastNumber}`);
 };
 
-const generateLastNumberForGender = (gender: genderType): number => {
+const generateLastNumberForGender = (gender: genderType[]): number => {
 	let genderNumber = 0;
-	if (gender) {
-		genderNumber += gender === 'male' ? 1 : 0;
+	if (gender.length === 1) {
+		genderNumber += gender[0] === 'male' ? 1 : 0;
 	} else {
 		genderNumber += generateRandomIntNumber(0, 1);
 	}
@@ -148,4 +148,4 @@ const createFinalPesel = (
 
 export default generatePesel;
 
-export type genderType = 'male' | 'female' | null;
+export type genderType = 'male' | 'female';

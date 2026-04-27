@@ -30,7 +30,7 @@ const Layout: FC<PropsWithChildren<Props>> = (props) => {
 	return (
 		<>
 			<Head>
-				<title>Nonsense App - {pageTitle}</title>
+				<title>{`Nonsense App - ${pageTitle}`}</title>
 			</Head>
 			{layout()}
 		</>

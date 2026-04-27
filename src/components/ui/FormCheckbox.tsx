@@ -7,7 +7,7 @@ import {
 import FormErrorMessage from '@components/ui/FormErrorMessage';
 
 type FormCheckboxProps = {
-	label: string;
+	label?: string;
 	error?: string;
 	type?: 'checkbox' | 'radio';
 };
@@ -46,12 +46,12 @@ const FormCheckbox: ForwardRefRenderFunction<
 					/>
 				</span>
 
-				<span className="ml-3 flex items-center text-xs md:text-base md:leading-5">
+				{props.label && <span className="ml-3 flex items-center text-xs md:text-base md:leading-5">
 					{props.label}
 					{props.required && (
 						<span className="my-0.5 mx-1 h-1 w-1 rounded-full bg-red" />
 					)}
-				</span>
+				</span>}
 			</label>
 			{props.error && <FormErrorMessage>{props.error}</FormErrorMessage>}
 		</div>

@@ -147,6 +147,7 @@ const SchedulePage: AppPage = () => {
 									loading ? (
 										<Loader />
 									) : (
+										// TODO: link button reusable component
 										<div className="p-3 h-12 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold">
 											Download PDF
 										</div>
