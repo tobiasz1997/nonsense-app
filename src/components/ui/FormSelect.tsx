@@ -23,7 +23,7 @@ const FormSelect: ForwardRefRenderFunction<
 		<div>
 			<label
 				className={cx(
-					'flex cursor-pointer bg-white items-center overflow-hidden rounded border focus-within:ring-4',
+					'flex h-12 cursor-pointer bg-white items-center overflow-hidden rounded border focus-within:ring-4',
 					props.error
 						? 'border-red text-red focus-within:ring-red/10'
 						: 'border-green-dark text-green-dark focus-within:ring-yellow'
@@ -40,8 +40,8 @@ const FormSelect: ForwardRefRenderFunction<
 						{...props}
 						ref={ref}
 						className={cx(
-							'h-12 w-full appearance-none border-none focus:outline-none focus:ring-0 disabled:opacity-50',
-							props.label ? 'px-3 pb-2 pt-4' : 'p-2 px-4'
+							'w-full appearance-none border-none focus:outline-none focus:ring-0 disabled:opacity-50',
+							props.label ? 'pl-3 pr-10 pb-2 pt-4' : 'p-3 pr-10'
 						)}
 					>
 						{props.options.map((option, index) => (

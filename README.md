@@ -37,3 +37,8 @@ npm run dev
   - Nip
   - Regon
 - Blackjack game
+
+#### TODO
+- tooltip + add api info
+- fix blackjack count
+- schedule - change year from current to +10

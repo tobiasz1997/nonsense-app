@@ -34,7 +34,8 @@ const FormInput: ForwardRefRenderFunction<
 					'flex cursor-pointer bg-white items-center overflow-hidden rounded border focus-within:ring-4',
 					props.error
 						? 'border-red text-red focus-within:ring-red/10'
-						: 'border-green-dark text-green-dark focus-within:ring-yellow'
+						: 'border-green-dark text-green-dark focus-within:ring-yellow',
+					sizes[props.dimension ?? 'default']
 				)}
 			>
 				<span className="relative w-full">
@@ -53,8 +54,7 @@ const FormInput: ForwardRefRenderFunction<
 						ref={ref}
 						className={cx(
 							'w-full border-none focus:outline-none focus:ring-0 disabled:opacity-50',
-							props.label ? 'px-3 pb-2 pt-4' : 'p-2',
-							sizes[props.dimension ?? 'default']
+							props.label ? 'px-3 pb-2 pt-4' : 'p-3'
 						)}
 					/>
 				</span>

@@ -40,7 +40,7 @@ const FormCheckbox: ForwardRefRenderFunction<
 					/>
 					<span
 						className={cx(
-							'absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100',
+							'absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100 peer-disabled:opacity-70',
 							props.type === 'radio' ? 'rounded-full' : 'rounded-[2px]'
 						)}
 					/>
