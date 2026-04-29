@@ -42,3 +42,5 @@ npm run dev
 - tooltip + add api info
 - fix blackjack count
 - schedule - change year from current to +10
+- schedule - add extra positions
+- generators - add option to create arrays

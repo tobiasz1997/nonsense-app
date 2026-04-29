@@ -10,7 +10,7 @@ describe('Pesel Generator', () => {
 	});
 
 	test('Should create correct pesel number with dividers', () => {
-		const pesel = generatePesel(1900, 2000, null, true);
+		const pesel = generatePesel(1900, 2000, [], true);
 		const pattern = new RegExp('^\\d{2}-\\d{2}-\\d{2}-\\d{2}-\\d{3}$');
 
 		expect(pesel.result).not.toBeNull();

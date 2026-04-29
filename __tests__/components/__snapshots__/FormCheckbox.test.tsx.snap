@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Form Checkbox should render checkbox without crashing 1`] = `
 <div>
@@ -7,15 +7,15 @@ exports[`Form Checkbox should render checkbox without crashing 1`] = `
       class="flex w-full cursor-pointer text-green-dark dark:text-pistachio"
     >
       <span
-        class="relative flex h-6 w-6 shrink-0 items-center justify-center"
+        class=" h-6 w-6 shrink-0 items-center justify-center relative flex focus-within:ring-4 focus-within:ring-yellow rounded"
       >
         <input
-          class="peer h-full w-full cursor-pointer border border-green-dark checked:border-green-dark checked:bg-none checked:text-white checked:hover:border-green-dark focus:ring-4 focus:ring-yellow checked:focus:border-green-dark disabled:opacity-70 rounded"
+          class="peer appearance-none h-full w-full cursor-pointer border-2 checked:border-2 border-green-dark checked:border-green-dark bg-white checked:bg-white checked:text-white focus-visible:outline-none checked:hover:border-green-dark checked:focus:border-green-dark disabled:opacity-70 rounded"
           label="@#$%^&*()qwerty"
           type="checkbox"
         />
         <span
-          class="absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100 rounded-sm"
+          class="absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100 peer-disabled:opacity-70 rounded-[2px]"
         />
       </span>
       <span
@@ -35,15 +35,15 @@ exports[`Form Checkbox should render radio without crashing 1`] = `
       class="flex w-full cursor-pointer text-green-dark dark:text-pistachio"
     >
       <span
-        class="relative flex h-6 w-6 shrink-0 items-center justify-center"
+        class=" h-6 w-6 shrink-0 items-center justify-center relative flex focus-within:ring-4 focus-within:ring-yellow rounded-full"
       >
         <input
-          class="peer h-full w-full cursor-pointer border border-green-dark checked:border-green-dark checked:bg-none checked:text-white checked:hover:border-green-dark focus:ring-4 focus:ring-yellow checked:focus:border-green-dark disabled:opacity-70 rounded-full"
+          class="peer appearance-none h-full w-full cursor-pointer border-2 checked:border-2 border-green-dark checked:border-green-dark bg-white checked:bg-white checked:text-white focus-visible:outline-none checked:hover:border-green-dark checked:focus:border-green-dark disabled:opacity-70 rounded-full"
           label="@#$%^&*()qwerty"
           type="radio"
         />
         <span
-          class="absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100 rounded-full"
+          class="absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100 peer-disabled:opacity-70 rounded-full"
         />
       </span>
       <span

@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Modal Box should render without crashing 1`] = `
 <div>
   <div
-    class="m-3 w-full max-w-screen-sm"
+    class="m-3 w-full max-w-(--breakpoint-sm)"
   >
     <div
       class="relative rounded-xl bg-pistachio dark:bg-gray-500 p-5 dark:border dark:border-gray-700"
@@ -12,7 +12,7 @@ exports[`Modal Box should render without crashing 1`] = `
         class="absolute top-3 right-3"
       >
         <button
-          class="relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50 p-1 rounded text-green-dark bg-pistachio hover:bg-pistachio/[0.7] hover:shadow-xl focus:ring-green font-bold"
+          class="relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50 p-1 rounded text-green-dark bg-pistachio hover:bg-pistachio/70 hover:shadow-xl focus:ring-green font-bold"
           icon="[object Object]"
           variant="secondary"
         >
