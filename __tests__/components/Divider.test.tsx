@@ -1,5 +1,5 @@
-import { render } from '@testing-library/react';
 import Divider from '@components/ui/Divider';
+import { render } from '@testing-library/react';
 
 describe('Divider', () => {
 	it('should render without crashing', () => {

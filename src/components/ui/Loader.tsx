@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import Spinner from '@components/ui/Spinner';
+import { FC } from 'react';
 
 type LoaderProps = {
 	error?: unknown;

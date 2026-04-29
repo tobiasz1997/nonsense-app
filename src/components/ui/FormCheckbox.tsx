@@ -1,10 +1,10 @@
+import FormErrorMessage from '@components/ui/FormErrorMessage';
 import cx from 'classnames';
 import {
 	forwardRef,
 	ForwardRefRenderFunction,
 	InputHTMLAttributes
 } from 'react';
-import FormErrorMessage from '@components/ui/FormErrorMessage';
 
 type FormCheckboxProps = {
 	label?: string;
@@ -46,12 +46,14 @@ const FormCheckbox: ForwardRefRenderFunction<
 					/>
 				</span>
 
-				{props.label && <span className="ml-3 flex items-center text-xs md:text-base md:leading-5">
-					{props.label}
-					{props.required && (
-						<span className="my-0.5 mx-1 h-1 w-1 rounded-full bg-red" />
-					)}
-				</span>}
+				{props.label && (
+					<span className="ml-3 flex items-center text-xs md:text-base md:leading-5">
+						{props.label}
+						{props.required && (
+							<span className="my-0.5 mx-1 h-1 w-1 rounded-full bg-red" />
+						)}
+					</span>
+				)}
 			</label>
 			{props.error && <FormErrorMessage>{props.error}</FormErrorMessage>}
 		</div>

@@ -21,7 +21,7 @@ const peselSlice = createSlice({
 	reducers: {
 		changePeselGender(state, action: PayloadAction<genderType>) {
 			state.gender = state.gender.includes(action.payload)
-				? state.gender.filter(x => x !== action.payload)
+				? state.gender.filter((x) => x !== action.payload)
 				: [...state.gender, action.payload];
 		},
 		changePeselMinYear(state, action: PayloadAction<number>) {

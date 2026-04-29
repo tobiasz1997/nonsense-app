@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TaskType } from '@interfaces/taskType';
 import { todoListSortByOptions } from '@interfaces/todoListSortByOptions';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 type tasksStateType = {
 	items: TaskType[];

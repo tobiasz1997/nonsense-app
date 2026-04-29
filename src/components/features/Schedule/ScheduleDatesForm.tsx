@@ -1,12 +1,12 @@
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import { ChangeEvent, FC, useEffect, useState } from 'react';
-import { useFieldArray, useForm } from 'react-hook-form';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import FormCheckbox from '@components/ui/FormCheckbox';
 import FormInput from '@components/ui/FormInput';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import { IScheduleDatesForm, IScheduleDay } from '@interfaces/scheduleType';
 import { validateInputWithNumbers, validateRequired } from '@utils/validators';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
+import { useFieldArray, useForm } from 'react-hook-form';
 
 type Props = {
 	dates: Date[];

@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import ErrorModal from '@components/ui/ErrorModal';
+import { render, screen } from '@testing-library/react';
 
 describe('Error Modal', () => {
 	const label = 'Test';

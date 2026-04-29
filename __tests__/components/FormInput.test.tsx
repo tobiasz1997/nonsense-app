@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
 import FormInput from '@components/ui/FormInput';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 describe('Form Input', () => {
 	const content = '@#$%^&*()qwerty';

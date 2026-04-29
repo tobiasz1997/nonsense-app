@@ -1,4 +1,3 @@
-import { ChangeEvent, FC } from 'react';
 import OptionTitle from '@components/features/Generators/Filters/OptionTitle';
 import FormCheckbox from '@components/ui/FormCheckbox';
 import {
@@ -9,6 +8,7 @@ import {
 } from '@store/generators/pesel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { genderType } from '@utils/generators/peselGenerator';
+import { ChangeEvent, FC } from 'react';
 
 const PeselOptions: FC = () => {
 	const minYear = useAppSelector((state) => state.peselSlice.minYear);
@@ -37,7 +37,7 @@ const PeselOptions: FC = () => {
 	};
 
 	const handleGenderChange = (event: ChangeEvent<HTMLInputElement>) => {
-		dispatch(changePeselGender(event.target.value as genderType))
+		dispatch(changePeselGender(event.target.value as genderType));
 	};
 
 	const handleDividerChange = (event: ChangeEvent<HTMLInputElement>) => {

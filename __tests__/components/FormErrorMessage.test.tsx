@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import FormErrorMessage from '@components/ui/FormErrorMessage';
+import { render, screen } from '@testing-library/react';
 
 describe('Form Error Message', () => {
 	const content = '@#$%^&*()qwerty';

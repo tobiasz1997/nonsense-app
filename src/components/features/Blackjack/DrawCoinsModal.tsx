@@ -1,8 +1,8 @@
-import { FC, useEffect, useState } from 'react';
 import Button from '@components/ui/Button';
 import Modal from '@components/ui/Modal';
 import ModalBox from '@components/ui/ModalBox';
 import useGenerator from '@hooks/useGenerator';
+import { FC, useEffect, useState } from 'react';
 
 type Props = {
 	onClose: () => void;

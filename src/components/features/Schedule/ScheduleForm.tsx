@@ -1,5 +1,3 @@
-import React, { FC } from 'react';
-import { useForm } from 'react-hook-form';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import FormInput from '@components/ui/FormInput';
@@ -9,6 +7,8 @@ import { IScheduleForm } from '@interfaces/scheduleType';
 import { monthsList } from '@utils/lists/months-list';
 import { yearsLists } from '@utils/lists/years-lists';
 import { validateRequired } from '@utils/validators';
+import React, { FC } from 'react';
+import { useForm } from 'react-hook-form';
 
 type Props = {
 	onSubmit: (payload: IScheduleForm) => void;

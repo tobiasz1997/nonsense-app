@@ -1,6 +1,6 @@
+import Button from '@components/ui/Button';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { FC, PropsWithChildren } from 'react';
-import Button from '@components/ui/Button';
 
 type Props = {
 	onClose: () => void;

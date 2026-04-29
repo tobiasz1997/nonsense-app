@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import { useAppSelector } from '@store/store';
+import { FC } from 'react';
 
 const GameStatsPanel: FC = () => {
 	const gamesStats = useAppSelector((state) => state.blackjackSlice.gameStats);

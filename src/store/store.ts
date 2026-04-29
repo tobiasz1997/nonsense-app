@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 import nipSlice from '@store/generators/nip.slice';
 import peselSlice from '@store/generators/pesel.slice';
 import regonSlice from '@store/generators/regon.slice';
@@ -7,6 +6,7 @@ import { loggerMiddleware } from '@store/middlewares';
 import blackjackSlice from '@store/slices/blackjack.slice';
 import tasksSlice from '@store/slices/tasks.slice';
 import usersSlice from '@store/slices/users.slice';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 const store = configureStore({
 	reducer: {

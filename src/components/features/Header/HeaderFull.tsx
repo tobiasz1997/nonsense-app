@@ -1,3 +1,7 @@
+import HeaderMobileNav from '@components/features/Header/HeaderMobileNav';
+import HeaderNavLink from '@components/features/Header/HeaderNavLink';
+import ThemePanel from '@components/features/Header/ThemePanel';
+import Button from '@components/ui/Button';
 import { Bars3BottomRightIcon } from '@heroicons/react/20/solid';
 import {
 	CalculatorIcon,
@@ -9,15 +13,11 @@ import {
 	PuzzlePieceIcon,
 	UserIcon
 } from '@heroicons/react/24/outline';
-import { useRouter } from 'next/router';
-import { FC, useEffect, useState } from 'react';
-import HeaderMobileNav from '@components/features/Header/HeaderMobileNav';
-import HeaderNavLink from '@components/features/Header/HeaderNavLink';
-import ThemePanel from '@components/features/Header/ThemePanel';
-import Button from '@components/ui/Button';
 import useActivePage from '@hooks/useActivePage';
 import { NavLinksType } from '@interfaces/navLinksType';
 import { appRoutes } from '@routes/app.routes';
+import { useRouter } from 'next/router';
+import { FC, useEffect, useState } from 'react';
 
 const HeaderFull: FC = () => {
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);

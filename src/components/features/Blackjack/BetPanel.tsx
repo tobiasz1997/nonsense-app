@@ -1,4 +1,7 @@
+import DrawCoinsModal from '@components/features/Blackjack/DrawCoinsModal';
 import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
+import { setPlayerCoins } from '@store/slices/blackjack.slice';
+import { useAppDispatch, useAppSelector } from '@store/store';
 import cx from 'classnames';
 import {
 	forwardRef,
@@ -6,9 +9,6 @@ import {
 	useImperativeHandle,
 	useState
 } from 'react';
-import DrawCoinsModal from '@components/features/Blackjack/DrawCoinsModal';
-import { setPlayerCoins } from '@store/slices/blackjack.slice';
-import { useAppDispatch, useAppSelector } from '@store/store';
 
 type Props = {
 	onStartGame: () => void;

@@ -1,5 +1,5 @@
-import { FC, useMemo } from 'react';
 import { useAppSelector } from '@store/store';
+import { FC, useMemo } from 'react';
 
 const PlayerStatsPanel: FC = () => {
 	const playerCoins = useAppSelector(

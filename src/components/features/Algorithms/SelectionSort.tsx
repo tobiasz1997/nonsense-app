@@ -1,4 +1,3 @@
-import React, { FC, useState } from 'react';
 import InstanceValue from '@components/features/Algorithms/Utils/InstanceValue';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import Button from '@components/ui/Button';
@@ -6,6 +5,7 @@ import CustomBox from '@components/ui/CustomBox';
 import useStringHelpers from '@hooks/useStringHelpers';
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import { calculateSelectionSort } from '@utils/algorithmsFunctions';
+import React, { FC, useState } from 'react';
 
 const SelectionSort: FC = () => {
 	const [array] = useState([7, 2, 12, 3, 44, 1, 27]);

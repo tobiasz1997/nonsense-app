@@ -1,6 +1,6 @@
-import { FC, PropsWithChildren } from 'react';
 import Footer from '@components/features/Footer/Footer';
 import HeaderFull from '@components/features/Header/HeaderFull';
+import { FC, PropsWithChildren } from 'react';
 
 const LayoutFull: FC<PropsWithChildren> = (props) => {
 	return (

@@ -1,9 +1,9 @@
+import FormCheckbox from '@components/ui/FormCheckbox';
 import { ArrowsUpDownIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { TaskType } from '@interfaces/taskType';
 import cx from 'classnames';
 import { Reorder } from 'framer-motion';
 import React, { FC } from 'react';
-import { TaskType } from '@interfaces/taskType';
-import FormCheckbox from '@components/ui/FormCheckbox';
 
 type Props = {
 	item: TaskType;
@@ -24,7 +24,10 @@ const TaskItem: FC<Props> = (props) => {
 				className="flex flex-1 cursor-pointer items-center pl-3"
 				title={props.item.task}
 			>
-				<FormCheckbox checked={props.item.done} onChange={() => props.onStatusChange(props.item.id)} />
+				<FormCheckbox
+					checked={props.item.done}
+					onChange={() => props.onStatusChange(props.item.id)}
+				/>
 				<span
 					className={cx(
 						'font-lg ml-3 w-full capitalize line-clamp-3',

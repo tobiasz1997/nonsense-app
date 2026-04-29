@@ -1,11 +1,11 @@
-import copy from 'copy-to-clipboard';
-import React, { FC, useEffect, useState } from 'react';
 import NipOptions from '@components/features/Generators/Filters/NipOptions';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
 import { useAppSelector } from '@store/store';
 import generateNip from '@utils/generators/nipGenerator';
+import copy from 'copy-to-clipboard';
+import React, { FC, useEffect, useState } from 'react';
 
 const NipGenerator: FC = () => {
 	const [value, setValue] = useState<string>('');

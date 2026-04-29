@@ -1,6 +1,6 @@
+import usePortal from '@hooks/usePortal';
 import { FC, PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
-import usePortal from '@hooks/usePortal';
 
 const Modal: FC<PropsWithChildren> = ({ children }) => {
 	const portal = usePortal();

@@ -1,4 +1,3 @@
-import React, { FC, useState } from 'react';
 import InstanceValue from '@components/features/Algorithms/Utils/InstanceValue';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import Button from '@components/ui/Button';
@@ -6,6 +5,7 @@ import CustomBox from '@components/ui/CustomBox';
 import useStringHelpers from '@hooks/useStringHelpers';
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import { calculateInsertionSort } from '@utils/algorithmsFunctions';
+import React, { FC, useState } from 'react';
 
 const InsertionSort: FC = () => {
 	const [array] = useState([4, 22, 8, 77, 3, 15, 1, 8, 2, 13, 7, 6, 5]);

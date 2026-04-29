@@ -1,7 +1,7 @@
-import { FC } from 'react';
 import Button from '@components/ui/Button';
 import Modal from '@components/ui/Modal';
 import ModalBox from '@components/ui/ModalBox';
+import { FC } from 'react';
 
 type Props = {
 	onClose: () => void;

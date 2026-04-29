@@ -1,10 +1,10 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import {
 	IDrawCardsRequest,
 	IDrawCardsResponse,
 	IShuffleCardsResponse
 } from '@interfaces/blackjackType';
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 export const shuffleCards = createAsyncThunk(
 	'shuffleCards',

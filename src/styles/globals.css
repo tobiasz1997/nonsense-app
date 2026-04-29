@@ -1,16 +1,16 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-    --color-orange: #F0A04B;
-    --color-beige: #FEFBE9;
-    --color-pistachio: #E1EEDD;
-    --color-red: #e54747;
-    --color-green: #90C661;
-    --color-green-dark: #183A1D;
-    --color-yellow-light: #fde047;
-    --color-yellow: #F6C453;
+	--color-orange: #f0a04b;
+	--color-beige: #fefbe9;
+	--color-pistachio: #e1eedd;
+	--color-red: #e54747;
+	--color-green: #90c661;
+	--color-green-dark: #183a1d;
+	--color-yellow-light: #fde047;
+	--color-yellow: #f6c453;
 }
 
 @layer components {

@@ -1,7 +1,7 @@
-import { FC } from 'react';
 import { winnerType } from '@interfaces/blackjackType';
 import { lastGameWinner } from '@store/slices/blackjack.slice';
 import { useAppSelector } from '@store/store';
+import { FC } from 'react';
 
 const GameResultPanel: FC = () => {
 	const lastWinner = useAppSelector((state) =>

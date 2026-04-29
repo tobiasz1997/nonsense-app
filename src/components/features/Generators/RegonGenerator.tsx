@@ -1,11 +1,11 @@
-import copy from 'copy-to-clipboard';
-import React, { FC, useEffect, useState } from 'react';
 import RegonOptions from '@components/features/Generators/Filters/RegonOptions';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
 import { useAppSelector } from '@store/store';
 import generateRegon from '@utils/generators/regonGenerator';
+import copy from 'copy-to-clipboard';
+import React, { FC, useEffect, useState } from 'react';
 
 const RegonGenerator: FC = () => {
 	const [value, setValue] = useState<string>('');

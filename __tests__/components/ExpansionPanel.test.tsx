@@ -1,5 +1,5 @@
-import { fireEvent, render, screen } from '@testing-library/react';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
+import { fireEvent, render, screen } from '@testing-library/react';
 
 describe('Expansion Panel', () => {
 	const label = 'Test';

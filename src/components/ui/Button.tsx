@@ -1,3 +1,4 @@
+import Spinner from '@components/ui/Spinner';
 import cx from 'classnames';
 import delay from 'delay';
 import {
@@ -8,7 +9,6 @@ import {
 	ReactElement,
 	useState
 } from 'react';
-import Spinner from '@components/ui/Spinner';
 
 type Props = {
 	size?: sizeType;

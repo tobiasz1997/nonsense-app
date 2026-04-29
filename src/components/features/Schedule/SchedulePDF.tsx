@@ -1,3 +1,4 @@
+import { ISchedule } from '@interfaces/scheduleType';
 import {
 	Document,
 	Font,
@@ -7,7 +8,6 @@ import {
 	View
 } from '@react-pdf/renderer';
 import { FC } from 'react';
-import { ISchedule } from '@interfaces/scheduleType';
 
 type Props = {
 	data: ISchedule;

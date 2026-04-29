@@ -1,6 +1,6 @@
-import { CheckIcon } from '@heroicons/react/24/solid';
 import type { Meta, StoryObj } from '@storybook/nextjs';
 import Button from '@components/ui/Button';
+import { CheckIcon } from '@heroicons/react/24/solid';
 
 const meta = {
 	title: 'Components/UI/Button',

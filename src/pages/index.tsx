@@ -1,6 +1,6 @@
-import { RocketLaunchIcon } from '@heroicons/react/20/solid';
 import { useGetJoke } from '@api/jokes.api';
 import Loader from '@components/ui/Loader';
+import { RocketLaunchIcon } from '@heroicons/react/20/solid';
 import { AppPage } from '@interfaces/appPage';
 
 const HomePage: AppPage = () => {

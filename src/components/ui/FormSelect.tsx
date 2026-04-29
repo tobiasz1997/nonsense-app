@@ -1,13 +1,13 @@
+import FormErrorMessage from '@components/ui/FormErrorMessage';
+import FormLabel from '@components/ui/FormLabel';
+import { ChevronDownIcon } from '@heroicons/react/24/solid';
+import { SelectOption } from '@interfaces/selectOption';
 import cx from 'classnames';
 import {
 	forwardRef,
 	ForwardRefRenderFunction,
 	SelectHTMLAttributes
 } from 'react';
-import FormErrorMessage from '@components/ui/FormErrorMessage';
-import FormLabel from '@components/ui/FormLabel';
-import { SelectOption } from '@interfaces/selectOption';
-import { ChevronDownIcon } from '@heroicons/react/24/solid';
 
 type Props = {
 	label?: string;
@@ -49,7 +49,6 @@ const FormSelect: ForwardRefRenderFunction<
 								{option.label}
 							</option>
 						))}
-
 					</select>
 					<ChevronDownIcon className="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-green-dark" />
 				</span>
