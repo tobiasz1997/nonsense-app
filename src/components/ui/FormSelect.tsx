@@ -30,7 +30,7 @@ const FormSelect: ForwardRefRenderFunction<
 				)}
 			>
 				<span className="relative w-full">
-					{props.label && props.label && (
+					{props.label && (
 						<span className="absolute top-1 left-3">
 							<FormLabel required={props.required}>{props.label}</FormLabel>
 						</span>
