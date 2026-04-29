@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import ModalBox from '@components/ui/ModalBox';
 
 const meta = {
@@ -28,6 +28,7 @@ const meta = {
 
 export default meta;
 export type Story = StoryObj<typeof meta>;
+// @ts-ignore
 export const Default: Story = {
 	render: () => (
 		<ModalBox onClose={() => null}>

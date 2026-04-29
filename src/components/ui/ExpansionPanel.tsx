@@ -1,8 +1,8 @@
+import Divider from '@components/ui/Divider';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import cx from 'classnames';
 import { AnimatePresence, motion } from 'framer-motion';
 import React, { FC, PropsWithChildren, useState } from 'react';
-import Divider from '@components/ui/Divider';
 
 type Props = {
 	label: string;

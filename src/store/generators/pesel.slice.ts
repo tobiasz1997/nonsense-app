@@ -2,14 +2,14 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { genderType } from '@utils/generators/peselGenerator';
 
 type peselStateType = {
-	gender: genderType;
+	gender: genderType[];
 	minYear: number;
 	maxYear: number;
 	divider: boolean;
 };
 
 const initialState: peselStateType = {
-	gender: 'female',
+	gender: ['male', 'female'],
 	minYear: 1900,
 	maxYear: new Date().getFullYear(),
 	divider: false
@@ -20,7 +20,9 @@ const peselSlice = createSlice({
 	initialState: initialState,
 	reducers: {
 		changePeselGender(state, action: PayloadAction<genderType>) {
-			state.gender = action.payload;
+			state.gender = state.gender.includes(action.payload)
+				? state.gender.filter((x) => x !== action.payload)
+				: [...state.gender, action.payload];
 		},
 		changePeselMinYear(state, action: PayloadAction<number>) {
 			if (state.maxYear >= action.payload) {

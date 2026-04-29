@@ -1,6 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--color-orange: #f0a04b;
+	--color-beige: #fefbe9;
+	--color-pistachio: #e1eedd;
+	--color-red: #e54747;
+	--color-green: #90c661;
+	--color-green-dark: #183a1d;
+	--color-yellow-light: #fde047;
+	--color-yellow: #f6c453;
+}
 
 @layer components {
 	.na-p-page {

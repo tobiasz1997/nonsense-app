@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/nextjs';
 import HeaderFull from '@components/features/Header/HeaderFull';
 
 const meta = {

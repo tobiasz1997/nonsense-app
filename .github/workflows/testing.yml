@@ -13,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 18.x ]
+        node-version: [ 24.x ]
 
     steps:
       - uses: actions/checkout@v3
@@ -23,9 +23,11 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Run npm Install
         run: npm ci
-      - name: Run npm ESLint
+      - name: Run npm lint
         run: npm run lint
-      - name: Run prettier
-        run: npm run format
+      - name: Run formatting
+        run: npm run format:check
+      - name: Run Typecheck
+        run: npm run typecheck
       - name: Run tests
         run: npm run test

@@ -1,4 +1,3 @@
-import { useRef, useState } from 'react';
 import { drawCards, shuffleCards } from '@api/deck-of-cards.api';
 import BetPanel, {
 	BetPanelPropsRef
@@ -26,6 +25,7 @@ import {
 	setUserData
 } from '@store/slices/blackjack.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
+import { useRef, useState } from 'react';
 
 const BlackJackPage: AppPage = () => {
 	const betPanelRef = useRef<BetPanelPropsRef>(null);

@@ -1,3 +1,4 @@
+import Spinner from '@components/ui/Spinner';
 import cx from 'classnames';
 import delay from 'delay';
 import {
@@ -8,7 +9,6 @@ import {
 	ReactElement,
 	useState
 } from 'react';
-import Spinner from '@components/ui/Spinner';
 
 type Props = {
 	size?: sizeType;
@@ -35,13 +35,13 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 		primary:
 			'text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold',
 		secondary:
-			'text-green-dark bg-pistachio hover:bg-pistachio/[0.7] hover:shadow-xl focus:ring-green font-bold',
+			'text-green-dark bg-pistachio hover:bg-pistachio/70 hover:shadow-xl focus:ring-green font-bold',
 		tertiary:
-			'text-black bg-orange hover:bg-orange/[0.7] hover:shadow-xl focus:ring-yellow-light font-bold',
+			'text-black bg-orange hover:bg-orange/70 hover:shadow-xl focus:ring-yellow-light font-bold',
 		quaternary:
-			'text-green-dark bg-yellow hover:bg-yellow/[.7] hover:shadow-xl focus:ring-orange font-bold',
+			'text-green-dark bg-yellow hover:bg-yellow/70 hover:shadow-xl focus:ring-orange font-bold',
 		delete:
-			'text-white bg-red hover:bg-red/[.7] hover:shadow-xl focus:ring-orange font-bold'
+			'text-white bg-red hover:bg-red/70 hover:shadow-xl focus:ring-orange font-bold'
 	};
 
 	const getIsPromise = (res: any) => res && typeof res.then === 'function';
@@ -89,7 +89,7 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 							<>
 								<span className="flex shrink-0 items-center justify-center fill-current">
 									{cloneElement(
-										props.icon,
+										props.icon as React.ReactElement<{ className?: string }>,
 										{
 											className: cx(iconSizes[props.size ?? 'default'])
 										},

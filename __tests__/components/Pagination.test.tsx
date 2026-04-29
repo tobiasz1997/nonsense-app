@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import Pagination from '@components/ui/Pagination';
+import { render, screen } from '@testing-library/react';
 
 describe('Pagination', () => {
 	const page = 1;

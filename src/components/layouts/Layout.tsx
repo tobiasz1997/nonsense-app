@@ -1,10 +1,10 @@
-import Head from 'next/head';
-import { usePathname } from 'next/navigation';
-import { FC, PropsWithChildren, useMemo } from 'react';
 import LayoutFull from '@components/layouts/LayoutFull';
 import LayoutMinimal from '@components/layouts/LayoutMinimal';
 import { LayoutType } from '@interfaces/layoutType';
 import { appRoutes } from '@routes/app.routes';
+import Head from 'next/head';
+import { usePathname } from 'next/navigation';
+import { FC, PropsWithChildren, useMemo } from 'react';
 
 type Props = {
 	layoutType?: LayoutType;
@@ -30,7 +30,7 @@ const Layout: FC<PropsWithChildren<Props>> = (props) => {
 	return (
 		<>
 			<Head>
-				<title>Nonsense App - {pageTitle}</title>
+				<title>{`Nonsense App - ${pageTitle}`}</title>
 			</Head>
 			{layout()}
 		</>

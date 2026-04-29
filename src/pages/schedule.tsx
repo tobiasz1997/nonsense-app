@@ -1,6 +1,3 @@
-import { PDFDownloadLink } from '@react-pdf/renderer';
-import * as React from 'react';
-import { useReducer } from 'react';
 import ScheduleDatesForm from '@components/features/Schedule/ScheduleDatesForm';
 import ScheduleForm from '@components/features/Schedule/ScheduleForm';
 import SchedulePDF from '@components/features/Schedule/SchedulePDF';
@@ -14,6 +11,9 @@ import {
 	IScheduleDatesForm,
 	IScheduleForm
 } from '@interfaces/scheduleType';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import * as React from 'react';
+import { useReducer } from 'react';
 
 type scheduleActions = {
 	type: 'scheduleFormSubmit' | 'scheduleDatesFormSubmit' | 'closeDownloadModal';
@@ -147,6 +147,7 @@ const SchedulePage: AppPage = () => {
 									loading ? (
 										<Loader />
 									) : (
+										// TODO: link button reusable component
 										<div className="p-3 h-12 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold">
 											Download PDF
 										</div>

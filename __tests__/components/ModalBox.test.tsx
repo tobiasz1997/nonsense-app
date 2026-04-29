@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import ModalBox from '@components/ui/ModalBox';
+import { render, screen } from '@testing-library/react';
 
 describe('Modal Box', () => {
 	const content = 'content';

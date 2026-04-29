@@ -1,8 +1,8 @@
-import { ChangeEvent, FC } from 'react';
 import OptionTitle from '@components/features/Generators/Filters/OptionTitle';
 import FormCheckbox from '@components/ui/FormCheckbox';
 import { setNipDivider } from '@store/generators/nip.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
+import { ChangeEvent, FC } from 'react';
 
 const NipOptions: FC = () => {
 	const isDivider = useAppSelector((state) => state.nipSlice.divider);

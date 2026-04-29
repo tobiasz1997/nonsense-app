@@ -1,6 +1,6 @@
+import Button from '@components/ui/Button';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { FC, PropsWithChildren } from 'react';
-import Button from '@components/ui/Button';
 
 type Props = {
 	onClose: () => void;
@@ -8,7 +8,7 @@ type Props = {
 
 const ModalBox: FC<Props & PropsWithChildren> = (props) => {
 	return (
-		<div className="m-3 w-full max-w-screen-sm">
+		<div className="m-3 w-full max-w-(--breakpoint-sm)">
 			<div className="relative rounded-xl bg-pistachio dark:bg-gray-500 p-5 dark:border dark:border-gray-700">
 				<div className="absolute top-3 right-3">
 					<Button

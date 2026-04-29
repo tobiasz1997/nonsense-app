@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { createSelector } from 'reselect';
 import { getUsers } from '@api/users.api';
 import { IUser } from '@interfaces/IUser';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
 
 type usersStateType = {
 	users: IUser[];

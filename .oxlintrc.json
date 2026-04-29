@@ -1,0 +1,32 @@
+{
+	"$schema": "./node_modules/oxlint/configuration_schema.json",
+	"env": {
+		"browser": true,
+		"node": true,
+		"es2024": true
+	},
+	"plugins": ["react", "nextjs", "import", "jsx-a11y"],
+	"rules": {
+		"no-console": [
+			"warn",
+			{
+				"allow": ["warn", "error"]
+			}
+		],
+		"nextjs/no-img-element": "off",
+		"no-unused-expressions": "off",
+		"unicorn/no-useless-spread": "off",
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn",
+		"react/jsx-no-comment-textnodes": "off"
+	},
+	"ignorePatterns": [
+		".next",
+		"out",
+		"dist",
+		"build",
+		"coverage",
+		"node_modules",
+		"next-env.d.ts"
+	]
+}

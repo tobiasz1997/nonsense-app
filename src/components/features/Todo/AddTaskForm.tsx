@@ -1,9 +1,9 @@
-import { FC } from 'react';
-import { useForm } from 'react-hook-form';
 import Button from '@components/ui/Button';
 import FormInput from '@components/ui/FormInput';
 import { TaskFormType } from '@interfaces/taskFormType';
 import { validateRequired } from '@utils/validators';
+import { FC } from 'react';
+import { useForm } from 'react-hook-form';
 
 type Props = {
 	onSubmit: (payload: TaskFormType) => void;
@@ -19,9 +19,7 @@ const AddTaskForm: FC<Props> = (props) => {
 	return (
 		<form className="mt-5" noValidate onSubmit={handleSubmit(props.onSubmit)}>
 			<FormInput
-				{...register('task', {
-					...validateRequired()
-				})}
+				{...register('task', { ...validateRequired() })}
 				placeholder={'Go to shop'}
 				error={errors.task?.message}
 			/>

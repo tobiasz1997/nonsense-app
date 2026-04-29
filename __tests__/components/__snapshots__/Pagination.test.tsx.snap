@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Pagination should render without crashing 1`] = `
 <div>
@@ -125,13 +125,13 @@ exports[`Pagination should render without crashing 1`] = `
     >
       <div>
         <label
-          class="flex cursor-pointer items-center overflow-hidden rounded border focus-within:ring-4 border-green-dark text-green-dark focus-within:ring-yellow"
+          class="flex h-12 cursor-pointer bg-white items-center overflow-hidden rounded border focus-within:ring-4 border-green-dark text-green-dark focus-within:ring-yellow"
         >
           <span
             class="relative w-full"
           >
             <select
-              class="h-12 w-full border-none pr-10 focus:outline-none focus:ring-0 disabled:opacity-50 p-2"
+              class="w-full appearance-none border-none focus:outline-none focus:ring-0 disabled:opacity-50 p-3 pr-10"
               options="[object Object],[object Object]"
             >
               <option
@@ -145,6 +145,20 @@ exports[`Pagination should render without crashing 1`] = `
                 2
               </option>
             </select>
+            <svg
+              aria-hidden="true"
+              class="pointer-events-none absolute right-3 top-1/2 h-5 w-5 -translate-y-1/2 text-green-dark"
+              data-slot="icon"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M12.53 16.28a.75.75 0 0 1-1.06 0l-7.5-7.5a.75.75 0 0 1 1.06-1.06L12 14.69l6.97-6.97a.75.75 0 1 1 1.06 1.06l-7.5 7.5Z"
+                fill-rule="evenodd"
+              />
+            </svg>
           </span>
         </label>
       </div>

@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import CustomBox from '@components/ui/CustomBox';
+import { render, screen } from '@testing-library/react';
 
 describe('Custom Box', () => {
 	const title = 'Test Title';

@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 
 type Props = {
 	title: string;
-	icon: JSX.Element;
+	icon: React.JSX.Element;
 	isActive?: boolean;
 };
 
@@ -15,7 +15,7 @@ const HeaderNavLink: FC<Props & LinkProps> = (props) => {
 			href={props.href}
 			title={props.title}
 			className={classNames(
-				'flex items-center space-x-2 p-2 px-6 transition',
+				'flex items-center space-x-2 p-2 px-6 transition rounded focus-visible:ring-green focus-visible:ring-2 focus-visible:outline-none',
 				props.isActive
 					? 'bg-opacity-10 text-yellow'
 					: 'text-orange text-opacity-80 hover:text-yellow'

@@ -13,43 +13,44 @@
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
-    "baseUrl": "./src/",
-    "types": ["@testing-library/jest-dom"],
+    "types": [
+      "@testing-library/jest-dom"
+    ],
     "paths": {
       "@api/*": [
-        "api/*"
+        "./src/api/*"
       ],
       "@components/*": [
-        "components/*"
+        "./src/components/*"
       ],
       "@hooks/*": [
-        "hooks/*"
+        "./src/hooks/*"
       ],
       "@interfaces/*": [
-        "interfaces/*"
+        "./src/interfaces/*"
       ],
       "@pages/*": [
-        "pages/*"
+        "./src/pages/*"
       ],
       "@providers/*": [
-        "providers/*"
+        "./src/providers/*"
       ],
       "@routes/*": [
-        "routes/*"
+        "./src/routes/*"
       ],
       "@store/*": [
-        "store/*"
+        "./src/store/*"
       ],
       "@styles/*": [
-        "styles/*"
+        "./src/styles/*"
       ],
       "@utils/*": [
-        "utils/*"
+        "./src/utils/*"
       ]
     }
   },

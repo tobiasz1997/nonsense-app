@@ -1,8 +1,8 @@
-import { FC } from 'react';
-import { useForm } from 'react-hook-form';
 import Button from '@components/ui/Button';
 import FormInput from '@components/ui/FormInput';
 import { validateInputWithNumbers } from '@utils/validators';
+import { FC } from 'react';
+import { useForm } from 'react-hook-form';
 
 type Props = {
 	onSubmit: (payload: number) => void;
@@ -25,9 +25,7 @@ const InputNumberForm: FC<Props> = (props) => {
 		>
 			<fieldset className="flex-1">
 				<FormInput
-					{...register('value', {
-						...validateInputWithNumbers()
-					})}
+					{...register('value', validateInputWithNumbers())}
 					placeholder={'2'}
 					error={errors.value?.message}
 				/>

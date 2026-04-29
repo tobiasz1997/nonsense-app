@@ -1,13 +1,10 @@
-import { PlusIcon } from '@heroicons/react/24/solid';
-import { Reorder } from 'framer-motion';
-import React, { FC, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 import AddTaskForm from '@components/features/Todo/AddTaskForm';
 import TaskItem from '@components/features/Todo/TaskItem';
 import Button from '@components/ui/Button';
 import FormSelect from '@components/ui/FormSelect';
 import Modal from '@components/ui/Modal';
 import ModalBox from '@components/ui/ModalBox';
+import { PlusIcon } from '@heroicons/react/24/solid';
 import { SelectOption } from '@interfaces/selectOption';
 import { TaskFormType } from '@interfaces/taskFormType';
 import { todoListSortByOptions } from '@interfaces/todoListSortByOptions';
@@ -19,6 +16,9 @@ import {
 	sortTasks
 } from '@store/slices/tasks.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
+import { Reorder } from 'framer-motion';
+import React, { FC, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const TodoList: FC = () => {
 	const [isAddTaskModalVisible, setIsAddTaskModalVisible] = useState(false);

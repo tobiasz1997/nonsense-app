@@ -1,6 +1,6 @@
+import useIsMobile from '@hooks/useIsMobile';
 import Image from 'next/image';
 import { FC } from 'react';
-import useIsMobile from '@hooks/useIsMobile';
 
 type Props = {
 	src?: string;

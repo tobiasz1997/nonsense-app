@@ -1,9 +1,9 @@
-import React from 'react';
 import BinarySearch from '@components/features/Algorithms/BinarySearch';
 import Fibonacci from '@components/features/Algorithms/Fibonacci';
 import InsertionSort from '@components/features/Algorithms/InsertionSort';
 import SelectionSort from '@components/features/Algorithms/SelectionSort';
 import { AppPage } from '@interfaces/appPage';
+import React from 'react';
 
 const AlgorithmsPage: AppPage = () => {
 	return (

@@ -1,12 +1,12 @@
-import Link from 'next/link';
-import { useEffect } from 'react';
 import { getUsers } from '@api/users.api';
 import Pagination from '@components/ui/Pagination';
 import useNumberHelper from '@hooks/useNumberHelper';
-import { IUser } from '@interfaces/IUser';
 import { AppPage } from '@interfaces/appPage';
+import { IUser } from '@interfaces/IUser';
 import { filteredData, setPage } from '@store/slices/users.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
+import Link from 'next/link';
+import { useEffect } from 'react';
 
 const UsersPage: AppPage = () => {
 	const users = useAppSelector(

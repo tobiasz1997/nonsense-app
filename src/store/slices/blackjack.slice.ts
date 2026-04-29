@@ -1,7 +1,7 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { createSelector } from 'reselect';
 import { drawCards, shuffleCards } from '@api/deck-of-cards.api';
 import { IGameData, IGamesStats } from '@interfaces/blackjackType';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector } from 'reselect';
 
 type blackjackStateType = {
 	userData: IGameData;
@@ -54,7 +54,7 @@ const blackjackSlice = createSlice({
 		},
 		setGameStats: (state, action: PayloadAction<IGamesStats>) => {
 			state.userData.coins = state.userData.coins + action.payload.coinsBalance;
-			state.gameStats.push(action.payload);
+			state.gameStats.unshift(action.payload);
 		},
 		setPlayerCoins: (state, action: PayloadAction<number>) => {
 			state.userData.coins = state.userData.coins + action.payload;

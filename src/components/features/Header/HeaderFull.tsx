@@ -1,3 +1,7 @@
+import HeaderMobileNav from '@components/features/Header/HeaderMobileNav';
+import HeaderNavLink from '@components/features/Header/HeaderNavLink';
+import ThemePanel from '@components/features/Header/ThemePanel';
+import Button from '@components/ui/Button';
 import { Bars3BottomRightIcon } from '@heroicons/react/20/solid';
 import {
 	CalculatorIcon,
@@ -9,15 +13,11 @@ import {
 	PuzzlePieceIcon,
 	UserIcon
 } from '@heroicons/react/24/outline';
-import { useRouter } from 'next/router';
-import { FC, useEffect, useState } from 'react';
-import HeaderMobileNav from '@components/features/Header/HeaderMobileNav';
-import HeaderNavLink from '@components/features/Header/HeaderNavLink';
-import ThemePanel from '@components/features/Header/ThemePanel';
-import Button from '@components/ui/Button';
 import useActivePage from '@hooks/useActivePage';
 import { NavLinksType } from '@interfaces/navLinksType';
 import { appRoutes } from '@routes/app.routes';
+import { useRouter } from 'next/router';
+import { FC, useEffect, useState } from 'react';
 
 const HeaderFull: FC = () => {
 	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -59,8 +59,8 @@ const HeaderFull: FC = () => {
 					/>
 				)}
 			</header>
-			<header className="sticky top-0 z-50 hidden md:block">
-				<nav className="flex h-full w-full justify-center bg-green-dark">
+			<div className="sticky top-0 z-50 hidden md:block">
+				<nav className="flex flex-wrap h-full w-full justify-center bg-green-dark">
 					{navLinks.map((link, index) => (
 						<HeaderNavLink
 							key={index}
@@ -71,7 +71,7 @@ const HeaderFull: FC = () => {
 						/>
 					))}
 				</nav>
-			</header>
+			</div>
 		</>
 	);
 };

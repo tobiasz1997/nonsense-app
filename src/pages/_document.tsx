@@ -18,6 +18,7 @@ export default function Document() {
 					href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;700&display=swap"
 					rel="stylesheet"
 				/>
+				<link rel="icon" type="image/svg+xml" href="/logo.svg" />
 			</Head>
 			<body>
 				<Main />

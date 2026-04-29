@@ -1,3 +1,4 @@
+import useLocalStorage from '@hooks/useLocalStorage';
 import {
 	createContext,
 	FC,
@@ -7,7 +8,6 @@ import {
 	useEffect,
 	useState
 } from 'react';
-import useLocalStorage from '@hooks/useLocalStorage';
 
 type ThemeType = 'light' | 'dark';
 type ThemeContext = {

@@ -1,11 +1,11 @@
+import FormErrorMessage from '@components/ui/FormErrorMessage';
+import FormLabel from '@components/ui/FormLabel';
 import cx from 'classnames';
 import {
 	forwardRef,
 	ForwardRefRenderFunction,
 	InputHTMLAttributes
 } from 'react';
-import FormErrorMessage from '@components/ui/FormErrorMessage';
-import FormLabel from '@components/ui/FormLabel';
 
 export type InputProps = {
 	label?: string;
@@ -31,10 +31,11 @@ const FormInput: ForwardRefRenderFunction<
 		<div>
 			<label
 				className={cx(
-					'flex cursor-pointer items-center overflow-hidden rounded border focus-within:ring-4',
+					'flex cursor-pointer bg-white items-center overflow-hidden rounded border focus-within:ring-4',
 					props.error
 						? 'border-red text-red focus-within:ring-red/10'
-						: 'border-green-dark text-green-dark focus-within:ring-yellow'
+						: 'border-green-dark text-green-dark focus-within:ring-yellow',
+					sizes[props.dimension ?? 'default']
 				)}
 			>
 				<span className="relative w-full">
@@ -53,8 +54,7 @@ const FormInput: ForwardRefRenderFunction<
 						ref={ref}
 						className={cx(
 							'w-full border-none focus:outline-none focus:ring-0 disabled:opacity-50',
-							props.label ? 'px-3 pb-2 pt-4' : 'p-2',
-							sizes[props.dimension ?? 'default']
+							props.label ? 'px-3 pb-2 pt-4' : 'p-3'
 						)}
 					/>
 				</span>

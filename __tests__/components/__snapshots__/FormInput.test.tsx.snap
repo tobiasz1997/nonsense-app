@@ -1,16 +1,16 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Form Input should render without crashing 1`] = `
 <div>
   <div>
     <label
-      class="flex cursor-pointer items-center overflow-hidden rounded border focus-within:ring-4 border-green-dark text-green-dark focus-within:ring-yellow"
+      class="flex cursor-pointer bg-white items-center overflow-hidden rounded border focus-within:ring-4 border-green-dark text-green-dark focus-within:ring-yellow h-12"
     >
       <span
         class="relative w-full"
       >
         <input
-          class="w-full border-none focus:outline-none focus:ring-0 disabled:opacity-50 p-2 h-12"
+          class="w-full border-none focus:outline-none focus:ring-0 disabled:opacity-50 p-3"
         />
       </span>
     </label>

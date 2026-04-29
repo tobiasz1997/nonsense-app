@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import FormSelect from '@components/ui/FormSelect';
 import { SelectOption } from '@interfaces/selectOption';
+import { render } from '@testing-library/react';
 
 describe('Form Select', () => {
 	const setup = () => {

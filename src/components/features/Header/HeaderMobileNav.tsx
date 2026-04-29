@@ -1,11 +1,11 @@
-import { XMarkIcon } from '@heroicons/react/24/outline';
-import { FC, useEffect } from 'react';
-import { createPortal } from 'react-dom';
 import HeaderNavLink from '@components/features/Header/HeaderNavLink';
 import Button from '@components/ui/Button';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import useActivePage from '@hooks/useActivePage';
 import usePortal from '@hooks/usePortal';
 import { NavLinksType } from '@interfaces/navLinksType';
+import { FC, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 
 type Props = {
 	navLinks: NavLinksType;

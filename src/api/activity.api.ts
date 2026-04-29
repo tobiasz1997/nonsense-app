@@ -1,5 +1,5 @@
-import useSWR, { SWRConfiguration, SWRResponse } from 'swr';
 import { fetcher } from '@utils/fetcher';
+import useSWR, { SWRConfiguration, SWRResponse } from 'swr';
 
 export interface IActivity {
 	activity: string;

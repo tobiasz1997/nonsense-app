@@ -1,5 +1,5 @@
-import { render, screen } from '@testing-library/react';
 import FormLabel from '@components/ui/FormLabel';
+import { render, screen } from '@testing-library/react';
 
 describe('Form Label', () => {
 	const content = '@#$%^&*()qwerty';

@@ -4,11 +4,12 @@ import {
 	forwardRef,
 	ForwardRefRenderFunction,
 	InputHTMLAttributes,
-	ReactElement
+	ReactElement,
+	SVGProps
 } from 'react';
 
 type Props = {
-	icon: ReactElement;
+	icon: ReactElement<SVGProps<SVGSVGElement>>;
 	styles: string;
 };
 
