@@ -25,9 +25,7 @@ const InputNumberForm: FC<Props> = (props) => {
 		>
 			<fieldset className="flex-1">
 				<FormInput
-					{...register('value', {
-						...validateInputWithNumbers()
-					})}
+					{...register('value', validateInputWithNumbers())}
 					placeholder={'2'}
 					error={errors.value?.message}
 				/>

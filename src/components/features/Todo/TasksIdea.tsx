@@ -18,7 +18,7 @@ type Props = {};
 const TasksIdea: FC<Props> = () => {
 	const { data, isLoading } = useGetActivity();
 
-	const getIcon = (type: string): ReactElement => {
+	const getIcon = (type: string): ReactElement<{ className?: string }> => {
 		switch (type) {
 			case 'education':
 				return <AcademicCapIcon />;

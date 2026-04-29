@@ -1,11 +1,17 @@
-import { Message, RegisterOptions, ValidationRule } from 'react-hook-form';
+import {
+	FieldValues,
+	Message,
+	RegisterOptions,
+	ValidationRule,
+	Path
+} from 'react-hook-form';
 
 export const numberRegex = /^\d+$/;
 
-export const validateRequired = (
+export const validateRequired = <FV extends FieldValues, FN extends Path<FV>>(
 	message: string = 'Required field',
 	condition?: boolean
-): RegisterOptions => {
+): RegisterOptions<FV, FN> => {
 	return {
 		required: {
 			value: condition ?? true,
@@ -14,7 +20,10 @@ export const validateRequired = (
 	};
 };
 
-export const validateInputWithNumbers = (): RegisterOptions => {
+export const validateInputWithNumbers = <
+	FV extends FieldValues,
+	FN extends Path<FV>
+>(): RegisterOptions<FV, FN> => {
 	return {
 		required: {
 			value: true,

@@ -109,7 +109,10 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 								<td className="p-1 md:p-3">
 									<FormInput
 										{...register(`plans.${idx}.project`, {
-											...validateRequired(),
+											...validateRequired<
+												IScheduleDatesForm,
+												`plans.${number}.hours`
+											>(),
 											onChange: (x) => handleProjectChange(x, idx, 'project')
 										})}
 										error={errors.plans?.[idx]?.project?.message}
@@ -120,7 +123,10 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 								<td className="p-1 md:p-3">
 									<FormInput
 										{...register(`plans.${idx}.hours`, {
-											...validateInputWithNumbers(),
+											...validateInputWithNumbers<
+												IScheduleDatesForm,
+												`plans.${number}.hours`
+											>(),
 											onChange: (x) => handleProjectChange(x, idx, 'hours')
 										})}
 										error={errors.plans?.[idx]?.hours?.message}

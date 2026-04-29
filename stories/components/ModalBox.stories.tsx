@@ -28,6 +28,7 @@ const meta = {
 
 export default meta;
 export type Story = StoryObj<typeof meta>;
+// @ts-ignore
 export const Default: Story = {
 	render: () => (
 		<ModalBox onClose={() => null}>

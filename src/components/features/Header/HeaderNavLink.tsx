@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 
 type Props = {
 	title: string;
-	icon: JSX.Element;
+	icon: React.JSX.Element;
 	isActive?: boolean;
 };
 

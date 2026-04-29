@@ -89,7 +89,7 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 							<>
 								<span className="flex shrink-0 items-center justify-center fill-current">
 									{cloneElement(
-										props.icon,
+										props.icon as React.ReactElement<{ className?: string }>,
 										{
 											className: cx(iconSizes[props.size ?? 'default'])
 										},
