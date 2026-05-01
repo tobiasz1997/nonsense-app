@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+import arraySlice from '@store/generators/array.slice';
 import nipSlice from '@store/generators/nip.slice';
 import peselSlice from '@store/generators/pesel.slice';
 import regonSlice from '@store/generators/regon.slice';
@@ -15,7 +16,8 @@ const store = configureStore({
 		blackjackSlice,
 		regonSlice,
 		peselSlice,
-		nipSlice
+		nipSlice,
+		arraySlice
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({ serializableCheck: false }).concat(loggerMiddleware)
