@@ -41,4 +41,14 @@
 	.na-sample {
 		@apply text-yellow;
 	}
+
+	.na-background {
+		@apply bg-beige dark:bg-zinc-700;
+	}
+}
+
+@layer base {
+	body {
+		@apply bg-beige dark:bg-zinc-700;
+	}
 }

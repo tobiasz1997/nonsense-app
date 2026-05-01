@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 
 type Props = {
 	onSubmit: (payload: number) => void;
+	submitButtonLabel?: string;
+	invalidParentData?: boolean;
 };
 
 const InputNumberForm: FC<Props> = (props) => {
@@ -31,7 +33,13 @@ const InputNumberForm: FC<Props> = (props) => {
 				/>
 			</fieldset>
 			<div>
-				<Button>Submit</Button>
+				<Button
+					disabled={
+						Boolean(props.invalidParentData) ? props.invalidParentData : false
+					}
+				>
+					{props.submitButtonLabel ?? 'Submit'}
+				</Button>
 			</div>
 		</form>
 	);

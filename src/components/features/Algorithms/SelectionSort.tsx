@@ -1,14 +1,16 @@
+import ArrayOfNumbersForm from '@components/features/Algorithms/Utils/ArrayOfNumbersForm';
 import InstanceValue from '@components/features/Algorithms/Utils/InstanceValue';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
+import Divider from '@components/ui/Divider';
 import useStringHelpers from '@hooks/useStringHelpers';
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import { calculateSelectionSort } from '@utils/algorithmsFunctions';
 import React, { FC, useState } from 'react';
 
 const SelectionSort: FC = () => {
-	const [array] = useState([7, 2, 12, 3, 44, 1, 27]);
+	const [array, setArray] = useState([7, 2, 12, 3, 44, 1, 27]);
 	const [value, setValue] = useState<CalculationResultType<Array<number>>>();
 
 	const { convertArrayToString } = useStringHelpers();
@@ -46,8 +48,16 @@ const SelectionSort: FC = () => {
 				</code>
 				<div className="flex flex-col justify-center space-y-5">
 					<InstanceValue value={convertArrayToString(array)} />
-					<Button onClick={() => setValue(calculateSelectionSort(array))}>
-						Calculate
+					<ArrayOfNumbersForm
+						initialValue={array}
+						onSubmit={(numbers) => setArray(numbers)}
+					/>
+					<Divider />
+					<Button
+						disabled={array.length === 0}
+						onClick={() => setValue(calculateSelectionSort(array))}
+					>
+						Sort
 					</Button>
 					<OutputValue
 						result={convertArrayToString(value?.result)}

@@ -54,7 +54,7 @@ export const calculateBinarySearch = (
 
 		if (input[middleIndex] === target) {
 			return {
-				result: `Target value ${target} is exist in ${middleIndex} index in array.`
+				result: `Target value ${target} is exist at ${middleIndex} index in array.`
 			};
 		} else if (input[middleIndex] < target) {
 			startIndex = middleIndex + 1;
