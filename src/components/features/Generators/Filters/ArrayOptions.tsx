@@ -3,12 +3,12 @@ import FormCheckbox from '@components/ui/FormCheckbox';
 import FormInput from '@components/ui/FormInput';
 import {
 	initialArraySlicerState,
-	setCount,
-	setMaxValue,
-	setMinValue,
-	setOrderType,
-	setResultType,
-	setSorted
+	setArrayCount,
+	setArrayMaxValue,
+	setArrayMinValue,
+	setArrayOrderType,
+	setArrayResultType,
+	setArraySorted
 } from '@store/generators/array.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { orderType, resultType } from '@utils/generators/arrayGenerator';
@@ -53,7 +53,7 @@ const ArrayOptions: FC = () => {
 			return;
 		} else {
 			setCountError('');
-			dispatch(setCount(numberValue));
+			dispatch(setArrayCount(numberValue));
 		}
 	};
 
@@ -75,7 +75,7 @@ const ArrayOptions: FC = () => {
 			return;
 		} else {
 			setMinError('');
-			dispatch(setMinValue(numberValue));
+			dispatch(setArrayMinValue(numberValue));
 		}
 	};
 
@@ -98,7 +98,7 @@ const ArrayOptions: FC = () => {
 			return;
 		} else {
 			setMaxError('');
-			dispatch(setMaxValue(numberValue));
+			dispatch(setArrayMaxValue(numberValue));
 		}
 	};
 
@@ -126,21 +126,21 @@ const ArrayOptions: FC = () => {
 				false
 			);
 		}
-		dispatch(setOrderType(value));
+		dispatch(setArrayOrderType(value));
 	};
 
 	const handleResultTypeChange = (event: ChangeEvent<HTMLInputElement>) => {
-		dispatch(setResultType(event.target.value as resultType));
+		dispatch(setArrayResultType(event.target.value as resultType));
 	};
 
 	const handleSortedChange = (event: ChangeEvent<HTMLInputElement>) => {
-		dispatch(setSorted(event.target.value === 'true'));
+		dispatch(setArraySorted(event.target.value === 'true'));
 	};
 
 	return (
 		<section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Number of values in array" />
+				<OptionTitle title="Length" />
 				<FormInput
 					type="number"
 					defaultValue={count}
@@ -149,7 +149,7 @@ const ArrayOptions: FC = () => {
 				/>
 			</div>
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Values range" />
+				<OptionTitle title="Range" />
 				<FormInput
 					type="number"
 					label={'Minimum'}
@@ -168,7 +168,7 @@ const ArrayOptions: FC = () => {
 				/>
 			</div>
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Order Type" />
+				<OptionTitle title="Order" />
 				<FormCheckbox
 					checked={orderType === 'random'}
 					value="random"

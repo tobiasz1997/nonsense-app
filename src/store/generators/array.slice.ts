@@ -23,33 +23,33 @@ const arraySlice = createSlice({
 	name: 'array',
 	initialState: initialArraySlicerState,
 	reducers: {
-		setCount(state, action: PayloadAction<number>) {
+		setArrayCount(state, action: PayloadAction<number>) {
 			state.count = action.payload;
 		},
-		setMinValue(state, action: PayloadAction<number>) {
+		setArrayMinValue(state, action: PayloadAction<number>) {
 			state.min = action.payload;
 		},
-		setMaxValue(state, action: PayloadAction<number>) {
+		setArrayMaxValue(state, action: PayloadAction<number>) {
 			state.max = action.payload;
 		},
-		setOrderType(state, action: PayloadAction<orderType>) {
+		setArrayOrderType(state, action: PayloadAction<orderType>) {
 			state.orderType = action.payload;
 		},
-		setSorted(state, action: PayloadAction<boolean>) {
+		setArraySorted(state, action: PayloadAction<boolean>) {
 			state.sorted = action.payload;
 		},
-		setResultType(state, action: PayloadAction<resultType>) {
+		setArrayResultType(state, action: PayloadAction<resultType>) {
 			state.resultType = action.payload;
 		}
 	}
 });
 
 export const {
-	setCount,
-	setMinValue,
-	setMaxValue,
-	setOrderType,
-	setSorted,
-	setResultType
+	setArrayCount,
+	setArrayMinValue,
+	setArrayMaxValue,
+	setArrayOrderType,
+	setArraySorted,
+	setArrayResultType
 } = arraySlice.actions;
 export default arraySlice.reducer;

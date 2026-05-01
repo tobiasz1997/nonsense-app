@@ -35,7 +35,7 @@ const ArrayGenerator: FC = () => {
 	return (
 		<CustomBox title="Array Generator">
 			<div className="grid gap-5 sm:grid-cols-2">
-				<p className="dark:selection:text-center wrap-break-word text-xl font-bold text-green-dark selection:bg-green-dark selection:text-pistachio dark:text-pistachio dark:selection:bg-orange dark:selection:text-green-dark sm:text-3xl">
+				<p className="na-generate-result">
 					{value}
 				</p>
 				<div className="flex gap-3">

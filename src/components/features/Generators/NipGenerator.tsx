@@ -9,7 +9,7 @@ import React, { FC, useEffect, useState } from 'react';
 
 const NipGenerator: FC = () => {
 	const [value, setValue] = useState<string>('');
-	const peselOptions = useAppSelector((state) => state.nipSlice);
+	const nipOptions = useAppSelector((state) => state.nipSlice);
 
 	useEffect(() => {
 		handleGenerateNip();
@@ -17,7 +17,7 @@ const NipGenerator: FC = () => {
 	}, []);
 
 	const handleGenerateNip = () => {
-		const result = generateNip(peselOptions.divider);
+		const result = generateNip(nipOptions.divider);
 		setValue(result?.result ?? '');
 	};
 
@@ -28,7 +28,7 @@ const NipGenerator: FC = () => {
 	return (
 		<CustomBox title="NIP Generator">
 			<div className="grid gap-5 sm:grid-cols-2">
-				<p className="dark:selection: text-center text-xl font-bold text-green-dark selection:bg-green-dark selection:text-pistachio dark:text-pistachio dark:selection:bg-orange dark:selection:text-green-dark sm:text-3xl">
+				<p className="na-generate-result">
 					{value}
 				</p>
 				<div className="flex gap-3">

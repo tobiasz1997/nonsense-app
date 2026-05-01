@@ -2,6 +2,7 @@ import ArrayGenerator from '@components/features/Generators/ArrayGenerator';
 import NipGenerator from '@components/features/Generators/NipGenerator';
 import PeselGenerator from '@components/features/Generators/PeselGenerator';
 import RegonGenerator from '@components/features/Generators/RegonGenerator';
+import StringGenerator from '@components/features/Generators/StringGenerator';
 import { AppPage } from '@interfaces/appPage';
 
 const GeneratorsPage: AppPage = () => {
@@ -13,6 +14,7 @@ const GeneratorsPage: AppPage = () => {
 			<NipGenerator />
 			<RegonGenerator />
 			<ArrayGenerator />
+			<StringGenerator />
 		</div>
 	);
 };
