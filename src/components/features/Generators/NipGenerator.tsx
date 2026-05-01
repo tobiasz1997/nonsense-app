@@ -28,9 +28,7 @@ const NipGenerator: FC = () => {
 	return (
 		<CustomBox title="NIP Generator">
 			<div className="grid gap-5 sm:grid-cols-2">
-				<p className="na-generate-result">
-					{value}
-				</p>
+				<p className="na-generate-result">{value}</p>
 				<div className="flex gap-3">
 					<div>
 						<Button disabled={value.length === 0} onClick={handleCopyNip}>
