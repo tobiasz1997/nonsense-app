@@ -27,7 +27,7 @@ describe('Algorithms', () => {
 			'should return index: $expected when array: $array and target: $target',
 			({ array, target, expected }) =>
 				expect(calculateBinarySearch(array, target).result).toBe(
-					`Target value ${target} is exist in ${expected} index in array.`
+					`Target value ${target} is exist at ${expected} index in array.`
 				)
 		);
 

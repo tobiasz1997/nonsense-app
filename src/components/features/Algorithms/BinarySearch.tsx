@@ -1,14 +1,16 @@
+import ArrayOfNumbersForm from '@components/features/Algorithms/Utils/ArrayOfNumbersForm';
 import InputNumberForm from '@components/features/Algorithms/Utils/InputNumberForm';
 import InstanceValue from '@components/features/Algorithms/Utils/InstanceValue';
 import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
 import CustomBox from '@components/ui/CustomBox';
+import Divider from '@components/ui/Divider';
 import useStringHelpers from '@hooks/useStringHelpers';
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import { calculateBinarySearch } from '@utils/algorithmsFunctions';
 import React, { FC, useState } from 'react';
 
 const BinarySearch: FC = () => {
-	const [array] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
+	const [array, setArray] = useState([1, 2, 3, 4, 5, 6, 7, 8]);
 	const [value, setValue] = useState<CalculationResultType<string>>();
 
 	const { convertArrayToString } = useStringHelpers();
@@ -39,7 +41,14 @@ const BinarySearch: FC = () => {
 				</code>
 				<div className="flex flex-col justify-center space-y-5">
 					<InstanceValue value={convertArrayToString(array)} />
+					<ArrayOfNumbersForm
+						initialValue={array}
+						onSubmit={(numbers) => setArray(numbers)}
+					/>
+					<Divider />
 					<InputNumberForm
+						submitButtonLabel={'Search'}
+						invalidParentData={array.length === 0}
 						onSubmit={(number) =>
 							setValue(calculateBinarySearch(array, Number(number)))
 						}

@@ -8,7 +8,7 @@ const InstanceValue: FC<Props> = (props) => {
 	return (
 		<div className="text-green-dark dark:text-pistachio">
 			Current array: &nbsp;
-			<span className="pl-2 font-bold">{props.value}</span>
+			<span className="font-bold wrap-anywhere">{props.value}</span>
 		</div>
 	);
 };
