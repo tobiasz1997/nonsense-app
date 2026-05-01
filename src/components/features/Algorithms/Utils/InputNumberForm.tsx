@@ -34,9 +34,7 @@ const InputNumberForm: FC<Props> = (props) => {
 			</fieldset>
 			<div>
 				<Button
-					disabled={
-						Boolean(props.invalidParentData) ? props.invalidParentData : false
-					}
+					disabled={props.invalidParentData ? props.invalidParentData : false}
 				>
 					{props.submitButtonLabel ?? 'Submit'}
 				</Button>

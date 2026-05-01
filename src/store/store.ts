@@ -1,7 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
+import arraySlice from '@store/generators/array.slice';
 import nipSlice from '@store/generators/nip.slice';
 import peselSlice from '@store/generators/pesel.slice';
 import regonSlice from '@store/generators/regon.slice';
+import stringSlice from '@store/generators/string.slice';
 import { loggerMiddleware } from '@store/middlewares';
 import blackjackSlice from '@store/slices/blackjack.slice';
 import tasksSlice from '@store/slices/tasks.slice';
@@ -15,7 +17,9 @@ const store = configureStore({
 		blackjackSlice,
 		regonSlice,
 		peselSlice,
-		nipSlice
+		nipSlice,
+		arraySlice,
+		stringSlice
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({ serializableCheck: false }).concat(loggerMiddleware)

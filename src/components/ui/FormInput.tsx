@@ -35,6 +35,7 @@ const FormInput: ForwardRefRenderFunction<
 					props.error
 						? 'border-red text-red focus-within:ring-red/10'
 						: 'border-green-dark text-green-dark focus-within:ring-yellow',
+					props.disabled ? 'opacity-50' : '',
 					sizes[props.dimension ?? 'default']
 				)}
 			>

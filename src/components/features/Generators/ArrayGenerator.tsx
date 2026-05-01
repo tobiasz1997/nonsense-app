@@ -1,23 +1,30 @@
-import NipOptions from '@components/features/Generators/Filters/NipOptions';
+import ArrayOptions from '@components/features/Generators/Filters/ArrayOptions';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
 import { useAppSelector } from '@store/store';
-import generateNip from '@utils/generators/nipGenerator';
+import generateArray from '@utils/generators/arrayGenerator';
 import copy from 'copy-to-clipboard';
 import React, { FC, useEffect, useState } from 'react';
 
-const NipGenerator: FC = () => {
+const ArrayGenerator: FC = () => {
 	const [value, setValue] = useState<string>('');
-	const nipOptions = useAppSelector((state) => state.nipSlice);
+	const arrayOptions = useAppSelector((state) => state.arraySlice);
 
 	useEffect(() => {
-		handleGenerateNip();
+		handleGenerateArray();
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	const handleGenerateNip = () => {
-		const result = generateNip(nipOptions.divider);
+	const handleGenerateArray = () => {
+		const result = generateArray(
+			arrayOptions.count,
+			arrayOptions.min,
+			arrayOptions.max,
+			arrayOptions.orderType,
+			arrayOptions.sorted,
+			arrayOptions.resultType
+		);
 		setValue(result?.result ?? '');
 	};
 
@@ -26,7 +33,7 @@ const NipGenerator: FC = () => {
 	};
 
 	return (
-		<CustomBox title="NIP Generator">
+		<CustomBox title="Array Generator">
 			<div className="grid gap-5 sm:grid-cols-2">
 				<p className="na-generate-result">{value}</p>
 				<div className="flex gap-3">
@@ -36,15 +43,15 @@ const NipGenerator: FC = () => {
 						</Button>
 					</div>
 					<div className="flex-auto">
-						<Button onClick={handleGenerateNip}>Generate</Button>
+						<Button onClick={handleGenerateArray}>Generate</Button>
 					</div>
 				</div>
 			</div>
 			<ExpansionPanel label="Filters">
-				<NipOptions />
+				<ArrayOptions />
 			</ExpansionPanel>
 		</CustomBox>
 	);
 };
 
-export default NipGenerator;
+export default ArrayGenerator;
