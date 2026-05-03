@@ -135,6 +135,14 @@ const SchedulePage: AppPage = () => {
 									)}
 								</span>
 							</p>
+							{scheduleState.schedule!.description && (
+								<div>
+									Description:{' '}
+									<p className="font-bold whitespace-pre-wrap line-clamp-3">
+										{scheduleState.schedule!.description}
+									</p>
+								</div>
+							)}
 						</div>
 
 						<div className="text-center">

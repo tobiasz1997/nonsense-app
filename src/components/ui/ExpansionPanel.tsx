@@ -13,9 +13,9 @@ const ExpansionPanel: FC<PropsWithChildren & Props> = (props) => {
 	return (
 		<div>
 			<div className="flex items-center">
-				<Divider />
+				<Divider className="flex flex-1" />
 				<button
-					className="flex items-center gap-x-1 rounded p-2 font-bold text-orange focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange"
+					className="flex items-center gap-x-1 rounded p-2 font-bold text-orange focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange cursor-pointer"
 					onClick={() => setIsOpen((prev) => !prev)}
 				>
 					{props.label}

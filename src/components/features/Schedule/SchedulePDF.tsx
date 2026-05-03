@@ -38,7 +38,19 @@ const styles = StyleSheet.create({
 		padding: 10,
 		textAlign: 'center',
 		fontWeight: 'bold',
-		fontSize: 20
+		fontSize: 18
+	},
+	descriptionWrapper: {
+		margin: 10,
+		padding: 10
+	},
+	descriptionHeader: {
+		fontWeight: 'bold',
+		fontSize: 18
+	},
+	descriptionContent: {
+		fontWeight: 'normal',
+		fontSize: 14
 	},
 	headerText: {
 		marginBottom: 5
@@ -48,7 +60,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		borderStyle: 'solid',
 		borderColor: 'black',
-		borderWidth: 1
+		borderWidth: 1,
+		fontSize: 14
 	},
 	row: {
 		flexDirection: 'row',
@@ -129,6 +142,14 @@ const SchedulePDF: FC<Props> = (props) => {
 						</View>
 					))}
 				</View>
+				{props.data.description && (
+					<View style={styles.descriptionWrapper}>
+						<Text style={styles.descriptionHeader}>Description</Text>
+						<Text style={styles.descriptionContent}>
+							{props.data.description}
+						</Text>
+					</View>
+				)}
 			</Page>
 		</Document>
 	);

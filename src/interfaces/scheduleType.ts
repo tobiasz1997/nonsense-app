@@ -4,6 +4,7 @@ export interface ISchedule {
 	month: string;
 	year: string;
 	plans: IScheduleDay[];
+	description?: string;
 }
 
 export interface IScheduleDay {
