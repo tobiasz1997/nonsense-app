@@ -40,8 +40,5 @@ npm run dev
 
 #### TODO
 
-- tooltip + add api info
+- tooltip + add api info + description
 - fix blackjack count
-- schedule - change year from current to +10
-- schedule - add extra positions
-- generators - add option to create arrays

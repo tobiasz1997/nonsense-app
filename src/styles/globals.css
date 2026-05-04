@@ -53,6 +53,6 @@
 
 @layer base {
 	body {
-		@apply bg-beige dark:bg-zinc-700;
+		@apply bg-beige dark:bg-zinc-700 selection:bg-yellow;
 	}
 }

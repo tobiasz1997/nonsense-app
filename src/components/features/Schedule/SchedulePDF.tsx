@@ -31,14 +31,22 @@ const styles = StyleSheet.create({
 	page: {
 		fontFamily: 'Inter',
 		flexDirection: 'column',
-		backgroundColor: '#E4E4E4'
+		backgroundColor: '#ffffff'
 	},
 	header: {
 		margin: 10,
 		padding: 10,
 		textAlign: 'center',
 		fontWeight: 'bold',
-		fontSize: 20
+		fontSize: 18
+	},
+	descriptionWrapper: {
+		margin: 10,
+		padding: 10
+	},
+	descriptionContent: {
+		fontWeight: 'normal',
+		fontSize: 14
 	},
 	headerText: {
 		marginBottom: 5
@@ -48,11 +56,14 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		borderStyle: 'solid',
 		borderColor: 'black',
-		borderWidth: 1
+		borderWidth: 1,
+		fontSize: 14
 	},
-	row: {
+	rowFlex: {
 		flexDirection: 'row',
-		alignItems: 'center',
+		alignItems: 'center'
+	},
+	rowBorderBottom: {
 		borderBottomWidth: 1,
 		borderBottomStyle: 'solid',
 		borderBottomColor: 'black'
@@ -98,7 +109,7 @@ const SchedulePDF: FC<Props> = (props) => {
 					</Text>
 				</View>
 				<View style={styles.tableWrapper}>
-					<View style={[styles.row, styles.bold]}>
+					<View style={[styles.rowFlex, styles.rowBorderBottom, styles.bold]}>
 						<Text style={[styles.id, styles.value, styles.borderRight]}> </Text>
 						<Text style={[styles.day, styles.value, styles.borderRight]}>
 							Dzień
@@ -112,7 +123,14 @@ const SchedulePDF: FC<Props> = (props) => {
 						<Text style={[styles.comment, styles.value]}>Komentarz</Text>
 					</View>
 					{props.data.plans.map((x, idx) => (
-						<View style={styles.row} key={idx.toString()}>
+						<View
+							style={
+								idx === props.data.plans.length - 1
+									? styles.rowFlex
+									: [styles.rowFlex, styles.rowBorderBottom]
+							}
+							key={idx.toString()}
+						>
 							<Text style={[styles.id, styles.value, styles.borderRight]}>
 								{(idx + 1).toString()}
 							</Text>
@@ -129,6 +147,13 @@ const SchedulePDF: FC<Props> = (props) => {
 						</View>
 					))}
 				</View>
+				{props.data.description && (
+					<View style={styles.descriptionWrapper}>
+						<Text style={styles.descriptionContent}>
+							{props.data.description}
+						</Text>
+					</View>
+				)}
 			</Page>
 		</Document>
 	);
