@@ -1,3 +1,8 @@
+import {
+	getUniqueProjectsAndRelatedHoursSum,
+	replaceScheduleTemplate,
+	replaceScheduleTemplateVariables
+} from '@components/features/Schedule/replaceScheduleHelpers';
 import ScheduleDatesForm from '@components/features/Schedule/ScheduleDatesForm';
 import ScheduleForm from '@components/features/Schedule/ScheduleForm';
 import SchedulePDF from '@components/features/Schedule/SchedulePDF';
@@ -50,11 +55,23 @@ const searchReducer = (
 			};
 		}
 		case 'scheduleDatesFormSubmit':
+			const plans = (action.payload as IScheduleDatesForm).plans;
+			const uniqueProjectsAndSumHours =
+				getUniqueProjectsAndRelatedHoursSum(plans);
+			const projectsTemplateData = replaceScheduleTemplate(
+				uniqueProjectsAndSumHours
+			);
+			const description = replaceScheduleTemplateVariables(
+				state.schedule?.descriptionTemplate,
+				projectsTemplateData
+			);
+
 			return {
 				workingDays: state.workingDays,
 				schedule: {
 					...state.schedule!,
-					plans: (action.payload as IScheduleDatesForm).plans
+					description,
+					plans
 				},
 				downloadModal: true
 			};

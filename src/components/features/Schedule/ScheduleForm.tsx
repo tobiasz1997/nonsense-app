@@ -20,7 +20,7 @@ const ScheduleForm: FC<Props> = (props) => {
 	const { set, get } = useLocalStorage();
 	const SCHEDULE_AUTHOR = 'schedule_author';
 	const SCHEDULE_TITLE = 'schedule_title';
-	const SCHEDULE_DESCRIPTION = 'schedule_description';
+	const SCHEDULE_DESCRIPTION_TEMPLATE = 'schedule_description';
 
 	const {
 		register,
@@ -31,7 +31,7 @@ const ScheduleForm: FC<Props> = (props) => {
 		defaultValues: {
 			author: get(SCHEDULE_AUTHOR) ?? '',
 			title: get(SCHEDULE_TITLE) ?? '',
-			description: get(SCHEDULE_DESCRIPTION) ?? '',
+			descriptionTemplate: get(SCHEDULE_DESCRIPTION_TEMPLATE) ?? '',
 			month: new Date().getMonth().toString(),
 			year: new Date().getFullYear().toString()
 		}
@@ -40,7 +40,7 @@ const ScheduleForm: FC<Props> = (props) => {
 	const submit = (payload: IScheduleForm) => {
 		set(SCHEDULE_AUTHOR, payload.author);
 		set(SCHEDULE_TITLE, payload.title);
-		set(SCHEDULE_DESCRIPTION, payload.description ?? '');
+		set(SCHEDULE_DESCRIPTION_TEMPLATE, payload.descriptionTemplate ?? '');
 		props.onSubmit(payload);
 	};
 
@@ -84,7 +84,10 @@ const ScheduleForm: FC<Props> = (props) => {
 				/>
 				<div className="col-span-2">
 					<ExpansionPanel label="Extra data">
-						<FormTextarea label="Description" {...register('description')} />
+						<FormTextarea
+							label="Description"
+							{...register('descriptionTemplate')}
+						/>
 					</ExpansionPanel>
 				</div>
 				<div className="mt-5 col-span-1 sm:col-span-2">

@@ -4,6 +4,7 @@ export interface ISchedule {
 	month: string;
 	year: string;
 	plans: IScheduleDay[];
+	descriptionTemplate?: string;
 	description?: string;
 }
 
@@ -16,4 +17,7 @@ export interface IScheduleDay {
 
 export interface IScheduleDatesForm extends Pick<ISchedule, 'plans'> {}
 
-export interface IScheduleForm extends Omit<ISchedule, 'plans'> {}
+export interface IScheduleForm extends Omit<
+	ISchedule,
+	'plans' | 'description'
+> {}
