@@ -28,5 +28,9 @@ export const appRoutes = {
 	schedule: {
 		title: 'Schedule',
 		path: '/schedule'
+	} as RouteType,
+	pickerWheel: {
+		title: 'Picker Wheel',
+		path: '/picker-wheel'
 	} as RouteType
 };

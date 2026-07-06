@@ -6,10 +6,11 @@ import React, { FC, PropsWithChildren, useState } from 'react';
 
 type Props = {
 	label: string;
+	defaultOpen?: boolean;
 };
 
 const ExpansionPanel: FC<PropsWithChildren & Props> = (props) => {
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState(props.defaultOpen ?? false);
 	return (
 		<div>
 			<div className="flex items-center">

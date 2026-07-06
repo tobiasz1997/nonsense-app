@@ -11,7 +11,8 @@ import {
 	FaceSmileIcon,
 	HomeIcon,
 	PuzzlePieceIcon,
-	UserIcon
+	UserIcon,
+	TrophyIcon
 } from '@heroicons/react/24/outline';
 import useActivePage from '@hooks/useActivePage';
 import { NavLinksType } from '@interfaces/navLinksType';
@@ -104,6 +105,10 @@ const navLinks: NavLinksType = [
 	{
 		...appRoutes.schedule,
 		icon: <DocumentTextIcon />
+	},
+	{
+		...appRoutes.pickerWheel,
+		icon: <TrophyIcon />
 	}
 ];
 

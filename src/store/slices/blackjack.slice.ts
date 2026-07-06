@@ -100,5 +100,5 @@ export const initDrawCardsLoading = createSelector(
 
 export const lastGameWinner = createSelector(
 	(state: blackjackStateType) => state.gameStats,
-	(gameStats) => gameStats[gameStats.length - 1]
+	(gameStats) => gameStats[0]
 );

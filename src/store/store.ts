@@ -6,6 +6,7 @@ import regonSlice from '@store/generators/regon.slice';
 import stringSlice from '@store/generators/string.slice';
 import { loggerMiddleware } from '@store/middlewares';
 import blackjackSlice from '@store/slices/blackjack.slice';
+import pickerWheelSlice from '@store/slices/pickerWheel.slice';
 import tasksSlice from '@store/slices/tasks.slice';
 import usersSlice from '@store/slices/users.slice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
@@ -19,7 +20,8 @@ const store = configureStore({
 		peselSlice,
 		nipSlice,
 		arraySlice,
-		stringSlice
+		stringSlice,
+		pickerWheelSlice
 	},
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware({ serializableCheck: false }).concat(loggerMiddleware)
