@@ -1,6 +1,7 @@
 import Button from '@components/ui/Button';
 import Modal from '@components/ui/Modal';
 import ModalBox from '@components/ui/ModalBox';
+import TypewriterText from '@components/ui/TypewriterText';
 import useGenerator from '@hooks/useGenerator';
 import { FC, useEffect, useState } from 'react';
 
@@ -18,7 +19,7 @@ const DrawCoinsModal: FC<Props> = (props) => {
 		const interval = setInterval(() => {
 			const number = generateRandomNumber(50, 50_000, 50);
 			isGenerating && setGeneratedNumber(number);
-		}, 100);
+		}, 500);
 
 		return () => clearInterval(interval);
 	}, [generateRandomNumber, isGenerating]);
@@ -36,7 +37,7 @@ const DrawCoinsModal: FC<Props> = (props) => {
 			<ModalBox onClose={props.onClose}>
 				<h2 className="na-modal-title">Draw Coins</h2>
 				<p className="text-green-dark dark:text-yellow text-3xl text-center font-bold mt-3 mb-5">
-					{generatedNumber}
+					<TypewriterText text={generatedNumber.toString()} />
 				</p>
 				<div className="flex justify-center">
 					{!isGenerating && generatedNumber === 0 && (

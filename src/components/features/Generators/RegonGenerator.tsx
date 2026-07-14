@@ -2,6 +2,7 @@ import RegonOptions from '@components/features/Generators/Filters/RegonOptions';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
+import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import generateRegon from '@utils/generators/regonGenerator';
 import copy from 'copy-to-clipboard';
@@ -28,7 +29,9 @@ const RegonGenerator: FC = () => {
 	return (
 		<CustomBox title="REGON Generator">
 			<div className="grid gap-5 sm:grid-cols-2">
-				<p className="na-generate-result">{value}</p>
+				<p className="na-generate-result">
+					<TypewriterText text={value} />
+				</p>
 				<div className="flex gap-3">
 					<div>
 						<Button disabled={value.length === 0} onClick={handleCopyRegon}>

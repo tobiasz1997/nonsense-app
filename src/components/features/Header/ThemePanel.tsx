@@ -1,4 +1,4 @@
-import ThemeTileCheckbox from '@components/features/Header/ThemeTileCheckbox';
+import ThemeTileButton from '@components/features/Header/ThemeTileButton';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { useThemeContext } from '@providers/ThemeProvider';
 import { FC } from 'react';
@@ -7,22 +7,16 @@ const ThemePanel: FC = () => {
 	const { theme, setNewTheme } = useThemeContext();
 
 	return (
-		<div className="flex h-full p-2">
-			<ThemeTileCheckbox
-				checked={theme === 'light'}
+		<div className="flex h-full border rounded border-green-dark dark:border-pistachio">
+			<ThemeTileButton
+				active={theme === 'light'}
 				icon={<SunIcon className="text-yellow" />}
-				styles={
-					'peer-checked:bg-beige rounded-l border-y border-l border-green-dark peer-checked:text-orange'
-				}
-				onChange={() => setNewTheme('light')}
+				onClick={() => setNewTheme('light')}
 			/>
-			<ThemeTileCheckbox
-				checked={theme === 'dark'}
+			<ThemeTileButton
+				active={theme === 'dark'}
 				icon={<MoonIcon className="text-cyan-500" />}
-				styles={
-					'peer-checked:bg-zinc-700 rounded-r border-y border-r border-green-dark peer-checked:text-cyan-500'
-				}
-				onChange={() => setNewTheme('dark')}
+				onClick={() => setNewTheme('dark')}
 			/>
 		</div>
 	);

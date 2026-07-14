@@ -1,4 +1,5 @@
 import HeaderNavLink from '@components/features/Header/HeaderNavLink';
+import ThemePanel from '@components/features/Header/ThemePanel';
 import Button from '@components/ui/Button';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import useActivePage from '@hooks/useActivePage';
@@ -26,7 +27,7 @@ const HeaderMobileNav: FC<Props> = (props) => {
 
 	return portal
 		? createPortal(
-				<div className="fixed top-0 left-0 z-50 h-full w-full overflow-hidden bg-green-dark p-4">
+				<div className="fixed flex flex-col top-0 left-0 z-50 h-full w-full overflow-hidden bg-green-dark p-4">
 					<div className="flex w-full justify-end">
 						<Button
 							className="max-w-max md:hidden p-2"
@@ -35,8 +36,8 @@ const HeaderMobileNav: FC<Props> = (props) => {
 							onClick={props.onClose}
 						/>
 					</div>
-					<div>
-						<nav className="py-3">
+					<div className="flex flex-col flex-1">
+						<nav className="py-3 flex-1">
 							{props.navLinks.map((link, index) => (
 								<HeaderNavLink
 									key={index}
@@ -47,6 +48,9 @@ const HeaderMobileNav: FC<Props> = (props) => {
 								/>
 							))}
 						</nav>
+						<div className="flex w-full justify-start">
+							<ThemePanel />
+						</div>
 					</div>
 				</div>,
 				portal

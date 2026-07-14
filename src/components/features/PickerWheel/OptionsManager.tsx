@@ -58,7 +58,7 @@ const OptionsManager: FC = () => {
 					label={`Active (${activeOptions.length})`}
 					defaultOpen={true}
 				>
-					<ul className="list-none flex flex-col gap-3">
+					<ul className="list-none flex flex-col gap-3 max-h-[500px] overflow-y-auto">
 						{activeOptions.map((option) => (
 							<OptionsListItem option={option} key={option.id} />
 						))}
@@ -69,7 +69,7 @@ const OptionsManager: FC = () => {
 					label={`Inactive (${inactiveOptions.length})`}
 					defaultOpen={true}
 				>
-					<ul className="list-none flex flex-col gap-3">
+					<ul className="list-none flex flex-col gap-3 max-h-[500px] overflow-y-auto">
 						{inactiveOptions.map((option) => (
 							<OptionsListItem option={option} key={option.id} />
 						))}

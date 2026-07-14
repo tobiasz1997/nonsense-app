@@ -2,6 +2,7 @@ import ArrayOptions from '@components/features/Generators/Filters/ArrayOptions';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
+import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import generateArray from '@utils/generators/arrayGenerator';
 import copy from 'copy-to-clipboard';
@@ -35,7 +36,9 @@ const ArrayGenerator: FC = () => {
 	return (
 		<CustomBox title="Array Generator">
 			<div className="grid gap-5 sm:grid-cols-2">
-				<p className="na-generate-result">{value}</p>
+				<p className="na-generate-result">
+					<TypewriterText text={value} />
+				</p>
 				<div className="flex gap-3">
 					<div>
 						<Button disabled={value.length === 0} onClick={handleCopyNip}>
