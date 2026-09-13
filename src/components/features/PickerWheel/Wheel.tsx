@@ -8,9 +8,9 @@ import {
 import useIsMobile from '@hooks/useIsMobile';
 import { WheelOption } from '@interfaces/wheelOption';
 import {
-    openGetSetOptionsModal,
-    openManageOptionFormModal,
-    openManageOptionsFormModal
+	openGetSetOptionsModal,
+	openManageOptionFormModal,
+	openManageOptionsFormModal
 } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch } from '@store/store';
 import { generateRandomIntNumber } from '@utils/generators/sharedGenerators';
@@ -165,13 +165,13 @@ const Wheel: FC<Props> = ({ options, winner, setWinner }) => {
 						Add Option
 					</Button>
 
-                    <Button
-                        icon={<PlusIcon />}
-                        onClick={() => dispatch(openGetSetOptionsModal())}
-                        className="max-w-max"
-                    >
-                        Set Options Form Token
-                    </Button>
+					<Button
+						icon={<PlusIcon />}
+						onClick={() => dispatch(openGetSetOptionsModal())}
+						className="max-w-max"
+					>
+						Set Options Form Token
+					</Button>
 				</div>
 			)}
 		</>

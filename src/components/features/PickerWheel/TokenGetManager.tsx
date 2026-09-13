@@ -1,8 +1,8 @@
 import { encryptJson } from '@api/crypto.api';
 import Button from '@components/ui/Button';
 import { useAppDispatch, useAppSelector } from '@store/store';
-import React, { FC, useState } from 'react';
 import copy from 'copy-to-clipboard';
+import React, { FC, useState } from 'react';
 
 const TokenGetManager: FC = () => {
 	const [token, setToken] = useState<string | null>(null);
@@ -17,15 +17,15 @@ const TokenGetManager: FC = () => {
 		setToken(response.payload?.token);
 	};
 
-    const handleCopyToken = () => {
-        copy(token as string);
-    };
+	const handleCopyToken = () => {
+		copy(token as string);
+	};
 
-    const handleCopyUrl = () => {
-        copy(token as string);
-    };
+	const handleCopyUrl = () => {
+		copy(token as string);
+	};
 
-    return (
+	return (
 		<>
 			<p className="text-green-dark dark:text-yellow mb-3">
 				Generate a token that will contain options and their settings
@@ -35,9 +35,7 @@ const TokenGetManager: FC = () => {
 				<Button onClick={encrypt}>Generate Token</Button>
 				{token && (
 					<>
-						<Button onClick={handleCopyToken}>
-							Copy Token
-						</Button>
+						<Button onClick={handleCopyToken}>Copy Token</Button>
 						<Button onClick={handleCopyUrl} disabled={true}>
 							Copy Url
 						</Button>

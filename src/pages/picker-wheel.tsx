@@ -1,4 +1,5 @@
 import Confetti from '@components/features/PickerWheel/Confetti';
+import GetSetTokenModal from '@components/features/PickerWheel/GetSetTokenModal';
 import ManageOptionFormModal from '@components/features/PickerWheel/ManageOptionFormModal';
 import ManageOptionsFormModal from '@components/features/PickerWheel/ManageOptionsFormModal';
 import Wheel from '@components/features/PickerWheel/Wheel';
@@ -8,7 +9,6 @@ import { AppPage } from '@interfaces/appPage';
 import { setWinner } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import React, { useMemo } from 'react';
-import GetSetTokenModal from "@components/features/PickerWheel/GetSetTokenModal";
 
 const PickerWheelPage: AppPage = () => {
 	const winner = useAppSelector((state) => state.pickerWheelSlice.winner);
