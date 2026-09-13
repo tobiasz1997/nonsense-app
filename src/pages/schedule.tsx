@@ -138,7 +138,7 @@ const SchedulePage: AppPage = () => {
 								</span>
 							</p>
 							<p>
-								Total Days:{' '}
+								Total days:{' '}
 								<span className="font-bold">
 									{scheduleState.schedule!.plans.length}
 								</span>

@@ -13,7 +13,6 @@ const ModalBox: FC<Props & PropsWithChildren> = (props) => {
 				<div className="absolute top-3 right-3">
 					<Button
 						className="p-1"
-						variant="secondary"
 						size="fit"
 						icon={<XMarkIcon />}
 						onClick={props.onClose}

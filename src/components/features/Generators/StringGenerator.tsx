@@ -2,6 +2,7 @@ import StringOptions from '@components/features/Generators/Filters/StringOptions
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
+import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import { generateString } from '@utils/generators/stringGenerate';
 import cx from 'classnames';
@@ -40,7 +41,7 @@ const StringGenerator: FC = () => {
 						'text-xs sm:text-sm': value.length >= 10_000
 					})}
 				>
-					{value}
+					<TypewriterText text={value} />
 				</p>
 				<div className="flex gap-3">
 					<div>

@@ -47,7 +47,7 @@
 	}
 
 	.na-generate-result {
-		@apply text-center wrap-break-word text-xl font-bold text-green-dark selection:bg-green-dark selection:text-pistachio dark:text-pistachio dark:selection:bg-orange dark:selection:text-green-dark sm:text-3xl;
+		@apply flex justify-center items-center wrap-break-word text-xl font-bold text-green-dark selection:bg-green-dark selection:text-pistachio dark:text-pistachio dark:selection:bg-orange dark:selection:text-green-dark sm:text-3xl;
 	}
 }
 

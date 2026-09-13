@@ -2,6 +2,7 @@ import NipOptions from '@components/features/Generators/Filters/NipOptions';
 import Button from '@components/ui/Button';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
+import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import generateNip from '@utils/generators/nipGenerator';
 import copy from 'copy-to-clipboard';
@@ -28,7 +29,9 @@ const NipGenerator: FC = () => {
 	return (
 		<CustomBox title="NIP Generator">
 			<div className="grid gap-5 sm:grid-cols-2">
-				<p className="na-generate-result">{value}</p>
+				<p className="na-generate-result">
+					<TypewriterText text={value} />
+				</p>
 				<div className="flex gap-3">
 					<div>
 						<Button disabled={value.length === 0} onClick={handleCopyNip}>

@@ -82,7 +82,7 @@ const ScheduleForm: FC<Props> = (props) => {
 					})}
 					options={yearsLists}
 				/>
-				<div className="col-span-2">
+				<div className="col-span-1 sm:col-span-2">
 					<ExpansionPanel label="Extra data">
 						<FormTextarea
 							label="Description"

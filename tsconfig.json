@@ -25,6 +25,9 @@
       "@api/*": [
         "./src/api/*"
       ],
+      "@crypto/*": [
+        "./src/crypto/*"
+      ],
       "@components/*": [
         "./src/components/*"
       ],
