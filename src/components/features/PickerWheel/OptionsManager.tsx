@@ -1,12 +1,17 @@
 import OptionsListItem from '@components/features/PickerWheel/OptionListItem';
 import Button from '@components/ui/Button';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
-import { Cog8ToothIcon, PencilSquareIcon } from '@heroicons/react/24/outline';
+import {
+	ClipboardDocumentListIcon,
+	Cog8ToothIcon,
+	PencilSquareIcon
+} from '@heroicons/react/24/outline';
 import { PlusIcon } from '@heroicons/react/24/solid';
 import {
 	openManageOptionsFormModal,
 	openManageOptionFormModal,
-	showHideOptionSettings
+	showHideOptionSettings,
+	openGetSetOptionsModal
 } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import React, { FC, useMemo } from 'react';
@@ -29,6 +34,13 @@ const OptionsManager: FC = () => {
 		<>
 			<ExpansionPanel label="Settings" defaultOpen={true}>
 				<div className="flex flex-wrap gap-4">
+					<Button
+						icon={<ClipboardDocumentListIcon />}
+						className="flex-1"
+						onClick={() => dispatch(openGetSetOptionsModal())}
+					>
+						Get / Set Options
+					</Button>
 					<Button
 						icon={<PencilSquareIcon />}
 						className="flex-1"

@@ -8,8 +8,9 @@ import {
 import useIsMobile from '@hooks/useIsMobile';
 import { WheelOption } from '@interfaces/wheelOption';
 import {
-	openManageOptionFormModal,
-	openManageOptionsFormModal
+    openGetSetOptionsModal,
+    openManageOptionFormModal,
+    openManageOptionsFormModal
 } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch } from '@store/store';
 import { generateRandomIntNumber } from '@utils/generators/sharedGenerators';
@@ -147,7 +148,7 @@ const Wheel: FC<Props> = ({ options, winner, setWinner }) => {
 					</motion.div>
 				</div>
 			) : (
-				<div className="flex gap-4">
+				<div className="flex flex-col sm:flex-row gap-4">
 					<Button
 						icon={<PlusIcon />}
 						onClick={() => dispatch(openManageOptionsFormModal())}
@@ -163,6 +164,14 @@ const Wheel: FC<Props> = ({ options, winner, setWinner }) => {
 					>
 						Add Option
 					</Button>
+
+                    <Button
+                        icon={<PlusIcon />}
+                        onClick={() => dispatch(openGetSetOptionsModal())}
+                        className="max-w-max"
+                    >
+                        Set Options Form Token
+                    </Button>
 				</div>
 			)}
 		</>

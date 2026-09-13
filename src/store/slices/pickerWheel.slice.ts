@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { colorList } from '@utils/lists/color-list';
 import { shuffleArray } from '@utils/shuffle';
 import { v4 as uuidv4 } from 'uuid';
+import {decryptJson} from "@api/crypto.api";
 
 type pickerWheelStateType = {
 	winner: WheelOption | null;
@@ -11,84 +12,86 @@ type pickerWheelStateType = {
 	optionsFormModal: boolean;
 	optionFormModal: boolean;
 	optionSettings: boolean;
+	getSetOptionsModal: boolean;
 	editedOption: WheelOption | null;
 };
 
 const initialState: pickerWheelStateType = {
 	winner: null,
-	options: [
-		{
-			id: uuidv4(),
-			name: 'Adam Kowaslki',
-			color: '#eab308',
-			active: true,
-			stars: 1
-		},
-		{
-			id: uuidv4(),
-			name: 'Jan Powilok-Smyczek',
-			color: '#f97316',
-			active: true,
-			stars: 0
-		},
-		{
-			id: uuidv4(),
-			name: 'Sebastian Walaszek',
-			color: '#ef4444',
-			active: true,
-			stars: 2
-		},
-		{ id: uuidv4(), name: 'Zbigniew Rudzki', color: '#ec4899', active: true },
-		{
-			id: uuidv4(),
-			name: 'Adam Kowaslki',
-			color: '#eab308',
-			active: true,
-			stars: 1
-		},
-		{
-			id: uuidv4(),
-			name: 'Jan Powilok-Smyczek',
-			color: '#f97316',
-			active: true,
-			stars: 0
-		},
-		{
-			id: uuidv4(),
-			name: 'Sebastian Walaszek',
-			color: '#ef4444',
-			active: true,
-			stars: 2
-		},
-		{ id: uuidv4(), name: 'Zbigniew Rudzki', color: '#ec4899', active: true },
-		{
-			id: uuidv4(),
-			name: 'Adam Kowaslki',
-			color: '#eab308',
-			active: true,
-			stars: 1
-		},
-		{
-			id: uuidv4(),
-			name: 'Jan Powilok-Smyczek',
-			color: '#f97316',
-			active: true,
-			stars: 0
-		},
-		{
-			id: uuidv4(),
-			name: 'Sebastian Walaszek',
-			color: '#ef4444',
-			active: true,
-			stars: 2
-		},
-		{ id: uuidv4(), name: 'Zbigniew Rudzki', color: '#ec4899', active: true }
-	],
-	// options: [],
+	// options: [
+		// {
+		// 	id: uuidv4(),
+		// 	name: 'Adam Kowaslki',
+		// 	color: '#eab308',
+		// 	active: true,
+		// 	stars: 1
+		// },
+		// {
+		// 	id: uuidv4(),
+		// 	name: 'Jan Powilok-Smyczek',
+		// 	color: '#f97316',
+		// 	active: true,
+		// 	stars: 0
+		// },
+		// {
+		// 	id: uuidv4(),
+		// 	name: 'Sebastian Walaszek',
+		// 	color: '#ef4444',
+		// 	active: true,
+		// 	stars: 2
+		// },
+		// { id: uuidv4(), name: 'Zbigniew Rudzki', color: '#ec4899', active: true },
+		// {
+		// 	id: uuidv4(),
+		// 	name: 'Adam Kowaslki',
+		// 	color: '#eab308',
+		// 	active: true,
+		// 	stars: 1
+		// },
+		// {
+		// 	id: uuidv4(),
+		// 	name: 'Jan Powilok-Smyczek',
+		// 	color: '#f97316',
+		// 	active: true,
+		// 	stars: 0
+		// },
+		// {
+		// 	id: uuidv4(),
+		// 	name: 'Sebastian Walaszek',
+		// 	color: '#ef4444',
+		// 	active: true,
+		// 	stars: 2
+		// },
+		// { id: uuidv4(), name: 'Zbigniew Rudzki', color: '#ec4899', active: true },
+		// {
+		// 	id: uuidv4(),
+		// 	name: 'Adam Kowaslki',
+		// 	color: '#eab308',
+		// 	active: true,
+		// 	stars: 1
+		// },
+		// {
+		// 	id: uuidv4(),
+		// 	name: 'Jan Powilok-Smyczek',
+		// 	color: '#f97316',
+		// 	active: true,
+		// 	stars: 0
+		// },
+		// {
+		// 	id: uuidv4(),
+		// 	name: 'Sebastian Walaszek',
+		// 	color: '#ef4444',
+		// 	active: true,
+		// 	stars: 2
+		// },
+		// { id: uuidv4(), name: 'Zbigniew Rudzki', color: '#ec4899', active: true }
+	// ],
+	options: [],
 	winnerModal: false,
 	optionsFormModal: false,
 	optionFormModal: false,
 	optionSettings: false,
+	getSetOptionsModal: false,
 	editedOption: null
 };
 
@@ -112,6 +115,12 @@ const pickerWheelSlice = createSlice({
 		},
 		openManageOptionsFormModal: (state) => {
 			state.optionsFormModal = true;
+		},
+		openGetSetOptionsModal: (state) => {
+			state.getSetOptionsModal = true;
+		},
+		closeGetSetOptionsModal: (state) => {
+			state.getSetOptionsModal = false;
 		},
 		openManageOptionFormModal: (
 			state,
@@ -197,7 +206,14 @@ const pickerWheelSlice = createSlice({
 			const index = state.options.findIndex((x) => x.id === action.payload.id);
 			state.options[index].color = action.payload.color;
 		}
-	}
+	},
+    extraReducers: (builder) => {
+        builder
+            .addCase(decryptJson.fulfilled, (state, action) => {
+                state.options = action.payload.data;
+                state.getSetOptionsModal = false;
+            })
+    }
 });
 
 export const {
@@ -207,9 +223,11 @@ export const {
 	closeWinnerModal,
 	openManageOptionsFormModal,
 	openManageOptionFormModal,
+	openGetSetOptionsModal,
 	closeManageOptionsFormModal,
 	closeManageOptionFormModal,
 	clearOptionsAndCloseModal,
+	closeGetSetOptionsModal,
 	showHideOptionSettings,
 	manageOptionActive,
 	addOptions,

@@ -8,6 +8,7 @@ import { AppPage } from '@interfaces/appPage';
 import { setWinner } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import React, { useMemo } from 'react';
+import GetSetTokenModal from "@components/features/PickerWheel/GetSetTokenModal";
 
 const PickerWheelPage: AppPage = () => {
 	const winner = useAppSelector((state) => state.pickerWheelSlice.winner);
@@ -20,6 +21,9 @@ const PickerWheelPage: AppPage = () => {
 	);
 	const optionFormModal = useAppSelector(
 		(state) => state.pickerWheelSlice.optionFormModal
+	);
+	const getSetOptionsModal = useAppSelector(
+		(state) => state.pickerWheelSlice.getSetOptionsModal
 	);
 	const editedOption = useAppSelector(
 		(state) => state.pickerWheelSlice.editedOption
@@ -57,6 +61,7 @@ const PickerWheelPage: AppPage = () => {
 			)}
 			{optionsFormModal && <ManageOptionsFormModal options={options} />}
 			{optionFormModal && <ManageOptionFormModal option={editedOption} />}
+			{getSetOptionsModal && <GetSetTokenModal />}
 		</div>
 	);
 };
