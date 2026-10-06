@@ -64,7 +64,7 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 			{...props}
 			onClick={_onClick}
 			className={cx(
-				'relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50',
+				'relative cursor-pointer flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50',
 				props.className,
 				sizes[props.size ?? 'default'],
 				variants[props.variant ?? 'primary']

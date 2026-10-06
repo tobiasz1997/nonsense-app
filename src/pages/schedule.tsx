@@ -1,3 +1,4 @@
+import { exportScheduleToXlsx } from '@components/features/Schedule/exportScheduleToXlsx';
 import {
 	getUniqueProjectsAndRelatedHoursSum,
 	replaceScheduleTemplate,
@@ -5,8 +6,10 @@ import {
 } from '@components/features/Schedule/replaceScheduleHelpers';
 import ScheduleDatesForm from '@components/features/Schedule/ScheduleDatesForm';
 import ScheduleForm from '@components/features/Schedule/ScheduleForm';
+import { generateFileName } from '@components/features/Schedule/scheduleHelpers';
 import SchedulePDF from '@components/features/Schedule/SchedulePDF';
 import { workingDaysGenerator } from '@components/features/Schedule/workingDaysGenerator';
+import Button from '@components/ui/Button';
 import Loader from '@components/ui/Loader';
 import Modal from '@components/ui/Modal';
 import ModalBox from '@components/ui/ModalBox';
@@ -66,6 +69,17 @@ const searchReducer = (
 				projectsTemplateData
 			);
 
+			console.log({
+				workingDays: state.workingDays,
+				schedule: {
+					...state.schedule!,
+					description,
+					plans
+				},
+				downloadModal: true
+			})
+			
+
 			return {
 				workingDays: state.workingDays,
 				schedule: {
@@ -91,8 +105,9 @@ const SchedulePage: AppPage = () => {
 		initialSchedule
 	);
 
-	const generateFileName = (schedule: ISchedule): string =>
-		`${schedule.title.replace(' ', '_')}_${schedule.author.replace(' ', '_')}_${+schedule.month + 1}_${schedule.year}`;
+	const handleExportScheduleToXlsx = async () => {
+		await exportScheduleToXlsx(scheduleState.schedule!)
+	}
 
 	return (
 		<>
@@ -162,23 +177,30 @@ const SchedulePage: AppPage = () => {
 							)}
 						</div>
 
-						<div className="text-center">
-							<PDFDownloadLink
-								document={<SchedulePDF data={scheduleState.schedule!} />}
-								fileName={generateFileName(scheduleState.schedule!)}
-								title="Download"
+						<div className='flex flex-col sm:flex-row gap-3'>
+							<div className="text-center w-full">
+								<PDFDownloadLink
+									document={<SchedulePDF data={scheduleState.schedule!} />}
+									fileName={generateFileName(scheduleState.schedule!)}
+									title="Download"
+								>
+									{({ loading }) =>
+										loading ? (
+											<Loader />
+										) : (
+											// TODO: link button reusable component
+											<div className="p-3 h-12 rounded text-yellow bg-green-dark hover:bg-green-dark/70 hover:shadow-xl focus:ring-green font-bold">
+												Download PDF
+											</div>
+										)
+									}
+								</PDFDownloadLink>
+							</div>
+							<Button
+								onClick={handleExportScheduleToXlsx}
 							>
-								{({ loading }) =>
-									loading ? (
-										<Loader />
-									) : (
-										// TODO: link button reusable component
-										<div className="p-3 h-12 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold">
-											Download PDF
-										</div>
-									)
-								}
-							</PDFDownloadLink>
+								Download XLSX
+							</Button>
 						</div>
 					</ModalBox>
 				</Modal>
