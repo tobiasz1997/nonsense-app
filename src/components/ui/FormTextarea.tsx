@@ -1,16 +1,19 @@
 import FormErrorMessage from '@components/ui/FormErrorMessage';
 import FormLabel from '@components/ui/FormLabel';
+import FormTooltip from '@components/ui/FormTooltip';
 import cx from 'classnames';
 import {
 	forwardRef,
 	ForwardRefRenderFunction,
-	InputHTMLAttributes
+	InputHTMLAttributes,
+	ReactNode
 } from 'react';
 
 export type TextareaProps = {
 	label?: string;
 	rows?: number;
 	error?: string;
+	tooltip?: ReactNode;
 };
 
 const FormTextarea: ForwardRefRenderFunction<
@@ -34,6 +37,7 @@ const FormTextarea: ForwardRefRenderFunction<
 							<FormLabel required={props.required}>{props.label}</FormLabel>
 						</span>
 					)}
+					{props.tooltip && <FormTooltip tooltip={props.tooltip} />}
 					<textarea
 						{...props}
 						ref={ref}

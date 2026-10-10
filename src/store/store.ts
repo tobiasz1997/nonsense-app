@@ -1,15 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
-import arraySlice from '@store/generators/array.slice';
-import nipSlice from '@store/generators/nip.slice';
-import peselSlice from '@store/generators/pesel.slice';
-import regonSlice from '@store/generators/regon.slice';
-import stringSlice from '@store/generators/string.slice';
-import { loggerMiddleware } from '@store/middlewares';
+import { loggerMiddleware } from '@store/middlewares/logger.middleware';
+import { taskMiddleware } from '@store/middlewares/task.middleware';
 import blackjackSlice from '@store/slices/blackjack.slice';
+import arraySlice from '@store/slices/generators/array.slice';
+import nipSlice from '@store/slices/generators/nip.slice';
+import regonSlice from '@store/slices/generators/regon.slice';
+import stringSlice from '@store/slices/generators/string.slice';
 import pickerWheelSlice from '@store/slices/pickerWheel.slice';
 import tasksSlice from '@store/slices/tasks.slice';
 import usersSlice from '@store/slices/users.slice';
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import peselSlice from './slices/generators/pesel.slice';
 
 const store = configureStore({
 	reducer: {
@@ -24,7 +25,9 @@ const store = configureStore({
 		pickerWheelSlice
 	},
 	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware({ serializableCheck: false }).concat(loggerMiddleware)
+		getDefaultMiddleware({ serializableCheck: false })
+			.concat(loggerMiddleware)
+			.prepend(taskMiddleware)
 });
 
 export default store;

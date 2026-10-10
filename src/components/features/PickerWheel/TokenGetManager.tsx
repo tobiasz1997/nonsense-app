@@ -1,7 +1,7 @@
 import { encryptJson } from '@api/crypto.api';
 import Button from '@components/ui/Button';
+import CopyButton from '@components/ui/CopyButton';
 import { useAppDispatch, useAppSelector } from '@store/store';
-import copy from 'copy-to-clipboard';
 import React, { FC, useState } from 'react';
 
 const TokenGetManager: FC = () => {
@@ -17,14 +17,6 @@ const TokenGetManager: FC = () => {
 		setToken(response.payload?.token);
 	};
 
-	const handleCopyToken = () => {
-		copy(token as string);
-	};
-
-	const handleCopyUrl = () => {
-		copy(token as string);
-	};
-
 	return (
 		<>
 			<p className="text-green-dark dark:text-yellow mb-3">
@@ -35,10 +27,17 @@ const TokenGetManager: FC = () => {
 				<Button onClick={encrypt}>Generate Token</Button>
 				{token && (
 					<>
-						<Button onClick={handleCopyToken}>Copy Token</Button>
-						<Button onClick={handleCopyUrl} disabled={true}>
-							Copy Url
-						</Button>
+						<CopyButton
+							label="Copy Token"
+							copiedLabel="Copied Token"
+							copyValue={token}
+						/>
+						<CopyButton
+							label="Copy URL"
+							copiedLabel="Copied URL"
+							copyValue={token}
+							disabled
+						/>
 					</>
 				)}
 			</div>

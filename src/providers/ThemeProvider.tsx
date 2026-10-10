@@ -1,4 +1,4 @@
-import useLocalStorage from '@hooks/useLocalStorage';
+import { localStorageGet, localStorageSet } from '@utils/localStorage';
 import {
 	createContext,
 	FC,
@@ -8,6 +8,7 @@ import {
 	useEffect,
 	useState
 } from 'react';
+import { THEME_KEY } from '../const/storageKeys.const';
 
 type ThemeType = 'light' | 'dark';
 type ThemeContext = {
@@ -23,25 +24,21 @@ type Props = {
 
 const ThemeProvider: FC<Props> = (props) => {
 	const [theme, setTheme] = useState<ThemeType>('light');
-	const { set, get } = useLocalStorage();
 
-	const setNewTheme = useCallback(
-		(type: ThemeType) => {
-			if (type === 'dark') {
-				document.documentElement.classList.add('dark');
-				setTheme('dark');
-				set('theme', 'dark');
-			} else {
-				document.documentElement.classList.remove('dark');
-				setTheme('light');
-				set('theme', 'light');
-			}
-		},
-		[set]
-	);
+	const setNewTheme = useCallback((type: ThemeType) => {
+		if (type === 'dark') {
+			document.documentElement.classList.add('dark');
+			setTheme('dark');
+			localStorageSet(THEME_KEY, 'dark');
+		} else {
+			document.documentElement.classList.remove('dark');
+			setTheme('light');
+			localStorageSet(THEME_KEY, 'light');
+		}
+	}, []);
 
 	useEffect(() => {
-		const theme = get('theme');
+		const theme = localStorageGet(THEME_KEY);
 		if (
 			theme === 'dark' ||
 			(!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
@@ -50,7 +47,7 @@ const ThemeProvider: FC<Props> = (props) => {
 		} else {
 			setNewTheme('light');
 		}
-	}, [get, setNewTheme]);
+	}, [setNewTheme]);
 
 	return (
 		<ThemeContext.Provider value={{ theme, setNewTheme }}>

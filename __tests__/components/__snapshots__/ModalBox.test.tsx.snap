@@ -3,7 +3,9 @@
 exports[`Modal Box should render without crashing 1`] = `
 <div>
   <div
+    aria-modal="true"
     class="m-3 w-full max-w-(--breakpoint-sm)"
+    role="dialog"
   >
     <div
       class="relative rounded-xl bg-pistachio dark:bg-gray-500 p-5 dark:border dark:border-gray-700"
@@ -12,7 +14,7 @@ exports[`Modal Box should render without crashing 1`] = `
         class="absolute top-3 right-3"
       >
         <button
-          class="relative flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50 p-1 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold"
+          class="relative cursor-pointer flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50 p-1 rounded text-yellow bg-green-dark hover:bg-green-dark/[0.7] hover:shadow-xl focus:ring-green font-bold"
           icon="[object Object]"
         >
           <svg

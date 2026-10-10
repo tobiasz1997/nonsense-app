@@ -5,7 +5,7 @@ import {
 	changePeselMaxYear,
 	changePeselMinYear,
 	setPeselDivider
-} from '@store/generators/pesel.slice';
+} from '@store/slices/generators/pesel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { genderType } from '@utils/generators/peselGenerator';
 import { ChangeEvent, FC } from 'react';
@@ -54,7 +54,7 @@ const PeselOptions: FC = () => {
 						checked={minYear === year}
 						disabled={maxYear < year}
 						value={year}
-						label={year === currentYear ? 'Current' : year.toString()}
+						label={year === currentYear ? 'Current' : `${year.toString()}`}
 						type="radio"
 						onChange={handleMinYearChange}
 					/>

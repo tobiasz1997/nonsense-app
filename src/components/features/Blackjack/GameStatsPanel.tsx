@@ -5,7 +5,7 @@ const GameStatsPanel: FC = () => {
 	const gamesStats = useAppSelector((state) => state.blackjackSlice.gameStats);
 
 	return gamesStats.length > 0 ? (
-		<div className="bg-pistachio dark:bg-zinc-500 dark:text-pistachio shadow-xl text-center font-bold text-green-dark rounded p-3 space-y-3 max-h-80 overflow-y-scroll">
+		<div className="bg-pistachio dark:bg-zinc-500 dark:text-pistachio shadow-xl text-center font-bold text-green-dark rounded p-3 space-y-3 max-h-80 overflow-y-auto">
 			<h5 className="text-xl">Game stats</h5>
 			{gamesStats.map((data, index) => (
 				<div className="flex gap-1 text-sm lg:text-base" key={index}>

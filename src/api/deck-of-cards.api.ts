@@ -1,3 +1,4 @@
+import { API_URLS } from '@api/api-urls.const';
 import {
 	IDrawCardsRequest,
 	IDrawCardsResponse,
@@ -10,7 +11,7 @@ export const shuffleCards = createAsyncThunk(
 	'shuffleCards',
 	async (): Promise<IShuffleCardsResponse> => {
 		const response = await axios.get<IShuffleCardsResponse>(
-			'https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1'
+			`${API_URLS.cards}/api/deck/new/shuffle/?deck_count=1`
 		);
 		return response.data;
 	}
@@ -20,7 +21,7 @@ export const drawCards = createAsyncThunk(
 	'drawCards',
 	async (args: IDrawCardsRequest): Promise<IDrawCardsResponse> => {
 		const response = await axios.get<IDrawCardsResponse>(
-			`https://deckofcardsapi.com/api/deck/${args.deckId}/draw/?count=${args.count}`
+			`${API_URLS.cards}/api/deck/${args.deckId}/draw/?count=${args.count}`
 		);
 		return response.data;
 	}

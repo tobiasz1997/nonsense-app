@@ -4,7 +4,7 @@ import FormInput from '@components/ui/FormInput';
 import {
 	setStringLength,
 	setStringSpace
-} from '@store/generators/string.slice';
+} from '@store/slices/generators/string.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { ChangeEvent, FC, useState } from 'react';
 

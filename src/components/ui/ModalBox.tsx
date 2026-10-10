@@ -1,5 +1,6 @@
 import Button from '@components/ui/Button';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import { useKeyPress } from '@hooks/useKeyPress';
 import { FC, PropsWithChildren } from 'react';
 
 type Props = {
@@ -7,8 +8,14 @@ type Props = {
 };
 
 const ModalBox: FC<Props & PropsWithChildren> = (props) => {
+	useKeyPress('Escape', props.onClose);
+
 	return (
-		<div className="m-3 w-full max-w-(--breakpoint-sm)">
+		<div
+			role="dialog"
+			aria-modal="true"
+			className="m-3 w-full max-w-(--breakpoint-sm)"
+		>
 			<div className="relative rounded-xl bg-pistachio dark:bg-gray-500 p-5 dark:border dark:border-gray-700">
 				<div className="absolute top-3 right-3">
 					<Button

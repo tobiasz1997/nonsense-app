@@ -5,8 +5,12 @@ import FormSelect from '@components/ui/FormSelect';
 import Modal from '@components/ui/Modal';
 import ModalBox from '@components/ui/ModalBox';
 import { PlusIcon } from '@heroicons/react/24/solid';
+import useArrayHelpers from '@hooks/useArrayHelpers';
+import { useKeyPress } from '@hooks/useKeyPress';
+import { useReturnFocus } from '@hooks/useReturnFocus';
 import { SelectOption } from '@interfaces/selectOption';
 import { TaskFormType } from '@interfaces/taskFormType';
+import { TaskType } from '@interfaces/taskType';
 import { todoListSortByOptions } from '@interfaces/todoListSortByOptions';
 import {
 	addTask,
@@ -17,11 +21,33 @@ import {
 } from '@store/slices/tasks.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { Reorder } from 'framer-motion';
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const TodoList: FC = () => {
 	const [isAddTaskModalVisible, setIsAddTaskModalVisible] = useState(false);
+	const { moveItem } = useArrayHelpers<TaskType>();
+
+	useReturnFocus(isAddTaskModalVisible);
+
+	useKeyPress(['ArrowDown', 'ArrowUp'], (event) => {
+		const element = event.target as HTMLElement;
+
+		const taskId =
+			element.closest<HTMLElement>('[data-task-id]')?.dataset.taskId;
+
+		if (!taskId) return;
+
+		dispatch(
+			reorderTasks(
+				moveItem(
+					tasks,
+					(task) => task.id === taskId,
+					event.key === 'ArrowUp' ? 'up' : 'down'
+				)
+			)
+		);
+	});
 
 	const tasks = useAppSelector((state) => state.tasksSlice.items);
 	const dispatch = useAppDispatch();

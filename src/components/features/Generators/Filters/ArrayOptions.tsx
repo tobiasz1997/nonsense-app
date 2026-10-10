@@ -9,7 +9,7 @@ import {
 	setArrayOrderType,
 	setArrayResultType,
 	setArraySorted
-} from '@store/generators/array.slice';
+} from '@store/slices/generators/array.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { orderType, resultType } from '@utils/generators/arrayGenerator';
 import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';

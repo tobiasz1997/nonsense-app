@@ -1,4 +1,6 @@
+import { API_URLS } from '@api/api-urls.const';
 import { useGetJoke } from '@api/jokes.api';
+import ApiUrlTooltip from '@components/features/ApiUrlTooltip';
 import Loader from '@components/ui/Loader';
 import { RocketLaunchIcon } from '@heroicons/react/20/solid';
 import { AppPage } from '@interfaces/appPage';
@@ -8,8 +10,8 @@ const HomePage: AppPage = () => {
 
 	return !isValidating ? (
 		data ? (
-			<div className="na-p-page flex flex-1 flex-col items-center justify-center">
-				<section className="max-w-(--breakpoint-lg) space-y-4 rounded-2xl bg-pistachio p-5 shadow-xl dark:bg-zinc-500 sm:flex sm:space-x-8 sm:space-y-0">
+			<div className="na-p-page flex flex-1 flex-col items-center justify-center relative">
+				<section className="space-y-4 rounded-2xl bg-pistachio p-5 shadow-xl dark:bg-zinc-500 sm:flex sm:space-x-8 sm:space-y-0">
 					<div className="flex items-center justify-center">
 						<RocketLaunchIcon className="h-10 w-10 text-orange" />
 					</div>
@@ -18,6 +20,7 @@ const HomePage: AppPage = () => {
 						<p>{data.punchline}</p>
 					</div>
 				</section>
+				<ApiUrlTooltip url={API_URLS.jokes} />
 			</div>
 		) : null
 	) : (

@@ -1,4 +1,6 @@
+import { API_URLS } from '@api/api-urls.const';
 import { getUsers } from '@api/users.api';
+import ApiUrlTooltip from '@components/features/ApiUrlTooltip';
 import Pagination from '@components/ui/Pagination';
 import useNumberHelper from '@hooks/useNumberHelper';
 import { AppPage } from '@interfaces/appPage';
@@ -28,7 +30,7 @@ const UsersPage: AppPage = () => {
 	};
 
 	return (
-		<div className="na-p-page space-y-5">
+		<div className="na-p-page space-y-5 relative">
 			<h1 className="na-title">Users</h1>
 
 			<section className="space-y-5 rounded-xl bg-pistachio p-5 shadow-xl dark:bg-zinc-500">
@@ -96,6 +98,7 @@ const UsersPage: AppPage = () => {
 					setPage={handleSetPage}
 				/>
 			</section>
+			<ApiUrlTooltip url={API_URLS.users} />
 		</div>
 	);
 };

@@ -1,5 +1,6 @@
 import { exportScheduleToXlsx } from '@components/features/Schedule/exportScheduleToXlsx';
 import {
+	getTotalScheduleHours,
 	getUniqueProjectsAndRelatedHoursSum,
 	replaceScheduleTemplate,
 	replaceScheduleTemplateVariables
@@ -20,6 +21,7 @@ import {
 	IScheduleForm
 } from '@interfaces/scheduleType';
 import { PDFDownloadLink } from '@react-pdf/renderer';
+import { addProperty } from '@utils/objects';
 import * as React from 'react';
 import { useReducer } from 'react';
 
@@ -64,21 +66,15 @@ const searchReducer = (
 			const projectsTemplateData = replaceScheduleTemplate(
 				uniqueProjectsAndSumHours
 			);
+			addProperty(
+				projectsTemplateData,
+				'totalHours',
+				getTotalScheduleHours(plans)
+			);
 			const description = replaceScheduleTemplateVariables(
 				state.schedule?.descriptionTemplate,
 				projectsTemplateData
 			);
-
-			console.log({
-				workingDays: state.workingDays,
-				schedule: {
-					...state.schedule!,
-					description,
-					plans
-				},
-				downloadModal: true
-			})
-			
 
 			return {
 				workingDays: state.workingDays,
@@ -106,8 +102,8 @@ const SchedulePage: AppPage = () => {
 	);
 
 	const handleExportScheduleToXlsx = async () => {
-		await exportScheduleToXlsx(scheduleState.schedule!)
-	}
+		await exportScheduleToXlsx(scheduleState.schedule!);
+	};
 
 	return (
 		<>
@@ -161,10 +157,7 @@ const SchedulePage: AppPage = () => {
 							<p>
 								Total hours:{' '}
 								<span className="font-bold">
-									{scheduleState.schedule!.plans.reduce(
-										(sum, current) => sum + +current.hours,
-										0
-									)}
+									{getTotalScheduleHours(scheduleState.schedule!.plans)}
 								</span>
 							</p>
 							{scheduleState.schedule!.description && (
@@ -177,7 +170,7 @@ const SchedulePage: AppPage = () => {
 							)}
 						</div>
 
-						<div className='flex flex-col sm:flex-row gap-3'>
+						<div className="flex flex-col sm:flex-row gap-3">
 							<div className="text-center w-full">
 								<PDFDownloadLink
 									document={<SchedulePDF data={scheduleState.schedule!} />}
@@ -196,9 +189,7 @@ const SchedulePage: AppPage = () => {
 									}
 								</PDFDownloadLink>
 							</div>
-							<Button
-								onClick={handleExportScheduleToXlsx}
-							>
+							<Button onClick={handleExportScheduleToXlsx}>
 								Download XLSX
 							</Button>
 						</div>

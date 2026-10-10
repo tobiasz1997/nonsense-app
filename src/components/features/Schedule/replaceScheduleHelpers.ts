@@ -40,3 +40,7 @@ export const replaceScheduleTemplate = (data: UniqueProjectsAndHoursType) => {
 		{}
 	);
 };
+
+export const getTotalScheduleHours = (plans: IScheduleDay[]) => {
+	return plans.reduce((sum, current) => sum + +current.hours, 0);
+};

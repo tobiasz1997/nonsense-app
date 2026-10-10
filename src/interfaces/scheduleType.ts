@@ -21,3 +21,8 @@ export interface IScheduleForm extends Omit<
 	ISchedule,
 	'plans' | 'description'
 > {}
+
+export interface IScheduleStorage extends Pick<
+	ISchedule,
+	'author' | 'title' | 'descriptionTemplate'
+> {}

@@ -10,6 +10,7 @@ type FormCheckboxProps = {
 	label?: string;
 	error?: string;
 	type?: 'checkbox' | 'radio';
+	secondaryringcolor?: 'true' | 'false';
 };
 
 const FormCheckbox: ForwardRefRenderFunction<
@@ -25,8 +26,11 @@ const FormCheckbox: ForwardRefRenderFunction<
 			>
 				<span
 					className={cx(
-						' h-6 w-6 shrink-0 items-center justify-center relative flex focus-within:ring-4 focus-within:ring-yellow',
-						props.type === 'radio' ? 'rounded-full' : 'rounded'
+						' h-6 w-6 shrink-0 items-center justify-center relative flex focus-within:ring-4',
+						props.type === 'radio' ? 'rounded-full' : 'rounded',
+						props.secondaryringcolor === 'true'
+							? 'focus-within:ring-pistachio'
+							: 'focus-within:ring-yellow'
 					)}
 				>
 					<input
@@ -40,8 +44,8 @@ const FormCheckbox: ForwardRefRenderFunction<
 					/>
 					<span
 						className={cx(
-							'absolute left-[4px] h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100 peer-disabled:opacity-70',
-							props.type === 'radio' ? 'rounded-full' : 'rounded-[2px]'
+							'absolute left-1 h-4 w-4 bg-green-dark opacity-0 transition duration-200 peer-checked:opacity-100 peer-disabled:bg-gray-400',
+							props.type === 'radio' ? 'rounded-full' : 'rounded-xs'
 						)}
 					/>
 				</span>

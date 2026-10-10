@@ -11,6 +11,7 @@ exports[`Expansion Panel should render without crashing 1`] = `
       />
       <button
         class="flex items-center gap-x-1 rounded p-2 font-bold text-orange focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-orange cursor-pointer"
+        type="button"
       >
         Test
         <svg

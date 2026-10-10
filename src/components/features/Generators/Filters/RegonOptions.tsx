@@ -1,6 +1,6 @@
 import OptionTitle from '@components/features/Generators/Filters/OptionTitle';
 import FormCheckbox from '@components/ui/FormCheckbox';
-import { changeRegonType } from '@store/generators/regon.slice';
+import { changeRegonType } from '@store/slices/generators/regon.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { regonType } from '@utils/generators/regonGenerator';
 import { ChangeEvent, FC } from 'react';

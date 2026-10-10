@@ -1,11 +1,11 @@
 import NipOptions from '@components/features/Generators/Filters/NipOptions';
 import Button from '@components/ui/Button';
+import CopyButton from '@components/ui/CopyButton';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
 import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import generateNip from '@utils/generators/nipGenerator';
-import copy from 'copy-to-clipboard';
 import React, { FC, useEffect, useState } from 'react';
 
 const NipGenerator: FC = () => {
@@ -22,10 +22,6 @@ const NipGenerator: FC = () => {
 		setValue(result?.result ?? '');
 	};
 
-	const handleCopyNip = () => {
-		copy(value);
-	};
-
 	return (
 		<CustomBox title="NIP Generator">
 			<div className="grid gap-5 sm:grid-cols-2">
@@ -34,9 +30,7 @@ const NipGenerator: FC = () => {
 				</p>
 				<div className="flex gap-3">
 					<div>
-						<Button disabled={value.length === 0} onClick={handleCopyNip}>
-							Copy
-						</Button>
+						<CopyButton copyValue={value} />
 					</div>
 					<div className="flex-auto">
 						<Button onClick={handleGenerateNip}>Generate</Button>

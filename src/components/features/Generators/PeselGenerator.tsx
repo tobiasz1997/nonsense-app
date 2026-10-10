@@ -1,11 +1,11 @@
 import PeselOptions from '@components/features/Generators/Filters/PeselOptions';
 import Button from '@components/ui/Button';
+import CopyButton from '@components/ui/CopyButton';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
 import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import generatePesel from '@utils/generators/peselGenerator';
-import copy from 'copy-to-clipboard';
 import React, { FC, useEffect, useState } from 'react';
 
 const PeselGenerator: FC = () => {
@@ -27,10 +27,6 @@ const PeselGenerator: FC = () => {
 		setValue(result?.result ?? '');
 	};
 
-	const handleCopyPesel = () => {
-		copy(value);
-	};
-
 	return (
 		<CustomBox title="Pesel Generator">
 			<div className="grid gap-5 sm:grid-cols-2">
@@ -39,9 +35,7 @@ const PeselGenerator: FC = () => {
 				</p>
 				<div className="flex gap-3">
 					<div>
-						<Button disabled={value.length === 0} onClick={handleCopyPesel}>
-							Copy
-						</Button>
+						<CopyButton copyValue={value} />
 					</div>
 					<div className="flex-auto">
 						<Button onClick={handleGeneratePesel}>Generate</Button>

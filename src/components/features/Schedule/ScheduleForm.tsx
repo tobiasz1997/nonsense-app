@@ -4,24 +4,20 @@ import ExpansionPanel from '@components/ui/ExpansionPanel';
 import FormInput from '@components/ui/FormInput';
 import FormSelect from '@components/ui/FormSelect';
 import FormTextarea from '@components/ui/FormTextarea';
-import useLocalStorage from '@hooks/useLocalStorage';
-import { IScheduleForm } from '@interfaces/scheduleType';
+import { IScheduleForm, IScheduleStorage } from '@interfaces/scheduleType';
 import { monthsList } from '@utils/lists/months-list';
 import { yearsLists } from '@utils/lists/years-lists';
+import { localStorageGet, localStorageSet } from '@utils/localStorage';
 import { validateRequired } from '@utils/validators';
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
+import { SCHEDULE_KEY } from '../../../const/storageKeys.const';
 
 type Props = {
 	onSubmit: (payload: IScheduleForm) => void;
 };
 
 const ScheduleForm: FC<Props> = (props) => {
-	const { set, get } = useLocalStorage();
-	const SCHEDULE_AUTHOR = 'schedule_author';
-	const SCHEDULE_TITLE = 'schedule_title';
-	const SCHEDULE_DESCRIPTION_TEMPLATE = 'schedule_description';
-
 	const {
 		register,
 		handleSubmit,
@@ -29,18 +25,56 @@ const ScheduleForm: FC<Props> = (props) => {
 	} = useForm<IScheduleForm>({
 		reValidateMode: 'onSubmit',
 		defaultValues: {
-			author: get(SCHEDULE_AUTHOR) ?? '',
-			title: get(SCHEDULE_TITLE) ?? '',
-			descriptionTemplate: get(SCHEDULE_DESCRIPTION_TEMPLATE) ?? '',
+			author:
+				localStorageGet<IScheduleStorage | null>(SCHEDULE_KEY)?.author ?? '',
+			title:
+				localStorageGet<IScheduleStorage | null>(SCHEDULE_KEY)?.title ?? '',
+			descriptionTemplate:
+				localStorageGet<IScheduleStorage | null>(SCHEDULE_KEY)
+					?.descriptionTemplate ?? '',
 			month: new Date().getMonth().toString(),
 			year: new Date().getFullYear().toString()
 		}
 	});
 
+	const tooltipContent = (
+		<div className="max-w-sm">
+			<p>
+				Use <code className="na-sample">{'{{ project1 }}'}</code> and{' '}
+				<code className="na-sample">{'{{ hours1 }}'}</code> in the description
+				to automatically insert the first project's name and its total hours.
+			</p>
+
+			<p className="mt-2">
+				For additional projects, use{' '}
+				<code className="na-sample">{'{{ project2 }}'}</code> and{' '}
+				<code className="na-sample">{'{{ hours2 }}'}</code>, and so on. You can
+				add as many projects as needed.
+			</p>
+
+			<p className="mt-2">
+				Use <code className="na-sample">{'{{ totalHours }}'}</code> to display
+				the sum of hours across all projects.
+			</p>
+
+			<div className="mt-2">
+				<p className="font-semibold">Example:</p>
+				<code className="block na-sample">
+					- {'{{ project1 }}'} – {'{{ hours1 }}'}h
+					<br />- {'{{ project2 }}'} – {'{{ hours2 }}'}h
+					<br />
+					Total hours – {'{{ totalHours }}'}h
+				</code>
+			</div>
+		</div>
+	);
+
 	const submit = (payload: IScheduleForm) => {
-		set(SCHEDULE_AUTHOR, payload.author);
-		set(SCHEDULE_TITLE, payload.title);
-		set(SCHEDULE_DESCRIPTION_TEMPLATE, payload.descriptionTemplate ?? '');
+		localStorageSet<IScheduleStorage>(SCHEDULE_KEY, {
+			author: payload.author,
+			title: payload.title,
+			descriptionTemplate: payload.descriptionTemplate ?? ''
+		});
 		props.onSubmit(payload);
 	};
 
@@ -86,11 +120,12 @@ const ScheduleForm: FC<Props> = (props) => {
 					<ExpansionPanel label="Extra data">
 						<FormTextarea
 							label="Description"
+							tooltip={tooltipContent}
 							{...register('descriptionTemplate')}
 						/>
 					</ExpansionPanel>
 				</div>
-				<div className="mt-5 col-span-1 sm:col-span-2">
+				<div className="col-span-1 sm:col-span-2">
 					<Button>Show generated dates</Button>
 				</div>
 			</form>
