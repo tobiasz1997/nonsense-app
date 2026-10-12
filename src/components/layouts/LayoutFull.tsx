@@ -6,7 +6,9 @@ const LayoutFull: FC<PropsWithChildren> = (props) => {
 	return (
 		<div className="flex min-h-screen flex-col na-background">
 			<HeaderFull />
-			<main className="flex flex-1 flex-col">{props.children}</main>
+			<main className="flex flex-1 flex-col container mx-auto">
+				{props.children}
+			</main>
 			<Footer />
 		</div>
 	);

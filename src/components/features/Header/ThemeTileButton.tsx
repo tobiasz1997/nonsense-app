@@ -13,7 +13,7 @@ const ThemeTileButton: FC<Props> = (props) => {
 		<button
 			type="button"
 			onClick={props.onClick}
-			className="relative grid h-[34px] w-[34px] place-items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-dark dark:focus-visible:ring-pistachio cursor-pointer"
+			className="relative grid h-8.5 w-8.5 place-items-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-dark dark:focus-visible:ring-pistachio cursor-pointer"
 		>
 			{props.active && (
 				<motion.span

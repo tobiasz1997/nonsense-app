@@ -5,7 +5,9 @@ export function useReturnFocus(isOpen: boolean) {
 	const isOpenRef = useRef(isOpen);
 	const wasOpenRef = useRef(isOpen);
 
-	isOpenRef.current = isOpen;
+	useEffect(() => {
+		isOpenRef.current = isOpen;
+	}, [isOpen]);
 
 	useEffect(() => {
 		const handleFocus = (event: FocusEvent) => {

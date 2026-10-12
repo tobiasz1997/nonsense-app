@@ -10,6 +10,8 @@ import { useAppDispatch, useAppSelector } from '@store/store';
 import { genderType } from '@utils/generators/peselGenerator';
 import { ChangeEvent, FC } from 'react';
 
+const CURRENT_YEAR = new Date().getFullYear();
+
 const PeselOptions: FC = () => {
 	const minYear = useAppSelector((state) => state.peselSlice.minYear);
 	const maxYear = useAppSelector((state) => state.peselSlice.maxYear);
@@ -17,7 +19,6 @@ const PeselOptions: FC = () => {
 	const isDivider = useAppSelector((state) => state.peselSlice.divider);
 	const dispatch = useAppDispatch();
 
-	const currentYear = new Date().getFullYear();
 	const availableYears: number[] = [
 		1900,
 		1920,
@@ -25,7 +26,7 @@ const PeselOptions: FC = () => {
 		1980,
 		2000,
 		2010,
-		currentYear
+		CURRENT_YEAR
 	];
 
 	const handleMinYearChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -54,7 +55,7 @@ const PeselOptions: FC = () => {
 						checked={minYear === year}
 						disabled={maxYear < year}
 						value={year}
-						label={year === currentYear ? 'Current' : `${year.toString()}`}
+						label={year === CURRENT_YEAR ? 'Current' : `${year.toString()}`}
 						type="radio"
 						onChange={handleMinYearChange}
 					/>
@@ -68,7 +69,7 @@ const PeselOptions: FC = () => {
 						checked={maxYear === year}
 						disabled={minYear > year}
 						value={year}
-						label={year === currentYear ? 'Current' : year.toString()}
+						label={year === CURRENT_YEAR ? 'Current' : year.toString()}
 						type="radio"
 						onChange={handleMaxYearChange}
 					/>

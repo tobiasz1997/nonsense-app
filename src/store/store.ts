@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { loggerMiddleware } from '@store/middlewares/logger.middleware';
+import { pickerWheelMiddleware } from '@store/middlewares/pickerWheel.middleware';
 import { taskMiddleware } from '@store/middlewares/task.middleware';
 import blackjackSlice from '@store/slices/blackjack.slice';
 import arraySlice from '@store/slices/generators/array.slice';
@@ -28,6 +29,7 @@ const store = configureStore({
 		getDefaultMiddleware({ serializableCheck: false })
 			.concat(loggerMiddleware)
 			.prepend(taskMiddleware)
+			.prepend(pickerWheelMiddleware)
 });
 
 export default store;

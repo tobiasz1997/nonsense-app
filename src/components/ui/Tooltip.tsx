@@ -287,9 +287,8 @@ const Tooltip = ({
 				portalRoot &&
 				createPortal(
 					<div
-						id={tooltipId}
 						ref={tooltipRef}
-						role="tooltip"
+						role="presentation"
 						onMouseEnter={clearCloseTimeout}
 						onMouseLeave={scheduleClose}
 						style={{
@@ -304,7 +303,9 @@ const Tooltip = ({
 							className
 						)}
 					>
-						{content}
+						<div id={tooltipId} role="tooltip">
+							{content}
+						</div>
 					</div>,
 					document.body
 				)}

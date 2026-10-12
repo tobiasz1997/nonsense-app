@@ -102,6 +102,9 @@ const pickerWheelSlice = createSlice({
 			state.editedOption = null;
 			state.optionFormModal = false;
 		},
+		addOptionsInit: (state, action: PayloadAction<WheelOption[]>) => {
+			state.options = action.payload;
+		},
 		editOption: (state, action: PayloadAction<WheelOption>) => {
 			const index = state.options.findIndex((x) => x.id === action.payload.id);
 			state.options[index] = {
@@ -162,6 +165,7 @@ export const {
 	showHideOptionSettings,
 	manageOptionActive,
 	addOptions,
+	addOptionsInit,
 	addOption,
 	editOption,
 	deleteOption,

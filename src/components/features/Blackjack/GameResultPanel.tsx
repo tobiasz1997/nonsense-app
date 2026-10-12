@@ -18,7 +18,7 @@ const GameResultPanel: FC = () => {
 		{
 			user: (profit) => `You won ${profit} coins`,
 			croupier: (profit) => `You lose ${profit} coins`,
-			draw: (_) => 'The game ended in a draw.'
+			draw: () => 'The game ended in a draw.'
 		};
 
 	return (

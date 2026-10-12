@@ -27,6 +27,8 @@ import { v4 as uuidv4 } from 'uuid';
 const TodoList: FC = () => {
 	const [isAddTaskModalVisible, setIsAddTaskModalVisible] = useState(false);
 	const { moveItem } = useArrayHelpers<TaskType>();
+	const tasks = useAppSelector((state) => state.tasksSlice.items);
+	const dispatch = useAppDispatch();
 
 	useReturnFocus(isAddTaskModalVisible);
 
@@ -48,9 +50,6 @@ const TodoList: FC = () => {
 			)
 		);
 	});
-
-	const tasks = useAppSelector((state) => state.tasksSlice.items);
-	const dispatch = useAppDispatch();
 
 	const handleAddTask = (payload: TaskFormType) => {
 		dispatch(

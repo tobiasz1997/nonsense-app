@@ -19,6 +19,7 @@
 		"react-hooks/rules-of-hooks": "error",
 		"react-hooks/exhaustive-deps": "warn",
 		"react/jsx-no-comment-textnodes": "off",
+		"react-hooks/set-state-in-effect": "off",
 		"jsx-a11y/no-autofocus": "off"
 	},
 	"ignorePatterns": [

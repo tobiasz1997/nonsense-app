@@ -12,6 +12,11 @@ type Props = {
 
 const Layout: FC<PropsWithChildren<Props>> = (props) => {
 	const pathName = usePathname();
+
+	const pageTitle = useMemo(() => {
+		return Object.values(appRoutes).find((x) => x.path === pathName)?.title;
+	}, [pathName]);
+
 	const layout = () => {
 		switch (props.layoutType) {
 			case 'full':
@@ -22,10 +27,6 @@ const Layout: FC<PropsWithChildren<Props>> = (props) => {
 				return <>{props.children}</>;
 		}
 	};
-
-	const pageTitle = useMemo(() => {
-		return Object.values(appRoutes).find((x) => x.path === pathName)?.title;
-	}, [pathName]);
 
 	return (
 		<>

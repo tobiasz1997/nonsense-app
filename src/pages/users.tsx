@@ -33,7 +33,7 @@ const UsersPage: AppPage = () => {
 		<div className="na-p-page space-y-5 relative">
 			<h1 className="na-title">Users</h1>
 
-			<section className="space-y-5 rounded-xl bg-pistachio p-5 shadow-xl dark:bg-zinc-500">
+			<section className="space-y-5 rounded-xl p-5 shadow-xl bg-pistachio dark:bg-zinc-500">
 				<table className="w-full rounded-xl border-2 border-orange">
 					<thead className="hidden md:table-header-group">
 						<tr className="w-full border-b border-orange text-left font-bold text-green-dark dark:text-pistachio">
@@ -51,15 +51,19 @@ const UsersPage: AppPage = () => {
 									className="grid border-b border-orange sm:grid-cols-2 md:table-row"
 								>
 									<td>
+										<span className="sr-only">Loading...</span>
 										<div className="h-5 m-1 md:m-3 animate-pulse rounded bg-yellow" />
 									</td>
 									<td>
+										<span className="sr-only">Loading...</span>
 										<div className="h-5 m-1 md:m-3 animate-pulse rounded bg-yellow" />
 									</td>
 									<td>
+										<span className="sr-only">Loading...</span>
 										<div className="h-5 m-1 md:m-3 animate-pulse rounded bg-yellow" />
 									</td>
 									<td>
+										<span className="sr-only">Loading...</span>
 										<div className="h-5 m-1 md:m-3 animate-pulse rounded bg-yellow" />
 									</td>
 								</tr>

@@ -4,6 +4,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const getUsers = createAsyncThunk('getUsers', async () => {
-	const response = await axios.get<IUser[]>(API_URLS.users);
+	const response = await axios.get<IUser[]>(API_URLS.users, {});
 	return response.data;
 });

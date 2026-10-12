@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/prefer-tag-over-role */
 import Button from '@components/ui/Button';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { useKeyPress } from '@hooks/useKeyPress';

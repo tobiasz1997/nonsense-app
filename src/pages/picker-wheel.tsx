@@ -5,10 +5,13 @@ import ManageOptionsFormModal from '@components/features/PickerWheel/ManageOptio
 import Wheel from '@components/features/PickerWheel/Wheel';
 import WheelManagePanel from '@components/features/PickerWheel/WheelManagePanel';
 import WinnerModal from '@components/features/PickerWheel/WinnerModal';
+import { useLocalStorageHydration } from '@hooks/useLocalStorageHydration';
 import { AppPage } from '@interfaces/appPage';
-import { setWinner } from '@store/slices/pickerWheel.slice';
+import { WheelOption } from '@interfaces/wheelOption';
+import { addOptionsInit, setWinner } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import React, { useMemo } from 'react';
+import { PICKER_WHEEL_KEY } from '../const/storageKeys.const';
 
 const PickerWheelPage: AppPage = () => {
 	const winner = useAppSelector((state) => state.pickerWheelSlice.winner);
@@ -35,6 +38,7 @@ const PickerWheelPage: AppPage = () => {
 	);
 
 	const dispatch = useAppDispatch();
+	useLocalStorageHydration<WheelOption[]>(PICKER_WHEEL_KEY, addOptionsInit);
 
 	return (
 		<div className="na-p-page space-y-5">

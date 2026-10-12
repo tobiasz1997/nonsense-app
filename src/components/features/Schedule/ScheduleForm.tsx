@@ -17,6 +17,9 @@ type Props = {
 	onSubmit: (payload: IScheduleForm) => void;
 };
 
+const CURRENT_MONTH = new Date().getMonth().toString();
+const CURRENT_YEAR = new Date().getFullYear().toString();
+
 const ScheduleForm: FC<Props> = (props) => {
 	const {
 		register,
@@ -32,8 +35,8 @@ const ScheduleForm: FC<Props> = (props) => {
 			descriptionTemplate:
 				localStorageGet<IScheduleStorage | null>(SCHEDULE_KEY)
 					?.descriptionTemplate ?? '',
-			month: new Date().getMonth().toString(),
-			year: new Date().getFullYear().toString()
+			month: CURRENT_MONTH,
+			year: CURRENT_YEAR
 		}
 	});
 
