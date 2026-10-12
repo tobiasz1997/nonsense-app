@@ -1,3 +1,3 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Error Modal should render without crashing 1`] = `<div />`;
+exports[`Error Modal > should render without crashing 1`] = `<div />`;

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Custom Box should render without crashing 1`] = `
+exports[`Custom Box > should render without crashing 1`] = `
 <div>
   <section
     class="space-y-5 rounded-xl bg-pistachio p-5 shadow-xl dark:bg-zinc-500"

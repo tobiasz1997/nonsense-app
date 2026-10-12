@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Loader should render without crashing 1`] = `
+exports[`Loader > should render without crashing 1`] = `
 <div>
   <div
     class="flex h-full w-full flex-1 items-center justify-center text-green-dark dark:text-pistachio"

@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Form Checkbox should render checkbox without crashing 1`] = `
+exports[`Form Checkbox > should render checkbox without crashing 1`] = `
 <div>
   <div>
     <label
@@ -28,7 +28,7 @@ exports[`Form Checkbox should render checkbox without crashing 1`] = `
 </div>
 `;
 
-exports[`Form Checkbox should render radio without crashing 1`] = `
+exports[`Form Checkbox > should render radio without crashing 1`] = `
 <div>
   <div>
     <label

@@ -20,7 +20,7 @@ npm run dev
 - SWR
 - Tailwind
 - Framer Motion
-- Jest / React Testing Library
+- Vitest / React Testing Library
 - Storybook
 
 ### Features

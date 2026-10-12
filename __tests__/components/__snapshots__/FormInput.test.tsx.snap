@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Form Input should render without crashing 1`] = `
+exports[`Form Input > should render without crashing 1`] = `
 <div>
   <div>
     <label

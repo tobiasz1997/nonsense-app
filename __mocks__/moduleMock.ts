@@ -1,3 +1,3 @@
-jest.mock('delay', () => ({
-	delay: jest.fn()
+vi.mock("delay", () => ({
+  delay: vi.fn(),
 }));
