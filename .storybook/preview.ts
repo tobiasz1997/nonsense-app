@@ -5,7 +5,6 @@ import { createElement } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
 import en from '../messages/en.json';
 import pl from '../messages/pl.json';
-
 const preview: Preview = {
     parameters: {
         actions: {argTypesRegex: '^on.*'},
