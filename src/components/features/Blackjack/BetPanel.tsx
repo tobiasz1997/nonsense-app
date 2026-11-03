@@ -25,21 +25,16 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 	props,
 	ref
 ) => {
-	const coinsValues: number[] = [50, 100, 200, 500, 1000];
+	const t = useTranslations('blackjack');
+
 	const [betValue, setBetValue] = useState(0);
 	const [gameStarted, setGameStarted] = useState(false);
 	const [isDrawCoinsVisible, setIsDrawCoinsVisible] = useState(false);
-	const t = useTranslations('blackjack');
 
 	const playerCoins = useAppSelector(
 		(state) => state.blackjackSlice.userData.coins
 	);
 	const dispatch = useAppDispatch();
-
-	const changeBetValueButtonStyles =
-		'bg-orange w-full p-1 flex justify-center disabled:opacity-50 hover:bg-orange/70';
-	const actionButtonStyles =
-		'bg-orange w-full p-1 flex justify-center items-center font-bold disabled:opacity-50 hover:bg-orange/70';
 
 	useImperativeHandle(
 		ref,
@@ -53,6 +48,14 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 		}),
 		[betValue]
 	);
+
+	const coinsValues: number[] = [50, 100, 200, 500, 1000];
+
+	const changeBetValueButtonStyles =
+		'bg-orange w-full p-1 flex justify-center disabled:opacity-50 hover:bg-orange/70';
+
+	const actionButtonStyles =
+		'bg-orange w-full p-1 flex justify-center items-center font-bold disabled:opacity-50 hover:bg-orange/70';
 
 	const addCoins = (value: number) => {
 		setBetValue((prevState) => prevState + value);

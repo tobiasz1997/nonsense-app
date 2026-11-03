@@ -38,20 +38,20 @@ const Tooltip = ({
 	className
 }: TooltipProps) => {
 	const tooltipId = useId();
-	const portalRoot = usePortal();
-
-	const triggerRef = useRef<HTMLButtonElement>(null);
-	const tooltipRef = useRef<HTMLDivElement>(null);
-	const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const [isOpen, setIsOpen] = useState(false);
-
 	const [position, setPosition] = useState<TooltipPosition>({
 		top: 0,
 		left: 0,
 		placement: 'top',
 		ready: false
 	});
+
+	const triggerRef = useRef<HTMLButtonElement>(null);
+	const tooltipRef = useRef<HTMLDivElement>(null);
+	const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	const portalRoot = usePortal();
 
 	const clearCloseTimeout = useCallback(() => {
 		if (closeTimeoutRef.current) {

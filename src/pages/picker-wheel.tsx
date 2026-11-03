@@ -15,6 +15,8 @@ import React, { useMemo } from 'react';
 import { PICKER_WHEEL_KEY } from '../const/storageKeys.const';
 
 const PickerWheelPage: AppPage = () => {
+	const t = useTranslations('nav');
+
 	const winner = useAppSelector((state) => state.pickerWheelSlice.winner);
 	const options = useAppSelector((state) => state.pickerWheelSlice.options);
 	const winnerModal = useAppSelector(
@@ -32,15 +34,14 @@ const PickerWheelPage: AppPage = () => {
 	const editedOption = useAppSelector(
 		(state) => state.pickerWheelSlice.editedOption
 	);
-	const t = useTranslations('nav');
+	const dispatch = useAppDispatch();
+
+	useLocalStorageHydration<WheelOption[]>(PICKER_WHEEL_KEY, addOptionsInit);
 
 	const activeOptions = useMemo(
 		() => options.filter((option) => option.active),
 		[options]
 	);
-
-	const dispatch = useAppDispatch();
-	useLocalStorageHydration<WheelOption[]>(PICKER_WHEEL_KEY, addOptionsInit);
 
 	return (
 		<div className="na-p-page space-y-5">

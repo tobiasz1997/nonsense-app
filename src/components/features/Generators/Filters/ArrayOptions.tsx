@@ -17,6 +17,14 @@ import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
 
 const ArrayOptions: FC = () => {
 	const t = useTranslations();
+
+	const [countError, setCountError] = useState<string>('');
+	const [minError, setMinError] = useState<string>('');
+	const [maxError, setMaxError] = useState<string>('');
+	const [maxDisabled, setMaxDisabled] = useState<boolean>(false);
+
+	const maxRef = useRef<HTMLInputElement>(null);
+
 	const count = useAppSelector((state) => state.arraySlice.count);
 	const min = useAppSelector((state) => state.arraySlice.min);
 	const max = useAppSelector((state) => state.arraySlice.max);
@@ -24,12 +32,6 @@ const ArrayOptions: FC = () => {
 	const sorted = useAppSelector((state) => state.arraySlice.sorted);
 	const resultType = useAppSelector((state) => state.arraySlice.resultType);
 	const dispatch = useAppDispatch();
-
-	const [countError, setCountError] = useState<string>('');
-	const [minError, setMinError] = useState<string>('');
-	const [maxError, setMaxError] = useState<string>('');
-	const [maxDisabled, setMaxDisabled] = useState<boolean>(false);
-	const maxRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		if (orderType === 'sequential') {

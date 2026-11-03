@@ -12,10 +12,12 @@ type Props = {
 };
 
 const DrawCoinsModal: FC<Props> = (props) => {
+	const t = useTranslations();
+
 	const [generatedNumber, setGeneratedNumber] = useState(0);
 	const [isGenerating, setIsGenerating] = useState(false);
+
 	const { generateRandomNumber } = useGenerator();
-	const t = useTranslations();
 
 	useEffect(() => {
 		const interval = setInterval(() => {

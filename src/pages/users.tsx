@@ -12,13 +12,14 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 const UsersPage: AppPage = () => {
+	const t = useTranslations();
+
 	const users = useAppSelector(
 		(state) => filteredData(state.usersSlice) as IUser[]
 	);
 	const status = useAppSelector((state) => state.usersSlice.status);
 	const usersData = useAppSelector((state) => state.usersSlice);
 	const dispatch = useAppDispatch();
-	const t = useTranslations();
 
 	const { convertNumberToArrayOfNumbers } = useNumberHelper();
 

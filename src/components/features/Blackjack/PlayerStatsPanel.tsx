@@ -3,12 +3,12 @@ import { useTranslations } from 'next-intl';
 import { FC, useMemo } from 'react';
 
 const PlayerStatsPanel: FC = () => {
+	const t = useTranslations('blackjack');
+
 	const playerCoins = useAppSelector(
 		(state) => state.blackjackSlice.userData.coins
 	);
 	const gameStats = useAppSelector((state) => state.blackjackSlice.gameStats);
-
-	const t = useTranslations('blackjack');
 
 	const gameBalance: string = useMemo(() => {
 		const playerWins = gameStats.filter((x) => x.winner === 'user').length;

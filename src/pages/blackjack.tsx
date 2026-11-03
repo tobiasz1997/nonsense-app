@@ -29,11 +29,14 @@ import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
 
 const BlackJackPage: AppPage = () => {
-	const betPanelRef = useRef<BetPanelPropsRef>(null);
+	const t = useTranslations();
+
 	const [winner, setWinner] = useState<winnerType | null>(null);
 	const [errorModalVisible, setErrorModalVisible] = useState(false);
+
+	const betPanelRef = useRef<BetPanelPropsRef>(null);
+
 	const isMobile = useIsMobile(768);
-	const t = useTranslations();
 
 	const userCards = useAppSelector((state) => state.blackjackSlice.userData);
 	const shuffleCardsStatus = useAppSelector(

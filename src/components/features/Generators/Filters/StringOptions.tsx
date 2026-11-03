@@ -11,11 +11,12 @@ import { ChangeEvent, FC, useState } from 'react';
 
 const StringOptions: FC = () => {
 	const t = useTranslations();
+
+	const [lengthError, setLengthError] = useState<string>('');
+
 	const length = useAppSelector((state) => state.stringSlice.length);
 	const space = useAppSelector((state) => state.stringSlice.space);
 	const dispatch = useAppDispatch();
-
-	const [lengthError, setLengthError] = useState<string>('');
 
 	const handleLengthValueChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;

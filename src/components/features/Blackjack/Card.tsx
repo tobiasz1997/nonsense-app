@@ -9,12 +9,14 @@ type Props = {
 };
 
 const Card: FC<Props> = (props) => {
-	const backCardUrl = 'https://deckofcardsapi.com/static/img/back.png';
-	const backgroundBase64 =
-		'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAACMCAYAAACK9Qy7AAAA00lEQVR42u3RMQEAMAgAoJlvJY1oAz2t4AEViMrfjzNCiBCECEGIEIQIQYgQIUIQIgQhQhAiBCFCEIIQIQgRghAhCBGCEIQIQYgQhAhBiBCEIEQIQoQgRAhChCAEIUIQIgQhQhAiBCEIEYIQIQgRghAhCEGIEIQIQYgQhAhBCEKEIEQIQoQgRAhCECIEIUIQIgQhQhAiRIgQhAhBiBCECEGIEIQgRAhChCBECEKEIAQhQhAiBCFCECIEIQgRghAhCBGCECEIQYgQhAhBiBCECEEIawDhYY/U+Jw8rgAAAABJRU5ErkJggg==';
+	const t = useTranslations('blackjack');
 
 	const isMobile = useIsMobile();
-	const t = useTranslations('blackjack');
+
+	const backCardUrl = 'https://deckofcardsapi.com/static/img/back.png';
+
+	const backgroundBase64 =
+		'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAACMCAYAAACK9Qy7AAAA00lEQVR42u3RMQEAMAgAoJlvJY1oAz2t4AEViMrfjzNCiBCECEGIEIQIQYgQIUIQIgQhQhAiBCFCEIIQIQgRghAhCBGCEIQIQYgQhAhBiBCEIEQIQoQgRAhChCAEIUIQIgQhQhAiBCEIEYIQIQgRghAhCEGIEIQIQYgQhAhBCEKEIEQIQoQgRAhCECIEIUIQIgQhQhAiRIgQhAhBiBCECEGIEIQgRAhChCBECEKEIAQhQhAiBCFCECIEIQgRghAhCBGCECEIQYgQhAhBiBCECEEIawDhYY/U+Jw8rgAAAABJRU5ErkJggg==';
 
 	return (
 		<Image

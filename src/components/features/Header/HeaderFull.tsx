@@ -23,9 +23,11 @@ import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 
 const HeaderFull: FC = () => {
-	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-	const router = useRouter();
 	const t = useTranslations('nav');
+
+	const router = useRouter();
+
+	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
 	const isActive = useActivePage();
 

@@ -8,8 +8,9 @@ import { useTranslations } from 'next-intl';
 import { FC, useState } from 'react';
 
 const GameStatsMobileView: FC = () => {
-	const [isModalVisible, setIsModalVisible] = useState(false);
 	const t = useTranslations('blackjack');
+
+	const [isModalVisible, setIsModalVisible] = useState(false);
 
 	return (
 		<>

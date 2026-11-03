@@ -11,6 +11,8 @@ type Props = {
 };
 
 const ArrayOfNumbersForm: FC<Props> = (props) => {
+	const t = useTranslations();
+
 	const {
 		register,
 		handleSubmit,
@@ -21,7 +23,6 @@ const ArrayOfNumbersForm: FC<Props> = (props) => {
 		},
 		reValidateMode: 'onSubmit'
 	});
-	const t = useTranslations();
 
 	return (
 		<form

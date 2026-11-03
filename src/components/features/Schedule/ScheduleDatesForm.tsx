@@ -16,6 +16,9 @@ type Props = {
 
 const ScheduleDatesForm: FC<Props> = (props) => {
 	const t = useTranslations();
+
+	const [isReplicate, setIsReplicate] = useState(false);
+
 	const {
 		register,
 		handleSubmit,
@@ -37,11 +40,11 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 			)
 		}
 	});
+
 	const { fields, remove } = useFieldArray({
 		control,
 		name: 'plans'
 	});
-	const [isReplicate, setIsReplicate] = useState(false);
 
 	useEffect(() => {
 		setValue(

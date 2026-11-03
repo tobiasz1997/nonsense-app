@@ -3,8 +3,9 @@ import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 
 const GameStatsPanel: FC = () => {
-	const gamesStats = useAppSelector((state) => state.blackjackSlice.gameStats);
 	const t = useTranslations('blackjack');
+
+	const gamesStats = useAppSelector((state) => state.blackjackSlice.gameStats);
 
 	return (
 		gamesStats.length > 0 && (

@@ -22,12 +22,24 @@ const CopyButton: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = ({
 	copiedLabel
 }) => {
 	const t = useTranslations('common');
+
 	const [isCopied, setIsCopied] = useState(false);
+
 	const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
 	const DELAY = 1_000;
+
 	const text = isCopied ? (copiedLabel ?? t('copied')) : (label ?? t('copy'));
+
 	const letters = text.split('');
+
+	useEffect(() => {
+		return () => {
+			if (timeoutRef.current) {
+				clearTimeout(timeoutRef.current);
+			}
+		};
+	}, []);
 
 	const handleCopy = async () => {
 		if (!copyValue || isCopied) return;
@@ -40,14 +52,6 @@ const CopyButton: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = ({
 			setIsCopied(false);
 		}, DELAY);
 	};
-
-	useEffect(() => {
-		return () => {
-			if (timeoutRef.current) {
-				clearTimeout(timeoutRef.current);
-			}
-		};
-	}, []);
 
 	return (
 		<Button

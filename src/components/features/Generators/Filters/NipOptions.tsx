@@ -6,14 +6,14 @@ import { useTranslations } from 'next-intl';
 import { ChangeEvent, FC } from 'react';
 
 const NipOptions: FC = () => {
+	const t = useTranslations();
+
 	const isDivider = useAppSelector((state) => state.nipSlice.divider);
 	const dispatch = useAppDispatch();
 
 	const handleDividerChange = (event: ChangeEvent<HTMLInputElement>) => {
 		dispatch(setNipDivider(event.target.value === 'true'));
 	};
-
-	const t = useTranslations();
 
 	return (
 		<div className="flex flex-col space-y-4">

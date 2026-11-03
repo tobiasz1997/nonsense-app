@@ -12,6 +12,8 @@ type Props = {
 };
 
 const InputNumberForm: FC<Props> = (props) => {
+	const t = useTranslations();
+
 	const {
 		register,
 		handleSubmit,
@@ -19,7 +21,6 @@ const InputNumberForm: FC<Props> = (props) => {
 	} = useForm<{ value: number }>({
 		reValidateMode: 'onSubmit'
 	});
-	const t = useTranslations();
 
 	return (
 		<form
