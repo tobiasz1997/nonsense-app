@@ -1,34 +1,34 @@
-import { FC, PropsWithChildren, useEffect, useState } from "react";
-import { NextIntlClientProvider } from "next-intl";
-import pl from "../../messages/pl.json";
-import en from "../../messages/en.json";
+import { NextIntlClientProvider } from 'next-intl';
+import { FC, PropsWithChildren, useEffect, useState } from 'react';
+import en from '../../messages/en.json';
+import pl from '../../messages/pl.json';
 
-type Locale = "pl" | "en";
+type Locale = 'pl' | 'en';
 
 const LocaleProvider: FC<PropsWithChildren> = (props) => {
-  const [locale, setLocale] = useState<Locale>("pl");
+	const [locale, setLocale] = useState<Locale>('pl');
 
-  useEffect(() => {
-    const savedLocale = document.cookie
-      .split("; ")
-      .find((cookie) => cookie.startsWith("locale="))
-      ?.split("=")[1];
+	useEffect(() => {
+		const savedLocale = document.cookie
+			.split('; ')
+			.find((cookie) => cookie.startsWith('locale='))
+			?.split('=')[1];
 
-    const selectedLocale: Locale = savedLocale === "en" ? "en" : "pl";
+		const selectedLocale: Locale = savedLocale === 'en' ? 'en' : 'pl';
 
-    setLocale(selectedLocale);
-    document.documentElement.lang = selectedLocale;
-  }, []);
+		setLocale(selectedLocale);
+		document.documentElement.lang = selectedLocale;
+	}, []);
 
-  return (
-    <NextIntlClientProvider
-      locale={locale}
-      messages={locale === "pl" ? pl : en}
-      timeZone="Europe/Warsaw"
-    >
-      {props.children}
-    </NextIntlClientProvider>
-  );
+	return (
+		<NextIntlClientProvider
+			locale={locale}
+			messages={locale === 'pl' ? pl : en}
+			timeZone="Europe/Warsaw"
+		>
+			{props.children}
+		</NextIntlClientProvider>
+	);
 };
 
 export default LocaleProvider;

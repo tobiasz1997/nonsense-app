@@ -1,3 +1,3 @@
-vi.mock("delay", () => ({
-  delay: vi.fn(),
+vi.mock('delay', () => ({
+	delay: vi.fn()
 }));

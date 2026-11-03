@@ -1,3 +1,3 @@
-import "@testing-library/jest-dom/vitest";
-import "./__mocks__/routerMock";
-import "./__mocks__/moduleMock";
+import '@testing-library/jest-dom/vitest';
+import './__mocks__/routerMock';
+import './__mocks__/moduleMock';
