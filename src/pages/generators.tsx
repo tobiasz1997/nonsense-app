@@ -1,22 +1,25 @@
-import ArrayGenerator from '@components/features/Generators/ArrayGenerator';
-import NipGenerator from '@components/features/Generators/NipGenerator';
-import PeselGenerator from '@components/features/Generators/PeselGenerator';
-import RegonGenerator from '@components/features/Generators/RegonGenerator';
-import StringGenerator from '@components/features/Generators/StringGenerator';
-import { AppPage } from '@interfaces/appPage';
+import ArrayGenerator from "@components/features/Generators/ArrayGenerator";
+import NipGenerator from "@components/features/Generators/NipGenerator";
+import PeselGenerator from "@components/features/Generators/PeselGenerator";
+import RegonGenerator from "@components/features/Generators/RegonGenerator";
+import StringGenerator from "@components/features/Generators/StringGenerator";
+import { AppPage } from "@interfaces/appPage";
+import { useTranslations } from "next-intl";
 
 const GeneratorsPage: AppPage = () => {
-	return (
-		<div className="na-p-page space-y-5">
-			<h1 className="na-title">Generators</h1>
+  const t = useTranslations("nav");
 
-			<PeselGenerator />
-			<NipGenerator />
-			<RegonGenerator />
-			<ArrayGenerator />
-			<StringGenerator />
-		</div>
-	);
+  return (
+    <div className="na-p-page space-y-5">
+      <h1 className="na-title">{t("generators")}</h1>
+
+      <PeselGenerator />
+      <NipGenerator />
+      <RegonGenerator />
+      <ArrayGenerator />
+      <StringGenerator />
+    </div>
+  );
 };
-GeneratorsPage.layoutType = 'full';
+GeneratorsPage.layoutType = "full";
 export default GeneratorsPage;

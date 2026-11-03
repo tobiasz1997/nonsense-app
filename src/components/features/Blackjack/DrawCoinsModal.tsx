@@ -1,67 +1,70 @@
-import Button from '@components/ui/Button';
-import Modal from '@components/ui/Modal';
-import ModalBox from '@components/ui/ModalBox';
-import TypewriterText from '@components/ui/TypewriterText';
-import useGenerator from '@hooks/useGenerator';
-import { FC, useEffect, useState } from 'react';
+import Button from "@components/ui/Button";
+import Modal from "@components/ui/Modal";
+import ModalBox from "@components/ui/ModalBox";
+import TypewriterText from "@components/ui/TypewriterText";
+import useGenerator from "@hooks/useGenerator";
+import { FC, useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Props = {
-	onClose: () => void;
-	afterDraw: (coins: number) => void;
+  onClose: () => void;
+  afterDraw: (coins: number) => void;
 };
 
 const DrawCoinsModal: FC<Props> = (props) => {
-	const [generatedNumber, setGeneratedNumber] = useState(0);
-	const [isGenerating, setIsGenerating] = useState(false);
-	const { generateRandomNumber } = useGenerator();
+  const [generatedNumber, setGeneratedNumber] = useState(0);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const { generateRandomNumber } = useGenerator();
+  const t = useTranslations("blackjack");
+  const tCommon = useTranslations("common");
 
-	useEffect(() => {
-		const interval = setInterval(() => {
-			const number = generateRandomNumber(50, 50_000, 50);
-			isGenerating && setGeneratedNumber(number);
-		}, 500);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const number = generateRandomNumber(50, 50_000, 50);
+      isGenerating && setGeneratedNumber(number);
+    }, 500);
 
-		return () => clearInterval(interval);
-	}, [generateRandomNumber, isGenerating]);
+    return () => clearInterval(interval);
+  }, [generateRandomNumber, isGenerating]);
 
-	const drawNumber = () => {
-		setIsGenerating(true);
-	};
+  const drawNumber = () => {
+    setIsGenerating(true);
+  };
 
-	const stopDraw = () => {
-		setIsGenerating(false);
-	};
+  const stopDraw = () => {
+    setIsGenerating(false);
+  };
 
-	return (
-		<Modal>
-			<ModalBox onClose={props.onClose}>
-				<h2 className="na-modal-title">Draw Coins</h2>
-				<p className="text-green-dark dark:text-yellow text-3xl text-center font-bold mt-3 mb-5">
-					<TypewriterText text={generatedNumber.toString()} />
-				</p>
-				<div className="flex justify-center">
-					{!isGenerating && generatedNumber === 0 && (
-						<Button className="max-w-max" onClick={drawNumber}>
-							Draw
-						</Button>
-					)}
-					{isGenerating && (
-						<Button className="max-w-max" onClick={stopDraw}>
-							Stop
-						</Button>
-					)}
-					{!isGenerating && generatedNumber > 0 && (
-						<Button
-							className="max-w-max"
-							onClick={() => props.afterDraw(generatedNumber)}
-						>
-							Ok
-						</Button>
-					)}
-				</div>
-			</ModalBox>
-		</Modal>
-	);
+  return (
+    <Modal>
+      <ModalBox onClose={props.onClose}>
+        <h2 className="na-modal-title">{t("drawCoins")}</h2>
+        <p className="text-green-dark dark:text-yellow text-3xl text-center font-bold mt-3 mb-5">
+          <TypewriterText text={generatedNumber.toString()} />
+        </p>
+        <div className="flex justify-center">
+          {!isGenerating && generatedNumber === 0 && (
+            <Button className="max-w-max" onClick={drawNumber}>
+              {t("draw")}
+            </Button>
+          )}
+          {isGenerating && (
+            <Button className="max-w-max" onClick={stopDraw}>
+              {t("stop")}
+            </Button>
+          )}
+          {!isGenerating && generatedNumber > 0 && (
+            <Button
+              className="max-w-max"
+              onClick={() => props.afterDraw(generatedNumber)}
+            >
+              {tCommon("ok")}
+            </Button>
+          )}
+        </div>
+      </ModalBox>
+    </Modal>
+  );
 };
 
 export default DrawCoinsModal;

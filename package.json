@@ -32,7 +32,8 @@
     "copy-to-clipboard": "^4.0.2",
     "delay": "^7.0.0",
     "framer-motion": "^14.1.0",
-    "next": "^16.4.0",
+    "next": "^16.4.3",
+    "next-intl": "^4.14.9",
     "postcss": "^8.5.29",
     "react": "19.3.0",
     "react-dom": "19.3.0",
@@ -59,7 +60,7 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.1.2",
     "@vitest/coverage-v8": "^5.0.4",
-    "@vitest/ui": "^5.0.4",
+    "@vitest/ui": "^5.0.5",
     "jsdom": "^29.1.1",
     "oxfmt": "^0.72.0",
     "oxlint": "^1.87.0",
@@ -68,6 +69,6 @@
     "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2",
     "vite-tsconfig-paths": "^6.1.1",
-    "vitest": "^5.0.4"
+    "vitest": "^5.0.5"
   }
 }

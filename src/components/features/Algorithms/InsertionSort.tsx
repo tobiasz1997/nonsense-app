@@ -1,69 +1,71 @@
-import ArrayOfNumbersForm from '@components/features/Algorithms/Utils/ArrayOfNumbersForm';
-import InstanceValue from '@components/features/Algorithms/Utils/InstanceValue';
-import OutputValue from '@components/features/Algorithms/Utils/OutputValue';
-import Button from '@components/ui/Button';
-import CustomBox from '@components/ui/CustomBox';
-import Divider from '@components/ui/Divider';
-import useStringHelpers from '@hooks/useStringHelpers';
-import { CalculationResultType } from '@interfaces/calculationResultType';
-import { calculateInsertionSort } from '@utils/algorithmsFunctions';
-import React, { FC, useState } from 'react';
+import ArrayOfNumbersForm from "@components/features/Algorithms/Utils/ArrayOfNumbersForm";
+import InstanceValue from "@components/features/Algorithms/Utils/InstanceValue";
+import OutputValue from "@components/features/Algorithms/Utils/OutputValue";
+import Button from "@components/ui/Button";
+import CustomBox from "@components/ui/CustomBox";
+import Divider from "@components/ui/Divider";
+import useStringHelpers from "@hooks/useStringHelpers";
+import { CalculationResultType } from "@interfaces/calculationResultType";
+import { calculateInsertionSort } from "@utils/algorithmsFunctions";
+import React, { FC, useState } from "react";
+import { useTranslations } from "next-intl";
 
 const InsertionSort: FC = () => {
-	const [array, setArray] = useState([
-		4, 22, 8, 77, 3, 15, 1, 8, 2, 13, 7, 6, 5
-	]);
-	const [value, setValue] = useState<CalculationResultType<Array<number>>>();
+  const [array, setArray] = useState([
+    4, 22, 8, 77, 3, 15, 1, 8, 2, 13, 7, 6, 5,
+  ]);
+  const [value, setValue] = useState<CalculationResultType<Array<number>>>();
+  const t = useTranslations("algorithms");
 
-	const { convertArrayToString } = useStringHelpers();
+  const { convertArrayToString } = useStringHelpers();
 
-	return (
-		<CustomBox title="Insertion sort">
-			<div className="grid gap-5 sm:grid-cols-2">
-				<code className="na-code">
-					<div className="na-comment">// Input</div>
-					<var className="na-variable">array = [4,1,3,2]</var>
-					<div className="na-comment">// Flow</div>
-					<var className="na-variable">
-						array = [<span className="text-orange">4</span>,1,3,2] &rarr; [
-						<span className="text-yellow">4</span>,1,3,2]
-					</var>
-					<var className="na-variable">
-						array = [4,<span className="text-orange">1</span>,3,2] &rarr; [
-						<span className="text-yellow">1</span>,4,3,2]
-					</var>
-					<var className="na-variable">
-						array = [4,1,<span className="text-orange">3</span>,2] &rarr; [1,
-						<span className="text-yellow">3</span>,4,2]
-					</var>
-					<var className="na-variable">
-						array = [4,1,3,<span className="text-orange">2</span>] &rarr; [1,
-						<span className="text-yellow">2</span>,3,4]
-					</var>
-					<div className="na-comment">// Output</div>
-					<samp className="na-sample">[1,2,3,4]</samp>
-				</code>
-				<div className="flex flex-col justify-center space-y-5">
-					<InstanceValue value={convertArrayToString(array)} />
-					<ArrayOfNumbersForm
-						initialValue={array}
-						onSubmit={(numbers) => setArray(numbers)}
-					/>
-					<Divider />
-					<Button
-						disabled={array.length === 0}
-						onClick={() => setValue(calculateInsertionSort(array))}
-					>
-						Sort
-					</Button>
-					<OutputValue
-						result={convertArrayToString(value?.result)}
-						error={value?.error}
-					/>
-				</div>
-			</div>
-		</CustomBox>
-	);
+  return (
+    <CustomBox title="Insertion sort">
+      <div className="grid gap-5 sm:grid-cols-2">
+        <code className="na-code">
+          <div className="na-comment">// {t("input")}</div>
+          <var className="na-variable">array = [4,1,3,2]</var>
+          <div className="na-comment">// {t("flow")}</div>
+          <var className="na-variable">
+            array = [<span className="text-orange">4</span>,1,3,2] &rarr; [
+            <span className="text-yellow">4</span>,1,3,2]
+          </var>
+          <var className="na-variable">
+            array = [4,<span className="text-orange">1</span>,3,2] &rarr; [
+            <span className="text-yellow">1</span>,4,3,2]
+          </var>
+          <var className="na-variable">
+            array = [4,1,<span className="text-orange">3</span>,2] &rarr; [1,
+            <span className="text-yellow">3</span>,4,2]
+          </var>
+          <var className="na-variable">
+            array = [4,1,3,<span className="text-orange">2</span>] &rarr; [1,
+            <span className="text-yellow">2</span>,3,4]
+          </var>
+          <div className="na-comment">// {t("output")}</div>
+          <samp className="na-sample">[1,2,3,4]</samp>
+        </code>
+        <div className="flex flex-col justify-center space-y-5">
+          <InstanceValue value={convertArrayToString(array)} />
+          <ArrayOfNumbersForm
+            initialValue={array}
+            onSubmit={(numbers) => setArray(numbers)}
+          />
+          <Divider />
+          <Button
+            disabled={array.length === 0}
+            onClick={() => setValue(calculateInsertionSort(array))}
+          >
+            Sort
+          </Button>
+          <OutputValue
+            result={convertArrayToString(value?.result)}
+            error={value?.error}
+          />
+        </div>
+      </div>
+    </CustomBox>
+  );
 };
 
 export default InsertionSort;

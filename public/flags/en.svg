@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img">
+  <defs>
+    <clipPath id="gb-shape">
+      <rect x="0.5" y="4.5" width="23" height="15" rx="2"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#gb-shape)">
+    <rect x="0.5" y="4.5" width="23" height="15" fill="#012169"/>
+    <path d="M0 4L24 20M24 4L0 20" fill="none" stroke="#FFFFFF" stroke-width="4.2"/>
+    <path d="M0 4L24 20M24 4L0 20" fill="none" stroke="#C8102E" stroke-width="1.6"/>
+    <path d="M12 4V20M0 12H24" fill="none" stroke="#FFFFFF" stroke-width="6"/>
+    <path d="M12 4V20M0 12H24" fill="none" stroke="#C8102E" stroke-width="3.1"/>
+  </g>
+  <rect x="0.5" y="4.5" width="23" height="15" rx="2" fill="none" stroke="#D1D5DB" stroke-width="0.7"/>
+</svg>
