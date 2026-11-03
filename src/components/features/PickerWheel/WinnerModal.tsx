@@ -8,6 +8,7 @@ import {
 	closeWinnerModal
 } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch } from '@store/store';
+import { useTranslations } from 'next-intl';
 import React, { FC } from 'react';
 
 type Props = {
@@ -15,6 +16,7 @@ type Props = {
 };
 
 const WinnerModal: FC<Props> = (props) => {
+	const t = useTranslations('pickerWheel');
 	const dispatch = useAppDispatch();
 	const generatePng = useGeneratePng();
 
@@ -22,23 +24,24 @@ const WinnerModal: FC<Props> = (props) => {
 		<Modal>
 			<ModalBox onClose={() => dispatch(closeWinnerModal())}>
 				<h2 className="text-xl font-bold text-orange md:text-3xl">
-					Congratulations 🎉🎉🎉
+					{t('congratulations')}
 				</h2>
 				<p className="text-green-dark dark:text-yellow text-xl md:text-3xl mt-3 mb-5">
-					Winner: <span className="font-bold">{props.winner.name}</span>!!!
+					{t('winner')} <span className="font-bold">{props.winner.name}</span>
+					!!!
 				</p>
 				<div className="flex flex-col sm:flex-row justify-end gap-3">
 					<Button
 						className="sm:max-w-max"
 						onClick={() => generatePng(props.winner)}
 					>
-						Download Proof PNG
+						{t('downloadProofPng')}
 					</Button>
 					<Button
 						className="sm:max-w-max"
 						onClick={() => dispatch(clearWinnerAndCloseModal())}
 					>
-						Clear Option
+						{t('clearOption')}
 					</Button>
 				</div>
 			</ModalBox>

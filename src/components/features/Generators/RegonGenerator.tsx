@@ -6,9 +6,11 @@ import ExpansionPanel from '@components/ui/ExpansionPanel';
 import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import generateRegon from '@utils/generators/regonGenerator';
+import { useTranslations } from 'next-intl';
 import React, { FC, useEffect, useState } from 'react';
 
 const RegonGenerator: FC = () => {
+	const t = useTranslations();
 	const [value, setValue] = useState<string>('');
 	const regonOptions = useAppSelector((state) => state.regonSlice);
 
@@ -23,7 +25,7 @@ const RegonGenerator: FC = () => {
 	};
 
 	return (
-		<CustomBox title="REGON Generator">
+		<CustomBox title={t('generators.regonTitle')}>
 			<div className="grid gap-5 sm:grid-cols-2">
 				<p className="na-generate-result">
 					<TypewriterText text={value} />
@@ -33,11 +35,13 @@ const RegonGenerator: FC = () => {
 						<CopyButton copyValue={value} />
 					</div>
 					<div className="flex-auto">
-						<Button onClick={handleGenerateRegon}>Generate</Button>
+						<Button onClick={handleGenerateRegon}>
+							{t('common.generate')}
+						</Button>
 					</div>
 				</div>
 			</div>
-			<ExpansionPanel label="Filters">
+			<ExpansionPanel label={t('common.filters')}>
 				<RegonOptions />
 			</ExpansionPanel>
 		</CustomBox>

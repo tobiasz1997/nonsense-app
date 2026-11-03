@@ -11,11 +11,13 @@ import {
 	ShoppingCartIcon,
 	WrenchIcon
 } from '@heroicons/react/24/outline';
+import { useTranslations } from 'next-intl';
 import React, { FC, ReactElement } from 'react';
 
 type Props = {};
 
 const TasksIdea: FC<Props> = () => {
+	const t = useTranslations('tasks');
 	const { data, isLoading } = useGetActivity();
 
 	const getIcon = (type: string): ReactElement<{ className?: string }> => {
@@ -46,7 +48,7 @@ const TasksIdea: FC<Props> = () => {
 	return (
 		<div className="space-y-4 rounded-2xl bg-pistachio p-5 shadow-xl dark:bg-zinc-500">
 			<div className="flex items-center justify-center space-x-2 text-orange">
-				<h2 className="text-2xl font-bold">Idea</h2>
+				<h2 className="text-2xl font-bold">{t('ideas.title')}</h2>
 				<LightBulbIcon className="h-5 w-5 stroke-2" />
 			</div>
 
@@ -72,7 +74,8 @@ const TasksIdea: FC<Props> = () => {
 							null
 						)}
 						<p className="text-green-dark dark:text-pistachio">
-							Accessibility -&nbsp;
+							{t('ideas.accessibility')}
+							{' – '}
 							<span className="font-bold">
 								{String(data.accessibility * 100)}%
 							</span>
@@ -80,7 +83,7 @@ const TasksIdea: FC<Props> = () => {
 					</div>
 				</div>
 			) : (
-				<p className="text-center text-green-dark">No ideas, sorry!</p>
+				<p className="text-center text-green-dark">{t('ideas.noIdeas')}</p>
 			)}
 		</div>
 	);

@@ -7,9 +7,11 @@ import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import { generateString } from '@utils/generators/stringGenerate';
 import cx from 'classnames';
+import { useTranslations } from 'next-intl';
 import React, { FC, useEffect, useState } from 'react';
 
 const StringGenerator: FC = () => {
+	const t = useTranslations();
 	const [value, setValue] = useState<string>('');
 	const stringOptions = useAppSelector((state) => state.stringSlice);
 
@@ -24,7 +26,7 @@ const StringGenerator: FC = () => {
 	};
 
 	return (
-		<CustomBox title="String Generator">
+		<CustomBox title={t('generators.stringTitle')}>
 			<div className="grid gap-5 sm:grid-cols-2">
 				<p
 					className={cx('na-generate-result line-clamp-20', {
@@ -44,11 +46,13 @@ const StringGenerator: FC = () => {
 						<CopyButton copyValue={value} />
 					</div>
 					<div className="flex-auto">
-						<Button onClick={handleGenerateString}>Generate</Button>
+						<Button onClick={handleGenerateString}>
+							{t('common.generate')}
+						</Button>
 					</div>
 				</div>
 			</div>
-			<ExpansionPanel label="Filters">
+			<ExpansionPanel label={t('common.filters')}>
 				<StringOptions />
 			</ExpansionPanel>
 		</CustomBox>

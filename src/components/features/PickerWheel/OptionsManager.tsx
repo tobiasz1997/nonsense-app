@@ -14,9 +14,11 @@ import {
 	openGetSetOptionsModal
 } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
+import { useTranslations } from 'next-intl';
 import React, { FC, useMemo } from 'react';
 
 const OptionsManager: FC = () => {
+	const t = useTranslations('pickerWheel');
 	const dispatch = useAppDispatch();
 
 	const options = useAppSelector((state) => state.pickerWheelSlice.options);
@@ -32,42 +34,44 @@ const OptionsManager: FC = () => {
 	);
 	return (
 		<>
-			<ExpansionPanel label="Settings" defaultOpen={true}>
+			<ExpansionPanel label={t('settings')} defaultOpen={true}>
 				<div className="flex flex-wrap gap-4">
 					<Button
 						icon={<ClipboardDocumentListIcon />}
 						className="flex-1"
 						onClick={() => dispatch(openGetSetOptionsModal())}
 					>
-						Get / Set Options
+						{t('getSetOptions')}
 					</Button>
 					<Button
 						icon={<PencilSquareIcon />}
 						className="flex-1"
 						onClick={() => dispatch(openManageOptionsFormModal())}
 					>
-						Manage Options List
+						{t('manageOptionsList')}
 					</Button>
 					<Button
 						icon={<PlusIcon />}
 						className="flex-1"
 						onClick={() => dispatch(openManageOptionFormModal())}
 					>
-						Add Option
+						{t('addOption')}
 					</Button>
 					<Button
 						icon={<Cog8ToothIcon />}
 						className="flex-1"
 						onClick={() => dispatch(showHideOptionSettings())}
 					>
-						Option Settings
+						{t('optionSettings')}
 					</Button>
 				</div>
 			</ExpansionPanel>
 
 			<div className="flex-1">
 				<ExpansionPanel
-					label={`Active (${activeOptions.length})`}
+					label={t('activeCount', {
+						count: activeOptions.length
+					})}
 					defaultOpen={true}
 				>
 					<ul className="list-none flex flex-col gap-3 max-h-[500px] overflow-y-auto">
@@ -78,7 +82,9 @@ const OptionsManager: FC = () => {
 				</ExpansionPanel>
 
 				<ExpansionPanel
-					label={`Inactive (${inactiveOptions.length})`}
+					label={t('inactiveCount', {
+						count: inactiveOptions.length
+					})}
 					defaultOpen={true}
 				>
 					<ul className="list-none flex flex-col gap-3 max-h-[500px] overflow-y-auto">

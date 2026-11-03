@@ -3,14 +3,22 @@ import { ISchedule } from '@interfaces/scheduleType';
 import * as XLSX from 'xlsx-js-style';
 import { generateFileName } from './scheduleHelpers';
 
-export async function exportScheduleToXlsx(schedule: ISchedule) {
+export async function exportScheduleToXlsx(
+	schedule: ISchedule,
+	labels: Record<'date' | 'project' | 'hours' | 'comment' | 'sheetName', string>
+) {
 	const rows = [...schedule.plans]
 		.sort((a, b) => a.day - b.day)
 		.map((entry) => ({
-			Data: new Date(+schedule.year, +schedule.month - 1, entry.day, 12),
-			Projekt: entry.project,
-			Godziny: Number(entry.hours),
-			Komentarz: entry.comment
+			[labels.date]: new Date(
+				+schedule.year,
+				+schedule.month - 1,
+				entry.day,
+				12
+			),
+			[labels.project]: entry.project,
+			[labels.hours]: Number(entry.hours),
+			[labels.comment]: entry.comment
 		}));
 
 	const worksheet = XLSX.utils.json_to_sheet(rows, {
@@ -82,7 +90,7 @@ export async function exportScheduleToXlsx(schedule: ISchedule) {
 
 	const workbook = XLSX.utils.book_new();
 
-	XLSX.utils.book_append_sheet(workbook, worksheet, 'Schedule');
+	XLSX.utils.book_append_sheet(workbook, worksheet, labels.sheetName);
 
 	const filename = `${generateFileName(schedule)}.xlsx`;
 

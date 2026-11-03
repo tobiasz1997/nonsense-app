@@ -3,9 +3,11 @@ import FormCheckbox from '@components/ui/FormCheckbox';
 import { changeRegonType } from '@store/slices/generators/regon.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { regonType } from '@utils/generators/regonGenerator';
+import { useTranslations } from 'next-intl';
 import { ChangeEvent, FC } from 'react';
 
 const RegonOptions: FC = () => {
+	const t = useTranslations('generators');
 	const regonType = useAppSelector((state) => state.regonSlice.type);
 	const dispatch = useAppDispatch();
 
@@ -15,18 +17,18 @@ const RegonOptions: FC = () => {
 
 	return (
 		<div className="flex flex-col space-y-4">
-			<OptionTitle title="Long" />
+			<OptionTitle title={t('regonLength')} />
 			<FormCheckbox
 				checked={regonType === 'short'}
 				value="short"
-				label="7 digits"
+				label={t('sevenDigits')}
 				type="radio"
 				onChange={handleTypeChange}
 			/>
 			<FormCheckbox
 				checked={regonType === 'long'}
 				value="long"
-				label="9 digits"
+				label={t('nineDigits')}
 				type="radio"
 				onChange={handleTypeChange}
 			/>

@@ -8,11 +8,13 @@ import {
 } from '@store/slices/generators/pesel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { genderType } from '@utils/generators/peselGenerator';
+import { useTranslations } from 'next-intl';
 import { ChangeEvent, FC } from 'react';
 
 const CURRENT_YEAR = new Date().getFullYear();
 
 const PeselOptions: FC = () => {
+	const t = useTranslations();
 	const minYear = useAppSelector((state) => state.peselSlice.minYear);
 	const maxYear = useAppSelector((state) => state.peselSlice.maxYear);
 	const gender = useAppSelector((state) => state.peselSlice.gender);
@@ -48,61 +50,69 @@ const PeselOptions: FC = () => {
 	return (
 		<section className="grid grid-cols-2 gap-4 sm:grid-cols-4">
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Min Year" />
+				<OptionTitle title={t('generators.minYear')} />
 				{availableYears.map((year) => (
 					<FormCheckbox
 						key={year}
 						checked={minYear === year}
 						disabled={maxYear < year}
 						value={year}
-						label={year === CURRENT_YEAR ? 'Current' : `${year.toString()}`}
+						label={
+							year === CURRENT_YEAR
+								? t('generators.currentYear')
+								: `${year.toString()}`
+						}
 						type="radio"
 						onChange={handleMinYearChange}
 					/>
 				))}
 			</div>
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Max Year" />
+				<OptionTitle title={t('generators.maxYear')} />
 				{availableYears.map((year) => (
 					<FormCheckbox
 						key={year}
 						checked={maxYear === year}
 						disabled={minYear > year}
 						value={year}
-						label={year === CURRENT_YEAR ? 'Current' : year.toString()}
+						label={
+							year === CURRENT_YEAR
+								? t('generators.currentYear')
+								: year.toString()
+						}
 						type="radio"
 						onChange={handleMaxYearChange}
 					/>
 				))}
 			</div>
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Gender" />
+				<OptionTitle title={t('generators.gender')} />
 				<FormCheckbox
 					checked={gender.includes('male')}
 					value="male"
-					label="Male"
+					label={t('generators.male')}
 					onChange={handleGenderChange}
 				/>
 				<FormCheckbox
 					checked={gender.includes('female')}
 					value="female"
-					label="Female"
+					label={t('generators.female')}
 					onChange={handleGenderChange}
 				/>
 			</div>
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Divider" />
+				<OptionTitle title={t('generators.divider')} />
 				<FormCheckbox
 					checked={isDivider === true}
 					value="true"
-					label="Yes"
+					label={t('common.yes')}
 					type="radio"
 					onChange={handleDividerChange}
 				/>
 				<FormCheckbox
 					checked={isDivider === false}
 					value="false"
-					label="No"
+					label={t('common.no')}
 					type="radio"
 					onChange={handleDividerChange}
 				/>

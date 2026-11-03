@@ -44,7 +44,8 @@ export const calculateFibonacciRecursion = (
 
 export const calculateBinarySearch = (
 	input: Array<number>,
-	target: number
+	target: number,
+	formatResult?: (index: number | null) => string
 ): CalculationResultType<string> => {
 	let startIndex = 0;
 	let endIndex = input.length - 1;
@@ -54,7 +55,9 @@ export const calculateBinarySearch = (
 
 		if (input[middleIndex] === target) {
 			return {
-				result: `Target value ${target} is exist at ${middleIndex} index in array.`
+				result: formatResult
+					? formatResult(middleIndex)
+					: `Target value ${target} is exist at ${middleIndex} index in array.`
 			};
 		} else if (input[middleIndex] < target) {
 			startIndex = middleIndex + 1;
@@ -64,7 +67,9 @@ export const calculateBinarySearch = (
 	}
 
 	return {
-		result: `No target value ${target} in array.`
+		result: formatResult
+			? formatResult(null)
+			: `No target value ${target} in array.`
 	};
 };
 

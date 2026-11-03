@@ -1,5 +1,6 @@
 import Tooltip from '@components/ui/Tooltip';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
+import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 
 type Props = {
@@ -7,12 +8,13 @@ type Props = {
 };
 
 const ApiUrlTooltip: FC<Props> = (props) => {
+	const t = useTranslations('common');
 	return (
 		<div className="absolute top-0 right-0 na-p-page">
 			<Tooltip
 				content={
 					<p>
-						Api URL &#8594; <code className="italic">{props.url}</code>
+						{t('apiUrl')} &#8594; <code className="italic">{props.url}</code>
 					</p>
 				}
 				placement="bottom"

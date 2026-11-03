@@ -1,39 +1,39 @@
-import GameResultPanel from "@components/features/Blackjack/GameResultPanel";
-import GameStatsPanel from "@components/features/Blackjack/GameStatsPanel";
-import PlayerStatsPanel from "@components/features/Blackjack/PlayerStatsPanel";
-import Button from "@components/ui/Button";
-import Modal from "@components/ui/Modal";
-import ModalBox from "@components/ui/ModalBox";
-import { FC, useState } from "react";
-import { useTranslations } from "next-intl";
+import GameResultPanel from '@components/features/Blackjack/GameResultPanel';
+import GameStatsPanel from '@components/features/Blackjack/GameStatsPanel';
+import PlayerStatsPanel from '@components/features/Blackjack/PlayerStatsPanel';
+import Button from '@components/ui/Button';
+import Modal from '@components/ui/Modal';
+import ModalBox from '@components/ui/ModalBox';
+import { useTranslations } from 'next-intl';
+import { FC, useState } from 'react';
 
 const GameStatsMobileView: FC = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const t = useTranslations("blackjack");
+	const [isModalVisible, setIsModalVisible] = useState(false);
+	const t = useTranslations('blackjack');
 
-  return (
-    <>
-      <Button
-        size="small"
-        variant="secondary"
-        onClick={() => setIsModalVisible(true)}
-      >
-        {t("stats")}
-      </Button>
+	return (
+		<>
+			<Button
+				size="small"
+				variant="secondary"
+				onClick={() => setIsModalVisible(true)}
+			>
+				{t('stats')}
+			</Button>
 
-      {isModalVisible && (
-        <Modal>
-          <ModalBox onClose={() => setIsModalVisible(false)}>
-            <div className="gap-3 flex-col flex mt-6">
-              <GameResultPanel />
-              <PlayerStatsPanel />
-              <GameStatsPanel />
-            </div>
-          </ModalBox>
-        </Modal>
-      )}
-    </>
-  );
+			{isModalVisible && (
+				<Modal>
+					<ModalBox onClose={() => setIsModalVisible(false)}>
+						<div className="gap-3 flex-col flex mt-6">
+							<GameResultPanel />
+							<PlayerStatsPanel />
+							<GameStatsPanel />
+						</div>
+					</ModalBox>
+				</Modal>
+			)}
+		</>
+	);
 };
 
 export default GameStatsMobileView;

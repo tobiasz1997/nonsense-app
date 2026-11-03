@@ -5,6 +5,7 @@ import { WheelOption } from '@interfaces/wheelOption';
 import { clearWinner, shuffleOptions } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch } from '@store/store';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import React, { FC } from 'react';
 
 type Props = {
@@ -12,6 +13,7 @@ type Props = {
 };
 
 const WheelManagePanel: FC<Props> = ({ winner }) => {
+	const t = useTranslations();
 	const dispatch = useAppDispatch();
 
 	return (
@@ -27,7 +29,7 @@ const WheelManagePanel: FC<Props> = ({ winner }) => {
 								background: `${winner.color}`
 							}}
 						>
-							<p>Winner:</p>
+							<p>{t('pickerWheel.winner')}</p>
 							<p className="text-2xl font-bold">{winner.name}</p>
 						</motion.div>
 					</>
@@ -38,7 +40,7 @@ const WheelManagePanel: FC<Props> = ({ winner }) => {
 						icon={<CubeIcon />}
 						onClick={() => dispatch(shuffleOptions())}
 					>
-						Shuffle
+						{t('pickerWheel.shuffle')}
 					</Button>
 					{winner && (
 						<Button
@@ -46,7 +48,7 @@ const WheelManagePanel: FC<Props> = ({ winner }) => {
 							icon={<XCircleIcon />}
 							onClick={() => dispatch(clearWinner())}
 						>
-							Reset
+							{t('common.reset')}
 						</Button>
 					)}
 				</div>

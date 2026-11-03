@@ -1,6 +1,10 @@
 import type { Preview } from '@storybook/nextjs';
 import '@styles/globals.css';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
+import { createElement } from 'react';
+import { NextIntlClientProvider } from 'next-intl';
+import en from '../messages/en.json';
+import pl from '../messages/pl.json';
 
 const preview: Preview = {
     parameters: {
@@ -13,6 +17,14 @@ const preview: Preview = {
         }
     },
     globalTypes: {
+        locale: {
+            description: 'Language',
+            toolbar: {
+                title: 'Language',
+                icon: 'globe',
+                items: [{ value: 'pl', title: 'Polski' }, { value: 'en', title: 'English' }]
+            }
+        },
         theme: {
             description: 'Global theme for components',
             defaultValue: 'dark',
@@ -29,10 +41,19 @@ const preview: Preview = {
         darkMode: {
             defaultValue: true, // Enable dark mode by default on all stories
         },
-    }
+    },
+    initialGlobals: { locale: 'pl' }
 };
 
 export const decorators = [
+    (Story: () => ReturnType<typeof createElement>, context: { globals: { locale?: string } }) => {
+        const locale = context.globals.locale === 'en' ? 'en' : 'pl';
+        return createElement(NextIntlClientProvider, {
+            locale,
+            messages: locale === 'en' ? en : pl,
+            timeZone: 'Europe/Warsaw'
+        }, createElement(Story));
+    },
     withThemeByDataAttribute({
         themes: {
             light: 'light',

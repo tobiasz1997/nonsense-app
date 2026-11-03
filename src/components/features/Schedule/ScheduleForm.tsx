@@ -9,6 +9,7 @@ import { monthsList } from '@utils/lists/months-list';
 import { yearsLists } from '@utils/lists/years-lists';
 import { localStorageGet, localStorageSet } from '@utils/localStorage';
 import { validateRequired } from '@utils/validators';
+import { useTranslations } from 'next-intl';
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { SCHEDULE_KEY } from '../../../const/storageKeys.const';
@@ -21,6 +22,7 @@ const CURRENT_MONTH = new Date().getMonth().toString();
 const CURRENT_YEAR = new Date().getFullYear().toString();
 
 const ScheduleForm: FC<Props> = (props) => {
+	const t = useTranslations();
 	const {
 		register,
 		handleSubmit,
@@ -43,30 +45,32 @@ const ScheduleForm: FC<Props> = (props) => {
 	const tooltipContent = (
 		<div className="max-w-sm">
 			<p>
-				Use <code className="na-sample">{'{{ project1 }}'}</code> and{' '}
-				<code className="na-sample">{'{{ hours1 }}'}</code> in the description
-				to automatically insert the first project's name and its total hours.
+				{t('schedule.descriptionHelp.firstProject', {
+					projectToken: '{{ project1 }}',
+					hoursToken: '{{ hours1 }}'
+				})}
 			</p>
-
 			<p className="mt-2">
-				For additional projects, use{' '}
-				<code className="na-sample">{'{{ project2 }}'}</code> and{' '}
-				<code className="na-sample">{'{{ hours2 }}'}</code>, and so on. You can
-				add as many projects as needed.
+				{t('schedule.descriptionHelp.additionalProjects', {
+					projectToken: '{{ project2 }}',
+					hoursToken: '{{ hours2 }}'
+				})}
 			</p>
-
 			<p className="mt-2">
-				Use <code className="na-sample">{'{{ totalHours }}'}</code> to display
-				the sum of hours across all projects.
+				{t('schedule.descriptionHelp.totalHours', {
+					totalHoursToken: '{{ totalHours }}'
+				})}
 			</p>
-
 			<div className="mt-2">
-				<p className="font-semibold">Example:</p>
+				<p className="font-semibold">{t('schedule.descriptionHelp.example')}</p>
 				<code className="block na-sample">
-					- {'{{ project1 }}'} – {'{{ hours1 }}'}h
-					<br />- {'{{ project2 }}'} – {'{{ hours2 }}'}h
+					- {'{{ project1 }}'} – {'{{ hours1 }}'}
+					{t('schedule.descriptionHelp.hoursUnit')}
+					<br />- {'{{ project2 }}'} – {'{{ hours2 }}'}
+					{t('schedule.descriptionHelp.hoursUnit')}
 					<br />
-					Total hours – {'{{ totalHours }}'}h
+					{t('schedule.descriptionHelp.totalHoursLabel')} – {'{{ totalHours }}'}
+					{t('schedule.descriptionHelp.hoursUnit')}
 				</code>
 			</div>
 		</div>
@@ -82,54 +86,61 @@ const ScheduleForm: FC<Props> = (props) => {
 	};
 
 	return (
-		<CustomBox title="Schedule Form">
+		<CustomBox title={t('schedule.formTitle')}>
 			<form
 				noValidate
 				onSubmit={handleSubmit((data) => submit(data))}
 				className="grid gap-5 grid-cols-1 sm:grid-cols-2"
 			>
 				<FormInput
-					label="Title"
+					label={t('schedule.title')}
 					tabIndex={0}
 					{...register('title', {
 						...validateRequired()
 					})}
-					placeholder={'Type title'}
-					error={errors.title?.message}
+					placeholder={t('schedule.titlePlaceholder')}
+					error={
+						errors.title?.message && t(`validation.${errors.title?.message}`)
+					}
 				/>
 				<FormInput
-					label="Author"
+					label={t('schedule.author')}
 					{...register('author', {
 						...validateRequired()
 					})}
-					placeholder={'Type author'}
-					error={errors.author?.message}
+					placeholder={t('schedule.authorPlaceholder')}
+					error={
+						errors.author?.message && t(`validation.${errors.author?.message}`)
+					}
 				/>
 				<FormSelect
-					label="Month"
+					label={t('schedule.month')}
 					{...register('month', {
 						...validateRequired()
 					})}
-					options={monthsList}
+					options={monthsList.map((month) => ({
+						...month,
+						label: t(`schedule.months.${month.label}`)
+					}))}
 				/>
 				<FormSelect
-					label="Year"
+					label={t('schedule.year')}
 					{...register('year', {
 						...validateRequired()
 					})}
 					options={yearsLists}
 				/>
 				<div className="col-span-1 sm:col-span-2">
-					<ExpansionPanel label="Extra data">
+					<ExpansionPanel label={t('schedule.extraData')}>
 						<FormTextarea
-							label="Description"
+							label={t('schedule.description')}
 							tooltip={tooltipContent}
 							{...register('descriptionTemplate')}
 						/>
 					</ExpansionPanel>
 				</div>
 				<div className="col-span-1 sm:col-span-2">
-					<Button>Show generated dates</Button>
+					<Button>{t('schedule.showGeneratedDates')}</Button>
 				</div>
 			</form>
 		</CustomBox>

@@ -6,9 +6,11 @@ import ExpansionPanel from '@components/ui/ExpansionPanel';
 import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import generateArray from '@utils/generators/arrayGenerator';
+import { useTranslations } from 'next-intl';
 import React, { FC, useEffect, useState } from 'react';
 
 const ArrayGenerator: FC = () => {
+	const t = useTranslations();
 	const [value, setValue] = useState<string>('');
 	const arrayOptions = useAppSelector((state) => state.arraySlice);
 
@@ -30,7 +32,7 @@ const ArrayGenerator: FC = () => {
 	};
 
 	return (
-		<CustomBox title="Array Generator">
+		<CustomBox title={t('generators.arrayTitle')}>
 			<div className="grid gap-5 sm:grid-cols-2">
 				<p className="na-generate-result">
 					<TypewriterText text={value} />
@@ -40,11 +42,13 @@ const ArrayGenerator: FC = () => {
 						<CopyButton copyValue={value} />
 					</div>
 					<div className="flex-auto">
-						<Button onClick={handleGenerateArray}>Generate</Button>
+						<Button onClick={handleGenerateArray}>
+							{t('common.generate')}
+						</Button>
 					</div>
 				</div>
 			</div>
-			<ExpansionPanel label="Filters">
+			<ExpansionPanel label={t('common.filters')}>
 				<ArrayOptions />
 			</ExpansionPanel>
 		</CustomBox>

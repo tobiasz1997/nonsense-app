@@ -6,9 +6,11 @@ import ExpansionPanel from '@components/ui/ExpansionPanel';
 import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import generatePesel from '@utils/generators/peselGenerator';
+import { useTranslations } from 'next-intl';
 import React, { FC, useEffect, useState } from 'react';
 
 const PeselGenerator: FC = () => {
+	const t = useTranslations();
 	const [value, setValue] = useState<string>('');
 	const peselOptions = useAppSelector((state) => state.peselSlice);
 
@@ -28,7 +30,7 @@ const PeselGenerator: FC = () => {
 	};
 
 	return (
-		<CustomBox title="Pesel Generator">
+		<CustomBox title={t('generators.peselTitle')}>
 			<div className="grid gap-5 sm:grid-cols-2">
 				<p className="na-generate-result">
 					<TypewriterText text={value} />
@@ -38,11 +40,13 @@ const PeselGenerator: FC = () => {
 						<CopyButton copyValue={value} />
 					</div>
 					<div className="flex-auto">
-						<Button onClick={handleGeneratePesel}>Generate</Button>
+						<Button onClick={handleGeneratePesel}>
+							{t('common.generate')}
+						</Button>
 					</div>
 				</div>
 			</div>
-			<ExpansionPanel label="Filters">
+			<ExpansionPanel label={t('common.filters')}>
 				<PeselOptions />
 			</ExpansionPanel>
 		</CustomBox>

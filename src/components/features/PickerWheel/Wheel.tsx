@@ -16,6 +16,7 @@ import { useAppDispatch } from '@store/store';
 import { generateRandomIntNumber } from '@utils/generators/sharedGenerators';
 import cx from 'classnames';
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import React, { FC, useMemo, useState } from 'react';
 
 type Props = {
@@ -25,6 +26,7 @@ type Props = {
 };
 
 const Wheel: FC<Props> = ({ options, winner, setWinner }) => {
+	const t = useTranslations('pickerWheel');
 	const [rotation, setRotation] = useState(0);
 	const [isSpinning, setIsSpinning] = useState(false);
 
@@ -154,7 +156,7 @@ const Wheel: FC<Props> = ({ options, winner, setWinner }) => {
 						onClick={() => dispatch(openManageOptionsFormModal())}
 						className="max-w-max"
 					>
-						Add Options
+						{t('addOptions')}
 					</Button>
 
 					<Button
@@ -162,7 +164,7 @@ const Wheel: FC<Props> = ({ options, winner, setWinner }) => {
 						onClick={() => dispatch(openManageOptionFormModal())}
 						className="max-w-max"
 					>
-						Add Option
+						{t('addOption')}
 					</Button>
 
 					<Button
@@ -170,7 +172,7 @@ const Wheel: FC<Props> = ({ options, winner, setWinner }) => {
 						onClick={() => dispatch(openGetSetOptionsModal())}
 						className="max-w-max"
 					>
-						Set Options Form Token
+						{t('setOptionsFromToken')}
 					</Button>
 				</div>
 			)}
