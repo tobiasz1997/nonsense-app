@@ -22,7 +22,8 @@ const meta = {
 		locale: {
 			control: 'inline-radio',
 			options: ['pl', 'en'],
-			description: 'Selected language. Clicking a flag saves the language cookie and reloads the page.'
+			description:
+				'Selected language. Clicking a flag saves the language cookie and reloads the page.'
 		}
 	},
 	render: ({ locale }) => (

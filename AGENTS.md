@@ -255,6 +255,40 @@ Additional conventions:
 - Do not disable tests, lint rules, or TypeScript checks just to make a change pass.
 - Do not run destructive commands or overwrite user changes without explicit authorization.
 
+## Commit messages
+
+- Use Conventional Commits: `type(scope): description`, with an optional scope.
+- Write descriptions in English, using the imperative mood (for example, `add`,
+  `fix`, or `update`). Keep them short and specific; omit the final period.
+- Choose the type that describes the change:
+  - `feat` — a new feature.
+  - `fix` — a bug fix.
+  - `docs` — documentation changes.
+  - `refactor` — code restructuring without changing behavior.
+  - `test` — adding or updating tests.
+  - `ci` — CI workflows and automation configuration.
+  - `chore` — maintenance and dependency updates.
+  - `style` — formatting changes without changing behavior.
+  - `perf` — performance improvements.
+  - `build` — build tooling and configuration.
+  - `revert` — reverting a previous change.
+- When useful, use a scope such as `button`, `ui`, `schedule`, or `deps`.
+- For a breaking change, add `!` before the colon and explain the impact in the
+  commit body.
+- Base the message on the actual committed changes. These conventions do not
+  authorize creating commits or bypass the mandatory approval rules.
+
+Examples:
+
+```text
+feat(picker-wheel): add winner image download
+fix(button): preserve accessible name while loading
+docs: update environment setup instructions
+test(button): cover asynchronous clicks
+ci: add production build
+chore(deps): update dependencies
+```
+
 ## Expected agent workflow
 
 1. **Understand:** Inspect related source files, configuration, tests, and conventions.

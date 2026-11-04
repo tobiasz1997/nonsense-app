@@ -15,7 +15,8 @@ export default defineConfig({
 			resolve(
 				dirname(fileURLToPath(import.meta.url)),
 				'__tests__/__snapshots__',
-				relative(fileURLToPath(new URL('./src/', import.meta.url)), testPath) + extension
+				relative(fileURLToPath(new URL('./src/', import.meta.url)), testPath) +
+					extension
 			),
 		coverage: {
 			provider: 'v8',

@@ -71,6 +71,7 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 			)}
 			type={props.type}
 			disabled={props.disabled || isPending || props.submitting}
+			aria-busy={isPending || props.submitting || undefined}
 		>
 			{
 				<>
@@ -82,7 +83,7 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 					/>
 					<span
 						className={cx('flex h-full w-full items-center justify-center', {
-							invisible: isPending || props.submitting
+							'opacity-0': isPending || props.submitting
 						})}
 					>
 						{props.icon ? (

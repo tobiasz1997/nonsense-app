@@ -2,6 +2,9 @@
   "name": "nonsense-app",
   "version": "1.2.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev --webpack",
     "build": "next build",
@@ -17,11 +20,13 @@
     "format": "oxfmt",
     "format:check": "oxfmt --check",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run format:check && i18n:check && npm run typecheck",
+    "check": "npm run lint && npm run format:check && npm run i18n:check && npm run typecheck",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "i18n:check": "i18n-check --locales messages --source en -f next-intl",
-    "i18n:usage": "i18n-check --locales messages --source en -f next-intl --unused src"
+    "i18n:usage": "i18n-check --locales messages --source en -f next-intl --unused src",
+    "prepare": "husky",
+    "commitlint": "commitlint"
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
@@ -47,6 +52,8 @@
     "xlsx-js-style": "^1.2.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^21.2.4",
+    "@commitlint/config-conventional": "^21.2.4",
     "@lingual/i18n-check": "^0.9.5",
     "@storybook/addon-links": "^10.6.1",
     "@storybook/addon-onboarding": "^10.6.1",
@@ -64,6 +71,7 @@
     "@vitejs/plugin-react": "^6.1.2",
     "@vitest/coverage-v8": "^5.0.4",
     "@vitest/ui": "^5.0.5",
+    "husky": "^9.1.7",
     "jsdom": "^29.1.1",
     "oxfmt": "^0.72.0",
     "oxlint": "^1.87.0",
