@@ -18,74 +18,6 @@ type pickerWheelStateType = {
 
 const initialState: pickerWheelStateType = {
 	winner: null,
-	// options: [
-	// {
-	// 	id: uuidv4(),
-	// 	name: 'Adam Kowaslki',
-	// 	color: '#eab308',
-	// 	active: true,
-	// 	stars: 1
-	// },
-	// {
-	// 	id: uuidv4(),
-	// 	name: 'Jan Powilok-Smyczek',
-	// 	color: '#f97316',
-	// 	active: true,
-	// 	stars: 0
-	// },
-	// {
-	// 	id: uuidv4(),
-	// 	name: 'Sebastian Walaszek',
-	// 	color: '#ef4444',
-	// 	active: true,
-	// 	stars: 2
-	// },
-	// { id: uuidv4(), name: 'Zbigniew Rudzki', color: '#ec4899', active: true },
-	// {
-	// 	id: uuidv4(),
-	// 	name: 'Adam Kowaslki',
-	// 	color: '#eab308',
-	// 	active: true,
-	// 	stars: 1
-	// },
-	// {
-	// 	id: uuidv4(),
-	// 	name: 'Jan Powilok-Smyczek',
-	// 	color: '#f97316',
-	// 	active: true,
-	// 	stars: 0
-	// },
-	// {
-	// 	id: uuidv4(),
-	// 	name: 'Sebastian Walaszek',
-	// 	color: '#ef4444',
-	// 	active: true,
-	// 	stars: 2
-	// },
-	// { id: uuidv4(), name: 'Zbigniew Rudzki', color: '#ec4899', active: true },
-	// {
-	// 	id: uuidv4(),
-	// 	name: 'Adam Kowaslki',
-	// 	color: '#eab308',
-	// 	active: true,
-	// 	stars: 1
-	// },
-	// {
-	// 	id: uuidv4(),
-	// 	name: 'Jan Powilok-Smyczek',
-	// 	color: '#f97316',
-	// 	active: true,
-	// 	stars: 0
-	// },
-	// {
-	// 	id: uuidv4(),
-	// 	name: 'Sebastian Walaszek',
-	// 	color: '#ef4444',
-	// 	active: true,
-	// 	stars: 2
-	// },
-	// { id: uuidv4(), name: 'Zbigniew Rudzki', color: '#ec4899', active: true }
-	// ],
 	options: [],
 	winnerModal: false,
 	optionsFormModal: false,
@@ -170,6 +102,9 @@ const pickerWheelSlice = createSlice({
 			state.editedOption = null;
 			state.optionFormModal = false;
 		},
+		addOptionsInit: (state, action: PayloadAction<WheelOption[]>) => {
+			state.options = action.payload;
+		},
 		editOption: (state, action: PayloadAction<WheelOption>) => {
 			const index = state.options.findIndex((x) => x.id === action.payload.id);
 			state.options[index] = {
@@ -230,6 +165,7 @@ export const {
 	showHideOptionSettings,
 	manageOptionActive,
 	addOptions,
+	addOptionsInit,
 	addOption,
 	editOption,
 	deleteOption,

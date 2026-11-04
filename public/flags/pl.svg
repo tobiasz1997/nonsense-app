@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img">
+  <defs>
+    <clipPath id="pl-shape">
+      <rect x="0.5" y="4.5" width="23" height="15" rx="2"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#pl-shape)">
+    <rect x="0.5" y="4.5" width="23" height="15" fill="#FFFFFF"/>
+    <rect x="0.5" y="12" width="23" height="7.5" fill="#DC143C"/>
+  </g>
+  <rect x="0.5" y="4.5" width="23" height="15" rx="2" fill="none" stroke="#D1D5DB" stroke-width="0.7"/>
+</svg>

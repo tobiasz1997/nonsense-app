@@ -1,15 +1,17 @@
 import StringOptions from '@components/features/Generators/Filters/StringOptions';
 import Button from '@components/ui/Button';
+import CopyButton from '@components/ui/CopyButton';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
 import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import { generateString } from '@utils/generators/stringGenerate';
 import cx from 'classnames';
-import copy from 'copy-to-clipboard';
+import { useTranslations } from 'next-intl';
 import React, { FC, useEffect, useState } from 'react';
 
 const StringGenerator: FC = () => {
+	const t = useTranslations();
 	const [value, setValue] = useState<string>('');
 	const stringOptions = useAppSelector((state) => state.stringSlice);
 
@@ -23,15 +25,11 @@ const StringGenerator: FC = () => {
 		setValue(result?.result ?? '');
 	};
 
-	const handleCopyString = () => {
-		copy(value);
-	};
-
 	return (
-		<CustomBox title="String Generator">
+		<CustomBox title={t('generators.stringTitle')}>
 			<div className="grid gap-5 sm:grid-cols-2">
 				<p
-					className={cx('na-generate-result line-clamp-[20]', {
+					className={cx('na-generate-result line-clamp-20', {
 						'text-xl sm:text-3xl': value.length < 500,
 						'text-lg sm:text-xl': value.length >= 500 && value.length < 1_000,
 						'text-base sm:text-lg':
@@ -45,16 +43,16 @@ const StringGenerator: FC = () => {
 				</p>
 				<div className="flex gap-3">
 					<div>
-						<Button disabled={value.length === 0} onClick={handleCopyString}>
-							Copy
-						</Button>
+						<CopyButton copyValue={value} />
 					</div>
 					<div className="flex-auto">
-						<Button onClick={handleGenerateString}>Generate</Button>
+						<Button onClick={handleGenerateString}>
+							{t('common.generate')}
+						</Button>
 					</div>
 				</div>
 			</div>
-			<ExpansionPanel label="Filters">
+			<ExpansionPanel label={t('common.filters')}>
 				<StringOptions />
 			</ExpansionPanel>
 		</CustomBox>

@@ -10,7 +10,7 @@ export const numberRegex = /^\d+$/;
 export const numberAndSeparatorRegex = /^\d+(;\d+)*$/;
 
 export const validateRequired = <FV extends FieldValues, FN extends Path<FV>>(
-	message: string = 'Required field',
+	message: string = 'requiredField',
 	condition?: boolean
 ): RegisterOptions<FV, FN> => {
 	return {
@@ -28,11 +28,11 @@ export const validateInputWithNumbers = <
 	return {
 		required: {
 			value: true,
-			message: 'Required field'
+			message: 'requiredField'
 		},
 		pattern: {
 			value: numberRegex,
-			message: 'Invalid value'
+			message: 'invalidValue'
 		}
 	};
 };
@@ -44,11 +44,11 @@ export const validateInputWithStringOfNumbersAndSeparator = <
 	return {
 		required: {
 			value: true,
-			message: 'Required field'
+			message: 'requiredField'
 		},
 		pattern: {
 			value: numberAndSeparatorRegex,
-			message: 'Invalid format. Example: 1;33;2;44'
+			message: 'invalidNumberList'
 		}
 	};
 };

@@ -2,6 +2,7 @@ import Button from '@components/ui/Button';
 import FormInput from '@components/ui/FormInput';
 import { TaskFormType } from '@interfaces/taskFormType';
 import { validateRequired } from '@utils/validators';
+import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -10,6 +11,7 @@ type Props = {
 };
 
 const AddTaskForm: FC<Props> = (props) => {
+	const t = useTranslations();
 	const {
 		register,
 		handleSubmit,
@@ -19,12 +21,13 @@ const AddTaskForm: FC<Props> = (props) => {
 	return (
 		<form className="mt-5" noValidate onSubmit={handleSubmit(props.onSubmit)}>
 			<FormInput
+				autoFocus
 				{...register('task', { ...validateRequired() })}
-				placeholder={'Go to shop'}
-				error={errors.task?.message}
+				placeholder={t('tasks.taskPlaceholder')}
+				error={errors.task?.message && t(`validation.${errors.task?.message}`)}
 			/>
 			<div className="mt-5">
-				<Button>Send message</Button>
+				<Button>{t('tasks.sendMessage')}</Button>
 			</div>
 		</form>
 	);

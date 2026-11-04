@@ -7,26 +7,7 @@ type tasksStateType = {
 };
 
 const initialState: tasksStateType = {
-	items: [
-		{
-			id: 'eec4ab8a-00b1-46b6-ab88-07a546fa2581',
-			task: 'Read Harry Potter',
-			done: false,
-			createdAt: new Date('2023-03-05T18:41:38.553Z')
-		},
-		{
-			id: '14261e8a-d764-4103-af13-5c235b2afdf9',
-			task: 'Buy t-shirt',
-			done: false,
-			createdAt: new Date('2023-03-05T18:41:45.031Z')
-		},
-		{
-			id: 'f5ac9b90-60c1-4ba7-b5e7-81a246420cfa',
-			task: 'Watch Dune',
-			done: true,
-			createdAt: new Date('2023-03-05T18:41:49.454Z')
-		}
-	]
+	items: []
 };
 
 const todosSlice = createSlice({
@@ -40,6 +21,9 @@ const todosSlice = createSlice({
 				done: false,
 				createdAt: action.payload.createdAt
 			});
+		},
+		addTasks(state, action: PayloadAction<TaskType[]>) {
+			state.items = action.payload;
 		},
 		setTaskStatus(state, action: PayloadAction<string>) {
 			const task = state.items.find((x) => x.id === action.payload);
@@ -74,7 +58,13 @@ const todosSlice = createSlice({
 	}
 });
 
-export const { addTask, setTaskStatus, deleteTask, reorderTasks, sortTasks } =
-	todosSlice.actions;
+export const {
+	addTask,
+	addTasks,
+	setTaskStatus,
+	deleteTask,
+	reorderTasks,
+	sortTasks
+} = todosSlice.actions;
 
 export default todosSlice.reducer;

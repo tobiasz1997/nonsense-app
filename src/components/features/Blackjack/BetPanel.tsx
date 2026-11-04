@@ -3,6 +3,7 @@ import { MinusIcon, PlusIcon } from '@heroicons/react/24/solid';
 import { setPlayerCoins } from '@store/slices/blackjack.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import cx from 'classnames';
+import { useTranslations } from 'next-intl';
 import {
 	forwardRef,
 	ForwardRefRenderFunction,
@@ -24,7 +25,8 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 	props,
 	ref
 ) => {
-	const coinsValues: number[] = [50, 100, 200, 500, 1000];
+	const t = useTranslations('blackjack');
+
 	const [betValue, setBetValue] = useState(0);
 	const [gameStarted, setGameStarted] = useState(false);
 	const [isDrawCoinsVisible, setIsDrawCoinsVisible] = useState(false);
@@ -33,11 +35,6 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 		(state) => state.blackjackSlice.userData.coins
 	);
 	const dispatch = useAppDispatch();
-
-	const changeBetValueButtonStyles =
-		'bg-orange w-full p-1 flex justify-center disabled:opacity-50 hover:bg-orange/70';
-	const actionButtonStyles =
-		'bg-orange w-full p-1 flex justify-center items-center font-bold disabled:opacity-50 hover:bg-orange/70';
 
 	useImperativeHandle(
 		ref,
@@ -51,6 +48,14 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 		}),
 		[betValue]
 	);
+
+	const coinsValues: number[] = [50, 100, 200, 500, 1000];
+
+	const changeBetValueButtonStyles =
+		'bg-orange w-full p-1 flex justify-center disabled:opacity-50 hover:bg-orange/70';
+
+	const actionButtonStyles =
+		'bg-orange w-full p-1 flex justify-center items-center font-bold disabled:opacity-50 hover:bg-orange/70';
 
 	const addCoins = (value: number) => {
 		setBetValue((prevState) => prevState + value);
@@ -73,7 +78,7 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 		<>
 			<div className="rounded border border-green-dark bg-yellow w-full overflow-hidden divide-green-dark divide-y">
 				<div className="flex justify-between p-3 font-bold text-lg text-green-dark">
-					<div>{playerCoins} coins</div>
+					<div>{t('coinCount', { count: playerCoins })}</div>
 					{betValue && <div>+{betValue}</div>}
 				</div>
 				<div className="block md:flex">
@@ -114,21 +119,21 @@ const BetPanel: ForwardRefRenderFunction<BetPanelPropsRef, Props> = (
 								playerCoins <= 0 || playerCoins === betValue || gameStarted
 							}
 						>
-							All in
+							{t('allIn')}
 						</button>
 						<button
 							className={actionButtonStyles}
 							onClick={startGame}
 							disabled={betValue === 0 || gameStarted}
 						>
-							Play
+							{t('play')}
 						</button>
 						{playerCoins <= 0 && (
 							<button
 								className={actionButtonStyles}
 								onClick={() => setIsDrawCoinsVisible(true)}
 							>
-								Draw Coins
+								{t('drawCoins')}
 							</button>
 						)}
 					</div>

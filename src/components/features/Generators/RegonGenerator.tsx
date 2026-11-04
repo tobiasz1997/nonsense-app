@@ -1,14 +1,16 @@
 import RegonOptions from '@components/features/Generators/Filters/RegonOptions';
 import Button from '@components/ui/Button';
+import CopyButton from '@components/ui/CopyButton';
 import CustomBox from '@components/ui/CustomBox';
 import ExpansionPanel from '@components/ui/ExpansionPanel';
 import TypewriterText from '@components/ui/TypewriterText';
 import { useAppSelector } from '@store/store';
 import generateRegon from '@utils/generators/regonGenerator';
-import copy from 'copy-to-clipboard';
+import { useTranslations } from 'next-intl';
 import React, { FC, useEffect, useState } from 'react';
 
 const RegonGenerator: FC = () => {
+	const t = useTranslations();
 	const [value, setValue] = useState<string>('');
 	const regonOptions = useAppSelector((state) => state.regonSlice);
 
@@ -22,28 +24,24 @@ const RegonGenerator: FC = () => {
 		setValue(result?.result ?? '');
 	};
 
-	const handleCopyRegon = () => {
-		copy(value);
-	};
-
 	return (
-		<CustomBox title="REGON Generator">
+		<CustomBox title={t('generators.regonTitle')}>
 			<div className="grid gap-5 sm:grid-cols-2">
 				<p className="na-generate-result">
 					<TypewriterText text={value} />
 				</p>
 				<div className="flex gap-3">
 					<div>
-						<Button disabled={value.length === 0} onClick={handleCopyRegon}>
-							Copy
-						</Button>
+						<CopyButton copyValue={value} />
 					</div>
 					<div className="flex-auto">
-						<Button onClick={handleGenerateRegon}>Generate</Button>
+						<Button onClick={handleGenerateRegon}>
+							{t('common.generate')}
+						</Button>
 					</div>
 				</div>
 			</div>
-			<ExpansionPanel label="Filters">
+			<ExpansionPanel label={t('common.filters')}>
 				<RegonOptions />
 			</ExpansionPanel>
 		</CustomBox>

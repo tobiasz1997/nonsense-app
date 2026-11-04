@@ -5,6 +5,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline';
 import useActivePage from '@hooks/useActivePage';
 import usePortal from '@hooks/usePortal';
 import { NavLinksType } from '@interfaces/navLinksType';
+import { useTranslations } from 'next-intl';
 import { FC, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 
@@ -14,6 +15,7 @@ type Props = {
 };
 
 const HeaderMobileNav: FC<Props> = (props) => {
+	const t = useTranslations('nav');
 	const portal = usePortal();
 	const isActive = useActivePage();
 
@@ -43,7 +45,7 @@ const HeaderMobileNav: FC<Props> = (props) => {
 									key={index}
 									href={link.path}
 									icon={link.icon}
-									title={link.title}
+									title={t(`${link.title}`)}
 									isActive={isActive(link.path)}
 								/>
 							))}

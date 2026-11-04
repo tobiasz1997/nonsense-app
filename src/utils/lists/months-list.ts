@@ -2,51 +2,51 @@ import { SelectOption } from '@interfaces/selectOption';
 
 export const monthsList: SelectOption[] = [
 	{
-		label: 'January',
+		label: 'january',
 		value: 0
 	},
 	{
-		label: 'February',
+		label: 'february',
 		value: 1
 	},
 	{
-		label: 'March',
+		label: 'march',
 		value: 2
 	},
 	{
-		label: 'April',
+		label: 'april',
 		value: 3
 	},
 	{
-		label: 'May',
+		label: 'may',
 		value: 4
 	},
 	{
-		label: 'Jun',
+		label: 'june',
 		value: 5
 	},
 	{
-		label: 'July',
+		label: 'july',
 		value: 6
 	},
 	{
-		label: 'August',
+		label: 'august',
 		value: 7
 	},
 	{
-		label: 'September',
+		label: 'september',
 		value: 8
 	},
 	{
-		label: 'October',
+		label: 'october',
 		value: 9
 	},
 	{
-		label: 'November',
+		label: 'november',
 		value: 10
 	},
 	{
-		label: 'December',
+		label: 'december',
 		value: 11
 	}
 ];

@@ -11,6 +11,7 @@ import { FC } from 'react';
 
 type Props = {
 	data: ISchedule;
+	labels: Record<'day' | 'project' | 'hours' | 'comment', string>;
 };
 
 Font.register({
@@ -112,15 +113,17 @@ const SchedulePDF: FC<Props> = (props) => {
 					<View style={[styles.rowFlex, styles.rowBorderBottom, styles.bold]}>
 						<Text style={[styles.id, styles.value, styles.borderRight]}> </Text>
 						<Text style={[styles.day, styles.value, styles.borderRight]}>
-							Dzień
+							{props.labels.day}
 						</Text>
 						<Text style={[styles.project, styles.value, styles.borderRight]}>
-							Projekt
+							{props.labels.project}
 						</Text>
 						<Text style={[styles.hours, styles.value, styles.borderRight]}>
-							Godziny
+							{props.labels.hours}
 						</Text>
-						<Text style={[styles.comment, styles.value]}>Komentarz</Text>
+						<Text style={[styles.comment, styles.value]}>
+							{props.labels.comment}
+						</Text>
 					</View>
 					{props.data.plans.map((x, idx) => (
 						<View

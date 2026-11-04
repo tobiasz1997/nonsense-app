@@ -7,21 +7,23 @@ import Divider from '@components/ui/Divider';
 import useStringHelpers from '@hooks/useStringHelpers';
 import { CalculationResultType } from '@interfaces/calculationResultType';
 import { calculateSelectionSort } from '@utils/algorithmsFunctions';
+import { useTranslations } from 'next-intl';
 import React, { FC, useState } from 'react';
 
 const SelectionSort: FC = () => {
+	const t = useTranslations('algorithms');
 	const [array, setArray] = useState([7, 2, 12, 3, 44, 1, 27]);
 	const [value, setValue] = useState<CalculationResultType<Array<number>>>();
 
 	const { convertArrayToString } = useStringHelpers();
 
 	return (
-		<CustomBox title="Selection sort">
+		<CustomBox title={t('selectionSort')}>
 			<div className="grid gap-5 sm:grid-cols-2">
 				<code className="na-code">
-					<div className="na-comment">// Input</div>
+					<div className="na-comment">// {t('input')}</div>
 					<var className="na-variable">array = [4,1,3,2]</var>
-					<div className="na-comment">// Flow</div>
+					<div className="na-comment">// {t('flow')}</div>
 					<var className="na-variable">
 						array = [<span className="text-orange">4</span>,
 						<span className="text-yellow">1</span>,3,2] &rarr; [
@@ -43,7 +45,7 @@ const SelectionSort: FC = () => {
 						[1,2,3,<span className="text-yellow">4</span>]
 					</var>
 
-					<div className="na-comment">// Output</div>
+					<div className="na-comment">// {t('output')}</div>
 					<samp className="na-sample">[1,2,3,4]</samp>
 				</code>
 				<div className="flex flex-col justify-center space-y-5">
@@ -57,7 +59,7 @@ const SelectionSort: FC = () => {
 						disabled={array.length === 0}
 						onClick={() => setValue(calculateSelectionSort(array))}
 					>
-						Sort
+						{t('sort')}
 					</Button>
 					<OutputValue
 						result={convertArrayToString(value?.result)}

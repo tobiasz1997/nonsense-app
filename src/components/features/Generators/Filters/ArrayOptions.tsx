@@ -9,12 +9,22 @@ import {
 	setArrayOrderType,
 	setArrayResultType,
 	setArraySorted
-} from '@store/generators/array.slice';
+} from '@store/slices/generators/array.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import { orderType, resultType } from '@utils/generators/arrayGenerator';
+import { useTranslations } from 'next-intl';
 import { ChangeEvent, FC, useEffect, useRef, useState } from 'react';
 
 const ArrayOptions: FC = () => {
+	const t = useTranslations();
+
+	const [countError, setCountError] = useState<string>('');
+	const [minError, setMinError] = useState<string>('');
+	const [maxError, setMaxError] = useState<string>('');
+	const [maxDisabled, setMaxDisabled] = useState<boolean>(false);
+
+	const maxRef = useRef<HTMLInputElement>(null);
+
 	const count = useAppSelector((state) => state.arraySlice.count);
 	const min = useAppSelector((state) => state.arraySlice.min);
 	const max = useAppSelector((state) => state.arraySlice.max);
@@ -22,12 +32,6 @@ const ArrayOptions: FC = () => {
 	const sorted = useAppSelector((state) => state.arraySlice.sorted);
 	const resultType = useAppSelector((state) => state.arraySlice.resultType);
 	const dispatch = useAppDispatch();
-
-	const [countError, setCountError] = useState<string>('');
-	const [minError, setMinError] = useState<string>('');
-	const [maxError, setMaxError] = useState<string>('');
-	const [maxDisabled, setMaxDisabled] = useState<boolean>(false);
-	const maxRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		if (orderType === 'sequential') {
@@ -41,15 +45,15 @@ const ArrayOptions: FC = () => {
 	const handleCountValueChange = (event: ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
 		if (value === '' || value === undefined) {
-			setCountError('Value is required.');
+			setCountError(t('validation.valueRequired'));
 			return;
 		}
 		const numberValue = Number(value);
 		if (isNaN(numberValue)) {
-			setCountError('Value must be a number.');
+			setCountError(t('validation.mustBeNumber'));
 			return;
 		} else if (numberValue <= 0) {
-			setCountError('Value must be grater or equal 0.');
+			setCountError(t('validation.mustBeNonNegative'));
 			return;
 		} else {
 			setCountError('');
@@ -63,15 +67,15 @@ const ArrayOptions: FC = () => {
 	) => {
 		const value = event.target.value;
 		if (value === '' || value === undefined) {
-			setMinError('Value is required.');
+			setMinError(t('validation.valueRequired'));
 			return;
 		}
 		const numberValue = Number(value);
 		if (isNaN(numberValue)) {
-			setMinError('Value must be a number.');
+			setMinError(t('validation.mustBeNumber'));
 			return;
 		} else if (checkMaxRule && !maxDisabled && numberValue > max) {
-			setMinError('Value must smaller than max.');
+			setMinError(t('validation.minMustBeLessThanMax'));
 			return;
 		} else {
 			setMinError('');
@@ -85,16 +89,16 @@ const ArrayOptions: FC = () => {
 	) => {
 		const value = event.target.value;
 		if (value === '' || value === undefined) {
-			setMaxError('Value is required.');
+			setMaxError(t('validation.valueRequired'));
 			return;
 		}
 
 		const numberValue = Number(value);
 		if (isNaN(numberValue)) {
-			setMaxError('Value must be a number.');
+			setMaxError(t('validation.mustBeNumber'));
 			return;
 		} else if (checkMinRule && numberValue < min) {
-			setMaxError('Value must greater than min.');
+			setMaxError(t('validation.maxMustBeGreaterThanMin'));
 			return;
 		} else {
 			setMaxError('');
@@ -140,7 +144,7 @@ const ArrayOptions: FC = () => {
 	return (
 		<section className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Length" />
+				<OptionTitle title={t('generators.length')} />
 				<FormInput
 					type="number"
 					defaultValue={count}
@@ -149,10 +153,10 @@ const ArrayOptions: FC = () => {
 				/>
 			</div>
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Range" />
+				<OptionTitle title={t('generators.range')} />
 				<FormInput
 					type="number"
-					label={'Minimum'}
+					label={t('generators.minimum')}
 					defaultValue={min}
 					error={minError}
 					onChange={handleMinValueChange}
@@ -160,7 +164,7 @@ const ArrayOptions: FC = () => {
 				<FormInput
 					ref={maxRef}
 					type="number"
-					label="Maximum"
+					label={t('generators.maximum')}
 					defaultValue={max ?? undefined}
 					disabled={maxDisabled}
 					error={maxError}
@@ -168,59 +172,59 @@ const ArrayOptions: FC = () => {
 				/>
 			</div>
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Order" />
+				<OptionTitle title={t('generators.order')} />
 				<FormCheckbox
 					checked={orderType === 'random'}
 					value="random"
-					label="Random"
+					label={t('generators.random')}
 					type="radio"
 					onChange={handleOrderTypeChange}
 				/>
 				<FormCheckbox
 					checked={orderType === 'sequential'}
 					value="sequential"
-					label="Sequential"
+					label={t('generators.sequential')}
 					type="radio"
 					onChange={handleOrderTypeChange}
 				/>
 			</div>
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Sort" />
+				<OptionTitle title={t('generators.sort')} />
 				<FormCheckbox
 					checked={sorted === true}
 					value="true"
-					label="Yes"
+					label={t('common.yes')}
 					type="radio"
 					onChange={handleSortedChange}
 				/>
 				<FormCheckbox
 					checked={sorted === false}
 					value="false"
-					label="No"
+					label={t('common.no')}
 					type="radio"
 					onChange={handleSortedChange}
 				/>
 			</div>
 			<div className="flex flex-col space-y-4">
-				<OptionTitle title="Result Type" />
+				<OptionTitle title={t('generators.resultType')} />
 				<FormCheckbox
 					checked={resultType === 'array'}
 					value="array"
-					label="Array"
+					label={t('generators.array')}
 					type="radio"
 					onChange={handleResultTypeChange}
 				/>
 				<FormCheckbox
 					checked={resultType === 'semicolon'}
 					value="semicolon"
-					label="Semicolon"
+					label={t('generators.semicolon')}
 					type="radio"
 					onChange={handleResultTypeChange}
 				/>
 				<FormCheckbox
 					checked={resultType === 'comma'}
 					value="comma"
-					label="Comma"
+					label={t('generators.comma')}
 					type="radio"
 					onChange={handleResultTypeChange}
 				/>

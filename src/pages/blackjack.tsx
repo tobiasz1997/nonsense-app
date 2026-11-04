@@ -25,12 +25,17 @@ import {
 	setUserData
 } from '@store/slices/blackjack.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
+import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
 
 const BlackJackPage: AppPage = () => {
-	const betPanelRef = useRef<BetPanelPropsRef>(null);
+	const t = useTranslations();
+
 	const [winner, setWinner] = useState<winnerType | null>(null);
 	const [errorModalVisible, setErrorModalVisible] = useState(false);
+
+	const betPanelRef = useRef<BetPanelPropsRef>(null);
+
 	const isMobile = useIsMobile(768);
 
 	const userCards = useAppSelector((state) => state.blackjackSlice.userData);
@@ -234,7 +239,7 @@ const BlackJackPage: AppPage = () => {
 	return (
 		<>
 			<div className="na-p-page space-y-5">
-				<h1 className="na-title">Black jack</h1>
+				<h1 className="na-title">{t('nav.blackjack')}</h1>
 				{isMobile && <GameStatsMobileView />}
 				<section className="flex gap-3">
 					{!isMobile && (
@@ -248,7 +253,7 @@ const BlackJackPage: AppPage = () => {
 						{shuffleCardsStatus !== 'idle' && (
 							<>
 								<PlayerBoard
-									playerName="Croupier"
+									playerName={t('blackjack.croupier')}
 									points={croupierCards.points}
 								>
 									{isInitDrawCardsLoading && (
@@ -261,7 +266,10 @@ const BlackJackPage: AppPage = () => {
 											<Card key={index} src={card?.image} value={card?.value} />
 										))}
 								</PlayerBoard>
-								<PlayerBoard playerName="Player" points={userCards.points}>
+								<PlayerBoard
+									playerName={t('blackjack.player')}
+									points={userCards.points}
+								>
 									{isInitDrawCardsLoading && (
 										<div className="w-13 h-18 md:h-39 md:w-25">
 											<Loader />
@@ -284,7 +292,7 @@ const BlackJackPage: AppPage = () => {
 								size={isMobile ? 'small' : 'default'}
 								disabled={winner !== null || userCards.cards.length > 2}
 							>
-								Double
+								{t('blackjack.double')}
 							</Button>
 							<Button
 								variant="tertiary"
@@ -292,14 +300,14 @@ const BlackJackPage: AppPage = () => {
 								size={isMobile ? 'small' : 'default'}
 								disabled={winner !== null}
 							>
-								Hit
+								{t('blackjack.hit')}
 							</Button>
 							<Button
 								onClick={standGame}
 								disabled={winner !== null}
 								size={isMobile ? 'small' : 'default'}
 							>
-								Stand
+								{t('blackjack.stand')}
 							</Button>
 						</div>
 					</div>
@@ -315,7 +323,7 @@ const BlackJackPage: AppPage = () => {
 						setErrorModalVisible(false);
 						betPanelRef.current?.clearBetValue();
 					}}
-					label="Reset game"
+					label={t('blackjack.resetGame')}
 				/>
 			)}
 		</>

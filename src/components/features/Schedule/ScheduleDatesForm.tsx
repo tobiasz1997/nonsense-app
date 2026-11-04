@@ -5,6 +5,7 @@ import FormInput from '@components/ui/FormInput';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import { IScheduleDatesForm, IScheduleDay } from '@interfaces/scheduleType';
 import { validateInputWithNumbers, validateRequired } from '@utils/validators';
+import { useTranslations } from 'next-intl';
 import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
 
@@ -14,6 +15,10 @@ type Props = {
 };
 
 const ScheduleDatesForm: FC<Props> = (props) => {
+	const t = useTranslations();
+
+	const [isReplicate, setIsReplicate] = useState(false);
+
 	const {
 		register,
 		handleSubmit,
@@ -35,11 +40,11 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 			)
 		}
 	});
+
 	const { fields, remove } = useFieldArray({
 		control,
 		name: 'plans'
 	});
-	const [isReplicate, setIsReplicate] = useState(false);
 
 	useEffect(() => {
 		setValue(
@@ -72,10 +77,10 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 	};
 
 	return (
-		<CustomBox title="Schedule Form">
+		<CustomBox title={t('schedule.formTitle')}>
 			<div className="flex">
 				<FormCheckbox
-					label="Replicate"
+					label={t('schedule.replicate')}
 					checked={isReplicate}
 					onChange={() => setIsReplicate((prevState) => !prevState)}
 				/>
@@ -84,12 +89,12 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 				<table className="w-full rounded-xl border-2 border-orange">
 					<thead className="hidden md:table-header-group">
 						<tr className="w-full border-b border-orange text-left font-bold text-green-dark dark:text-pistachio">
-							<th className="p-3">Index</th>
-							<th className="p-3">Day</th>
-							<th className="p-3">Project</th>
-							<th className="p-3">Hours</th>
-							<th className="p-3">Comment</th>
-							<th className="p-3">Actions</th>
+							<th className="p-3">{t('schedule.index')}</th>
+							<th className="p-3">{t('schedule.day')}</th>
+							<th className="p-3">{t('schedule.project')}</th>
+							<th className="p-3">{t('schedule.hours')}</th>
+							<th className="p-3">{t('schedule.comment')}</th>
+							<th className="p-3">{t('schedule.actions')}</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -115,9 +120,12 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 											>(),
 											onChange: (x) => handleProjectChange(x, idx, 'project')
 										})}
-										error={errors.plans?.[idx]?.project?.message}
+										error={
+											errors.plans?.[idx]?.project?.message &&
+											t(`validation.${errors.plans?.[idx]?.project?.message}`)
+										}
 										dimension="small"
-										placeholder="Project"
+										placeholder={t('schedule.project')}
 									/>
 								</td>
 								<td className="p-1 md:p-3">
@@ -129,9 +137,12 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 											>(),
 											onChange: (x) => handleProjectChange(x, idx, 'hours')
 										})}
-										error={errors.plans?.[idx]?.hours?.message}
+										error={
+											errors.plans?.[idx]?.hours?.message &&
+											t(`validation.${errors.plans?.[idx]?.hours?.message}`)
+										}
 										dimension="small"
-										placeholder="Hours"
+										placeholder={t('schedule.hours')}
 									/>
 								</td>
 								<td className="p-1 md:p-3">
@@ -140,7 +151,7 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 											onChange: (x) => handleProjectChange(x, idx, 'comment')
 										})}
 										dimension="small"
-										placeholder="Comment"
+										placeholder={t('schedule.comment')}
 									/>
 								</td>
 								<td className="p-1 md:p-3">
@@ -158,7 +169,7 @@ const ScheduleDatesForm: FC<Props> = (props) => {
 				</table>
 
 				<div className="mt-5">
-					<Button type="submit">Generate report</Button>
+					<Button type="submit">{t('schedule.generateReport')}</Button>
 				</div>
 			</form>
 		</CustomBox>

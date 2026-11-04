@@ -14,6 +14,7 @@ import {
 } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
 import cx from 'classnames';
+import { useTranslations } from 'next-intl';
 import React, { FC } from 'react';
 
 type Props = {
@@ -21,6 +22,7 @@ type Props = {
 };
 
 const OptionsListItem: FC<Props> = ({ option }) => {
+	const t = useTranslations('common');
 	const optionSettings = useAppSelector(
 		(state) => state.pickerWheelSlice.optionSettings
 	);
@@ -74,7 +76,7 @@ const OptionsListItem: FC<Props> = ({ option }) => {
 								size="small"
 								onClick={() => dispatch(openManageOptionFormModal(option.id))}
 							>
-								Edit
+								{t('edit')}
 							</Button>
 						</div>
 						<div className="flex gap-2 justify-between">
@@ -95,7 +97,7 @@ const OptionsListItem: FC<Props> = ({ option }) => {
 								variant="delete"
 								onClick={() => dispatch(deleteOption(option.id))}
 							>
-								Delete
+								{t('delete')}
 							</Button>
 						</div>
 					</div>

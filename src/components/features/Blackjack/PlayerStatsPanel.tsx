@@ -1,7 +1,10 @@
 import { useAppSelector } from '@store/store';
+import { useTranslations } from 'next-intl';
 import { FC, useMemo } from 'react';
 
 const PlayerStatsPanel: FC = () => {
+	const t = useTranslations('blackjack');
+
 	const playerCoins = useAppSelector(
 		(state) => state.blackjackSlice.userData.coins
 	);
@@ -21,17 +24,17 @@ const PlayerStatsPanel: FC = () => {
 
 	return (
 		<div className="bg-pistachio dark:bg-zinc-500 dark:text-pistachio shadow-xl text-sm lg:text-base text-center font-bold text-green-dark rounded p-3 space-y-3">
-			<h5 className="text-xl">Player stats</h5>
+			<h5 className="text-xl">{t('playerStats')}</h5>
 			<div className="flex justify-between">
-				<p>Coins</p>
+				<p>{t('coins')}</p>
 				<p>{playerCoins}</p>
 			</div>
 			<div className="flex justify-between">
-				<p>Game balance</p>
+				<p>{t('gameBalance')}</p>
 				<p>{gameBalance}</p>
 			</div>
 			<div className="flex justify-between">
-				<p>Profit</p>
+				<p>{t('profit')}</p>
 				<p>{profit}</p>
 			</div>
 		</div>

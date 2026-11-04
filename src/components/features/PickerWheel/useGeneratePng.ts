@@ -1,60 +1,65 @@
 import { WheelOption } from '@interfaces/wheelOption';
+import { useTranslations } from 'next-intl';
 import { useCallback } from 'react';
 
 const useGeneratePng = () => {
-	return useCallback((winner: WheelOption) => {
-		const canvas = document.createElement('canvas');
-		const ctx = canvas.getContext('2d');
+	const t = useTranslations('pickerWheel');
+	return useCallback(
+		(winner: WheelOption) => {
+			const canvas = document.createElement('canvas');
+			const ctx = canvas.getContext('2d');
 
-		if (!ctx || !winner) return;
+			if (!ctx || !winner) return;
 
-		const width = 700;
-		const height = 350;
+			const width = 700;
+			const height = 350;
 
-		canvas.width = width;
-		canvas.height = height;
+			canvas.width = width;
+			canvas.height = height;
 
-		ctx.imageSmoothingEnabled = true;
-		ctx.imageSmoothingQuality = 'high';
+			ctx.imageSmoothingEnabled = true;
+			ctx.imageSmoothingQuality = 'high';
 
-		ctx.fillStyle = String(winner.color || '#eab308');
-		ctx.fillRect(0, 0, width, height);
+			ctx.fillStyle = String(winner.color || '#eab308');
+			ctx.fillRect(0, 0, width, height);
 
-		ctx.fillStyle = '#ffffff';
-		ctx.textAlign = 'center';
-		ctx.textBaseline = 'middle';
+			ctx.fillStyle = '#ffffff';
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
 
-		ctx.fillStyle = '#ffffff';
-		ctx.textAlign = 'center';
-		ctx.textBaseline = 'middle';
+			ctx.fillStyle = '#ffffff';
+			ctx.textAlign = 'center';
+			ctx.textBaseline = 'middle';
 
-		ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
-		ctx.shadowBlur = 6;
-		ctx.shadowOffsetX = 2;
-		ctx.shadowOffsetY = 2;
+			ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+			ctx.shadowBlur = 6;
+			ctx.shadowOffsetX = 2;
+			ctx.shadowOffsetY = 2;
 
-		const lines = ['Congratulations 🎉🎉🎉', 'Winner:', winner.name];
+			const lines = [t('congratulations'), t('winner'), winner.name];
 
-		const fontSize = 32;
-		const lineHeight = 41;
+			const fontSize = 32;
+			const lineHeight = 41;
 
-		ctx.font = `bold ${fontSize}px Arial`;
+			ctx.font = `bold ${fontSize}px Arial`;
 
-		const totalHeight = (lines.length - 1) * lineHeight;
-		const centerY = height / 2;
+			const totalHeight = (lines.length - 1) * lineHeight;
+			const centerY = height / 2;
 
-		lines.forEach((line, index) => {
-			const y = centerY - totalHeight / 2 + index * lineHeight;
-			ctx.fillText(line, width / 2, y);
-		});
+			lines.forEach((line, index) => {
+				const y = centerY - totalHeight / 2 + index * lineHeight;
+				ctx.fillText(line, width / 2, y);
+			});
 
-		const imageUrl = canvas.toDataURL('image/png');
-		const link = document.createElement('a');
+			const imageUrl = canvas.toDataURL('image/png');
+			const link = document.createElement('a');
 
-		link.href = imageUrl;
-		link.download = `winner-${winner.name}.png`;
-		link.click();
-	}, []);
+			link.href = imageUrl;
+			link.download = `winner-${winner.name}.png`;
+			link.click();
+		},
+		[t]
+	);
 };
 
 export default useGeneratePng;

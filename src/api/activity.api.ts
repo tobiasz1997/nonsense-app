@@ -1,3 +1,4 @@
+import { API_URLS } from '@api/api-urls.const';
 import { fetcher } from '@utils/fetcher';
 import useSWR, { SWRConfiguration, SWRResponse } from 'swr';
 
@@ -14,11 +15,9 @@ export interface IActivity {
 export const useGetActivity = (
 	extraConfig?: SWRConfiguration<IActivity>
 ): SWRResponse<IActivity, Error> => {
-	const url = 'http://www.boredapi.com/api/activity/';
-
 	return useSWR(
 		'api/jokes/getActivity',
-		() => fetcher<IActivity>(url),
+		() => fetcher<IActivity>(API_URLS.activity),
 		extraConfig
 	);
 };

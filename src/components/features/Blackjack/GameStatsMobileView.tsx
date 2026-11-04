@@ -4,10 +4,14 @@ import PlayerStatsPanel from '@components/features/Blackjack/PlayerStatsPanel';
 import Button from '@components/ui/Button';
 import Modal from '@components/ui/Modal';
 import ModalBox from '@components/ui/ModalBox';
+import { useTranslations } from 'next-intl';
 import { FC, useState } from 'react';
 
 const GameStatsMobileView: FC = () => {
+	const t = useTranslations('blackjack');
+
 	const [isModalVisible, setIsModalVisible] = useState(false);
+
 	return (
 		<>
 			<Button
@@ -15,7 +19,7 @@ const GameStatsMobileView: FC = () => {
 				variant="secondary"
 				onClick={() => setIsModalVisible(true)}
 			>
-				stats
+				{t('stats')}
 			</Button>
 
 			{isModalVisible && (

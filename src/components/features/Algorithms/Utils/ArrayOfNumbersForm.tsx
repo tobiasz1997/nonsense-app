@@ -1,6 +1,7 @@
 import Button from '@components/ui/Button';
 import FormInput from '@components/ui/FormInput';
 import { validateInputWithStringOfNumbersAndSeparator } from '@utils/validators';
+import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -10,6 +11,8 @@ type Props = {
 };
 
 const ArrayOfNumbersForm: FC<Props> = (props) => {
+	const t = useTranslations();
+
 	const {
 		register,
 		handleSubmit,
@@ -33,11 +36,13 @@ const ArrayOfNumbersForm: FC<Props> = (props) => {
 				<FormInput
 					{...register('value', validateInputWithStringOfNumbersAndSeparator())}
 					placeholder={'2;44;21'}
-					error={errors.value?.message}
+					error={
+						errors.value?.message && t('validation.' + errors.value.message)
+					}
 				/>
 			</fieldset>
 			<div>
-				<Button>Add</Button>
+				<Button>{t('common.add')}</Button>
 			</div>
 		</form>
 	);

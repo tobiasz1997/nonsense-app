@@ -2,35 +2,35 @@ import { RouteType } from '@interfaces/routeType';
 
 export const appRoutes = {
 	home: {
-		title: `Home`,
+		title: `home`,
 		path: '/'
 	} as RouteType,
 	tasks: {
-		title: 'Tasks',
+		title: 'tasks',
 		path: '/tasks'
 	} as RouteType,
 	algorithms: {
-		title: 'Algorithms',
+		title: 'algorithms',
 		path: '/algorithms'
 	} as RouteType,
 	users: {
-		title: 'Users',
+		title: 'users',
 		path: '/users'
 	} as RouteType,
 	generators: {
-		title: 'Generators',
+		title: 'generators',
 		path: '/generators'
 	} as RouteType,
 	blackjack: {
-		title: 'Blackjack',
+		title: 'blackjack',
 		path: '/blackjack'
 	} as RouteType,
 	schedule: {
-		title: 'Schedule',
+		title: 'schedule',
 		path: '/schedule'
 	} as RouteType,
 	pickerWheel: {
-		title: 'Picker Wheel',
+		title: 'pickerWheel',
 		path: '/picker-wheel'
 	} as RouteType
 };

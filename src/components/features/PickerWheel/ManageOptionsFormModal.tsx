@@ -10,6 +10,7 @@ import {
 } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch } from '@store/store';
 import { validateRequired } from '@utils/validators';
+import { useTranslations } from 'next-intl';
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -18,6 +19,7 @@ type Props = {
 };
 
 const ManageOptionsFormModal: FC<Props> = (props) => {
+	const t = useTranslations();
 	const dispatch = useAppDispatch();
 
 	const {
@@ -40,37 +42,41 @@ const ManageOptionsFormModal: FC<Props> = (props) => {
 	return (
 		<Modal>
 			<ModalBox onClose={() => dispatch(closeManageOptionsFormModal())}>
-				<h2 className="text-xl font-bold text-orange md:text-3xl">Options</h2>
+				<h2 className="text-xl font-bold text-orange md:text-3xl">
+					{t('pickerWheel.options')}
+				</h2>
 				<p className="text-green-dark dark:text-yellow mt-3 mb-5">
-					Each line of text separated by Enter will be treated as a separate
-					option.
+					{t('pickerWheel.optionsInstructions')}
 				</p>
 				<p className="text-green-dark dark:text-yellow mt-3 mb-5">
-					Saving cause reset all data (colors, stars).
+					{t('pickerWheel.resetSettingsWarning')}
 				</p>
 				<form
 					noValidate
 					onSubmit={handleSubmit((data) => submit(data.options))}
 				>
 					<FormTextarea
-						label="Options"
+						label={t('pickerWheel.options')}
 						tabIndex={0}
 						rows={3}
 						{...register('options', {
 							...validateRequired()
 						})}
-						placeholder={'Apple\nBanan\nAnanas'}
-						error={errors.options?.message}
+						placeholder={t('pickerWheel.optionsPlaceholder')}
+						error={
+							errors.options?.message &&
+							t(`validation.${errors.options?.message}`)
+						}
 					/>
 					<div className="flex flex-col sm:flex-row justify-end gap-3 mt-5">
 						<Button className="sm:max-w-max" type="submit">
-							Save
+							{t('common.save')}
 						</Button>
 						<Button
 							className="sm:max-w-max"
 							onClick={() => dispatch(clearOptionsAndCloseModal())}
 						>
-							Clear
+							{t('common.clear')}
 						</Button>
 					</div>
 				</form>

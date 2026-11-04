@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import React, { FC } from 'react';
 
 type Props = {
@@ -7,6 +8,8 @@ type Props = {
 };
 
 const OutputValue: FC<Props> = ({ result, error }) => {
+	const t = useTranslations('algorithms');
+
 	return result ? (
 		<motion.div
 			key={result}
@@ -14,7 +17,7 @@ const OutputValue: FC<Props> = ({ result, error }) => {
 			animate={{ opacity: 1, y: 0, scale: 1 }}
 			className="text-xl text-green-dark dark:text-pistachio"
 		>
-			Result:&nbsp;
+			{`${t('result')}: `}
 			<span className="font-bold text-orange dark:text-yellow underline wrap-anywhere">
 				{result}
 			</span>

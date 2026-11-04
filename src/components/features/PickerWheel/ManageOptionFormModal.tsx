@@ -15,6 +15,7 @@ import {
 import { useAppDispatch } from '@store/store';
 import { colorList } from '@utils/lists/color-list';
 import { validateRequired } from '@utils/validators';
+import { useTranslations } from 'next-intl';
 import React, { FC } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -23,6 +24,7 @@ type Props = {
 };
 
 const ManageOptionFormModal: FC<Props> = ({ option }) => {
+	const t = useTranslations();
 	const dispatch = useAppDispatch();
 	const { generateRandomNumber } = useGenerator();
 
@@ -55,7 +57,9 @@ const ManageOptionFormModal: FC<Props> = ({ option }) => {
 		<Modal>
 			<ModalBox onClose={() => dispatch(closeManageOptionFormModal())}>
 				<h2 className="text-xl font-bold text-orange md:text-3xl mb-4">
-					{option === null ? 'Add' : 'Edit'} Option
+					{t(
+						option === null ? 'pickerWheel.addOption' : 'pickerWheel.editOption'
+					)}
 				</h2>
 				<form
 					noValidate
@@ -63,18 +67,22 @@ const ManageOptionFormModal: FC<Props> = ({ option }) => {
 					className="flex flex-col gap-4"
 				>
 					<FormInput
-						label="Name"
+						label={t('pickerWheel.name')}
 						tabIndex={0}
 						{...register('name', {
 							...validateRequired<WheelOption, 'name'>()
 						})}
-						error={errors.name?.message}
+						error={
+							errors.name?.message && t(`validation.${errors.name?.message}`)
+						}
 					/>
 					<FormInputColor
 						{...register('color', {
 							...validateRequired<WheelOption, 'color'>()
 						})}
-						error={errors.color?.message}
+						error={
+							errors.color?.message && t(`validation.${errors.color?.message}`)
+						}
 					/>
 					<Controller
 						control={control}
@@ -87,19 +95,21 @@ const ManageOptionFormModal: FC<Props> = ({ option }) => {
 						)}
 					/>
 					<FormCheckbox
-						label="Active"
+						label={t('pickerWheel.active')}
 						{...register('active')}
-						error={errors.color?.message}
+						error={
+							errors.color?.message && t(`validation.${errors.color?.message}`)
+						}
 					/>
 					<div className="flex flex-col sm:flex-row justify-end gap-3 mt-5">
 						<Button className="sm:max-w-max" type="submit">
-							{option === null ? 'Add' : 'Edit'}
+							{t(option === null ? 'common.add' : 'common.edit')}
 						</Button>
 						<Button
 							className="sm:max-w-max"
 							onClick={() => dispatch(closeManageOptionFormModal())}
 						>
-							Close
+							{t('common.close')}
 						</Button>
 					</div>
 				</form>

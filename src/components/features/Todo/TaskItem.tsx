@@ -3,7 +3,7 @@ import { ArrowsUpDownIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { TaskType } from '@interfaces/taskType';
 import cx from 'classnames';
 import { Reorder } from 'framer-motion';
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 type Props = {
 	item: TaskType;
@@ -14,6 +14,7 @@ type Props = {
 const TaskItem: FC<Props> = (props) => {
 	return (
 		<Reorder.Item
+			data-task-id={props.item.id}
 			className={cx(
 				'flex justify-between space-x-5 rounded-xl p-4 shadow',
 				props.item.done ? 'bg-yellow/70' : 'bg-yellow'
@@ -27,12 +28,13 @@ const TaskItem: FC<Props> = (props) => {
 				<FormCheckbox
 					checked={props.item.done}
 					onChange={() => props.onStatusChange(props.item.id)}
+					secondaryringcolor="true"
 				/>
 				<span
 					className={cx(
 						'font-lg ml-3 w-full capitalize line-clamp-3',
 						props.item.done
-							? 'text-green-dark/[.5] line-through decoration-pistachio decoration-2'
+							? 'text-green-dark/50 line-through decoration-pistachio decoration-2'
 							: ''
 					)}
 				>
@@ -43,7 +45,7 @@ const TaskItem: FC<Props> = (props) => {
 				{props.item.done && (
 					<button
 						onClick={() => props.onDelete(props.item.id)}
-						className="cursor-pointer rounded text-red hover:text-red/50 focus:outline-none focus:ring-0"
+						className="cursor-pointer rounded text-red hover:text-red/50 focus:outline-0 focus-within:ring-4 focus-within:ring-pistachio"
 					>
 						<TrashIcon className="h-6 w-6 stroke-2" />
 					</button>

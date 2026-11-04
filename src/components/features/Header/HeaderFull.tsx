@@ -1,5 +1,6 @@
 import HeaderMobileNav from '@components/features/Header/HeaderMobileNav';
 import HeaderNavLink from '@components/features/Header/HeaderNavLink';
+import LocalePanel from '@components/features/Header/LocalePanel';
 import ThemePanel from '@components/features/Header/ThemePanel';
 import Button from '@components/ui/Button';
 import { Bars3BottomRightIcon } from '@heroicons/react/20/solid';
@@ -17,12 +18,16 @@ import {
 import useActivePage from '@hooks/useActivePage';
 import { NavLinksType } from '@interfaces/navLinksType';
 import { appRoutes } from '@routes/app.routes';
+import { useTranslations } from 'next-intl';
 import { useRouter } from 'next/router';
 import { FC, useEffect, useState } from 'react';
 
 const HeaderFull: FC = () => {
-	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+	const t = useTranslations('nav');
+
 	const router = useRouter();
+
+	const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
 	const isActive = useActivePage();
 
@@ -41,7 +46,8 @@ const HeaderFull: FC = () => {
 							Nonsense App
 						</h1>
 						<FaceSmileIcon className="h-6 w-6 rotate-180 dark:text-pistachio sm:h-8 sm:w-8" />
-						<div className="absolute right-0 hidden md:block">
+						<div className="absolute right-0 hidden md:flex gap-3 flex-row">
+							<LocalePanel />
 							<ThemePanel />
 						</div>
 					</div>
@@ -67,7 +73,7 @@ const HeaderFull: FC = () => {
 							key={index}
 							href={link.path}
 							icon={link.icon}
-							title={link.title}
+							title={t(link.title)}
 							isActive={isActive(link.path)}
 						/>
 					))}

@@ -25,8 +25,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-.env*.local
+# environment files (only the example belongs in the repository)
+.env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +40,6 @@ next-env.d.ts
 .idea
 
 .swc
+
+#storybook
+debug-storybook.log

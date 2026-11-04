@@ -5,12 +5,18 @@ import ManageOptionsFormModal from '@components/features/PickerWheel/ManageOptio
 import Wheel from '@components/features/PickerWheel/Wheel';
 import WheelManagePanel from '@components/features/PickerWheel/WheelManagePanel';
 import WinnerModal from '@components/features/PickerWheel/WinnerModal';
+import { useLocalStorageHydration } from '@hooks/useLocalStorageHydration';
 import { AppPage } from '@interfaces/appPage';
-import { setWinner } from '@store/slices/pickerWheel.slice';
+import { WheelOption } from '@interfaces/wheelOption';
+import { addOptionsInit, setWinner } from '@store/slices/pickerWheel.slice';
 import { useAppDispatch, useAppSelector } from '@store/store';
+import { useTranslations } from 'next-intl';
 import React, { useMemo } from 'react';
+import { PICKER_WHEEL_KEY } from '../const/storageKeys.const';
 
 const PickerWheelPage: AppPage = () => {
+	const t = useTranslations('nav');
+
 	const winner = useAppSelector((state) => state.pickerWheelSlice.winner);
 	const options = useAppSelector((state) => state.pickerWheelSlice.options);
 	const winnerModal = useAppSelector(
@@ -28,17 +34,18 @@ const PickerWheelPage: AppPage = () => {
 	const editedOption = useAppSelector(
 		(state) => state.pickerWheelSlice.editedOption
 	);
+	const dispatch = useAppDispatch();
+
+	useLocalStorageHydration<WheelOption[]>(PICKER_WHEEL_KEY, addOptionsInit);
 
 	const activeOptions = useMemo(
 		() => options.filter((option) => option.active),
 		[options]
 	);
 
-	const dispatch = useAppDispatch();
-
 	return (
 		<div className="na-p-page space-y-5">
-			<h1 className="na-title">Picker Wheel</h1>
+			<h1 className="na-title">{t('pickerWheel')}</h1>
 
 			<section className="flex flex-col md:flex-row gap-4 md:items-start">
 				<div className="flex-1 flex justify-center items-center">

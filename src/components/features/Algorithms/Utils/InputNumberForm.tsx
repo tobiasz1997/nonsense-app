@@ -1,6 +1,7 @@
 import Button from '@components/ui/Button';
 import FormInput from '@components/ui/FormInput';
 import { validateInputWithNumbers } from '@utils/validators';
+import { useTranslations } from 'next-intl';
 import { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -11,6 +12,8 @@ type Props = {
 };
 
 const InputNumberForm: FC<Props> = (props) => {
+	const t = useTranslations();
+
 	const {
 		register,
 		handleSubmit,
@@ -29,14 +32,16 @@ const InputNumberForm: FC<Props> = (props) => {
 				<FormInput
 					{...register('value', validateInputWithNumbers())}
 					placeholder={'2'}
-					error={errors.value?.message}
+					error={
+						errors.value?.message && t('validation.' + errors.value.message)
+					}
 				/>
 			</fieldset>
 			<div>
 				<Button
 					disabled={props.invalidParentData ? props.invalidParentData : false}
 				>
-					{props.submitButtonLabel ?? 'Submit'}
+					{props.submitButtonLabel ?? t('common.submit')}
 				</Button>
 			</div>
 		</form>

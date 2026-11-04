@@ -1,3 +1,4 @@
+import { API_URLS } from '@api/api-urls.const';
 import { fetcher } from '@utils/fetcher';
 import useSWR, { SWRConfiguration, SWRResponse } from 'swr';
 
@@ -11,7 +12,9 @@ export interface IJoke {
 export const useGetJoke = (
 	extraConfig?: SWRConfiguration<IJoke>
 ): SWRResponse<IJoke, Error> => {
-	const url = 'https://official-joke-api.appspot.com/random_joke';
-
-	return useSWR('api/jokes/getJokes', () => fetcher<IJoke>(url), extraConfig);
+	return useSWR(
+		'api/jokes/getJokes',
+		() => fetcher<IJoke>(API_URLS.jokes),
+		extraConfig
+	);
 };

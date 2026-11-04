@@ -1,3 +1,0 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
-
-exports[`Error Modal should render without crashing 1`] = `<div />`;
