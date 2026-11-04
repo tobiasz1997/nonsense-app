@@ -5,8 +5,6 @@ import webpack from 'webpack';
 const config: StorybookConfig = {
     staticDirs: ['../public'],
     stories: [
-        '../stories/**/*.mdx',
-        '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
         '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'
     ],
 

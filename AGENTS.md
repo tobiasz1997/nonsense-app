@@ -58,9 +58,10 @@ This project uses the Next.js Pages Router. Preserve the existing structure.
 - `src/styles/` — global application styles.
 - `messages/` — Polish and English translation files.
 - `public/` — static assets, including the logo and language flags.
-- `__tests__/` — component, feature, and utility tests, including snapshots.
+- `src/**/*.test.{ts,tsx}` — tests beside the components, features, and utilities they cover.
+- `__tests__/__snapshots__/` — centralized snapshots mirroring test paths relative to `src/`.
 - `__mocks__/` — shared test mocks.
-- `stories/` — Storybook stories for components, features, and layouts.
+- `src/components/**/*.stories.tsx` — Storybook stories beside their components, features, and layouts.
 - `.storybook/` — Storybook configuration and global decorators.
 - `.github/workflows/` — CI workflows.
 
