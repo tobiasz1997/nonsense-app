@@ -1,0 +1,14 @@
+import Divider from '@components/ui/Divider';
+import { render } from '@testing-library/react';
+
+describe('Divider', () => {
+	it('should render without crashing', () => {
+		const { container } = render(<Divider />);
+		expect(container).toMatchSnapshot();
+	});
+
+	it('should render without crashing', () => {
+		const { container } = render(<Divider />);
+		expect(container).toMatchSnapshot();
+	});
+});
