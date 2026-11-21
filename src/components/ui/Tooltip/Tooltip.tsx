@@ -1,3 +1,4 @@
+import { useOutsideInteraction } from '@hooks/useOutsideInteraction';
 import usePortal from '@hooks/usePortal';
 import cx from 'classnames';
 import {
@@ -230,23 +231,15 @@ const Tooltip = ({
 		};
 	}, [isOpen, updatePosition]);
 
+	useOutsideInteraction([triggerRef, tooltipRef], close, {
+		enabled: isOpen,
+		events: ['pointerdown']
+	});
+
 	useEffect(() => {
 		if (!isOpen) {
 			return;
 		}
-
-		const handlePointerDown = (event: PointerEvent) => {
-			const target = event.target as Node;
-
-			if (triggerRef.current?.contains(target)) {
-				return;
-			}
-			if (tooltipRef.current?.contains(target)) {
-				return;
-			}
-
-			close();
-		};
 
 		const handleKeyDown = (event: KeyboardEvent) => {
 			if (event.key === 'Escape') {
@@ -254,11 +247,9 @@ const Tooltip = ({
 			}
 		};
 
-		document.addEventListener('pointerdown', handlePointerDown);
 		document.addEventListener('keydown', handleKeyDown);
 
 		return () => {
-			document.removeEventListener('pointerdown', handlePointerDown);
 			document.removeEventListener('keydown', handleKeyDown);
 		};
 	}, [close, isOpen]);

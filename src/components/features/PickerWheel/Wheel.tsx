@@ -52,7 +52,9 @@ const Wheel: FC<Props> = ({ options, winner, setWinner }) => {
 	);
 
 	const spinWheel = () => {
-		if (isSpinning || winner) return;
+		if (isSpinning || winner) {
+			return;
+		}
 
 		setIsSpinning(true);
 

@@ -28,7 +28,9 @@ const StarRating: FC<Props> = (props) => {
 						key={number}
 						type="button"
 						onMouseEnter={() => {
-							if (!disabled) setHoverValue(number);
+							if (!disabled) {
+								setHoverValue(number);
+							}
 						}}
 						onClick={() => props.onChange(number === props.value ? 0 : number)}
 						className={cx(

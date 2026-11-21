@@ -1,4 +1,5 @@
 import HeaderNavLink from '@components/features/Header/HeaderNavLink';
+import LocalePanel from '@components/features/Header/LocalePanel';
 import ThemePanel from '@components/features/Header/ThemePanel';
 import Button from '@components/ui/Button';
 import { XMarkIcon } from '@heroicons/react/24/outline';
@@ -50,7 +51,8 @@ const HeaderMobileNav: FC<Props> = (props) => {
 								/>
 							))}
 						</nav>
-						<div className="flex w-full justify-start">
+						<div className="flex w-full justify-start gap-3">
+							<LocalePanel />
 							<ThemePanel />
 						</div>
 					</div>

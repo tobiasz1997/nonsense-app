@@ -10,7 +10,9 @@ const useActivePage = () => {
 				return true;
 			} else if (path != '/') {
 				return router.asPath.includes(path);
-			} else return false;
+			} else {
+				return false;
+			}
 		},
 		[router.asPath]
 	);

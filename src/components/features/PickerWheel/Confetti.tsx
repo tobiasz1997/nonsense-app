@@ -9,7 +9,9 @@ const Confetti: FC<Props> = ({ active }) => {
 	const [isActive, setIsActive] = useState(true);
 
 	useEffect(() => {
-		if (!active) return;
+		if (!active) {
+			return;
+		}
 		setIsActive(true);
 
 		const timer = setTimeout(() => setIsActive(false), 7_000);

@@ -12,13 +12,17 @@ const LocalePanel: FC = () => {
 	const selectedLocale = pendingLocale ?? locale;
 
 	const handleChange = (nextLocale: 'pl' | 'en') => {
-		if (nextLocale === selectedLocale || pendingLocale !== null) return;
+		if (nextLocale === selectedLocale || pendingLocale !== null) {
+			return;
+		}
 
 		setPendingLocale(nextLocale);
 	};
 
 	const handleAnimationComplete = () => {
-		if (pendingLocale === null) return;
+		if (pendingLocale === null) {
+			return;
+		}
 
 		document.cookie = `locale=${pendingLocale}; path=/; max-age=31536000; SameSite=Lax`;
 

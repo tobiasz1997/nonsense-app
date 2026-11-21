@@ -7,7 +7,35 @@
 		"generators": "Generators",
 		"blackjack": "Blackjack",
 		"schedule": "Schedule",
-		"pickerWheel": "Picker Wheel"
+		"pickerWheel": "Picker Wheel",
+		"notes": "Notes"
+	},
+	"auth": {
+		"title": "Sign in",
+		"description": "Sign in with your Microsoft account to access private pages.",
+		"signIn": "Microsoft",
+		"backHome": "Back to home",
+		"notConfigured": "Sign-in has not been configured yet. Contact the application administrator.",
+		"denied": "This account cannot access private pages. Sign in with an authorized account.",
+		"failed": "Sign-in failed. Please try again."
+	},
+	"settings": {
+		"title": "Settings",
+		"theme": "Theme",
+		"language": "Language"
+	},
+	"account": {
+		"title": "User account",
+		"signIn": "Sign in",
+		"signOut": "Sign out",
+		"signedIn": "Signed in",
+		"actionError": "The action failed. Please try again."
+	},
+	"notes": {
+		"title": "Notes",
+		"empty": "You do not have any notes yet.",
+		"signOut": "Sign out",
+		"signOutError": "Sign-out failed. Please try again."
 	},
 	"common": {
 		"add": "Add",

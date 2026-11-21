@@ -14,7 +14,9 @@ const ThemePanel: FC = () => {
 	const shouldAnimate = animatedTheme === theme;
 
 	const handleChange = (nextTheme: 'light' | 'dark') => {
-		if (nextTheme === theme) return;
+		if (nextTheme === theme) {
+			return;
+		}
 
 		setAnimatedTheme(nextTheme);
 		setNewTheme(nextTheme);

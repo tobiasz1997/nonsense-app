@@ -7,7 +7,35 @@
 		"generators": "Generatory",
 		"blackjack": "Blackjack",
 		"schedule": "Harmonogram",
-		"pickerWheel": "Koło losujące"
+		"pickerWheel": "Koło losujące",
+		"notes": "Notatki"
+	},
+	"auth": {
+		"title": "Logowanie",
+		"description": "Zaloguj się kontem Microsoft, aby korzystać z prywatnych stron.",
+		"signIn": "Microsoft",
+		"backHome": "Powrót do strony głównej",
+		"notConfigured": "Logowanie nie jest jeszcze skonfigurowane. Skontaktuj się z administratorem aplikacji.",
+		"denied": "To konto nie ma dostępu do prywatnych stron. Zaloguj się uprawnionym kontem.",
+		"failed": "Nie udało się zalogować. Spróbuj ponownie."
+	},
+	"settings": {
+		"title": "Ustawienia",
+		"theme": "Motyw",
+		"language": "Język"
+	},
+	"account": {
+		"title": "Konto użytkownika",
+		"signIn": "Zaloguj",
+		"signOut": "Wyloguj",
+		"signedIn": "Zalogowano",
+		"actionError": "Nie udało się wykonać operacji. Spróbuj ponownie."
+	},
+	"notes": {
+		"title": "Notatki",
+		"empty": "Nie masz jeszcze żadnych notatek.",
+		"signOut": "Wyloguj",
+		"signOutError": "Nie udało się wylogować. Spróbuj ponownie."
 	},
 	"common": {
 		"add": "Dodaj",

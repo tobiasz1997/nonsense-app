@@ -1,7 +1,7 @@
 import HeaderMobileNav from '@components/features/Header/HeaderMobileNav';
 import HeaderNavLink from '@components/features/Header/HeaderNavLink';
-import LocalePanel from '@components/features/Header/LocalePanel';
-import ThemePanel from '@components/features/Header/ThemePanel';
+import SettingsPanel from '@components/features/Header/SettingsPanel';
+import UserPanel from '@components/features/Header/UserPanel';
 import Button from '@components/ui/Button';
 import { Bars3BottomRightIcon } from '@heroicons/react/20/solid';
 import {
@@ -39,25 +39,25 @@ const HeaderFull: FC = () => {
 
 	return (
 		<>
-			<header className="drop-shadow-lg">
+			<header className="relative shadow-lg">
 				<div className="flex bg-pistachio p-4 font-mukta dark:bg-zinc-800">
 					<div className="relative flex flex-1 items-center space-x-1 md:justify-center md:space-x-4">
 						<h1 className="text-xl font-bold text-green-dark dark:text-pistachio sm:text-3xl">
 							Nonsense App
 						</h1>
 						<FaceSmileIcon className="h-6 w-6 rotate-180 dark:text-pistachio sm:h-8 sm:w-8" />
-						<div className="absolute right-0 hidden md:flex gap-3 flex-row">
-							<LocalePanel />
-							<ThemePanel />
-						</div>
 					</div>
-					<Button
-						className="max-w-max md:hidden p-2"
-						variant="secondary"
-						size="fit"
-						icon={<Bars3BottomRightIcon />}
-						onClick={() => setIsMobileNavOpen((prevState) => !prevState)}
-					/>
+					<div className="flex gap-3 items-center">
+						<UserPanel />
+						<SettingsPanel className="hidden md:block" />
+						<Button
+							className="w-9! h-9! md:hidden p-2 border dark:border-0"
+							variant="secondary"
+							size="fit"
+							icon={<Bars3BottomRightIcon />}
+							onClick={() => setIsMobileNavOpen((prevState) => !prevState)}
+						/>
+					</div>
 				</div>
 				{isMobileNavOpen && (
 					<HeaderMobileNav
@@ -115,6 +115,10 @@ const navLinks: NavLinksType = [
 	{
 		...appRoutes.pickerWheel,
 		icon: <TrophyIcon />
+	},
+	{
+		...appRoutes.notes,
+		icon: <DocumentTextIcon />
 	}
 ];
 

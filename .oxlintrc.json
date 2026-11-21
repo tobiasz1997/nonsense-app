@@ -7,6 +7,7 @@
 	},
 	"plugins": ["react", "nextjs", "import", "jsx-a11y"],
 	"rules": {
+		"curly": ["error", "all"],
 		"no-console": [
 			"warn",
 			{

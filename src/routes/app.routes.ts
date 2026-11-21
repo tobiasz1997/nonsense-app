@@ -32,5 +32,9 @@ export const appRoutes = {
 	pickerWheel: {
 		title: 'pickerWheel',
 		path: '/picker-wheel'
+	} as RouteType,
+	notes: {
+		title: 'notes',
+		path: '/notes'
 	} as RouteType
 };

@@ -238,6 +238,9 @@ Additional conventions:
 
 ## Security and performance
 
+- Never read, analyze, or use the contents of files named `.env` or matching `.env.*` in any directory. The only exception is a file named exactly `.env.example`.
+- Exclude all other environment files from content searches, previews, and Git diff analysis. Never obtain their contents indirectly through scripts, logs, or environment-variable dumps.
+- Determine required environment-variable names and example configuration only from `.env.example` and application code.
 - Never commit `.env` secrets, credentials, tokens, private keys, or confidential data.
 - Do not expose server-only environment variables through `NEXT_PUBLIC_` or Client Components.
 - Enforce authorization on trusted server boundaries, not only through UI checks or Proxy redirects.
