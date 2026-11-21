@@ -27,7 +27,7 @@ const AddTaskForm: FC<Props> = (props) => {
 				error={errors.task?.message && t(`validation.${errors.task?.message}`)}
 			/>
 			<div className="mt-5">
-				<Button>{t('tasks.sendMessage')}</Button>
+				<Button>{t('common.add')}</Button>
 			</div>
 		</form>
 	);
