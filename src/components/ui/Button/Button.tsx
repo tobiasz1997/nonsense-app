@@ -16,7 +16,13 @@ type Props = {
 	icon?: ReactElement;
 	submitting?: boolean;
 };
-const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
+const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = ({
+	size,
+	variant,
+	icon,
+	submitting,
+	...props
+}) => {
 	const [isPending, setIsPending] = useState(false);
 
 	const sizes: Record<sizeType, string> = {
@@ -66,40 +72,40 @@ const Button: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = (props) => {
 			className={cx(
 				'relative cursor-pointer flex w-full items-center justify-center whitespace-nowrap transition focus:outline-none focus:ring-4 disabled:opacity-50',
 				props.className,
-				sizes[props.size ?? 'default'],
-				variants[props.variant ?? 'primary']
+				sizes[size ?? 'default'],
+				variants[variant ?? 'primary']
 			)}
 			type={props.type}
-			disabled={props.disabled || isPending || props.submitting}
-			aria-busy={isPending || props.submitting || undefined}
+			disabled={props.disabled || isPending || submitting}
+			aria-busy={isPending || submitting || undefined}
 		>
 			{
 				<>
 					<Spinner
 						className={cx(
 							'absolute h-2 w-6 fill-current',
-							isPending || props.submitting ? 'visible' : 'invisible'
+							isPending || submitting ? 'visible' : 'invisible'
 						)}
 					/>
 					<span
 						className={cx('flex h-full w-full items-center justify-center', {
-							'opacity-0': isPending || props.submitting
+							'opacity-0': isPending || submitting
 						})}
 					>
-						{props.icon ? (
+						{icon ? (
 							<>
 								<span className="flex shrink-0 items-center justify-center fill-current">
 									{cloneElement(
-										props.icon as React.ReactElement<{ className?: string }>,
+										icon as React.ReactElement<{ className?: string }>,
 										{
-											className: cx(iconSizes[props.size ?? 'default'])
+											className: cx(iconSizes[size ?? 'default'])
 										},
 										null
 									)}
 								</span>
 								<span
 									className={cx('flex w-full justify-center', {
-										'pl-3': props.icon && props.children
+										'pl-3': icon && props.children
 									})}
 								>
 									{props.children}

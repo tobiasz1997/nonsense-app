@@ -1,4 +1,14 @@
 {
+	"tradingView": {
+		"title": "Rynki — TradingView",
+		"description": "Akcje globalne, ETF-y i spółki z GPW. Dane GPW są dostępne po zakończeniu sesji; pozostałe notowania mogą być opóźnione zależnie od rynku.",
+		"global": "Global",
+		"etf": "ETF",
+		"wig": "WIG",
+		"loading": "Ładowanie TradingView…",
+		"error": "Nie udało się załadować TradingView. Odśwież stronę lub skorzystaj z linku poniżej.",
+		"attribution": "Śledź rynki na TradingView"
+	},
 	"currencyRates": {
 		"title": "Kursy walut i cena złota",
 		"openHistory": "Pokaż wykres: {name}",
@@ -39,7 +49,11 @@
 		"rateDate": "Kurs średni z dnia",
 		"source": "Źródło:",
 		"nbp": "Narodowy Bank Polski",
-		"refreshError": "Nie udało się odświeżyć kursów walut i ceny złota. Wyświetlamy ostatnio pobrane dane."
+		"currencyRefreshError": "Nie udało się odświeżyć kursów walut. Wyświetlamy ostatnio pobrane kursy.",
+		"goldRefreshError": "Nie udało się odświeżyć ceny złota. Wyświetlamy ostatnio pobraną cenę.",
+		"loadRateError": "Nie udało się pobrać danych: {name}. Ponowimy próbę automatycznie.",
+		"noRate": "Brak danych: {name}.",
+		"loadingRate": "Ładowanie danych: {name}."
 	},
 	"nav": {
 		"home": "Strona główna",
@@ -182,6 +196,8 @@
 		"nineDigits": "9 cyfr"
 	},
 	"blackjack": {
+		"gameInfo": "Informacje o grze",
+		"gameDisclaimer": "Gra hobbystyczna, bez prawdziwych pieniędzy i nagród. Wirtualne monety nie mają wartości pieniężnej.",
 		"croupier": "Krupier",
 		"player": "Gracz",
 		"double": "Podwój stawkę",

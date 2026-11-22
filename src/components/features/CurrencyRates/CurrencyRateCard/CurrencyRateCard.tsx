@@ -157,7 +157,7 @@ const CurrencyRateCard = ({ code, summary }: CurrencyRateCardProps) => {
 			{difference !== undefined &&
 			displayedDifference !== undefined &&
 			percentage !== undefined ? (
-				<div className="space-y-1 text-sm">
+				<div className="space-y-0.5 mb-0.5 text-sm">
 					<p
 						className={classNames('font-semibold tabular-nums', {
 							'text-green-800 dark:text-green-300': difference > 0,
@@ -182,21 +182,24 @@ const CurrencyRateCard = ({ code, summary }: CurrencyRateCardProps) => {
 						})}
 						)
 					</p>
-					<p>{t('comparison')}</p>
+
 					{previous && (
-						<time dateTime={previous.date}>
-							{format.dateTime(new Date(`${previous.date}T12:00:00Z`), {
-								dateStyle: 'medium'
-							})}
-						</time>
+						<div>
+							<span className="text-xs">{t('comparison')}</span>{' '}
+							<time className="text-xs font-medium" dateTime={previous.date}>
+								{format.dateTime(new Date(`${previous.date}T12:00:00Z`), {
+									dateStyle: 'medium'
+								})}
+							</time>
+						</div>
 					)}
 				</div>
 			) : (
 				<p className="text-sm">{t('noComparison')}</p>
 			)}
-			<p className="text-sm">
+			<p className="text-xs">
 				{t(code === 'GOLD' ? 'goldDate' : 'rateDate')}{' '}
-				<time dateTime={latest.date}>
+				<time className="font-medium" dateTime={latest.date}>
 					{format.dateTime(new Date(`${latest.date}T12:00:00Z`), {
 						dateStyle: 'medium'
 					})}

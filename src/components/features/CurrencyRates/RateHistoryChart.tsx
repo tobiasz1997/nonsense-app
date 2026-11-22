@@ -93,7 +93,7 @@ const RateHistoryChart = ({
 	return (
 		<figure className="min-w-0 space-y-4 text-green-dark dark:text-pistachio">
 			<div className="grid grid-cols-1 gap-x-2 gap-y-2 sm:grid-cols-[auto_minmax(0,1fr)] sm:gap-x-4">
-				<div className="relative hidden min-w-16 text-right text-[10px] tabular-nums sm:block sm:min-w-20 sm:text-xs">
+				<div className="relative hidden min-w-16 text-right text-[10px] tabular-nums sm:block sm:text-xs">
 					{yTicks.map(({ value, y }) => (
 						<span
 							key={y}

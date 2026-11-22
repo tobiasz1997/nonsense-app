@@ -22,20 +22,18 @@ export const useGetCurrencyRates = () => {
 	);
 };
 
+export const useGetGoldRates = () => {
+	return useSWR<CurrencyRate[], Error>('api/nbp/gold-rates', getGoldRates, {
+		refreshInterval: REFRESH_INTERVAL,
+		dedupingInterval: REFRESH_INTERVAL
+	});
+};
+
 const getCurrencyRates = async (): Promise<CurrencyRate[]> => {
-	const endDate = new Intl.DateTimeFormat('en-CA', {
-		timeZone: 'Europe/Warsaw',
-		year: 'numeric',
-		month: '2-digit',
-		day: '2-digit'
-	}).format(new Date());
-	const start = new Date(`${endDate}T12:00:00Z`);
-	start.setUTCDate(start.getUTCDate() - 29);
-	const startDate = start.toISOString().slice(0, 10);
-	const [data, goldData] = await Promise.all([
-		fetcher<unknown>(`${API_URLS.nbp}/${startDate}/${endDate}/?format=json`),
-		fetcher<unknown>(`${API_URLS.nbpGold}/${startDate}/${endDate}/?format=json`)
-	]);
+	const { startDate, endDate } = getHistoryDateRange();
+	const data = await fetcher<unknown>(
+		`${API_URLS.nbp}/${startDate}/${endDate}/?format=json`
+	);
 
 	if (!Array.isArray(data) || data.length === 0) {
 		throw new Error('Invalid NBP response');
@@ -68,6 +66,16 @@ const getCurrencyRates = async (): Promise<CurrencyRate[]> => {
 		}
 	}
 
+	return history.sort((first, second) => first.date.localeCompare(second.date));
+};
+
+const getGoldRates = async (): Promise<CurrencyRate[]> => {
+	const { startDate, endDate } = getHistoryDateRange();
+	const goldData = await fetcher<unknown>(
+		`${API_URLS.nbpGold}/${startDate}/${endDate}/?format=json`
+	);
+	const history: CurrencyRate[] = [];
+
 	if (!Array.isArray(goldData) || goldData.length === 0) {
 		throw new Error('Invalid NBP gold response');
 	}
@@ -91,4 +99,17 @@ const getCurrencyRates = async (): Promise<CurrencyRate[]> => {
 
 const isRecord = (value: unknown): value is Record<string, unknown> => {
 	return typeof value === 'object' && value !== null;
+};
+
+const getHistoryDateRange = () => {
+	const endDate = new Intl.DateTimeFormat('en-CA', {
+		timeZone: 'Europe/Warsaw',
+		year: 'numeric',
+		month: '2-digit',
+		day: '2-digit'
+	}).format(new Date());
+	const start = new Date(`${endDate}T12:00:00Z`);
+	start.setUTCDate(start.getUTCDate() - 29);
+	const startDate = start.toISOString().slice(0, 10);
+	return { startDate, endDate };
 };

@@ -1,4 +1,14 @@
 {
+	"tradingView": {
+		"title": "Markets — TradingView",
+		"description": "Global stocks, ETFs and Warsaw-listed companies. GPW data is available after the trading session; other quotes may be delayed depending on the market.",
+		"global": "Global",
+		"etf": "ETF",
+		"wig": "WIG",
+		"loading": "Loading TradingView…",
+		"error": "Unable to load TradingView. Refresh the page or use the link below.",
+		"attribution": "Track markets on TradingView"
+	},
 	"currencyRates": {
 		"title": "Exchange rates and gold price",
 		"openHistory": "Show chart: {name}",
@@ -39,7 +49,11 @@
 		"rateDate": "Average rate as of",
 		"source": "Source:",
 		"nbp": "National Bank of Poland",
-		"refreshError": "Unable to refresh exchange rates and the gold price. Showing the last downloaded data."
+		"currencyRefreshError": "Unable to refresh exchange rates. Showing the last downloaded rates.",
+		"goldRefreshError": "Unable to refresh the gold price. Showing the last downloaded price.",
+		"loadRateError": "Unable to load data for {name}. We will retry automatically.",
+		"noRate": "No data available for {name}.",
+		"loadingRate": "Loading data for {name}."
 	},
 	"nav": {
 		"home": "Home",
@@ -182,6 +196,8 @@
 		"nineDigits": "9 digits"
 	},
 	"blackjack": {
+		"gameInfo": "About the game",
+		"gameDisclaimer": "A hobby game with no real money or prizes. Virtual coins have no monetary value.",
 		"croupier": "Dealer",
 		"player": "Player",
 		"double": "Double",
