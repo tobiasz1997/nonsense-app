@@ -2,6 +2,10 @@
 import { Middleware } from 'redux';
 
 export const loggerMiddleware: Middleware = (store) => (next) => (action) => {
+	if (process.env.NODE_ENV !== 'development') {
+		return next(action);
+	}
+
 	// @ts-ignore
 	console.group(action.type);
 	console.info('dispatching', action);

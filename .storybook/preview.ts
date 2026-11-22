@@ -3,6 +3,8 @@ import '@styles/globals.css';
 import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import { createElement } from 'react';
 import { NextIntlClientProvider } from 'next-intl';
+import type { Session } from 'next-auth';
+import { SessionProvider } from 'next-auth/react';
 import en from '../messages/en.json';
 import pl from '../messages/pl.json';
 const preview: Preview = {
@@ -45,13 +47,16 @@ const preview: Preview = {
 };
 
 export const decorators = [
-    (Story: () => ReturnType<typeof createElement>, context: { globals: { locale?: string } }) => {
+    (Story: () => ReturnType<typeof createElement>, context: { globals: { locale?: string }; parameters: { session?: Session | null } }) => {
         const locale = context.globals.locale === 'en' ? 'en' : 'pl';
         return createElement(NextIntlClientProvider, {
             locale,
             messages: locale === 'en' ? en : pl,
             timeZone: 'Europe/Warsaw'
-        }, createElement(Story));
+        }, createElement(SessionProvider, {
+            session: context.parameters.session ?? null,
+            refetchOnWindowFocus: false
+        }, createElement(Story)));
     },
     withThemeByDataAttribute({
         themes: {

@@ -28,7 +28,9 @@ export async function exportScheduleToXlsx(
 	['A1', 'B1', 'C1', 'D1'].forEach((cellAddress) => {
 		const cell = worksheet[cellAddress];
 
-		if (!cell) return;
+		if (!cell) {
+			return;
+		}
 
 		cell.s = {
 			font: {

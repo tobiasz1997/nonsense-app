@@ -1,4 +1,60 @@
 {
+	"tradingView": {
+		"title": "Rynki — TradingView",
+		"description": "Akcje globalne, ETF-y i spółki z GPW. Dane GPW są dostępne po zakończeniu sesji; pozostałe notowania mogą być opóźnione zależnie od rynku.",
+		"global": "Global",
+		"etf": "ETF",
+		"wig": "WIG",
+		"loading": "Ładowanie TradingView…",
+		"error": "Nie udało się załadować TradingView. Odśwież stronę lub skorzystaj z linku poniżej.",
+		"attribution": "Śledź rynki na TradingView"
+	},
+	"currencyRates": {
+		"title": "Kursy walut i cena złota",
+		"openHistory": "Pokaż wykres: {name}",
+		"closeHistory": "Zamknij wykres",
+		"historyTitle": "Historia: {name}",
+		"historyPeriod": "Ostatnie 30 dni",
+		"noHistory": "Brak danych historycznych.",
+		"historyMinimum": "Minimum",
+		"historyMaximum": "Maksimum",
+		"historyChange": "Zmiana w okresie",
+		"historyAxesInfo": "Informacje o osiach wykresu",
+		"historyXAxisDescription": "Oś X (pozioma): data notowania.",
+		"historyYAxisDescription": "Oś Y (pionowa): wartość w PLN za {unit}.",
+		"historyDate": "Data",
+		"historyValue": "Wartość",
+		"historyPointLabel": "{date}: {value} PLN. Pokaż szczegóły.",
+		"chartDescription": "Minimum: {minimum}. Maksimum: {maximum}. Zmiana od pierwszego do ostatniego notowania: {change}.",
+		"GBP": "Funt brytyjski",
+		"EUR": "Euro",
+		"USD": "Dolar amerykański",
+		"GOLD": "Złoto",
+		"goldUnit": "1 g",
+		"goldOunceUnit": "1 uncja",
+		"showGoldGram": "Pokaż cenę złota za 1 gram",
+		"showGoldOunce": "Pokaż cenę złota za 1 uncję trojańską",
+		"goldDate": "Cena NBP z dnia",
+		"openCalculator": "Otwórz kalkulator {currency}",
+		"closeCalculator": "Zamknij i zresetuj kalkulator {currency}",
+		"amountLabel": "Kwota netto ({currency})",
+		"vatLabel": "VAT (%)",
+		"calculationResult": "{amount} {currency} + VAT {vat}% = {result} PLN brutto",
+		"invalidCalculation": "Wprowadź poprawną kwotę i VAT.",
+		"increased": "Wzrost",
+		"decreased": "Spadek",
+		"unchanged": "Bez zmian",
+		"comparison": "Względem poprzedniego notowania z dnia",
+		"noComparison": "Brak poprzedniego notowania do porównania.",
+		"rateDate": "Kurs średni z dnia",
+		"source": "Źródło:",
+		"nbp": "Narodowy Bank Polski",
+		"currencyRefreshError": "Nie udało się odświeżyć kursów walut. Wyświetlamy ostatnio pobrane kursy.",
+		"goldRefreshError": "Nie udało się odświeżyć ceny złota. Wyświetlamy ostatnio pobraną cenę.",
+		"loadRateError": "Nie udało się pobrać danych: {name}. Ponowimy próbę automatycznie.",
+		"noRate": "Brak danych: {name}.",
+		"loadingRate": "Ładowanie danych: {name}."
+	},
 	"nav": {
 		"home": "Strona główna",
 		"tasks": "Zadania",
@@ -7,7 +63,35 @@
 		"generators": "Generatory",
 		"blackjack": "Blackjack",
 		"schedule": "Harmonogram",
-		"pickerWheel": "Koło losujące"
+		"pickerWheel": "Koło losujące",
+		"notes": "Notatki"
+	},
+	"auth": {
+		"title": "Logowanie",
+		"description": "Zaloguj się kontem Microsoft, aby korzystać z prywatnych stron.",
+		"signIn": "Microsoft",
+		"backHome": "Powrót do strony głównej",
+		"notConfigured": "Logowanie nie jest jeszcze skonfigurowane. Skontaktuj się z administratorem aplikacji.",
+		"denied": "To konto nie ma dostępu do prywatnych stron. Zaloguj się uprawnionym kontem.",
+		"failed": "Nie udało się zalogować. Spróbuj ponownie."
+	},
+	"settings": {
+		"title": "Ustawienia",
+		"theme": "Motyw",
+		"language": "Język"
+	},
+	"account": {
+		"title": "Konto użytkownika",
+		"signIn": "Zaloguj",
+		"signOut": "Wyloguj",
+		"signedIn": "Zalogowano",
+		"actionError": "Nie udało się wykonać operacji. Spróbuj ponownie."
+	},
+	"notes": {
+		"title": "Notatki",
+		"empty": "Nie masz jeszcze żadnych notatek.",
+		"signOut": "Wyloguj",
+		"signOutError": "Nie udało się wylogować. Spróbuj ponownie."
 	},
 	"common": {
 		"add": "Dodaj",
@@ -112,6 +196,8 @@
 		"nineDigits": "9 cyfr"
 	},
 	"blackjack": {
+		"gameInfo": "Informacje o grze",
+		"gameDisclaimer": "Gra hobbystyczna, bez prawdziwych pieniędzy i nagród. Wirtualne monety nie mają wartości pieniężnej.",
 		"croupier": "Krupier",
 		"player": "Gracz",
 		"double": "Podwój stawkę",

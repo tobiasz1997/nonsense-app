@@ -30,7 +30,7 @@ const PlayerStatsPanel: FC = () => {
 				<p>{playerCoins}</p>
 			</div>
 			<div className="flex justify-between">
-				<p>{t('gameBalance')}</p>
+				<p className="text-left">{t('gameBalance')}</p>
 				<p>{gameBalance}</p>
 			</div>
 			<div className="flex justify-between">

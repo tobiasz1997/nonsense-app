@@ -42,7 +42,9 @@ const CopyButton: FC<ButtonHTMLAttributes<HTMLButtonElement> & Props> = ({
 	}, []);
 
 	const handleCopy = async () => {
-		if (!copyValue || isCopied) return;
+		if (!copyValue || isCopied) {
+			return;
+		}
 
 		await copy(copyValue);
 

@@ -1,4 +1,60 @@
 {
+	"tradingView": {
+		"title": "Markets — TradingView",
+		"description": "Global stocks, ETFs and Warsaw-listed companies. GPW data is available after the trading session; other quotes may be delayed depending on the market.",
+		"global": "Global",
+		"etf": "ETF",
+		"wig": "WIG",
+		"loading": "Loading TradingView…",
+		"error": "Unable to load TradingView. Refresh the page or use the link below.",
+		"attribution": "Track markets on TradingView"
+	},
+	"currencyRates": {
+		"title": "Exchange rates and gold price",
+		"openHistory": "Show chart: {name}",
+		"closeHistory": "Close chart",
+		"historyTitle": "History: {name}",
+		"historyPeriod": "Last 30 days",
+		"noHistory": "No historical data available.",
+		"historyMinimum": "Minimum",
+		"historyMaximum": "Maximum",
+		"historyChange": "Change over period",
+		"historyAxesInfo": "About the chart axes",
+		"historyXAxisDescription": "X axis (horizontal): observation date.",
+		"historyYAxisDescription": "Y axis (vertical): value in PLN per {unit}.",
+		"historyDate": "Date",
+		"historyValue": "Value",
+		"historyPointLabel": "{date}: {value} PLN. Show details.",
+		"chartDescription": "Minimum: {minimum}. Maximum: {maximum}. Change from the first to the last observation: {change}.",
+		"GBP": "British pound",
+		"EUR": "Euro",
+		"USD": "US dollar",
+		"GOLD": "Gold",
+		"goldUnit": "1 g",
+		"goldOunceUnit": "1 ounce",
+		"showGoldGram": "Show gold price per gram",
+		"showGoldOunce": "Show gold price per troy ounce",
+		"goldDate": "NBP price as of",
+		"openCalculator": "Open {currency} calculator",
+		"closeCalculator": "Close and reset {currency} calculator",
+		"amountLabel": "Net amount ({currency})",
+		"vatLabel": "VAT (%)",
+		"calculationResult": "{amount} {currency} + VAT {vat}% = {result} PLN including VAT",
+		"invalidCalculation": "Enter a valid amount and VAT rate.",
+		"increased": "Increase",
+		"decreased": "Decrease",
+		"unchanged": "Unchanged",
+		"comparison": "Compared with the previous rate published on",
+		"noComparison": "No previous rate available for comparison.",
+		"rateDate": "Average rate as of",
+		"source": "Source:",
+		"nbp": "National Bank of Poland",
+		"currencyRefreshError": "Unable to refresh exchange rates. Showing the last downloaded rates.",
+		"goldRefreshError": "Unable to refresh the gold price. Showing the last downloaded price.",
+		"loadRateError": "Unable to load data for {name}. We will retry automatically.",
+		"noRate": "No data available for {name}.",
+		"loadingRate": "Loading data for {name}."
+	},
 	"nav": {
 		"home": "Home",
 		"tasks": "Tasks",
@@ -7,7 +63,35 @@
 		"generators": "Generators",
 		"blackjack": "Blackjack",
 		"schedule": "Schedule",
-		"pickerWheel": "Picker Wheel"
+		"pickerWheel": "Picker Wheel",
+		"notes": "Notes"
+	},
+	"auth": {
+		"title": "Sign in",
+		"description": "Sign in with your Microsoft account to access private pages.",
+		"signIn": "Microsoft",
+		"backHome": "Back to home",
+		"notConfigured": "Sign-in has not been configured yet. Contact the application administrator.",
+		"denied": "This account cannot access private pages. Sign in with an authorized account.",
+		"failed": "Sign-in failed. Please try again."
+	},
+	"settings": {
+		"title": "Settings",
+		"theme": "Theme",
+		"language": "Language"
+	},
+	"account": {
+		"title": "User account",
+		"signIn": "Sign in",
+		"signOut": "Sign out",
+		"signedIn": "Signed in",
+		"actionError": "The action failed. Please try again."
+	},
+	"notes": {
+		"title": "Notes",
+		"empty": "You do not have any notes yet.",
+		"signOut": "Sign out",
+		"signOutError": "Sign-out failed. Please try again."
 	},
 	"common": {
 		"add": "Add",
@@ -112,6 +196,8 @@
 		"nineDigits": "9 digits"
 	},
 	"blackjack": {
+		"gameInfo": "About the game",
+		"gameDisclaimer": "A hobby game with no real money or prizes. Virtual coins have no monetary value.",
 		"croupier": "Dealer",
 		"player": "Player",
 		"double": "Double",

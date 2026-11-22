@@ -36,16 +36,18 @@ at all. That's the point of Nonsense App :)
 
 ## Features
 
-|                      | What you can play with                                                                                                    |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
-| ✅ **Task list**     | Add, complete, delete, sort, and reorder tasks. Saved locally between visits.                                             |
-| 🧮 **Algorithms**    | Fibonacci, binary search, insertion sort, and selection sort.                                                             |
-| 👥 **Users table**   | API-backed user data with pagination and loading placeholders.                                                            |
-| 🛠️ **Generators**    | PESEL, NIP, REGON, number arrays, and Lorem ipsum text, with configurable options and copying.                            |
-| 🃏 **Blackjack**     | Hit, stand, double the bet, and track coins and results using the Deck of Cards API.                                      |
-| 🎡 **Picker wheel**  | Manage options, colors, and active entries. Save locally, export/import through tokens, and download the winner as a PNG. |
-| 📅 **Work schedule** | Build weekday-based schedules with projects, hours, and description templates. Export to PDF or XLSX.                     |
-| 💬 **Random jokes**  | An API-powered joke waiting on the home page.                                                                             |
+|                       | What you can play with                                                                                                    |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| ✅ **Task list**      | Add, complete, delete, sort, and reorder tasks. Saved locally between visits.                                             |
+| 🧮 **Algorithms**     | Fibonacci, binary search, insertion sort, and selection sort.                                                             |
+| 👥 **Users table**    | API-backed user data with pagination and loading placeholders.                                                            |
+| 🛠️ **Generators**     | PESEL, NIP, REGON, number arrays, and Lorem ipsum text, with configurable options and copying.                            |
+| 🃏 **Blackjack**      | Hit, stand, double the bet, and track coins and results using the Deck of Cards API.                                      |
+| 🎡 **Picker wheel**   | Manage options, colors, and active entries. Save locally, export/import through tokens, and download the winner as a PNG. |
+| 📅 **Work schedule**  | Build weekday-based schedules with projects, hours, and description templates. Export to PDF or XLSX.                     |
+| 🔐 **Sign-in**        | Microsoft account sign-in for private pages.                                                                              |
+| 💱 **Exchange rates** | Currency exchange rates and gold prices from NBP.                                                                         |
+| 📈 **TradingView**    | Market overview with global stocks, ETFs, and Warsaw-listed companies.                                                    |
 
 **Across the app:** Polish and English UI · Light and dark themes · Responsive layouts
 
@@ -124,6 +126,7 @@ Use messages such as `fix(button): handle asynchronous clicks` or
 
 ## TODO
 
+- [ ] Develop the notes feature.
 - [ ] Add descriptions explaining the external APIs used by the app.
 - [ ] Fix blackjack scoring, including recalculating an ace from 11 to 1 when a
       later card would otherwise push the hand over 21.

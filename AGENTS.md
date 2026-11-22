@@ -148,6 +148,7 @@ Additional conventions:
 - Write typed, readable code. Prefer `type`/`interface` definitions that match existing project conventions.
 - Avoid `any`, unsafe casts, non-null assertions, and `@ts-ignore`. If an exception is unavoidable, explain why.
 - Keep components and functions focused. Extract shared logic only when it is genuinely reused or significantly improves clarity.
+- Prefer arrow functions for new React components, custom hooks, event handlers, and helper functions. Use function declarations or other function forms when required by behavior, such as dynamic `this`, generators, or declaration hoisting. Preserve existing declaration order and export conventions; convert existing functions only within an explicitly approved scope.
 - Prefer named exports where the repository does so; preserve default exports required by Next.js file conventions.
 - Follow existing path aliases and import ordering; do not assume an `@/` alias exists without checking `tsconfig.json`.
 - Prefer `async`/`await` with explicit error handling over deeply nested promise chains.
@@ -238,6 +239,9 @@ Additional conventions:
 
 ## Security and performance
 
+- Never read, analyze, or use the contents of files named `.env` or matching `.env.*` in any directory. The only exception is a file named exactly `.env.example`.
+- Exclude all other environment files from content searches, previews, and Git diff analysis. Never obtain their contents indirectly through scripts, logs, or environment-variable dumps.
+- Determine required environment-variable names and example configuration only from `.env.example` and application code.
 - Never commit `.env` secrets, credentials, tokens, private keys, or confidential data.
 - Do not expose server-only environment variables through `NEXT_PUBLIC_` or Client Components.
 - Enforce authorization on trusted server boundaries, not only through UI checks or Proxy redirects.

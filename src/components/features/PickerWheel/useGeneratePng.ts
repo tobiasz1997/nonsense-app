@@ -9,7 +9,9 @@ const useGeneratePng = () => {
 			const canvas = document.createElement('canvas');
 			const ctx = canvas.getContext('2d');
 
-			if (!ctx || !winner) return;
+			if (!ctx || !winner) {
+				return;
+			}
 
 			const width = 700;
 			const height = 350;

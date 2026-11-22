@@ -6,6 +6,7 @@ import SWRProvider from '@providers/SWRProvider';
 import ThemeProvider from '@providers/ThemeProvider';
 import store from '@store/store';
 import '@styles/globals.css';
+import { SessionProvider } from 'next-auth/react';
 import { Provider } from 'react-redux';
 
 export default function App({
@@ -14,15 +15,17 @@ export default function App({
 }: AppProps & { Component: AppPage }) {
 	return (
 		<Provider store={store}>
-			<LocaleProvider>
-				<ThemeProvider>
-					<SWRProvider>
-						<Layout layoutType={Component.layoutType}>
-							<Component {...pageProps} />
-						</Layout>
-					</SWRProvider>
-				</ThemeProvider>
-			</LocaleProvider>
+			<SessionProvider session={pageProps.session}>
+				<LocaleProvider>
+					<ThemeProvider>
+						<SWRProvider>
+							<Layout layoutType={Component.layoutType}>
+								<Component {...pageProps} />
+							</Layout>
+						</SWRProvider>
+					</ThemeProvider>
+				</LocaleProvider>
+			</SessionProvider>
 		</Provider>
 	);
 }

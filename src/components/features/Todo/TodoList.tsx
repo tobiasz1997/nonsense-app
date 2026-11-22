@@ -40,7 +40,9 @@ const TodoList: FC = () => {
 		const taskId =
 			element.closest<HTMLElement>('[data-task-id]')?.dataset.taskId;
 
-		if (!taskId) return;
+		if (!taskId) {
+			return;
+		}
 
 		dispatch(
 			reorderTasks(
@@ -78,9 +80,6 @@ const TodoList: FC = () => {
 	return (
 		<>
 			<section className="space-y-5 rounded-xl bg-pistachio p-5 shadow-xl dark:bg-zinc-500">
-				<h2 className="text-xl font-bold text-orange sm:text-3xl">
-					{t('listTitle')}
-				</h2>
 				<div className="flex items-center justify-between">
 					<FormSelect
 						options={sortByOptionsList}

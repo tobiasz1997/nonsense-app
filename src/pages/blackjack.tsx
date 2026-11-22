@@ -11,6 +11,8 @@ import PlayerStatsPanel from '@components/features/Blackjack/PlayerStatsPanel';
 import Button from '@components/ui/Button';
 import ErrorModal from '@components/ui/ErrorModal';
 import Loader from '@components/ui/Loader';
+import Tooltip from '@components/ui/Tooltip';
+import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import useIsMobile from '@hooks/useIsMobile';
 import { AppPage } from '@interfaces/appPage';
 import {
@@ -238,7 +240,7 @@ const BlackJackPage: AppPage = () => {
 
 	return (
 		<>
-			<div className="na-p-page space-y-5">
+			<div className="na-p-page space-y-5 relative">
 				<h1 className="na-title">{t('nav.blackjack')}</h1>
 				{isMobile && <GameStatsMobileView />}
 				<section className="flex gap-3">
@@ -312,6 +314,18 @@ const BlackJackPage: AppPage = () => {
 						</div>
 					</div>
 				</section>
+				<div className="absolute top-0 right-0 na-p-page">
+					<Tooltip
+						content={<p>{t('blackjack.gameDisclaimer')}</p>}
+						placement="bottom"
+					>
+						<InformationCircleIcon
+							aria-hidden="true"
+							className="dark:text-pistachio text-green-dark w-6 h-6 cursor-pointer"
+						/>
+						<span className="sr-only">{t('blackjack.gameInfo')}</span>
+					</Tooltip>
+				</div>
 			</div>
 
 			{errorModalVisible && (

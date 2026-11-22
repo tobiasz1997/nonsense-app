@@ -11,7 +11,9 @@ export function useReturnFocus(isOpen: boolean) {
 
 	useEffect(() => {
 		const handleFocus = (event: FocusEvent) => {
-			if (isOpenRef.current) return;
+			if (isOpenRef.current) {
+				return;
+			}
 
 			if (event.target instanceof HTMLElement) {
 				lastFocusedElement.current = event.target;
